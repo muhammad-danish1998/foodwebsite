@@ -17,7 +17,22 @@ const navigation = [
 export default function Header() {
   const navigate = useNavigate();
   const handlePlaceSelect = (data) => {
-    // axios.post("https://liefermars.de/ajax/searchfood.php")
+    console.log("🚀 ~ file: Header.jsx:20 ~ handlePlaceSelect ~ data", data)
+    // const formData = new URLSearchParams();
+    // formData.append("lat", 49.4537628);
+    // formData.append("long", 8.4183208);
+    // formData.append("expedition", "all");
+    // formData.append("city", "Ludwigshafen");
+    // formData.append("postal_code", 67065);
+    // formData.append("address", "67065 Ludwigshafen, Germany");
+
+    // axios.post("https://liefermars.de/ajax/searchfood.php", formData,{
+    //   headers: {
+        
+    //   }
+    // }).then((response) => {
+    //   console.log({ response })
+    // })
     navigate(`/restaurant?city=${data.city}&zip=${data.zipCode}`);
   }
   return (
@@ -173,7 +188,7 @@ export default function Header() {
                 fugiat aliqua ad ad non deserunt sunt.
               </p> */}
               <div className="mt-8 sm:mx-auto sm:max-w-lg sm:text-center lg:mx-0 lg:text-left">
-                <form onSubmit={(e)=> e.preventDefault()} action="#" method="POST" className="mt-3 sm:flex ">
+                <form onSubmit={(e) => e.preventDefault()} action="#" method="POST" className="mt-3 sm:flex ">
                   <div className=" rounded-full shadow-sm p-2 flex justify-center items-center w-full border-2 bg-white border-orange-500 rounded-md">
                     <label htmlFor="email" className="sr-only">
                       Email

@@ -39,17 +39,17 @@ const files = [
   // More files...
 ];
 
-export default function RestaurantsGrid() {
+export default function RestaurantsGrid({items}) {
   return (
     <ul
       role="list"
       className="grid grid-cols-1  gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-8"
     >
-      {files.map((file) => (
-        <li key={file.source} className="relative border-2 p-1 rounded-lg">
+      {(items || []).map((file) => (
+        <li key={file.image} className="relative border-2 p-1 rounded-lg">
           <div className="group aspect-w-16  aspect-h-4 block  w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
             <img
-              src={file.source}
+              src={file.banner}
               alt=""
               className="pointer-events-none object-cover group-hover:opacity-75"
             />
@@ -65,21 +65,21 @@ export default function RestaurantsGrid() {
           <div className="flex justify-between  items-center">
             <div className="card-left">
               <p className="pointer-events-none mt-2 block truncate text-lg font-medium text-gray-900">
-                {file.title}
+                {file.name}
               </p>
               <p className="pointer-events-none block text-sm font-sm text-gray-500">
                 {file.size}
               </p>
             </div>
             <div className="card-right border-4 mt-2 rounded-full bg-green-700">
-              <img src="./images/Ellipse 20.png" width={100} height={100} />
+              <img src={file.image} width={100} height={100} />
             </div>
           </div>
           <p className="mt-2  pointer-events-none block  text-gray-500 ">
             {/* ------------------------- card bottom  ----------------  */}
 
             <div className="flex items-center">
-            <i className="fa-sharp fa-solid fa-motorcycle mr-2"> </i>€ 1,5
+            <i className="fa-sharp fa-solid fa-motorcycle mr-2"> </i>€ {file.delivery_fee}
 
               {/* -------------- watch ----------------------- */}
               <svg
@@ -96,7 +96,7 @@ export default function RestaurantsGrid() {
                   d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              45 min
+              {file.deliveryTime}
               {/* ----------------------------- Shoping ------------------  */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +114,7 @@ export default function RestaurantsGrid() {
               </svg>
               {/* --------------------- Euro ---------------------  */}
               <p className="mr-2 text-lg">
-                Min € <span>20,000</span>
+                Min € <span>${file.minorder}</span>
               </p>
               {/* -------------- Review ----------------------- */}
               <span class="flex items-center text-end">
@@ -130,7 +130,7 @@ export default function RestaurantsGrid() {
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                 </svg>
 
-                <span class="text-gray-600 ml-1 text-lg">4.2</span>
+                <span class="text-gray-600 ml-1 text-lg">{file.overall_rating}</span>
               </span>
             </div>
           </p>

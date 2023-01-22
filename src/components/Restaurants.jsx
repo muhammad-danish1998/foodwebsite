@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import RestaurantsGrid from "./RestaurantsGrid";
@@ -6,6 +6,8 @@ import HeaderToggle from "./Header-Toggle";
 import HeaderTextSlider from "./HeaderTextSlider";
 import OpenResturant from "./OpenResturant";
 import RatiingHeader from "./RatiingHeader";
+import { useParams } from "react-router-dom";
+import axios from 'axios';
 
 const user = {
   name: "Tom Cook",
@@ -30,6 +32,18 @@ function classNames(...classes) {
 }
 
 export default function Restaurants() {
+  const params = new URLSearchParams(window.location.search);
+  const [restaurantItems, setRestaurantItems] = useState([]);
+  useEffect(() => {
+    const city = params.get("city")
+    const zip = params.get("zip")
+    axios.get(`https://liefermars.de/ajax/resturents_api_ajax.php?city=${city}&zip=${zip}&page=1`).then((res) => {
+      console.log("🚀 ~ file: Restaurants.jsx:37 ~ Restaurants ~ res", res)
+      if(res?.data?.data){
+        setRestaurantItems(res.data.data)
+      }
+    })
+  }, [window.location.search])
   return (
     <>
       {/*
@@ -261,8 +275,8 @@ export default function Restaurants() {
           {/* -------------- minimum order ---------------  */}
           <p className="ml-4">
             <button className="border-2 p-2 rounded-lg bg-gray-100">
-              Minimum Order  
-              
+              Minimum Order
+
             </button>
           </p>
         </div>
@@ -276,7 +290,7 @@ export default function Restaurants() {
             <div className="mx-auto lg:max-w-12xl sm:px-6 lg:px-8">
               {/* Replace with your content */}
               <div className="px-4 py-2 sm:px-0">
-                <RestaurantsGrid />
+                <RestaurantsGrid items={restaurantItems} />
               </div>
               {/* /End replace */}
             </div>
