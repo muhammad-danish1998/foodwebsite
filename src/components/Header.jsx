@@ -3,6 +3,9 @@ import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import HeaderSlider from "./HeaderSlider";
+import PlacesAutoComplete from "./PlacesAutoComplete";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -12,6 +15,11 @@ const navigation = [
 ];
 
 export default function Header() {
+  const navigate = useNavigate();
+  const handlePlaceSelect = (data) => {
+    // axios.post("https://liefermars.de/ajax/searchfood.php")
+    navigate(`/restaurant?city=${data.city}&zip=${data.zipCode}`);
+  }
   return (
     <div className="relative overflow-hidden bg-pink-100">
       <div
@@ -165,7 +173,7 @@ export default function Header() {
                 fugiat aliqua ad ad non deserunt sunt.
               </p> */}
               <div className="mt-8 sm:mx-auto sm:max-w-lg sm:text-center lg:mx-0 lg:text-left">
-                <form action="#" method="POST" className="mt-3 sm:flex ">
+                <form onSubmit={(e)=> e.preventDefault()} action="#" method="POST" className="mt-3 sm:flex ">
                   <div className=" rounded-full shadow-sm p-2 flex justify-center items-center w-full border-2 bg-white border-orange-500 rounded-md">
                     <label htmlFor="email" className="sr-only">
                       Email
@@ -190,11 +198,15 @@ export default function Header() {
                       />
                     </svg>
 
-                    <input
+                    {/* <input
+                      ref={placesRef}
                       type="email"
                       name="email"
                       id="email"
                       className="block w-full border-0 outline-none   py-3 text-base   sm:flex-1"
+                    /> */}
+                    <PlacesAutoComplete
+                      onPlaceSelect={handlePlaceSelect}
                     />
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -209,7 +221,7 @@ export default function Header() {
                         strokeLinejoin="round"
                         d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
                       />
-                    </svg>  
+                    </svg>
                   </div>
                 </form>
               </div>
