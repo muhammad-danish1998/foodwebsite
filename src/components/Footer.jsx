@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 /*
   This Footer requires some changes to your config:
   
@@ -155,9 +157,9 @@ const navigation = {
                   <ul role="list" className="mt-6 space-y-4">
                     {navigation.legal.map((item) => (
                       <li key={item.name}>
-                        <a href={item.href} className="text-lg leading-6 text-gray-600 hover:text-gray-900">
+                        <Link  to="/restaurant" className="text-lg leading-6 text-gray-600 hover:text-gray-900">
                           {item.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
