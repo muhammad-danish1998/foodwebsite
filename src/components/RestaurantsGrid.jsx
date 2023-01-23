@@ -47,7 +47,7 @@ export default function RestaurantsGrid({items}) {
     >
       {(items || []).map((file) => (
         <li key={file.image} className="relative border-2 p-1 rounded-lg">
-          <div className="group aspect-w-16  aspect-h-4 block  w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+          <div className="group aspect-w-14  aspect-h-4 block  w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
             <img
               src={file.banner}
               alt=""
@@ -71,8 +71,8 @@ export default function RestaurantsGrid({items}) {
                 {file.size}
               </p>
             </div>
-            <div className="card-right border-4 mt-2 rounded-full bg-green-700">
-              <img src={file.image} width={100} height={100} />
+            <div className=" mt-2 rounded-full ">
+              <img className="card-right " src={file.image} width={100} height={100} />
             </div>
           </div>
           <p className="mt-2  pointer-events-none block  text-gray-500 ">

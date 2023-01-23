@@ -259,7 +259,7 @@ export default function Restaurants() {
           <HeaderTextSlider />
         </div>
         {/* --------------- header grid check switch ------------ */}
-        <div className=" max-w-7xl lg:mt-4 m-auto flex items-center p-2">
+        <div className=" max-w-7xl lg:mt-2 m-auto flex items-center p-2">
           <p className=" bg-gray-100 rounded-xl p-2 flex items-center">
             <span className="mr-8">Open Resturant</span>
             <OpenResturant />
@@ -280,7 +280,7 @@ export default function Restaurants() {
             </button>
           </p>
         </div>
-        <div className="py-4">
+        <div className="py-1">
           <header>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"></div>
           </header>
@@ -289,7 +289,7 @@ export default function Restaurants() {
           <main>
             <div className="mx-auto lg:max-w-12xl sm:px-6 lg:px-8">
               {/* Replace with your content */}
-              <div className="px-4 py-2 sm:px-0">
+              <div className="px-4 py-1 sm:px-0">
                 <RestaurantsGrid items={restaurantItems} />
               </div>
               {/* /End replace */}

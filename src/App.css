@@ -36,4 +36,46 @@ input:checked ~ span:last-child {
   padding: 5px;
 }
 
+.mySwiperresturant .swiper-button-prev{
+  background-color: transparent !important;
+  color: black !important;
+  
+}
+.mySwiperresturant .swiper-button-next{
+  background-color: transparent !important;
+  color: black !important;
+ 
+}
+:root {
+  --swiper-navigation-size: 24px !important;
+}
+ /* .swiper-button-next, .swiper-button-prev {
+  position: absolute;
+  top: 10%;
+  width: calc(var(--swiper-navigation-size)/ 44 * 27);
+  height: var(--swiper-navigation-size);
+  margin-top: calc(0px - (var(--swiper-navigation-size)/ 2));
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: end !important;
+  justify-content: center;
+  color: var(--swiper-navigation-color,var(--swiper-theme-color));
+} */
+
+.mySwiperresturant .swiper-button-next, .swiper-rtl .swiper-button-prev {
+  right: 0px !important;
+  left: auto;
+}
+/* .swiper-button-next:after, .swiper-button-prev:after {
+  font-family: swiper-icons;
+  font-size: var(--swiper-navigation-size);
+  text-transform: none!important;
+  letter-spacing: 0;
+  font-variant: initial;
+  line-height: 0 !important;
+} */
+.card-right{
+  border-radius: 50% !important;
+}
 
