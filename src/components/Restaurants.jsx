@@ -36,6 +36,13 @@ export default function Restaurants() {
   const [restaurantItems, setRestaurantItems] = useState([]);
   const [filterRating , setFilterRating] = useState({});
   const [freeDelivery , setFreeDelivery] = useState(false);
+  const [openResturant , setOpenResturant] = useState(false);
+  const handleChangeDelivery = () =>{
+      setFreeDelivery(prev => !prev)
+  }
+  const handleChangeResturant = () =>{
+    setOpenResturant(prev => !prev)
+  }
   useEffect(() => {
     const city = params.get("city")
     const zip = params.get("zip")
@@ -266,15 +273,15 @@ export default function Restaurants() {
         <div className=" max-w-7xl lg:mt-2 m-auto flex items-center p-2">
           <p className=" bg-gray-100 rounded-xl p-2 flex items-center">
             <span className="mr-8">Open Resturant</span>
-            <OpenResturant />
+            <OpenResturant openResturant={openResturant} setOpenResturant={setOpenResturant} />
           </p>
           <p className=" bg-gray-100 ml-4 rounded-xl p-2 flex items-center">
             <span className="mr-8">Free Delivery</span>
-            <OpenResturant freeDelivery={freeDelivery} setFreeDelivery={setFreeDelivery} />
+            <OpenResturant handleChange={handleChangeDelivery} />
           </p>
           {/* ---------------- rating ------------  */}
           <p className="ml-4">
-            <RatiingHeader filterRating={filterRating} setFilterRating={setFilterRating} />
+            <RatiingHeader handleChange={handleChangeResturant} />
           </p>
           {/* -------------- minimum order ---------------  */}
           <p className="ml-4">

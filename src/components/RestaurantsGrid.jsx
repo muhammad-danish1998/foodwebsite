@@ -47,13 +47,9 @@ export default function RestaurantsGrid({items , filterRating , freeDelivery}) {
         data = items.overall_rating == filterRating.value;
         if(freeDelivery){
           data = items.overall_rating == filterRating.value && items.free_delivery == '1';
-          console.log("done")
+          
         }    
     }
-    else{
-       data = items
-    }
-
    return data
   }
   return (
