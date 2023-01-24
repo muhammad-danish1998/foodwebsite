@@ -40,13 +40,29 @@ const files = [
   // More files...
 ];
 
-export default function RestaurantsGrid({items}) {
+export default function RestaurantsGrid({items , filterRating , freeDelivery}) {
+  console.log("🚀 ~ file: RestaurantsGrid.jsx:43 ~ RestaurantsGrid ~ items", items)
+  const FilterItems = (items) =>{
+    let data = items
+    if(items){
+        data = items.overall_rating == filterRating.value;
+        if(freeDelivery){
+          data = items.overall_rating == filterRating.value && items.free_delivery == '1';
+          console.log("done")
+        }    
+    }
+    else{
+       data = items
+    }
+
+   return data
+  }
   return (
     <ul
-      role="list"
+      role="list" 
       className="grid grid-cols-1  gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-8"
     >
-      {(items || []).map((file) => (
+      {(items || []).filter(FilterItems).map((file) => (
         <li key={file.image} className="relative border-2 p-1 rounded-lg">
           <Link to={"/singlerestaurant"}>
           <div className="group aspect-w-14  aspect-h-4 block  w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
