@@ -30,11 +30,11 @@ export default function Signin() {
               <p><img src="./images/goo 1.png" height={30} width={30} /></p>
               <p className="ml-2">Continue With Google</p>
             </div>
-            <div className="flex bg-blue-500 mt-4 mb-4 text-white justify-center p-2 rounded-2xl items-center border-2">
+            <div style={{background:"#001E6D"}} className="flex mt-4 mb-4 text-white justify-center p-2 rounded-2xl items-center border-2">
               <p><img src="./images/fb.png" height={30} width={30} /></p>
               <p className="ml-2">Continue With Google</p>
             </div>
-            <div className="flex bg-blue-500 text-white justify-center p-2 rounded-2xl items-center border-2">
+            <div className="flex bg-black text-white justify-center p-2 rounded-2xl items-center border-2">
               <p><img src="./images/apple.png" height={30} width={30} /></p>
               <p className="ml-2">Continue With Google</p>
             </div>
@@ -46,7 +46,7 @@ export default function Signin() {
                     <div className="w-full border-t border-gray-300" />
                   </div>
                   <div className="relative flex justify-center text-sm">
-                    <span className="bg-white px-2 text-gray-500">Or continue with</span>
+                    <span className="bg-white px-2 text-gray-500">or continue with email</span>
                   </div>
                 </div>
           </div>
