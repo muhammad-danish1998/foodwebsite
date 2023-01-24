@@ -19,6 +19,8 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import HeaderToggle from "./Header-Toggle";
 import CartInc from "./CartInc";
 
+import { Link } from "react-router-dom";
+
 const user = {
   name: "Chelsea Hagon",
   email: "chelsea.hagon@SingleResOverview.com",
@@ -300,7 +302,7 @@ export default function SingleResOverview() {
                           </svg>
                         </span>
                         <p class="leading-relaxed mb-3">
-                          <HeaderToggle />
+                          <HeaderToggle value1 = {"Delivery"} value2 = "Pickup"/>
                         </p>
                         <div class="flex items-center flex-wrap ">
                           <div className="border-2 p-4 rounded-lg mt-4 w-5/6">
@@ -395,6 +397,9 @@ export default function SingleResOverview() {
                               all dishes with boiled rice as a side dish. On
                               request, there are also advised noodles instead of
                               rice - surcharge 2.00 €
+                              <Link to={"/modalcard"}>
+                              shop
+                              </Link>
                             </p>
                           </div>
                         </div>

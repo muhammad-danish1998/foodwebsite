@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const files = [
   {
@@ -59,6 +60,7 @@ export default function RestaurantsGrid({items , filterRating , freeDelivery}) {
     >
       {(items || []).filter(FilterItems).map((file) => (
         <li key={file.image} className="relative border-2 p-1 rounded-lg">
+          <Link to={"/singlerestaurant"}>
           <div className="group aspect-w-14  aspect-h-4 block  w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
             <img
               src={file.banner}
@@ -72,6 +74,7 @@ export default function RestaurantsGrid({items , filterRating , freeDelivery}) {
               <span className="sr-only">View details for {file.title}</span>
             </button>
           </div>
+          </Link>
 
           {/* ---------------------- card logo -------------------  */}
           <div className="flex justify-between  items-center">

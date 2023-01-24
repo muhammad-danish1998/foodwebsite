@@ -100,7 +100,7 @@ export default function Restaurants() {
                           {item.name}
                         </a>
                       ))} */}
-                      <HeaderToggle />
+                      <HeaderToggle value1 = {"Delivery"} value2 = "Pickup"/>
                       <span className=" p-2 m-2 flex  rounded-xl  w-3/6 bg-gray-100">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
