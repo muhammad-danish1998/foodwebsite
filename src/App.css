@@ -77,5 +77,6 @@ input:checked ~ span:last-child {
 } */
 .card-right{
   border-radius: 50% !important;
+
 }
 

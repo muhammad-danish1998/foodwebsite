@@ -71,7 +71,7 @@ export default function RestaurantsGrid({items}) {
                 {file.size}
               </p>
             </div>
-            <div className=" mt-2 rounded-full ">
+            <div className=" mt-2 ">
               <img className="card-right " src={file.image} width={100} height={100} />
             </div>
           </div>
