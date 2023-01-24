@@ -34,6 +34,8 @@ function classNames(...classes) {
 export default function Restaurants() {
   const params = new URLSearchParams(window.location.search);
   const [restaurantItems, setRestaurantItems] = useState([]);
+  const [filterRating , setFilterRating] = useState({});
+  const [freeDelivery , setFreeDelivery] = useState(false);
   useEffect(() => {
     const city = params.get("city")
     const zip = params.get("zip")
@@ -44,6 +46,8 @@ export default function Restaurants() {
       }
     })
   }, [window.location.search])
+
+
   return (
     <>
       {/*
@@ -266,11 +270,11 @@ export default function Restaurants() {
           </p>
           <p className=" bg-gray-100 ml-4 rounded-xl p-2 flex items-center">
             <span className="mr-8">Free Delivery</span>
-            <OpenResturant />
+            <OpenResturant freeDelivery={freeDelivery} setFreeDelivery={setFreeDelivery} />
           </p>
           {/* ---------------- rating ------------  */}
           <p className="ml-4">
-            <RatiingHeader />
+            <RatiingHeader filterRating={filterRating} setFilterRating={setFilterRating} />
           </p>
           {/* -------------- minimum order ---------------  */}
           <p className="ml-4">
@@ -290,7 +294,7 @@ export default function Restaurants() {
             <div className="mx-auto lg:max-w-12xl sm:px-6 lg:px-8">
               {/* Replace with your content */}
               <div className="px-4 py-1 sm:px-0">
-                <RestaurantsGrid items={restaurantItems} />
+                <RestaurantsGrid items={restaurantItems} filterRating={filterRating} freeDelivery={freeDelivery} />
               </div>
               {/* /End replace */}
             </div>
