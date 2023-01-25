@@ -339,7 +339,6 @@ export default function SingleResOverview() {
                                         {" "}
                                         € {eachMenuItem.price}
                                       </p>
-                                      {/* <p>{eachMenuItem.description}</p> */}
                                       <p dangerouslySetInnerHTML={{__html: eachMenuItem.description}} />
                                       <p>Product info</p>
                                     </div>
