@@ -57,6 +57,10 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery }) {
     }
     return true
   }
+
+  const getSlugFromUrl = (url) =>{
+    return url.split("/")[4];
+  }
   return (
     <ul
       role="list"
@@ -64,7 +68,7 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery }) {
     >
       {(items || []).filter(FilterItems).map((file) => (
         <li key={file.image} className="relative border-2 p-1 rounded-lg">
-          <Link to={"/singlerestaurant"}>
+          <Link to={`/singlerestaurant?resturent_slug=${getSlugFromUrl(file.url)}&resturent_code=${file.code}`}>
             <div className="group aspect-w-14  aspect-h-4 block  w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
               <img
                 src={file.banner}

@@ -12,7 +12,7 @@
   }
   ```
 */
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -20,6 +20,7 @@ import HeaderToggle from "./Header-Toggle";
 import CartInc from "./CartInc";
 
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const user = {
   name: "Chelsea Hagon",
@@ -44,6 +45,16 @@ function classNames(...classes) {
 }
 
 export default function SingleResOverview() {
+  const [menuArray, setMenuArray] = useState([]);
+  const params = new URLSearchParams(window.location.search);
+  useEffect(() => {
+    const restaurantSlug = params.get('resturent_slug');
+    const restuarantCode = params.get('resturent_code');
+    axios.get(`https://liefermars.de/_api_ajax_menu.php?resturent_slug=${restaurantSlug}&resturent_code=${restuarantCode}`)
+      .then((response) => {
+        setMenuArray(response.data.menuarr)
+      })
+  }, [window.location.search])
   return (
     <div className="min-h-screen bg-gray-100">
       <Popover
@@ -302,56 +313,41 @@ export default function SingleResOverview() {
                           </svg>
                         </span>
                         <p class="leading-relaxed mb-3">
-                          <HeaderToggle value1 = {"Delivery"} value2 = "Pickup"/>
+                          <HeaderToggle value1={"Delivery"} value2="Pickup" />
                         </p>
                         <div class="flex items-center flex-wrap ">
-                          <div className="border-2 p-4 rounded-lg mt-4 w-5/6">
-                            <h1 className="text-4xl font-bold text-black">
-                              Fried chicken meat
-                            </h1>
-                            <p>
-                              all dishes with boiled rice as a side dish. On
-                              request, there are also advised noodles instead of
-                              rice - surcharge 2.00 €
-                            </p>
-                          </div>
-                          <div className="border-2 p-4  mt-4 w-5/6">
-                            <h1 className="text-2xl">
-                              Geberatene Nudeln mit Hühnerfleisch
-                            </h1>
-                            <p className="text-green-500 font-semibold">
-                              {" "}
-                              € 10,90
-                            </p>
-                            <p>mit hühnerfleisch, gemüse, paprika</p>
-                            <p>Product info</p>
-                          </div>
-                          <div className="border-2 p-4  mt-4 w-5/6">
-                            <h1 className="text-2xl">Fried chicken meat</h1>
-                            <p className="text-green-500 font-semibold">
-                              {" "}
-                              € 10,90
-                            </p>
-                            <p>
-                              all dishes with boiled rice as a side dish. On
-                              request, there are also advised noodles instead of
-                              rice - surcharge 2.00 €
-                            </p>
-                          </div>
-                          <div className="border-2 p-4  mt-4 w-5/6">
-                            <h1 className="text-2xl">Fried chicken meat</h1>
-                            <p className="text-green-500 font-semibold">
-                              {" "}
-                              € 10,90
-                            </p>
-                            <p>
-                              all dishes with boiled rice as a side dish. On
-                              request, there are also advised noodles instead of
-                              rice - surcharge 2.00 €
-                            </p>
-                          </div>
+                          {
+                            menuArray.map(eachMenuCatergory => (
+                              <>
+                                <div className="border-2 p-4 rounded-lg mt-4 w-5/6">
+                                  <h1 className="text-4xl font-bold text-black">
+                                    {eachMenuCatergory.catname}
+                                  </h1>
+                                  <p>
+                                    {eachMenuCatergory.catedesc}
+                                  </p>
+                                </div>
+                                {
+                                  eachMenuCatergory.menuarr.map((eachMenuItem) => (
+                                    <div className="border-2 p-4  mt-4 w-5/6">
+                                      <h1 className="text-2xl">
+                                        {eachMenuItem.name}
+                                      </h1>
+                                      <p className="text-green-500 font-semibold">
+                                        {" "}
+                                        € {eachMenuItem.price}
+                                      </p>
+                                      <p>{eachMenuItem.description}</p>
+                                      <p>Product info</p>
+                                    </div>
+                                  ))
+                                }
+                              </>
+                            ))
+                          }
 
-                          <div className="border-2 rounded-lg p-4  mt-16 mb-4  w-5/6">
+
+                          {/* <div className="border-2 rounded-lg p-4  mt-16 mb-4  w-5/6">
                             <h1 className="text-4xl font-bold text-black mb-2">
                               Asia - Sparmenüs
                             </h1>
@@ -398,10 +394,10 @@ export default function SingleResOverview() {
                               request, there are also advised noodles instead of
                               rice - surcharge 2.00 €
                               <Link to={"/modalcard"}>
-                              shop
+                                shop
                               </Link>
                             </p>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
