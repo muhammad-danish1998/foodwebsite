@@ -46,6 +46,7 @@ function classNames(...classes) {
 
 export default function SingleResOverview() {
   const [menuArray, setMenuArray] = useState([]);
+  const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
   const params = new URLSearchParams(window.location.search);
   useEffect(() => {
     const restaurantSlug = params.get('resturent_slug');
@@ -53,6 +54,7 @@ export default function SingleResOverview() {
     axios.get(`https://liefermars.de/_api_ajax_menu.php?resturent_slug=${restaurantSlug}&resturent_code=${restuarantCode}`)
       .then((response) => {
         setMenuArray(response.data.menuarr)
+        setCurrentRestaurantImg(response?.data?.restlogo)
       })
   }, [window.location.search])
   return (
@@ -247,7 +249,7 @@ export default function SingleResOverview() {
                     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                       <img
                         class="lg:h-48 md:h-36 w-full object-cover object-center"
-                        src="./images/Rectangle 4.png"
+                        src={currentRestaurantImg}
                         alt="blog"
                       />
                       <div class="p-6">

@@ -40,7 +40,7 @@ const files = [
   // More files...
 ];
 
-export default function RestaurantsGrid({ items, filterRating, freeDelivery }) {
+export default function RestaurantsGrid({ items, filterRating, freeDelivery, openResturant }) {
   console.log("🚀 ~ file: RestaurantsGrid.jsx:44 ~ RestaurantsGrid ~ freeDelivery", freeDelivery)
   console.log("🚀 ~ file: RestaurantsGrid.jsx:44 ~ RestaurantsGrid ~ filterRating", filterRating)
   console.log("🚀 ~ file: RestaurantsGrid.jsx:43 ~ RestaurantsGrid ~ items", items)
@@ -55,6 +55,12 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery }) {
         return false
       }
     }
+    console.log("🚀 ~ file: RestaurantsGrid.jsx:59 ~ FilterItems ~ openResturant", openResturant)
+    if (openResturant) {
+      if (!(getSlugFromUrl(item.url))) {
+        return false
+      }
+    }
     return true
   }
 
@@ -66,9 +72,12 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery }) {
       role="list"
       className="grid grid-cols-1  gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-8"
     >
-      {(items || []).filter(FilterItems).map((file) => (
+      {(items || []).filter(FilterItems).map((file) => {
+        const restaurantUrl = getSlugFromUrl(file.url);
+        const ForwardLink = restaurantUrl ? Link : "div";
+        return (
         <li key={file.image} className="relative border-2 p-1 rounded-lg">
-          <Link to={`/singlerestaurant?resturent_slug=${getSlugFromUrl(file.url)}&resturent_code=${file.code}`}>
+          <ForwardLink to={`/singlerestaurant?resturent_slug=${restaurantUrl}&resturent_code=${file.code}`}>
             <div className="group aspect-w-14  aspect-h-4 block  w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
               <img
                 src={file.banner}
@@ -82,7 +91,7 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery }) {
                 <span className="sr-only">View details for {file.title}</span>
               </button>
             </div>
-          </Link>
+          </ForwardLink>
 
           {/* ---------------------- card logo -------------------  */}
           <div className="flex justify-between  items-center">
@@ -158,7 +167,7 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery }) {
             </div>
           </p>
         </li>
-      ))}
+      )})}
     </ul>
   );
 }

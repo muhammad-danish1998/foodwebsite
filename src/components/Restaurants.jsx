@@ -34,13 +34,13 @@ function classNames(...classes) {
 export default function Restaurants() {
   const params = new URLSearchParams(window.location.search);
   const [restaurantItems, setRestaurantItems] = useState([]);
-  const [filterRating , setFilterRating] = useState({});
-  const [freeDelivery , setFreeDelivery] = useState(false);
-  const [openResturant , setOpenResturant] = useState(false);
-  const handleChangeDelivery = () =>{
-      setFreeDelivery(prev => !prev)
+  const [filterRating, setFilterRating] = useState({});
+  const [freeDelivery, setFreeDelivery] = useState(false);
+  const [openResturant, setOpenResturant] = useState(false);
+  const handleChangeDelivery = () => {
+    setFreeDelivery(prev => !prev)
   }
-  const handleChangeOpenResturant = () =>{
+  const handleChangeOpenResturant = () => {
     setOpenResturant(prev => !prev)
   }
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function Restaurants() {
     const zip = params.get("zip")
     axios.get(`https://liefermars.de/ajax/resturents_api_ajax.php?city=${city}&zip=${zip}&page=1`).then((res) => {
       console.log("🚀 ~ file: Restaurants.jsx:37 ~ Restaurants ~ res", res)
-      if(res?.data?.data){
+      if (res?.data?.data) {
         setRestaurantItems(res.data.data)
       }
     })
@@ -79,11 +79,11 @@ export default function Restaurants() {
                         alt="Your Company"
                       />
                       <Link to={"/"}>
-                      <img
-                        className="hidden h-8 w-auto lg:block"
-                        src="./images/logo.png"
-                        alt="Your Company"
-                      />
+                        <img
+                          className="hidden h-8 w-auto lg:block"
+                          src="./images/logo.png"
+                          alt="Your Company"
+                        />
                       </Link>
                     </div>
                     <div className="hidden sm:-my-px  lg:w-full   sm:ml-6 sm:flex sm:space-x-8 ">
@@ -102,7 +102,7 @@ export default function Restaurants() {
                           {item.name}
                         </a>
                       ))} */}
-                      <HeaderToggle value1 = {"Delivery"} value2 = "Pickup"/>
+                      <HeaderToggle value1={"Delivery"} value2="Pickup" />
                       <span className=" p-2 m-2 flex  rounded-xl  w-3/6 bg-gray-100">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -129,10 +129,10 @@ export default function Restaurants() {
                         />
                       </span>
                       <span className="flex items-center p-2 justify-end w-2/3 ">
-                        <Link  to = "/signin" className=" hover:bg-gray-400 border-2 hover:text-white px-6 py-1 rounded-xl">
+                        <Link to="/signin" className=" hover:bg-gray-400 border-2 hover:text-white px-6 py-1 rounded-xl">
                           sign in
                         </Link>
-                        <Link to = "/signup "className="px-6 ml-2 py-1 bg-gray-300  hover:bg-gray-400 hover:text-white rounded-xl">
+                        <Link to="/signup " className="px-6 ml-2 py-1 bg-gray-300  hover:bg-gray-400 hover:text-white rounded-xl">
                           sign up
                         </Link>
                       </span>
@@ -303,7 +303,12 @@ export default function Restaurants() {
             <div className="mx-auto lg:max-w-12xl sm:px-6 lg:px-8">
               {/* Replace with your content */}
               <div className="px-4 py-1 sm:px-0">
-                <RestaurantsGrid items={restaurantItems} filterRating={filterRating} freeDelivery={freeDelivery} />
+                <RestaurantsGrid
+                  items={restaurantItems}
+                  filterRating={filterRating}
+                  freeDelivery={freeDelivery}
+                  openResturant={openResturant}
+                />
               </div>
               {/* /End replace */}
             </div>
