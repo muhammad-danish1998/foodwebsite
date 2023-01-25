@@ -40,7 +40,7 @@ export default function Restaurants() {
   const handleChangeDelivery = () =>{
       setFreeDelivery(prev => !prev)
   }
-  const handleChangeResturant = () =>{
+  const handleChangeOpenResturant = () =>{
     setOpenResturant(prev => !prev)
   }
   useEffect(() => {
@@ -273,7 +273,7 @@ export default function Restaurants() {
         <div className=" max-w-7xl lg:mt-2 m-auto flex items-center p-2">
           <p className=" bg-gray-100 rounded-xl p-2 flex items-center">
             <span className="mr-8">Open Resturant</span>
-            <OpenResturant openResturant={openResturant} setOpenResturant={setOpenResturant} />
+            <OpenResturant openResturant={openResturant} handleChange={handleChangeOpenResturant} />
           </p>
           <p className=" bg-gray-100 ml-4 rounded-xl p-2 flex items-center">
             <span className="mr-8">Free Delivery</span>
@@ -281,7 +281,7 @@ export default function Restaurants() {
           </p>
           {/* ---------------- rating ------------  */}
           <p className="ml-4">
-            <RatiingHeader handleChange={handleChangeResturant} />
+            <RatiingHeader setFilterRating={setFilterRating} />
           </p>
           {/* -------------- minimum order ---------------  */}
           <p className="ml-4">

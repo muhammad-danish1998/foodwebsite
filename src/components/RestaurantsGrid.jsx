@@ -40,40 +40,44 @@ const files = [
   // More files...
 ];
 
-export default function RestaurantsGrid({items , filterRating , freeDelivery}) {
+export default function RestaurantsGrid({ items, filterRating, freeDelivery }) {
+  console.log("🚀 ~ file: RestaurantsGrid.jsx:44 ~ RestaurantsGrid ~ freeDelivery", freeDelivery)
+  console.log("🚀 ~ file: RestaurantsGrid.jsx:44 ~ RestaurantsGrid ~ filterRating", filterRating)
   console.log("🚀 ~ file: RestaurantsGrid.jsx:43 ~ RestaurantsGrid ~ items", items)
-  const FilterItems = (items) =>{
-    let data = items
-    if(items){
-        data = items.overall_rating == filterRating.value;
-        if(freeDelivery){
-          data = items.overall_rating == filterRating.value && items.free_delivery == '1';
-          
-        }    
+  const FilterItems = (item) => {
+    if (filterRating?.value) {
+      if (item.overall_rating !== filterRating.value) {
+        return false
+      }
     }
-   return data
+    if (freeDelivery) {
+      if (item.free_delivery !== "1") {
+        return false
+      }
+    }
+    return true
   }
   return (
     <ul
-      role="list" 
+      role="list"
       className="grid grid-cols-1  gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-8"
     >
       {(items || []).filter(FilterItems).map((file) => (
         <li key={file.image} className="relative border-2 p-1 rounded-lg">
           <Link to={"/singlerestaurant"}>
-          <div className="group aspect-w-14  aspect-h-4 block  w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
-            <img
-              src={file.banner}
-              alt=""
-              className="pointer-events-none object-cover group-hover:opacity-75"
-            />
-            <button
-              type="button"
-              className="absolute inset-0 focus:outline-none"
-            >
-              <span className="sr-only">View details for {file.title}</span>
-            </button>
-          </div>
+            <div className="group aspect-w-14  aspect-h-4 block  w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+              <img
+                src={file.banner}
+                alt=""
+                className="pointer-events-none object-cover group-hover:opacity-75"
+              />
+              <button
+                type="button"
+                className="absolute inset-0 focus:outline-none"
+              >
+                <span className="sr-only">View details for {file.title}</span>
+              </button>
+            </div>
           </Link>
 
           {/* ---------------------- card logo -------------------  */}
@@ -94,7 +98,7 @@ export default function RestaurantsGrid({items , filterRating , freeDelivery}) {
             {/* ------------------------- card bottom  ----------------  */}
 
             <div className="flex items-center">
-            <i className="fa-sharp fa-solid fa-motorcycle mr-2"> </i>€ {file.delivery_fee}
+              <i className="fa-sharp fa-solid fa-motorcycle mr-2"> </i>€ {file.delivery_fee}
 
               {/* -------------- watch ----------------------- */}
               <svg
