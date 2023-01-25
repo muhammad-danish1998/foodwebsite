@@ -42,7 +42,7 @@ export default function Header() {
         aria-hidden="true"
       >
         <svg
-          className="absolute top-0 left-1/2 translate-x-64 -translate-y-8 transform"
+          className="absolute top-0 left-1/2 translate-x-64 -translate-y-8 transform bg-red-500"
           width={640}
           height={784}
           fill="none"
@@ -62,7 +62,7 @@ export default function Header() {
                 y={0}
                 width={4}
                 height={4}
-                className="text-gray-400"
+                className="text-white"
                 fill="currentColor"
               />
             </pattern>
@@ -72,7 +72,7 @@ export default function Header() {
             width={640}
             height={640}
             className="text-gray-50"
-            fill="currentColor"
+            // fill="currentColor"
           />
           <rect
             x={118}

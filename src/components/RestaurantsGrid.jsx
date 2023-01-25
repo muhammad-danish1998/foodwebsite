@@ -103,9 +103,14 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery, ope
                 {file.size}
               </p>
             </div>
-            <div className=" mt-2 ">
-              <img className="card-right " src={file.image} width={100} height={100} />
-            </div>
+          
+             <div className="inline-flex  mt-2 flex-shrink-0 rounded-full border-2 border-white">
+                  <img
+                    className=" object-cover h-28 w-28 rounded-full"
+                    src={file.image}
+                    alt="imag not found"
+                  />
+                </div>
           </div>
           <p className="mt-2  pointer-events-none block  text-gray-500 ">
             {/* ------------------------- card bottom  ----------------  */}
