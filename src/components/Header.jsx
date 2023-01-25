@@ -5,7 +5,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import HeaderSlider from "./HeaderSlider";
 import PlacesAutoComplete from "./PlacesAutoComplete";
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -157,12 +157,12 @@ export default function Header() {
                     </a>
                   ))}
                 </div>
-                <a
-                  href="#"
+                <Link
+                  to="/signin"
                   className="block w-full bg-gray-50 px-5 py-3 text-center font-medium text-indigo-600 hover:bg-gray-100"
                 >
                   Log in
-                </a>
+                </Link>
               </div>
             </Popover.Panel>
           </Transition>
