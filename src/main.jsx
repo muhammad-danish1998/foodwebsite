@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Restaurants from "./components/Restaurants";
 import SingleResOverview from "./components/SingleResOverview";
 import Signin from "./components/Signin";
+import Signup from "./components/Signup";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -14,6 +15,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route exact path="/restaurant" element={<Restaurants />} />
       <Route exact path="/singlerestaurant" element={<SingleResOverview />} />
       <Route exact path="/signin" element={<Signin  />} />
+      <Route exact path="/signup" element={<Signup  />} />
+
+    
     
 
 
