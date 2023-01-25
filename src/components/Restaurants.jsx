@@ -6,7 +6,7 @@ import HeaderToggle from "./Header-Toggle";
 import HeaderTextSlider from "./HeaderTextSlider";
 import OpenResturant from "./OpenResturant";
 import RatiingHeader from "./RatiingHeader";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 
 const user = {
@@ -78,11 +78,13 @@ export default function Restaurants() {
                         src="./images/logo.png"
                         alt="Your Company"
                       />
+                      <Link to={"/"}>
                       <img
                         className="hidden h-8 w-auto lg:block"
                         src="./images/logo.png"
                         alt="Your Company"
                       />
+                      </Link>
                     </div>
                     <div className="hidden sm:-my-px  lg:w-full   sm:ml-6 sm:flex sm:space-x-8 ">
                       {/* {navigation.map((item) => (
@@ -127,12 +129,12 @@ export default function Restaurants() {
                         />
                       </span>
                       <span className="flex items-center p-2 justify-end w-2/3 ">
-                        <button className=" hover:bg-gray-400 hover:text-white px-6 py-1 rounded-xl">
+                        <Link  to = "/signin" className=" hover:bg-gray-400 border-2 hover:text-white px-6 py-1 rounded-xl">
                           sign in
-                        </button>
-                        <button className="px-6 ml-2 py-1 bg-gray-300  hover:bg-gray-400 hover:text-white rounded-xl">
+                        </Link>
+                        <Link to = "/signup "className="px-6 ml-2 py-1 bg-gray-300  hover:bg-gray-400 hover:text-white rounded-xl">
                           sign up
-                        </button>
+                        </Link>
                       </span>
                     </div>
                   </div>
