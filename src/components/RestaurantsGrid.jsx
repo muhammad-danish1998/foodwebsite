@@ -69,7 +69,7 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery }) {
               <img
                 src={file.banner}
                 alt=""
-                className="pointer-events-none object-cover group-hover:opacity-75"
+                className="pointer-events-none  object-cover group-hover:opacity-75"
               />
               <button
                 type="button"
