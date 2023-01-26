@@ -96,7 +96,7 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery, ope
           {/* ---------------------- card logo -------------------  */}
           <div className="flex justify-between  items-center">
             <div className="card-left">
-              <p className="pointer-events-none mt-2 block truncate text-lg font-medium text-gray-900">
+              <p className="pointer-events-none  block truncate text-lg font-medium text-gray-900">
                 {file.name}
               </p>
               <p className="pointer-events-none block text-sm font-sm text-gray-500">

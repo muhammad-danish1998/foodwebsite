@@ -8,6 +8,7 @@ import OpenResturant from "./OpenResturant";
 import RatiingHeader from "./RatiingHeader";
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
+import ModalRating from "./ModalRating";
 
 const user = {
   name: "Tom Cook",
@@ -54,7 +55,10 @@ export default function Restaurants() {
     })
   }, [window.location.search])
 
-
+const [showModal , setShowModal] = useState(false)
+const handleClose = () =>{
+  setShowModal(false)
+}
   return (
     <>
       {/*
@@ -283,7 +287,7 @@ export default function Restaurants() {
           </p>
           {/* ---------------- rating ------------  */}
           <p className="ml-4">
-            <RatiingHeader setFilterRating={setFilterRating} />
+            <RatiingHeader setShowModal = {setShowModal} setFilterRating={setFilterRating} />
           </p>
           {/* -------------- minimum order ---------------  */}
           <p className="ml-4">
@@ -303,6 +307,7 @@ export default function Restaurants() {
             <div className="mx-auto lg:max-w-12xl sm:px-6 lg:px-8">
               {/* Replace with your content */}
               <div className="px-4 py-1 sm:px-0">
+                
                 <RestaurantsGrid
                   items={restaurantItems}
                   filterRating={filterRating}
@@ -310,6 +315,7 @@ export default function Restaurants() {
                   openResturant={openResturant}
                 />
               </div>
+              <ModalRating onClose = {handleClose} visible={showModal} />
               {/* /End replace */}
             </div>
           </main>

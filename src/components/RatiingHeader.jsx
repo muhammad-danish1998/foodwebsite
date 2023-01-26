@@ -15,10 +15,10 @@ const publishingOptions = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
-export default function RatiingHeader({setFilterRating , filterRating}) {
+export default function RatiingHeader({setFilterRating , filterRating , setShowModal }) {
   const [selected, setSelected] = useState(publishingOptions[0])
-  
-  console.log({selected})
+  console.log(setShowModal)
+  // console.log({selected})
   const handleSelect = (e) =>{
     setSelected(e)
     setFilterRating(e)
@@ -33,7 +33,7 @@ export default function RatiingHeader({setFilterRating , filterRating}) {
           <div className="relative">
             <div className="inline-flex divide-x  rounded-md shadow-sm">
               <div className="inline-flex divide-x  rounded-md shadow-sm">
-                <div onClick={()=>{alert("hello")}} className="inline-flex items-center rounded-l-md border border-transparent bg-black py-2 pl-3 pr-4 text-white shadow-sm">
+                <div onClick={()=>{setShowModal(true)}} className="inline-flex items-center rounded-l-md border border-transparent bg-black py-2 pl-3 pr-4 text-white shadow-sm">
                   {/* <CheckIcon className="h-5 w-5" aria-hidden="true" /> */}
                   <i class="fa-solid fa-star"></i>
                   <p className="ml-2.5 text-sm font-medium">{selected.title}</p>
