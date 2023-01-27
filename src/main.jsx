@@ -12,6 +12,9 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Term from "./components/Term";
 import Dataprivacy from "./components/Dataprivacy";
+import Addtocardpage from "./components/Addtocardpage";
+import Delivery from "./components/Delivery";
+import Pickup from "./components/Pickup";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -28,6 +31,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route exact path="/contact" element={<Contact  />} />
       <Route exact path="/terms" element={<Term  />} />
       <Route exact path="/dataprivacy" element={<Dataprivacy  />} />
+      <Route exact path="/addtocart" element={<Addtocardpage  />} />
+      <Route exact path="/delivery" element={<Delivery  />} />
+      <Route exact path="/pickup" element={<Pickup  />} />
+
+
+
 
 
 

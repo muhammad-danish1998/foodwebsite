@@ -3,10 +3,13 @@ import { Menu, Popover, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import HeaderToggle from "./Header-Toggle";
+import Pickup from "./Pickup";
+
 import CartInc from "./CartInc";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Delivery from "./Delivery";
 const plans = [
   {
     id: "small",
@@ -40,8 +43,9 @@ const userNavigation = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
 export default function SingleResOverview() {
+const [deliveryOption , setDeliveryOption] = useState("deliver")
+
   const [menuArray, setMenuArray] = useState([]);
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
   const params = new URLSearchParams(window.location.search);
@@ -254,7 +258,15 @@ export default function SingleResOverview() {
                               Checkout
                             </h1>
                           </div>
+                          <div>
+                            {
+                          
+                          deliveryOption == "delivery" ? <Delivery /> : <Pickup />  
+                            }
+
+                            </div>
                           <div className="border-2 border-gray-400 rounded-lg p-8   mt-4 mb-4 bg-white  w-5/6">
+                        
                             <div>
                               <label
                                 htmlFor="comment "

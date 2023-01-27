@@ -21,6 +21,7 @@ import CartInc from "./CartInc";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
+import PopupCard from "./PopupCard";
 
 const user = {
   name: "Chelsea Hagon",
@@ -60,6 +61,11 @@ export default function SingleResOverview() {
         setCurrentRestaurantImg(response?.data?.restlogo);
       });
   }, [window.location.search]);
+  const [showModal , setShowModal] = useState(false)
+
+  const handleClose = () =>{
+    setShowModal(false)
+  }
   return (
     <div className="min-h-screen bg-gray-100">
       <Popover
@@ -345,7 +351,9 @@ export default function SingleResOverview() {
                                   />
                                   <p className="mt-2">
                                     {" "}
+                                    {/* --------------- add to card button ------  */}
                                     <button
+                                    onClick={()=>{setShowModal(true)}}
                                       type="button"
                                       className="inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                     >
@@ -414,6 +422,7 @@ export default function SingleResOverview() {
                   </div>
                 </div>
               </div>
+              <PopupCard  currentRestaurantImg = {currentRestaurantImg} onClose = {handleClose} visible={showModal}/>
             </section>
           </main>
           <aside className=" xl:col-span-4 xl:block border-2">
