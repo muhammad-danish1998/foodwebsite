@@ -2,7 +2,7 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
-export default function ModalRating({ visible, onClose }) {
+export default function Modalminimumorder({ visible, onClose }) {
   if (!visible) return null;
   const [open, setOpen] = useState(true);
 
@@ -54,13 +54,13 @@ export default function ModalRating({ visible, onClose }) {
                       as="h3"
                       className="text-2xl font-medium leading-6 text-gray-900"
                     >
-                      Ratings
+                     Mininum Order
                     </Dialog.Title>
                     <Dialog.Title
                       as="h3"
                       className="text-sm font-normal leading-6 text-gray-900"
                     >
-                      Over 4.5
+                     10,00
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">

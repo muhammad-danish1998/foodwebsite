@@ -49,14 +49,17 @@ export default function SingleResOverview() {
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
   const params = new URLSearchParams(window.location.search);
   useEffect(() => {
-    const restaurantSlug = params.get('resturent_slug');
-    const restuarantCode = params.get('resturent_code');
-    axios.get(`https://liefermars.de/_api_ajax_menu.php?resturent_slug=${restaurantSlug}&resturent_code=${restuarantCode}`)
+    const restaurantSlug = params.get("resturent_slug");
+    const restuarantCode = params.get("resturent_code");
+    axios
+      .get(
+        `https://liefermars.de/_api_ajax_menu.php?resturent_slug=${restaurantSlug}&resturent_code=${restuarantCode}`
+      )
       .then((response) => {
-        setMenuArray(response.data.menuarr)
-        setCurrentRestaurantImg(response?.data?.restlogo)
-      })
-  }, [window.location.search])
+        setMenuArray(response.data.menuarr);
+        setCurrentRestaurantImg(response?.data?.restlogo);
+      });
+  }, [window.location.search]);
   return (
     <div className="min-h-screen bg-gray-100">
       <Popover
@@ -318,36 +321,41 @@ export default function SingleResOverview() {
                           <HeaderToggle value1={"Delivery"} value2="Pickup" />
                         </p>
                         <div class="flex items-center flex-wrap ">
-                          {
-                            menuArray.map(eachMenuCatergory => (
-                              <>
-                                <div className="border-2 p-4 rounded-lg mt-4 w-5/6">
-                                  <h1 className="text-4xl font-bold text-black">
-                                    {eachMenuCatergory.catname}
+                          {menuArray.map((eachMenuCatergory) => (
+                            <>
+                              <div className="border-2 p-4 rounded-lg mt-4 w-5/6">
+                                <h1 className="text-4xl font-bold text-black">
+                                  {eachMenuCatergory.catname}
+                                </h1>
+                                <p>{eachMenuCatergory.catedesc}</p>
+                              </div>
+                              {eachMenuCatergory.menuarr.map((eachMenuItem) => (
+                                <div className="border-2 p-4  mt-4 w-5/6">
+                                  <h1 className="text-2xl">
+                                    {eachMenuItem.name}
                                   </h1>
-                                  <p>
-                                    {eachMenuCatergory.catedesc}
+                                  <p className="text-green-500 font-semibold">
+                                    {" "}
+                                    € {eachMenuItem.price}
+                                  </p>
+                                  <p
+                                    dangerouslySetInnerHTML={{
+                                      __html: eachMenuItem.description,
+                                    }}
+                                  />
+                                  <p className="mt-2">
+                                    {" "}
+                                    <button
+                                      type="button"
+                                      className="inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                    >
+                                      Add to cart
+                                    </button>
                                   </p>
                                 </div>
-                                {
-                                  eachMenuCatergory.menuarr.map((eachMenuItem) => (
-                                    <div className="border-2 p-4  mt-4 w-5/6">
-                                      <h1 className="text-2xl">
-                                        {eachMenuItem.name}
-                                      </h1>
-                                      <p className="text-green-500 font-semibold">
-                                        {" "}
-                                        € {eachMenuItem.price}
-                                      </p>
-                                      <p dangerouslySetInnerHTML={{__html: eachMenuItem.description}} />
-                                      <p>Product info</p>
-                                    </div>
-                                  ))
-                                }
-                              </>
-                            ))
-                          }
-
+                              ))}
+                            </>
+                          ))}
 
                           {/* <div className="border-2 rounded-lg p-4  mt-16 mb-4  w-5/6">
                             <h1 className="text-4xl font-bold text-black mb-2">

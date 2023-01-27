@@ -6,6 +6,8 @@ import HeaderToggle from "./Header-Toggle";
 import HeaderTextSlider from "./HeaderTextSlider";
 import OpenResturant from "./OpenResturant";
 import RatiingHeader from "./RatiingHeader";
+import Modalminimumorder from "./Modalminimumorder";
+
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import ModalRating from "./ModalRating";
@@ -56,6 +58,8 @@ export default function Restaurants() {
   }, [window.location.search])
 
 const [showModal , setShowModal] = useState(false)
+const [showModalMinimum , setShowModalMinimum] = useState(false)
+
 const handleClose = () =>{
   setShowModal(false)
 }
@@ -291,7 +295,7 @@ const handleClose = () =>{
           </p>
           {/* -------------- minimum order ---------------  */}
           <p className="ml-4">
-            <button className="border-2 p-2 rounded-lg bg-gray-100">
+            <button onClick={()=>{setShowModal(true)}} className="border-2 p-2 rounded-lg bg-gray-100">
               Minimum Order
 
             </button>
@@ -316,6 +320,8 @@ const handleClose = () =>{
                 />
               </div>
               <ModalRating onClose = {handleClose} visible={showModal} />
+              <Modalminimumorder onClose = {handleClose} visible={showModal} />
+
               {/* /End replace */}
             </div>
           </main>
