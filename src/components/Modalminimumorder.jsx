@@ -1,15 +1,22 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { CheckIcon } from "@heroicons/react/24/outline";
 
-export default function Modalminimumorder({ visible, onClose }) {
-  if (!visible) return null;
-  const [open, setOpen] = useState(true);
+export default function Modalminimumorder({ visible, onClose, setMinimumOrderValue, minimumOrderValue }) {
+  const [open, setOpen] = useState(false);
+  const [minorder, setMinorder] = useState(0);
+  useEffect(() => {
+    setOpen(visible)
+  }, [visible])
 
   const cancelButtonRef = useRef(null);
+  const handleViewResult = () => {
+    onClose(false)
+    setMinimumOrderValue(minorder)
+  }
   const handleOnClose = () => {
+    setMinorder(minimumOrderValue)
     onClose();
-  };
+  }
   return (
     <Transition.Root show={open} as={Fragment} onClick={handleOnClose}>
       <Dialog
@@ -54,13 +61,13 @@ export default function Modalminimumorder({ visible, onClose }) {
                       as="h3"
                       className="text-2xl font-medium leading-6 text-gray-900"
                     >
-                     Mininum Order
+                      Mininum Order
                     </Dialog.Title>
                     <Dialog.Title
                       as="h3"
                       className="text-sm font-normal leading-6 text-gray-900"
                     >
-                     10,00
+                      € {minorder}
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
@@ -68,8 +75,10 @@ export default function Modalminimumorder({ visible, onClose }) {
                           <input
                             type="range"
                             list="tickmarks"
-                            min="3"
-                            max="5"
+                            min="0"
+                            max="100"
+                            value={minorder}
+                            onChange={e => setMinorder(e.target.value)}
                             class="w-full"
                           />
                           <datalist id="tickmarks">
@@ -88,7 +97,7 @@ export default function Modalminimumorder({ visible, onClose }) {
                   <button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
-                    onClick={() => setOpen(false)}
+                    onClick={() => handleViewResult()}
                   >
                     View Results
                   </button>
@@ -96,7 +105,7 @@ export default function Modalminimumorder({ visible, onClose }) {
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
                     // onClick={() => setOpen(false)}
-                    onClick={onClose}
+                    onClick={handleOnClose}
                     ref={cancelButtonRef}
                   >
                     Cancel

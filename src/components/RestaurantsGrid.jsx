@@ -40,24 +40,7 @@ const files = [
   // More files...
 ];
 
-export default function RestaurantsGrid({
-  items,
-  filterRating,
-  freeDelivery,
-  openResturant,
-}) {
-  console.log(
-    "🚀 ~ file: RestaurantsGrid.jsx:44 ~ RestaurantsGrid ~ freeDelivery",
-    freeDelivery
-  );
-  console.log(
-    "🚀 ~ file: RestaurantsGrid.jsx:44 ~ RestaurantsGrid ~ filterRating",
-    filterRating
-  );
-  console.log(
-    "🚀 ~ file: RestaurantsGrid.jsx:43 ~ RestaurantsGrid ~ items",
-    items
-  );
+export default function RestaurantsGrid({ items, filterRating, freeDelivery, openResturant, minimumOrderValue, checkMinimumOrderValue }) {
   const FilterItems = (item) => {
     if (filterRating?.value) {
       if (item.overall_rating !== filterRating.value) {
@@ -69,17 +52,18 @@ export default function RestaurantsGrid({
         return false;
       }
     }
-    console.log(
-      "🚀 ~ file: RestaurantsGrid.jsx:59 ~ FilterItems ~ openResturant",
-      openResturant
-    );
     if (openResturant) {
       if (!getSlugFromUrl(item.url)) {
         return false;
       }
     }
-    return true;
-  };
+    if(checkMinimumOrderValue){
+      if (Number(item.minorder) > Number(minimumOrderValue)) {
+        return false
+      }
+    }
+    return true
+  }
 
   const getSlugFromUrl = (url) => {
     return url.split("/")[4];

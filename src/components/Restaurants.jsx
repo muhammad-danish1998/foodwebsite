@@ -58,12 +58,16 @@ export default function Restaurants() {
     })
   }, [window.location.search])
 
-const [showModal , setShowModal] = useState(false)
-const [showModalMinimum , setShowModalMinimum] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [showModalMinimum, setShowModalMinimum] = useState(false)
+  const [minimumOrderValue, setMinimumOrderValue] = useState(0);
+  const [checkMinimumOrderValue, setCheckMinimumOrderValue] = useState(false);
+  const handleMinimumOrderChange = (eValue) => {
+    setShowModalMinimum(false)
+    setMinimumOrderValue(eValue)
+    setCheckMinimumOrderValue(true)
+  }
 
-const handleClose = () =>{
-  setShowModal(false)
-}
   return (
     <>
       {/*
@@ -159,11 +163,11 @@ const handleClose = () =>{
           </p>
           {/* ---------------- rating ------------  */}
           <p className="lg:ml-4 mt-1">
-            <RatiingHeader setShowModal = {setShowModal} setFilterRating={setFilterRating} />
+            <RatiingHeader setShowModal={setShowModal} setFilterRating={setFilterRating} />
           </p>
           {/* -------------- minimum order ---------------  */}
-          <p className="lg:ml-4 p-1">
-            <button onClick={()=>{setShowModal(true)}} className="border-2 p-1 rounded-lg bg-gray-100">
+          <p className="lg:ml-4 mt-1">
+            <button onClick={() => { setShowModalMinimum(true) }} className="border-2 p-2 rounded-lg bg-gray-100">
               Minimum Order
 
             </button>
@@ -181,16 +185,23 @@ const handleClose = () =>{
             <div className="mx-auto lg:max-w-12xl sm:px-6 lg:px-8">
               {/* Replace with your content */}
               <div className="px-4 py-1 sm:px-0">
-                
+
                 <RestaurantsGrid
                   items={restaurantItems}
                   filterRating={filterRating}
                   freeDelivery={freeDelivery}
                   openResturant={openResturant}
+                  minimumOrderValue={minimumOrderValue}
+                  checkMinimumOrderValue={checkMinimumOrderValue}
                 />
               </div>
-              <ModalRating onClose = {handleClose} visible={showModal} />
-              <Modalminimumorder onClose = {handleClose} visible={showModal} />
+              <ModalRating onClose={() => setShowModal(false)} visible={showModal} />
+              <Modalminimumorder
+                onClose={() => setShowModalMinimum(false)}
+                visible={showModalMinimum}
+                setMinimumOrderValue={handleMinimumOrderChange}
+                minimumOrderValue={minimumOrderValue}
+              />
 
               {/* /End replace */}
             </div>
