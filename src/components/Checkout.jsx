@@ -44,7 +44,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function SingleResOverview() {
-const [deliveryOption , setDeliveryOption] = useState("deliver")
+const [deliveryOption , setDeliveryOption] = useState("pickup")
 
   const [menuArray, setMenuArray] = useState([]);
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();

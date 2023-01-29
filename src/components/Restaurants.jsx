@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Disclosure, Menu } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import RestaurantsGrid from "./RestaurantsGrid";
 import HeaderToggle from "./Header-Toggle";
@@ -11,6 +11,7 @@ import Modalminimumorder from "./Modalminimumorder";
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import ModalRating from "./ModalRating";
+import HeaderNavbar from "./HeaderNavbar";
 
 const user = {
   name: "Tom Cook",
@@ -77,141 +78,7 @@ const handleClose = () =>{
         <Disclosure as="nav" className="bg-white shadow-sm">
           {({ open }) => (
             <>
-              <div className="mx-auto max-w-12xl  px-4 sm:px-6 border-2 border-black lg:px-8">
-                <div className="flex h-16  justify-between">
-                  <div className="flex  lg:w-full">
-                    <div className="flex flex-shrink-0 items-center">
-                      <img
-                        className="block h-8 w-auto lg:hidden"
-                        src="./images/logo.png"
-                        alt="Your Company"
-                      />
-                      <Link to={"/"}>
-                        <img
-                          className="hidden h-8 w-auto lg:block"
-                          src="./images/logo.png"
-                          alt="Your Company"
-                        />
-                      </Link>
-                    </div>
-                    <div className="hidden sm:-my-px  lg:w-full   sm:ml-6 sm:flex sm:space-x-8 ">
-                      {/* {navigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.current
-                              ? 'border-indigo-500 text-gray-900'
-                              : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-                            'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
-                          )}
-                          aria-current={item.current ? 'page' : undefined}
-                        >
-                          {item.name}
-                        </a>
-                      ))} */}
-                      <HeaderToggle value1={"Delivery"} value2="Pickup" />
-                      <span className=" p-2 m-2 flex  rounded-xl  w-3/6 bg-gray-100">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-8 h-8 font-bold lg:mr-2"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                          />
-                        </svg>
-                        <input
-                          className=" w-3/5 bg-transparent outline-transparent border-none outline-none ring-0 "
-                          type={"text"}
-                        />
-                      </span>
-                      <span className="flex items-center p-2 justify-end w-2/3 ">
-                        <Link to="/signin" className=" hover:bg-gray-400 border-2 hover:text-white px-6 py-1 rounded-xl">
-                          sign in
-                        </Link>
-                        <Link to="/signup " className="px-6 ml-2 py-1 bg-gray-300  hover:bg-gray-400 hover:text-white rounded-xl">
-                          sign up
-                        </Link>
-                      </span>
-                    </div>
-                  </div>
-                  {/* --------------- login -------------  */}
-                  {/* <div className="hidden sm:ml-6 sm:flex sm:items-center">
-                    <button
-                      type="button"
-                      className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    >
-                      <span className="sr-only">View notifications</span>
-                      <BellIcon className="h-6 w-6" aria-hidden="true" />
-                    </button>
-
-                   
-                    <Menu as="div" className="relative ml-3">
-                      <div>
-                        <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                          <span className="sr-only">Open user menu</span>
-                          <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
-                        </Menu.Button>
-                      </div>
-                      <Transition
-                        as={Fragment}
-                        enter="transition ease-out duration-200"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                      >
-                        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          {userNavigation.map((item) => (
-                            <Menu.Item key={item.name}>
-                              {({ active }) => (
-                                <a
-                                  href={item.href}
-                                  className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-sm text-gray-700'
-                                  )}
-                                >
-                                  {item.name}
-                                </a>
-                              )}
-                            </Menu.Item>
-                          ))}
-                        </Menu.Items>
-                      </Transition>
-                    </Menu>
-                  </div> */}
-                  <div className="-mr-2 flex items-center sm:hidden">
-                    {/* Mobile menu button */}
-                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                      <span className="sr-only">Open main menu</span>
-                      {open ? (
-                        <XMarkIcon
-                          className="block h-6 w-6"
-                          aria-hidden="true"
-                        />
-                      ) : (
-                        <Bars3Icon
-                          className="block h-6 w-6"
-                          aria-hidden="true"
-                        />
-                      )}
-                    </Disclosure.Button>
-                  </div>
-                </div>
-              </div>
+            <HeaderNavbar />
 
               <Disclosure.Panel className="sm:hidden">
                 <div className="space-y-1 pt-2 pb-3">
@@ -276,31 +143,34 @@ const handleClose = () =>{
           )}
         </Disclosure>
         {/* --------------- text crousel ---------------  */}
-        <div className="bg-gray-100">
+        <div className="bg-gray-100  ">
           <HeaderTextSlider />
         </div>
+
         {/* --------------- header grid check switch ------------ */}
-        <div className=" max-w-7xl lg:mt-2 m-auto flex items-center p-2">
-          <p className=" bg-gray-100 rounded-xl p-2 flex items-center">
-            <span className="mr-8">Open Resturant</span>
+        <div className=" max-w-7xl  lg:mt-2 m-auto lg:flex items-center p-1 ">
+          <p className=" bg-gray-100 rounded-xl  p-2 flex items-center">
+            <span className="mr-2">Open Resturant</span>
             <OpenResturant openResturant={openResturant} handleChange={handleChangeOpenResturant} />
           </p>
-          <p className=" bg-gray-100 ml-4 rounded-xl p-2 flex items-center">
-            <span className="mr-8">Free Delivery</span>
+          <p className=" bg-gray-100 lg:ml-4 mt-1  rounded-xl p-2 flex items-center">
+            <span className="mr-4">Free Delivery</span>
             <OpenResturant handleChange={handleChangeDelivery} />
           </p>
           {/* ---------------- rating ------------  */}
-          <p className="ml-4">
+          <p className="lg:ml-4 mt-1">
             <RatiingHeader setShowModal = {setShowModal} setFilterRating={setFilterRating} />
           </p>
           {/* -------------- minimum order ---------------  */}
-          <p className="ml-4">
-            <button onClick={()=>{setShowModal(true)}} className="border-2 p-2 rounded-lg bg-gray-100">
+          <p className="lg:ml-4 p-1">
+            <button onClick={()=>{setShowModal(true)}} className="border-2 p-1 rounded-lg bg-gray-100">
               Minimum Order
 
             </button>
           </p>
         </div>
+
+        {/* ----------------------------------- Grid card -----------------------  */}
         <div className="py-1">
           <header>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"></div>

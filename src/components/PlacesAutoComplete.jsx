@@ -26,7 +26,7 @@ function PlacesAutoComplete({ onPlaceSelect }) {
     }
     return (
         <AutoComplete
-            className="block w-full border-0 outline-none   py-3 text-base   sm:flex-1"
+            className="block   w-full border-0 outline-none   py-3 text-base   sm:flex-1"
             apiKey='AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0'
             options={{
                 types: [],

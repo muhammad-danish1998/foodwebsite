@@ -8,16 +8,18 @@
 }
 .swiper-button-prev, .swiper-rtl .swiper-button-next {
   
-  background: #FF2E00;
+  /* background: #FF2E00; */
   padding: 26px;
   border-radius: 50%;
-  color: white !important;
+  color: black !important;
+  
 }
 .swiper-button-next, .swiper-rtl .swiper-button-prev{
-  background: #FF2E00;
+  /* background: #FF2E00; */
   padding: 26px;
   border-radius: 50%;
-  color: white !important;
+  color: black !important;
+  font-weight: bold !important;
 }
 .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
   display: none;
@@ -30,7 +32,7 @@ input:checked ~ span:last-child {
   --tw-translate-x: -3.75rem; /* translate-x-7 */
 }
 .swiper-slide img{
-  border: 4px solid #CBE337;
+  /* border: 4px solid #CBE337; */
   border-radius: 50%;
   padding: 5px;
 }
@@ -38,11 +40,14 @@ input:checked ~ span:last-child {
 .mySwiperresturant .swiper-button-prev{
   background-color: transparent !important;
   color: black !important;
+  margin-left: 10px;
   
 }
 .mySwiperresturant .swiper-button-next{
   background-color: transparent !important;
   color: black !important;
+  margin-right: 10px;
+
  
 }
 :root {
@@ -82,4 +87,6 @@ input:checked ~ span:last-child {
     justify-content: center;
     color: var(--swiper-navigation-color,var(--swiper-theme-color));
 } */
-
+.mainHeadingHeader{
+  color: #24115B;
+}

@@ -17,9 +17,10 @@ const HeaderSectiontwo = () => {
     <div>
     <div className=" max-w-7xl mx-auto mt-4 mb-4  text-center">
          <Swiper
+
         slidesPerView={4}
-        spaceBetween={30}
-        slidesPerGroup={4}
+        spaceBetween={5}
+        slidesPerGroup={1}
         loop={true}
         loopFillGroupWithBlank={true}
         pagination={{
@@ -27,40 +28,29 @@ const HeaderSectiontwo = () => {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiper"
+        className={`mySwiper`}
       >
         <SwiperSlide className="flex flex-col items-center justify-center ">
-            <img src="./images/Ellipse 20.png" />
+            <img src="./images/sli1.jpg" className="h-48 w-48" />
             <p className="mt-4 text-orange-600 text-lg font-semibold">Amerikanisch</p>
         </SwiperSlide>
         <SwiperSlide className=" flex flex-col items-center justify-center ">
-            <img src="./images/Ellipse 20.png" />
+            <img className="h-48 w-48" src="./images/turkish.jpg" />
             <p className="mt-4 text-orange-600 text-lg font-semibold">Turkisch</p>
         </SwiperSlide>
         <SwiperSlide className="flex flex-col items-center justify-center  ">
-            <img src="./images/Ellipse 20.png" />
+            <img className="h-48 w-48" src="./images/indian.jpg" />
             <p className="mt-4 text-orange-600 text-lg font-semibold">Griechisch</p>
         </SwiperSlide>
         <SwiperSlide className="flex flex-col items-center justify-center  ">
-            <img src="./images/Ellipse 20.png" />
+            <img className="h-48 w-48" src="./images/greek.jpg" />
             <p className="mt-4 text-orange-600 text-lg font-semibold">Lebanesisch</p>
         </SwiperSlide>
         <SwiperSlide className="flex flex-col items-center justify-center  ">
-            <img src="./images/Ellipse 20.png" />
+            <img className="h-48 w-48" src="./images/chinees.jpg" />
             <p className="mt-4 text-orange-600 text-lg font-semibold">Indisch</p>
         </SwiperSlide>
-        <SwiperSlide className="flex flex-col items-center justify-center  ">
-            <img src="./images/Ellipse 20.png" />
-            <p className="mt-4 text-orange-600 text-lg font-semibold">Indisch</p>
-        </SwiperSlide>
-        <SwiperSlide className="flex flex-col items-center justify-center  ">
-            <img src="./images/Ellipse 20.png" />
-            <p className="mt-4 text-orange-600 text-lg font-semibold">Indisch</p>
-        </SwiperSlide>
-        <SwiperSlide className="flex flex-col items-center justify-center  ">
-            <img src="./images/Ellipse 20.png" />
-            <p className="mt-4 text-orange-600 text-lg font-semibold">Indisch</p>
-        </SwiperSlide>
+       
         
       
       </Swiper>

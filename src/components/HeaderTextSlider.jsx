@@ -7,8 +7,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-
-
 // import required modules
 import { Pagination, Navigation } from "swiper";
 
@@ -16,7 +14,7 @@ export default function HeaderTextSlider() {
   return (
     <>
       <Swiper
-        slidesPerView={8}
+        slidesPerView={4}
         spaceBetween={5}
         slidesPerGroup={1}
         loop={true}
@@ -26,22 +24,35 @@ export default function HeaderTextSlider() {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiperresturant  text-center "
+        className="mySwiperresturant bg-gray-200 text-center "
       >
-        <SwiperSlide className="p-3  lg:font-semibold text-gray-700 cursor-pointer">ALL</SwiperSlide>
-        <SwiperSlide className="p-3  lg:font-semibold text-gray-700 cursor-pointer">Pizza</SwiperSlide>
-        <SwiperSlide className="p-3  lg:font-semibold text-gray-700 cursor-pointer">Indian</SwiperSlide>
-        <SwiperSlide className="p-3  lg:font-semibold text-gray-700 cursor-pointer">Schnitzel</SwiperSlide>
-        <SwiperSlide className="p-3  lg:font-semibold text-gray-700 cursor-pointer">Burger</SwiperSlide>
-        <SwiperSlide className="p-3  lg:font-semibold text-gray-700 cursor-pointer">Curry</SwiperSlide>
-        <SwiperSlide className="p-3  lg:font-semibold text-gray-700 cursor-pointer">Amarican Pizza</SwiperSlide>
-        <SwiperSlide className="p-3  lg:font-semibold text-gray-700 cursor-pointer">Amarican Burger</SwiperSlide>
-        <SwiperSlide className="p-3  lg:font-semibold text-gray-700 cursor-pointer">Beef Burger</SwiperSlide>
-
-
+        <SwiperSlide className="p-3     lg:text-lg text-sm lg:font-semibold text-gray-700 cursor-pointer">
+          ALL
+        </SwiperSlide>
+        <SwiperSlide className="p-3   text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+          Pizza
+        </SwiperSlide>
+        <SwiperSlide className="p-3   text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+          Indian
+        </SwiperSlide>
+        <SwiperSlide className="p-3   text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+          Schnitzel
+        </SwiperSlide>
+        <SwiperSlide className="p-3   text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+          Burger
+        </SwiperSlide>
+        <SwiperSlide className="p-3   text-sm lg:text-lg  lg:font-semibold text-gray-700 cursor-pointer">
+          Curry
+        </SwiperSlide>
        
        
+    
       </Swiper>
     </>
   );
 }
+
+
+
+
+
