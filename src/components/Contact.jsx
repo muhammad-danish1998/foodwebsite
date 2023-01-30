@@ -1,9 +1,11 @@
 import React from "react";
 import Footer from "./Footer";
+import HeaderNavbar from "./HeaderNavbar";
 
 const Contact = () => {
   return (
     <>
+    <HeaderNavbar />
       <div className="max-w-4xl mx-auto">
         <h1 className="text-center text-4xl font-bold">Contact</h1>
         <p className="font-bold">Contact us:</p>

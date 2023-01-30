@@ -56,9 +56,9 @@ export default function SingleResOverview() {
       {/* ------------- navbar here ---------  */}
       <HeaderNavbar />
       <HeaderTextSlider />
-      <div className="py-6">
-        <div className="mx-auto max-w-8xl sm:px-6 lg:grid lg:max-w-9xl lg:grid-cols-12 lg:gap-8 lg:px-8">
-          <main className="lg:col-span-9 xl:col-span-8 border-2">
+      <div className="py-0">
+        <div className="mx-auto max-w-8xl sm:px-6 lg:grid lg:max-w-9xl lg:grid-cols-12 lg:gap-0 lg:px-8">
+          <main className="lg:col-span-9 xl:col-span-8 ">
             {/* -------------- card ----------------  */}
             <section class="text-gray-600 body-font mt-4">
               <div class="container px-5  mx-auto">
@@ -82,8 +82,9 @@ export default function SingleResOverview() {
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="2"
-                            class="w-4 h-4 text-yellow-500"
+                            class="w-4 h-4 "
                             viewBox="0 0 24 24"
+                            style={{color:"#FF8A00"}}
                           >
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                           </svg>
@@ -93,8 +94,9 @@ export default function SingleResOverview() {
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="2"
-                            class="w-4 h-4 text-yellow-500 lg:ml-2"
+                            class="w-4 h-4  lg:ml-2"
                             viewBox="0 0 24 24"
+                             style={{color:"#FF8A00"}}
                           >
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                           </svg>
@@ -104,8 +106,9 @@ export default function SingleResOverview() {
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="2"
-                            class="w-4 h-4 text-yellow-500 lg:ml-2"
+                            class="w-4 h-4  lg:ml-2"
                             viewBox="0 0 24 24"
+                             style={{color:"#FF8A00"}}
                           >
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                           </svg>
@@ -115,8 +118,9 @@ export default function SingleResOverview() {
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="2"
-                            class="w-4 h-4 text-yellow-500 lg:ml-2"
+                            class="w-4 h-4  lg:ml-2"
                             viewBox="0 0 24 24"
+                             style={{color:"#FF8A00"}}
                           >
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                           </svg>
@@ -126,8 +130,9 @@ export default function SingleResOverview() {
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="2"
-                            class="w-4 h-4 text-yellow-500 lg:ml-2"
+                            class="w-4 h-4  lg:ml-2"
                             viewBox="0 0 24 24"
+                            style={{color:"#FF8A00"}}
                           >
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                           </svg>
@@ -138,7 +143,7 @@ export default function SingleResOverview() {
                         <div class="flex items-center flex-wrap ">
                           {menuArray.map((eachMenuCatergory) => (
                             <>
-                              <div className="border-2 p-4 rounded-lg mt-4 w-5/6">
+                              <div className="border-2 border-gray-400 p-4 rounded-lg mt-4 w-5/6">
                                 <h1 className="text-4xl font-bold text-black">
                                   {eachMenuCatergory.catname}
                                 </h1>
@@ -153,6 +158,7 @@ export default function SingleResOverview() {
                                     {" "}
                                     € {eachMenuItem.price}
                                   </p>
+                                 
                                   <p
                                     dangerouslySetInnerHTML={{
                                       __html: eachMenuItem.description,
@@ -160,7 +166,7 @@ export default function SingleResOverview() {
                                   />
                                   <p className="mt-2">
                                     {" "}
-                                    {/* --------------- add to card button ------  */}
+                                    
                                     <button
                                       onClick={() => {
                                         setShowModal(true);

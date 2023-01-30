@@ -81,7 +81,7 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery, ope
             <ForwardLink
               to={`/singlerestaurant?resturent_slug=${restaurantUrl}&resturent_code=${file.code}`}
             >
-              <div className="group aspect-w-14  aspect-h-7 block  w-full overflow-hidden rounded-xl bg-gray-100 focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+              <div className="group aspect-w-12  aspect-h-5 block  w-full overflow-hidden rounded-xl bg-gray-100 focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
                 <img
                   src={file.banner}
                   alt=""
@@ -97,7 +97,7 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery, ope
             </ForwardLink>
 
             {/* ---------------------- card logo -------------------  */}
-            <div className="flex justify-between  items-center p-2">
+            <div className="flex justify-between  items-center p-2 ">
               <div className="card-left ">
                 <p className="pointer-events-none    block truncate lg:text-lg text-sm lg:font-medium text-gray-900">
                   {file.name}
@@ -121,11 +121,11 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery, ope
                   />
                 </div> */}
             </div>
-            <p className=" lg:ml-4 m-2  pointer-events-none block  text-gray-500 ">
+            <p className="    pointer-events-none block  text-gray-500 ">
               {/* ------------------------- card bottom  ----------------  */}
 
-              <div className="flex items-center">
-                <i className="fa-sharp fa-solid fa-motorcycle mr-2"> </i>€{" "}
+              <div className="flex items-center  justify-around">
+                <i className="fa-sharp fa-solid fa-motorcycle "> </i>€{" "}
                 {file.delivery_fee}
                 {/* -------------- watch ----------------------- */}
                 <svg
@@ -134,7 +134,7 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery, ope
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-7 h-7 ml-2  mr-1 text-lg"
+                  className="w-7 h-7   text-lg"
                 >
                   <path
                     strokeLinecap="round"
@@ -150,7 +150,7 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery, ope
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6  h-6 mr-2 ml-1"
+                  className="w-6  h-6 "
                 >
                   <path
                     strokeLinecap="round"
@@ -159,11 +159,11 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery, ope
                   />
                 </svg>
                 {/* --------------------- Euro ---------------------  */}
-                <p className="mr-2 text-lg">
+                <p className=" text-lg">
                   Min € <span>${file.minorder}</span>
                 </p>
                 {/* -------------- Review ----------------------- */}
-                <span class="flex items-center text-end">
+                <span class="flex items-center border-2 rounded-lg p-1 m-1 text-end">
                   <svg
                     fill="currentColor"
                     stroke="currentColor"
