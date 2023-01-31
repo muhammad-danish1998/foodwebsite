@@ -12,8 +12,8 @@ const publishingOptions = [
   { title: 'Rating 5.0',  value: "5.0", current: false },
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+function classNames(...classNamees) {
+  return classNamees.filter(Boolean).join(' ')
 }
 export default function RatiingHeader({setFilterRating , filterRating , setShowModal }) {
   const [selected, setSelected] = useState(publishingOptions[0])
@@ -35,7 +35,7 @@ export default function RatiingHeader({setFilterRating , filterRating , setShowM
               <div className="inline-flex divide-x  rounded-md shadow-sm">
                 <div onClick={()=>{setShowModal(true)}} className="inline-flex items-center rounded-l-md border border-transparent bg-black py-2 pl-3 pr-4 text-white shadow-sm">
                   {/* <CheckIcon className="h-5 w-5" aria-hidden="true" /> */}
-                  <i class="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
                   <p className="ml-2.5 text-sm font-medium">{selected.title}</p>
                 </div>
                 <Listbox.Button className="inline-flex items-center rounded-l-none rounded-r-md bg-black p-2 text-sm font-medium text-white  focus:outline-none focus:ring-2  focus:ring-offset-gray-50">

@@ -6,10 +6,10 @@ const About = () => {
   return (
     <>
     <HeaderNavbar />
-    <div className="max-w-4xl mx-auto">
-      <h1 className="text-center text-4xl font-bold">About Us</h1>
+    <div className="max-w-7xl lg:p-0 p-2 lg:h-96 mx-auto">
+      <h1 className="text-center text-4xl mt-4 font-bold">About Us</h1>
       <p className="font-bold">About us:</p>
-      <p>
+      <p className="">
         Liefermars.de was founded in January 2023 in Ludwigshafen, Germany with
         a vision to transform the existing food delivery mechanism into a
         digital world throughout Europe. We are not only playing an intermediary

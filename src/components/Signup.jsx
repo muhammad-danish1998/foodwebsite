@@ -9,7 +9,7 @@ import HeaderToggle from "./Header-Toggle";
     // ...
     plugins: [
       // ...
-      require('@tailwindcss/forms'),
+      require('@tailwindcss/htmlForms'),
     ],
   }
   ```
@@ -26,41 +26,41 @@ export default function Signup() {
             <HeaderToggle value1={"Sign in"} value2="Sign Up" />
           </p>
         </div>
-        <section class="text-gray-600 body-font relative">
-          <div class="container px-5 py-10 mx-auto">
-            <div class="lg:w-1/2 md:w-2/3 mx-auto">
-              <div class="flex flex-wrap -m-2">
-                <div class="p-2 w-1/2">
-                  <div class="relative">
-                    <label for="name" class="leading-7 text-sm text-gray-600">
+        <section className="text-gray-600 body-font relative">
+          <div className="container px-5 py-10 mx-auto">
+            <div className="lg:w-1/2 md:w-2/3 mx-auto">
+              <div className="flex flex-wrap -m-2">
+                <div className="p-2 w-1/2">
+                  <div className="relative">
+                    <label htmlFor="name" className="leading-7 text-sm text-gray-600">
                      First Name
                     </label>
                     <input
                       type="text"
                       id="name"
                       name="name"
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div class="p-2 w-1/2">
-                  <div class="relative">
-                    <label for="email" class="leading-7 text-sm text-gray-600">
+                <div className="p-2 w-1/2">
+                  <div className="relative">
+                    <label htmlFor="email" className="leading-7 text-sm text-gray-600">
                       Last Name
                     </label>
                     <input
                       type="text"
                       id="email"
                       name="email"
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div class="p-2 w-full">
-                  <div class="relative">
+                <div className="p-2 w-full">
+                  <div className="relative">
                     <label
-                      for="message"
-                      class="leading-7 text-sm text-gray-600"
+                      htmlFor="message"
+                      className="leading-7 text-sm text-gray-600"
                     >
                     Email
                     </label>
@@ -68,15 +68,15 @@ export default function Signup() {
                       type="email"
                       id="email"
                       name="email"
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div class="p-2 w-full">
-                  <div class="relative">
+                <div className="p-2 w-full">
+                  <div className="relative">
                     <label
-                      for="message"
-                      class="leading-7 text-sm text-gray-600"
+                      htmlFor="message"
+                      className="leading-7 text-sm text-gray-600"
                     >
                      Password
                     </label>
@@ -84,15 +84,15 @@ export default function Signup() {
                       type="passwrd"
                       id="email"
                       name="email"
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div class="p-2 w-full">
-                  <div class="relative">
+                <div className="p-2 w-full">
+                  <div className="relative">
                     <label
-                      for="message"
-                      class="leading-7 text-sm text-gray-600"
+                      htmlFor="message"
+                      className="leading-7 text-sm text-gray-600"
                     >
                       confirm password
                     </label>
@@ -100,18 +100,18 @@ export default function Signup() {
                       type="password"
                       id="email"
                       name="email"
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div class="p-2 w-full ">
-                  <div class="relative ">
+                <div className="p-2 w-full ">
+                  <div className="relative ">
                     <input
                     value={"Sign Up"}
                       type="submit"
                       id="email"
                       name="email"
-                      class="w-full  rounded-2xl border   text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out bg-red-700 text-white"
+                      className="w-full  rounded-2xl border   text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out bg-red-700 text-white"
                     />
                   </div>
                   <div className="relative mt-6">

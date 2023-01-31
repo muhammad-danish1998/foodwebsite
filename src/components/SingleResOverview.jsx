@@ -60,33 +60,33 @@ export default function SingleResOverview() {
         <div className="mx-auto max-w-8xl sm:px-6 lg:grid lg:max-w-9xl lg:grid-cols-12 lg:gap-0 lg:px-8">
           <main className="lg:col-span-9 xl:col-span-8 ">
             {/* -------------- card ----------------  */}
-            <section class="text-gray-600  mt-4">
-              <div class="container px-5  mx-auto">
-                <div class="flex flex-wrap -m-4">
-                  <div class=" md:w-full">
-                    <div class="h-full   border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+            <section className="text-gray-600  mt-4">
+              <div className="container px-5  mx-auto">
+                <div className="flex flex-wrap -m-4">
+                  <div className=" md:w-full">
+                    <div className="h-full   border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                       <img
-                        class="lg:h-48 md:h-36 object-cover w-full  "
+                        className="lg:h-48 md:h-36 object-cover w-full  "
                         // src={currentRestaurantImg}
                         src="https://www.trgplc.com/wp-content/uploads/2022/03/Pubs_our_brand.jpg"
                         alt="blog"
                       />
-                      <div class="pt-4">
+                      <div className="pt-4">
                         <div className="flex justify-between border-2">
                         <div className="">
-                          <h1 class="title-font text-2xl font-medium text-gray-900 mb-3">
+                          <h1 className="title-font text-2xl font-medium text-gray-900 mb-3">
                             Asiawok Heimservice
                           </h1>
 
                           {/* -------- review ------------  */}
-                          <span class="flex items-center">
+                          <span className="flex items-center">
                             <svg
                               fill="currentColor"
                               stroke="currentColor"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              class="w-4 h-4 "
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              className="w-4 h-4 "
                               viewBox="0 0 24 24"
                               style={{ color: "#FF8A00" }}
                             >
@@ -95,10 +95,10 @@ export default function SingleResOverview() {
                             <svg
                               fill="currentColor"
                               stroke="currentColor"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              class="w-4 h-4  lg:ml-2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              className="w-4 h-4  lg:ml-2"
                               viewBox="0 0 24 24"
                               style={{ color: "#FF8A00" }}
                             >
@@ -107,10 +107,10 @@ export default function SingleResOverview() {
                             <svg
                               fill="currentColor"
                               stroke="currentColor"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              class="w-4 h-4  lg:ml-2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              className="w-4 h-4  lg:ml-2"
                               viewBox="0 0 24 24"
                               style={{ color: "#FF8A00" }}
                             >
@@ -119,10 +119,10 @@ export default function SingleResOverview() {
                             <svg
                               fill="currentColor"
                               stroke="currentColor"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              class="w-4 h-4  lg:ml-2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              className="w-4 h-4  lg:ml-2"
                               viewBox="0 0 24 24"
                               style={{ color: "#FF8A00" }}
                             >
@@ -131,17 +131,17 @@ export default function SingleResOverview() {
                             <svg
                               fill="currentColor"
                               stroke="currentColor"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              class="w-4 h-4  lg:ml-2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              className="w-4 h-4  lg:ml-2"
                               viewBox="0 0 24 24"
                               style={{ color: "#FF8A00" }}
                             >
                               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                             </svg>
                           </span>
-                          <p class="leading-relaxed mb-3">
+                          <p className="leading-relaxed mb-3">
                             <HeaderToggle value1={"Delivery"} value2="Pickup" />
                           </p>
                         </div>
@@ -156,7 +156,7 @@ export default function SingleResOverview() {
                           </div>
                         </div>
                         </div>
-                        <div class="flex items-center flex-wrap ">
+                        <div className="flex items-center flex-wrap ">
                           {menuArray.map((eachMenuCatergory) => (
                             <>
                               <div className="border-2 border-gray-400 p-4 rounded-lg mt-4 w-full">

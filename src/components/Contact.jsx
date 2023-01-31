@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <>
     <HeaderNavbar />
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl lg:h-96 p-1 mt-4 mx-auto">
         <h1 className="text-center text-4xl font-bold">Contact</h1>
         <p className="font-bold">Contact us:</p>
         <p>
@@ -14,22 +14,22 @@ const Contact = () => {
           sharing customer experience and will be on the page interface.
         </p>
         <p>The form should contain the following fields.</p>
-        <ul className="list-disc">
-          <li>Name</li>
-          <li>Surname</li>
-          <li>Subject</li>
-          <li>Phone Number</li>
-          <li>Email Address</li>
-          <li> Message</li>
+        <ul className="">
+          <li>o Name</li>
+          <li>o Surname</li>
+          <li>o Subject</li>
+          <li>o Phone Number</li>
+          <li>o Email Address</li>
+          <li>o Message</li>
         </ul>
-        <p>
+        <p className="mt-4">
           Need Help! In this section, there should be email address, phone
           number and name of responsible person dealing with following areas
         </p>
-        <ol className="list-decimal">
-            <li>Payment</li>
-            <li>Complain</li>
-            <li>Feedback</li>
+        <ol className="">
+            <li>1 Payment</li>
+            <li>2 Complain</li>
+            <li>3 Feedback</li>
             
 
         </ol>

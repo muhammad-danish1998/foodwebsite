@@ -64,7 +64,7 @@ export default function ModalRating({ visible, onClose }) {
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
-                        <div class="">
+                        <div class="border-2">
                           <input
                             type="range"
                             list="tickmarks"

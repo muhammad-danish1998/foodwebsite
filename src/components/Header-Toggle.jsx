@@ -18,7 +18,7 @@ const initalValue = window.location.pathname === "/signup" ? props.value2 : prop
   return (
     <div>
       <label
-        for="Toggle3"
+        htmlFor="Toggle3"
         className="inline-flex items-center p-2 rounded-md cursor-pointer text-black  "
       >
         <input checked={selectedValue === props.value2} onChange={() => handleToggleChange()} id="Toggle3" type="checkbox" className="hidden peer "  />

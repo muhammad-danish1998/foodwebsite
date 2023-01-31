@@ -2,6 +2,7 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import CartInc from "./CartInc";
+import { Link } from "react-router-dom";
 
 export default function ModalRating({
   visible,
@@ -116,7 +117,8 @@ export default function ModalRating({
                   </div>
                 </div>
                 <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-                  <button
+                  <Link
+                  to="/checkout"
                     type="button"
                     className="mt-3 bg-red-500 text-white inline-flex w-full justify-center rounded-md border border-gray-300  px-4 py-2 text-base font-medium  shadow-sm  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 lg:text-lg sm:text-sm"
                     // onClick={() => setOpen(false)}
@@ -124,7 +126,7 @@ export default function ModalRating({
                     ref={cancelButtonRef}
                   >
                     Add to cart €12,90
-                  </button>
+                  </Link>
                   <div className="card-list-uper">
                     <p className="flex justify-center items-center">
                       <svg

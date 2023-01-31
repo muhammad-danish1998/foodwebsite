@@ -163,20 +163,20 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery, ope
                   Min € <span>${file.minorder}</span>
                 </p>
                 {/* -------------- Review ----------------------- */}
-                <span class="flex items-center border-2 rounded-lg p-1 m-1 text-end">
+                <span className="flex items-center border-2 rounded-lg p-1 m-1 text-end">
                   <svg
                     fill="currentColor"
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="w-5 h-6 text-yellow-400"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="w-5 h-6 text-yellow-400"
                     viewBox="0 0 24 24"
                   >
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                   </svg>
 
-                  <span class="text-gray-600 ml-1 text-lg">
+                  <span className="text-gray-600 ml-1 text-lg">
                     {file.overall_rating}
                   </span>
                 </span>

@@ -71,7 +71,7 @@ export default function Modalminimumorder({ visible, onClose, setMinimumOrderVal
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
-                        <div class="">
+                        <div className="">
                           <input
                             type="range"
                             list="tickmarks"
@@ -79,7 +79,7 @@ export default function Modalminimumorder({ visible, onClose, setMinimumOrderVal
                             max="100"
                             value={minorder}
                             onChange={e => setMinorder(e.target.value)}
-                            class="w-full"
+                            className="w-full"
                           />
                           <datalist id="tickmarks">
                             <option value="3"></option>
