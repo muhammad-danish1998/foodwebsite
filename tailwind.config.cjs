@@ -8,7 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      
+      colors: {
+        'greenToggle': '#05FF00',
+        'redColor' : "#FF0000"
+      },
     },
   },
   plugins: [

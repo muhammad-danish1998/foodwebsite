@@ -153,21 +153,21 @@ export default function Restaurants() {
 
         {/* --------------- header grid check switch ------------ */}
         <div className=" max-w-7xl  lg:mt-2 m-auto lg:flex items-center p-1 ">
-          <p className=" bg-gray-100 rounded-xl  p-2 flex items-center">
+          <p className=" bg-gray-100 rounded-full  p-2 flex items-center">
             <span className="mr-2">Open Resturant</span>
             <OpenResturant openResturant={openResturant} handleChange={handleChangeOpenResturant} />
           </p>
-          <p className=" bg-gray-100 lg:ml-4 mt-1  rounded-xl p-2 flex items-center">
+          <p className=" bg-gray-100 lg:ml-4 mt-1  rounded-full p-2 flex items-center">
             <span className="mr-4">Free Delivery</span>
             <OpenResturant handleChange={handleChangeDelivery} />
           </p>
           {/* ---------------- rating ------------  */}
-          <p className="lg:ml-4 mt-1">
+          <p className="lg:ml-4  mt-1">
             <RatiingHeader setShowModal={setShowModal} setFilterRating={setFilterRating} />
           </p>
           {/* -------------- minimum order ---------------  */}
-          <p className="lg:ml-4 mt-1">
-            <button onClick={() => { setShowModalMinimum(true) }} className="border-2 p-2 rounded-lg bg-gray-100">
+          <p className="lg:ml-4  mt-1">
+            <button onClick={() => { setShowModalMinimum(true) }} className="border-2 p-2 rounded-full bg-gray-100">
               Minimum Order
 
             </button>

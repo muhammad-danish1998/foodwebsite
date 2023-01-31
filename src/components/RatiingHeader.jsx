@@ -3,13 +3,13 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
 
 const publishingOptions = [
-  { title: 'Rating 4.5', value: "4.5", current: true },
-  { title: 'Rating 3.5',  value: "3.5", current: false },
-  { title: 'Rating 3.0',  value: "3.0", current: false },
-  { title: 'Rating 2.5',  value: "2.5", current: false },
+  { title: 'Rating 0.0', value: "0.0", current: true },
   { title: 'Rating 2.0',  value: "2.0", current: false },
+  { title: 'Rating 2.5',  value: "2.5", current: false },
+  { title: 'Rating 3.0',  value: "3.0", current: false },
+  { title: 'Rating 4.0',  value: "4.0", current: false },
+  { title: 'Rating 4.5',  value: "4.5", current: false },
   { title: 'Rating 5.0',  value: "5.0", current: false },
-  { title: 'Rating 0.0',  value: "0.0", current: false },
 ]
 
 function classNames(...classes) {
