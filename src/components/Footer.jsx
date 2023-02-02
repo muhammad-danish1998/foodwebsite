@@ -16,13 +16,13 @@ import { Link } from "react-router-dom";
 */
 const navigation = {
   solutions: [
-    { name: "About Us", href: "#" },
+    { name: "About Us", href: "/about" },
     { name: "Careers", href: "#" },
     { name: "Company Blog", href: "#" },
     { name: "Gift Cards", href: "#" },
     { name: "Promotions", href: "#" },
     { name: "Linkedln", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "Contact", href: "/contact" },
   ],
   support: [
     { name: "Account Details", href: "#" },
@@ -32,8 +32,8 @@ const navigation = {
   company: [{ name: "Become a Partner Restaurant", href: "#" }],
   legal: [
     { name: "Claim", href: "#" },
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
+    { name: "Privacy", href: "/privacy" },
+    { name: "Terms", href: "/terms" },
   ],
   social: [
     {
@@ -114,12 +114,12 @@ export default function Footer() {
                 <ul role="list" className="mt-6 space-y-2">
                   {navigation.solutions.map((item) => (
                     <li key={item.name}>
-                      <a
-                        href={item.href}
+                      <Link
+                        to={item.href}
                         className="text-lg leading-6 text-gray-600 hover:text-gray-900"
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -192,18 +192,18 @@ export default function Footer() {
                 >
                   <img  src="./images/logo.png" />
                 </a>
-                <a
-                  href={"#"}
+                <Link
+                  to={"/terms"}
                   className="text-lg  lg:ml-4 leading-6 text-gray-600 hover:text-gray-900"
                 >
                   Terms of Service
-                </a>
-                <a
-                  href={"#"}
+                </Link>
+                <Link
+                  to={"/dataprivacy"}
                   className="text-lg ml-4 leading-6 text-gray-600 hover:text-gray-900"
                 >
                   Privacy
-                </a>
+                </Link>
                 <a
                   href={"#"}
                   className="text-lg ml-4 leading-6 text-gray-600 hover:text-gray-900"

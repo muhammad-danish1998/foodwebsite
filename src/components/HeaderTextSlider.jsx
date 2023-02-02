@@ -14,7 +14,7 @@ export default function HeaderTextSlider() {
   return (
     <>
       <Swiper
-        slidesPerView={4}
+        slidesPerView={7}
         spaceBetween={5}
         slidesPerGroup={1}
         loop={true}

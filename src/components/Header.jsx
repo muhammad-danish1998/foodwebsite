@@ -56,18 +56,20 @@ export default function Header() {
           style={{ background: "#FF2E00" }}
           className="absolute top-0 left-1/2 translate-x-64 -translate-y-8 transform "
           width={640}
-          height={784}
+          height={850}
           fill="none"
           viewBox="0 0 640 784"
         >
-          {/* <defs>
+          {/* <defs className="">
             <pattern
+            
               id="9ebea6f4-a1f5-4d96-8c4e-4c2abf658047"
               x={118}
               y={0}
               width={20}
               height={20}
               patternUnits="userSpaceOnUse"
+              className=""
             >
               <rect
                 x={0}
@@ -83,10 +85,11 @@ export default function Header() {
             y={72}
             width={640}
             height={640}
-            className="text-gray-50"
-            // fill="currentColor"
+            className="text-gray-50 "
+           
           />
           <rect
+          
             x={118}
             width={404}
             height={784}
@@ -95,15 +98,15 @@ export default function Header() {
         </svg>
       </div>
 
-      <div className="relative pt-6 pb-16 sm:pb-24 lg:pb-32">
+      <div className="relative pt-6 pb-16  sm:pb-24 lg:pb-32">
         {/* ----------------- navbar ------------------  */}
         <HomeNavbar />
 
-        <main className="mx-auto mt-16 max-w-7xl  px-6 sm:mt-24 lg:mt-32">
+        <main className="mx-auto  max-w-9xl   px-6 ">
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-            <div className="sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:text-left">
+            <div className="sm:text-center md:mx-auto md:max-w-2xl lg:mt-32 lg:col-span-6 lg:text-left">
               <h1>
-                <span className="mainHeadingHeader mt-1 block text-4xl font-bold tracking-tight sm:text-5xl xl:text-6xl">
+                <span className="mainHeadingHeader mt-1 block text-4xl font-bold  sm:text-5xl xl:text-6xl">
                   <span className="block ">Liefermars Ist Eine</span>
                   <span className="block "> Online Essen Bestellplatform</span>
                 </span>
@@ -169,10 +172,12 @@ export default function Header() {
                   </div>
                 </form>
               </div>
+              
             </div>
-            <div className="relative mt-12 sm:mx-auto sm:max-w-lg lg:col-span-6 lg:mx-0 lg:mt-0 lg:flex lg:max-w-none lg:items-center">
-              <div className="relative mx-auto w-full rounded-lg  lg:max-w-md">
+            <div className="relative mt-12    sm:mx-auto sm:max-w-lg lg:col-span-6 lg:mx-0  lg:mt-0 lg:p-8 lg:flex lg:max-w-none  lg:items-center">
+              <div className="relative   mx-auto w-full rounded-lg  lg:max-w-full  ">
                 <HeaderSlider />
+             
               </div>
             </div>
           </div>

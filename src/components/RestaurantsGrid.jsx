@@ -71,21 +71,22 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery, ope
   return (
     <ul
       role="list"
-      className="grid grid-cols-1  gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-8"
+      className="grid grid-cols-1   gap-x-4 gap-y-6  sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-8"
     >
       {(items || []).filter(FilterItems).map((file) => {
         const restaurantUrl = getSlugFromUrl(file.url);
         const ForwardLink = restaurantUrl ? Link : "div";
         return (
-          <li key={file.image} className="relative border-2  rounded-xl">
+          <li key={file.image} className="relative border-2 lg:w-11/12  rounded-xl">
             <ForwardLink
               to={`/singlerestaurant?resturent_slug=${restaurantUrl}&resturent_code=${file.code}`}
             >
-              <div className="group aspect-w-12  aspect-h-5 block  w-full overflow-hidden rounded-xl bg-gray-100 focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+              <div className="group  block  w-full overflow-hidden rounded-xl bg-gray-100 focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
                 <img
+              
                   src={file.banner}
                   alt=""
-                  className="pointer-events-none  object-cover group-hover:opacity-75"
+                  className="pointer-events-none group-hover:opacity-75 lg:h-42 md:h-36 w-full object-cover object-center"
                 />
                 <button
                   type="button"
@@ -99,16 +100,17 @@ export default function RestaurantsGrid({ items, filterRating, freeDelivery, ope
             {/* ---------------------- card logo -------------------  */}
             <div className="flex justify-between  items-center p-2 ">
               <div className="card-left ">
-                <p className="pointer-events-none    block truncate lg:text-lg text-sm lg:font-medium text-gray-900">
+                {/* <p className="pointer-events-none    block truncate lg:text-lg text-sm lg:font-medium text-gray-900">
                   {file.name}
-                </p>
+                </p> */}
+                <h1 class="title-font  text-sm lg:text-lg font-medium text-gray-900 mb-1"> {file.name}</h1>
                 <p className="pointer-events-none block text-sm font-sm text-gray-500">
                 Thai deliciousness
                 </p>
               </div>
-              <div className="mt-2 ">
+              <div className="mt-2  ">
                 <img
-                  className="inline-block lg:h-24 lg:w-24 h-14 w-14 rounded-full"
+                  className="w-16 h-16 rounded-full flex-shrink-0 object-cover object-center"
                   src={file.image}
                   alt=""
                 />
