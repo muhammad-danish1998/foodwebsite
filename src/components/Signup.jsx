@@ -1,4 +1,8 @@
 import HeaderToggle from "./Header-Toggle";
+import React, {useState} from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import Utility from "../config/Utility";
 
 /*
   This Signin requires some changes to your config:
@@ -15,6 +19,30 @@ import HeaderToggle from "./Header-Toggle";
   ```
 */
 export default function Signup() {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [state, setState] = useState({
+    your_name: "",
+    last_name:"",
+    email: "",
+    password: "",
+    repeat_password: "",
+  });
+
+  const handleChange = (key, value) => {
+    setState((state) => ({ ...state, [key]: value }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    // setLoading(true);
+    
+    Utility.register(state,navigate,dispatch)
+    // dispatch(loginUser(state, navigate, dispatch, openSnackbar));
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -26,7 +54,9 @@ export default function Signup() {
             <HeaderToggle value1={"Sign in"} value2="Sign Up" />
           </p>
         </div>
+       
         <section className="text-gray-600 body-font relative">
+        <form onSubmit={(e) => onSubmit(e)}>
           <div className="container px-5 py-10 mx-auto">
             <div className="lg:w-1/2 md:w-2/3 mx-auto">
               <div className="flex flex-wrap -m-2">
@@ -37,8 +67,10 @@ export default function Signup() {
                     </label>
                     <input
                       type="text"
-                      id="name"
-                      name="name"
+                      id="your_name"
+                      name="your_name"
+                      value={state.your_name}
+                      onChange={(e) => handleChange("your_name", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -50,8 +82,10 @@ export default function Signup() {
                     </label>
                     <input
                       type="text"
-                      id="email"
-                      name="email"
+                      id="last_name"
+                      name="last_name"
+                      value={state.last_name}
+                      onChange={(e) => handleChange("last_name", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -68,6 +102,8 @@ export default function Signup() {
                       type="email"
                       id="email"
                       name="email"
+                      value={state.email}
+                      onChange={(e) => handleChange("email", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -82,8 +118,10 @@ export default function Signup() {
                     </label>
                     <input
                       type="passwrd"
-                      id="email"
-                      name="email"
+                      id="password"
+                      name="password"
+                      value={state.password}
+                      onChange={(e) => handleChange("password", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -98,22 +136,22 @@ export default function Signup() {
                     </label>
                     <input
                       type="password"
-                      id="email"
-                      name="email"
+                      id="repeat_password"
+                      name="repeat_password"
+                      value={state.repeat_password}
+                      onChange={(e) => handleChange("repeat_password", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
                 <div className="p-2 w-full ">
-                  <div className="relative ">
-                    <input
-                    value={"Sign Up"}
+                 <div className="relative ">
+                    <button
                       type="submit"
-                      id="email"
-                      name="email"
                       className="w-full  rounded-2xl border   text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out bg-red-700 text-white"
-                    />
+                    >Sign Up</button>
                   </div>
+                 
                   <div className="relative mt-6">
                     <div className="absolute inset-0 flex items-center">
                       <div className="w-full border-t border-gray-300" />
@@ -152,6 +190,7 @@ export default function Signup() {
               </div>
             </div>
           </div>
+        </form>
         </section>
       </div>
     </>
