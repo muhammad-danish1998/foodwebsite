@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import HeaderSlider from "./HeaderSlider";
@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Drawer from "./Drawer";
 import { Menu } from "@headlessui/react";
 import HomeNavbar from "./HomeNavbar";
+import { useGeolocated } from "react-geolocated";
 const user = {
   name: "Chelsea Hagon",
   email: "chelsea.hagon@SingleResOverview.com",
@@ -46,6 +47,41 @@ export default function Header() {
     // })
     navigate(`/restaurant?city=${data.city}&zip=${data.zipCode}`);
   };
+  const [latitude, setlatitude] = useState("");
+  const [longitude, setlongitude] = useState("");
+console.log("---------",latitude , longitude)
+
+const GetCurrentLocation = (position) =>{
+  console.log("Position :", position.coords);
+  setlatitude(position.coords.latitude)
+  setlongitude(position.coords.longitude)
+
+
+}
+const getData = async() =>{
+  const options = {
+    method: 'GET',
+    url: 'https://google-maps-geocoding.p.rapidapi.com/geocode/json',
+    params: {latlng: `${latitude},${longitude}`, language: 'en'},
+    headers: {
+      'X-RapidAPI-Key': '0975142771msh490b14fef78525dp1a550fjsnd69e0c7cc73c',
+      'X-RapidAPI-Host': 'google-maps-geocoding.p.rapidapi.com'
+    }
+  };
+  const data1 =await axios.get({url: 'https://google-maps-geocoding.p.rapidapi.com/geocode/json',
+  params: {latlng: `${latitude},${longitude}`, language: 'en'},});
+  console.log(data1.data)
+  // axios.request(options).then(function (response) {
+  //   console.log(response.data);
+  // }).catch(function (error) {
+  //   console.error(error);
+  // });
+}
+ useEffect(() => {
+    navigator.geolocation.getCurrentPosition(GetCurrentLocation) 
+    getData();  
+    
+  }, []);
   return (
     <div className="relative overflow-hidden bg-pink-100">
       <div
@@ -81,15 +117,8 @@ export default function Header() {
               />
             </pattern>
           </defs> */}
+          <rect y={72} width={640} height={640} className="text-gray-50 " />
           <rect
-            y={72}
-            width={640}
-            height={640}
-            className="text-gray-50 "
-           
-          />
-          <rect
-          
             x={118}
             width={404}
             height={784}
@@ -172,12 +201,10 @@ export default function Header() {
                   </div>
                 </form>
               </div>
-              
             </div>
             <div className="relative mt-12    sm:mx-auto sm:max-w-lg lg:col-span-6 lg:mx-0  lg:mt-0 lg:p-8 lg:flex lg:max-w-none  lg:items-center">
               <div className="relative   mx-auto w-full rounded-lg  lg:max-w-full  ">
                 <HeaderSlider />
-             
               </div>
             </div>
           </div>
