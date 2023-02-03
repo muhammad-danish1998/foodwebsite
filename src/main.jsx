@@ -16,8 +16,17 @@ import Addtocardpage from "./components/Addtocardpage";
 import Delivery from "./components/Delivery";
 import Pickup from "./components/Pickup";
 
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+  <Provider store={store}>
+    <ToastContainer position="top-center" />
   <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<App />} />
@@ -35,19 +44,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route exact path="/delivery" element={<Delivery  />} />
       <Route exact path="/pickup" element={<Pickup  />} />
 
-
-
-
-
-
-
-
-
-
-    
-    
-
-
     </Routes>
   </BrowserRouter>
+  </Provider>
 );
