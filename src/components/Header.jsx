@@ -9,6 +9,7 @@ import Drawer from "./Drawer";
 import { Menu } from "@headlessui/react";
 import HomeNavbar from "./HomeNavbar";
 import { useGeolocated } from "react-geolocated";
+import Geocode from "react-geocode";
 const user = {
   name: "Chelsea Hagon",
   email: "chelsea.hagon@SingleResOverview.com",
@@ -47,41 +48,83 @@ export default function Header() {
     // })
     navigate(`/restaurant?city=${data.city}&zip=${data.zipCode}`);
   };
-  const [latitude, setlatitude] = useState("");
-  const [longitude, setlongitude] = useState("");
-console.log("---------",latitude , longitude)
+  const [location, setLocation] = useState({
+    latitude: null,
+    longitude: null,
+    error: null
+  });
+  const [address, setAddress] = useState(null);
+  const [zipCode, setZipCode] = useState('');
+console.log("---------",location.latitude , location.longitude)
 
-const GetCurrentLocation = (position) =>{
-  console.log("Position :", position.coords);
-  setlatitude(position.coords.latitude)
-  setlongitude(position.coords.longitude)
+
+const api_key = `AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0`
 
 
-}
-const getData = async() =>{
-  const options = {
-    method: 'GET',
-    url: 'https://google-maps-geocoding.p.rapidapi.com/geocode/json',
-    params: {latlng: `${latitude},${longitude}`, language: 'en'},
-    headers: {
-      'X-RapidAPI-Key': '0975142771msh490b14fef78525dp1a550fjsnd69e0c7cc73c',
-      'X-RapidAPI-Host': 'google-maps-geocoding.p.rapidapi.com'
-    }
-  };
-  const data1 =await axios.get({url: 'https://google-maps-geocoding.p.rapidapi.com/geocode/json',
-  params: {latlng: `${latitude},${longitude}`, language: 'en'},});
-  console.log(data1.data)
-  // axios.request(options).then(function (response) {
-  //   console.log(response.data);
-  // }).catch(function (error) {
-  //   console.error(error);
-  // });
-}
+
  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(GetCurrentLocation) 
-    getData();  
+  
+    // navigator.geolocation.getCurrentPosition(GetCurrentLocation);
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        setLocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: null
+        });
+      },
+      error => {
+        setLocation({
+          latitude: null,
+          longitude: null,
+          error: error.message
+        });
+      }
+    );
+    
     
   }, []);
+  useEffect(() => {
+    if (!location.latitude || !location.longitude) {
+      return;
+    }
+
+    fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.latitude},${location.longitude}&key=${api_key}`
+    )
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'OK') {
+          setAddress(data.results[0].formatted_address);
+          
+        }
+
+      });
+
+
+  }, [location]);
+
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      console.error('Geolocation is not supported by your browser');
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      const { latitude, longitude } = position.coords;
+
+      const response = await axios.get(
+        `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
+      );
+
+      const postalCode = response.data.address.postcode;
+      setZipCode(postalCode);
+    });
+  }, []);
+console.log(zipCode)
+
+
+console.log(address)
   return (
     <div className="relative overflow-hidden bg-pink-100">
       <div
@@ -140,6 +183,8 @@ const getData = async() =>{
                   <span className="block "> Online Essen Bestellplatform</span>
                 </span>
               </h1>
+              <p>{address}</p>
+              <p>Zip Code : {zipCode}</p>
               {/* <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                 Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
                 lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
