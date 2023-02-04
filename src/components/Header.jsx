@@ -125,6 +125,9 @@ console.log(zipCode)
 
 
 console.log(address)
+const postlivelocationresturant = () =>{
+  navigate(`/restaurant?&zip=${zipCode}`);
+}
   return (
     <div className="relative overflow-hidden bg-pink-100">
       <div
@@ -183,8 +186,7 @@ console.log(address)
                   <span className="block "> Online Essen Bestellplatform</span>
                 </span>
               </h1>
-              <p>{address}</p>
-              <p>Zip Code : {zipCode}</p>
+              
               {/* <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                 Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
                 lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
@@ -228,7 +230,7 @@ console.log(address)
                       id="email"
                       className="block w-full border-0 outline-none   py-3 text-base   sm:flex-1"
                     /> */}
-                    <PlacesAutoComplete onPlaceSelect={handlePlaceSelect} />
+                    <PlacesAutoComplete address = {address} zipCode = {zipCode} onPlaceSelect={handlePlaceSelect} />
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -236,6 +238,8 @@ console.log(address)
                       strokeWidth={1.5}
                       stroke="currentColor"
                       className="w-10 h-10 text-orange-400"
+                      // onClick={postlivelocationresturant}
+                      
                     >
                       <path
                         strokeLinecap="round"
