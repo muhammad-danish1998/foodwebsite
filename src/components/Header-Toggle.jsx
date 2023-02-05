@@ -9,9 +9,9 @@ const initalValue = window.location.pathname === "/signup" ? props.value2 : prop
   const handleToggleChange = () => {
     if (selectedValue === props.value1) {
       setSelectedValue(props.value2);
-      navigate("/signup");
+      navigate("/delivery");
     } else {
-      navigate("/signin");
+      navigate("/pickup");
       setSelectedValue(props.value1);
     }
   }
