@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { getZipCode, getGeocode, getDetails } from 'use-places-autocomplete'
 import AutoComplete from 'react-google-autocomplete';
 
 
 function PlacesAutoComplete({ onPlaceSelect , zipCode, address }) {
+
+    
     const handlePlaceSelected = (data) => {
-        
+       
         if (data.place_id) {
             getGeocode({
                 placeId: data.place_id,
@@ -25,11 +27,14 @@ function PlacesAutoComplete({ onPlaceSelect , zipCode, address }) {
         const city = address_components.find((component) => component.types.includes('locality'));
         return city?.long_name || '';
     }
+    
     return (
         <AutoComplete
             // placeholder={`${address && zipCode}  ${zipCode,address} : "Add Location" `}
             // value = {address ? `${zipCode},${address}}` : ""}
-           placeholder={`${address}`}
+           placeholder={`${zipCode, address}`}
+           defaultValue={`${localStorage.getItem('zipcode')} ${localStorage.getItem('address')}`}
+           inputAutocompleteValue={`${zipCode}, ${address}`}
             className="block   w-full border-0 outline-none   py-3 text-base   sm:flex-1"
             apiKey='AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0'
             options={{

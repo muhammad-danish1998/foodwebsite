@@ -46,7 +46,12 @@ export default function Header() {
     // }).then((response) => {
     //   console.log({ response })
     // })
-    navigate(`/restaurant?city=${data.city}&zip=${data.zipCode}`);
+    if(data){
+      navigate(`/restaurant?city=${data.city}&zip=${data.zipCode}`);
+    }else{
+      navigate(`/restaurant?city=${localStorage.getItem('address')}&zip=${localStorage.getItem('zipcode')}`);
+    }
+   
   };
   const [location, setLocation] = useState({
     latitude: null,
@@ -96,7 +101,7 @@ const api_key = `AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0`
       .then(data => {
         if (data.status === 'OK') {
           setAddress(data.results[0].formatted_address);
-          
+          localStorage.setItem("address", data.results[0].formatted_address);
         }
 
       });
@@ -119,6 +124,7 @@ const api_key = `AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0`
 
       const postalCode = response.data.address.postcode;
       setZipCode(postalCode);
+      localStorage.setItem("zipcode", postalCode);
     });
   }, []);
 console.log(zipCode)
@@ -238,7 +244,7 @@ const postlivelocationresturant = () =>{
                       strokeWidth={1.5}
                       stroke="currentColor"
                       className="w-10 h-10 text-orange-400"
-                      // onClick={postlivelocationresturant}
+                      onClick={() => handlePlaceSelect()}
                       
                     >
                       <path
