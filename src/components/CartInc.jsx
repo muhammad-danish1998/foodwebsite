@@ -1,6 +1,9 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const CartInc = () => {
+
+  const {menuList, totalAmount} = useSelector(state => state?.menu);
   return (
     <div>
       <div>
@@ -9,9 +12,9 @@ const CartInc = () => {
             <li>Geberatene Nudeln mit Hühnerfleisch</li>
           </ol>
 
-          <p className="font-bold">€120,00</p>
+          <p className="font-bold">€{totalAmount}</p>
         </div>
-        <div className="card-list-uper flex justify-between p-6">
+        {/* <div className="card-list-uper flex justify-between p-6">
           <p className="ml-4">Note</p>
           <p className="flex justify-center items-center">
             <svg
@@ -44,10 +47,10 @@ const CartInc = () => {
               />
             </svg>
           </p>
-        </div>
+        </div> */}
         <hr />
       </div>
-      <div>
+      {/* <div>
         <div className="card-list-uper flex justify-between p-6">
           <ol className="list-decimal">
             <li>Geberatene Nudeln mit Hühnerfleisch</li>
@@ -90,7 +93,7 @@ const CartInc = () => {
           </  p>
         </div>
         <hr />
-      </div>
+      </div> */}
     </div>
   );
 };

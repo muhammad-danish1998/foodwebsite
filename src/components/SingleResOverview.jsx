@@ -18,6 +18,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import HeaderToggle from "./Header-Toggle";
 import HeaderTextSlider from "./HeaderTextSlider";
+import { useDispatch, useSelector } from "react-redux";
 
 import CartInc from "./CartInc";
 
@@ -25,14 +26,23 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import PopupCard from "./PopupCard";
 import HeaderNavbar from "./HeaderNavbar";
+import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
+import { getMenuList, setPaymentValue } from "../redux/store/actions/menuAction";
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function SingleResOverview() {
+
+  const dispatch = useDispatch();
+
   const [menuArray, setMenuArray] = useState([]);
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
+  const {menuList, totalAmount} = useSelector(state => state?.menu);
+  console.log("total amount", totalAmount)
   const params = new URLSearchParams(window.location.search);
   useEffect(() => {
     const restaurantSlug = params.get("resturent_slug");
@@ -51,6 +61,13 @@ export default function SingleResOverview() {
   const handleClose = () => {
     setShowModal(false);
   };
+
+  const handleClick = (id, price) => {
+    setShowModal(true);
+    dispatch(getMenuList(id));
+    dispatch(setPaymentValue(price));
+    
+  }
   return (
     <div className="">
       {/* ------------- navbar here ---------  */}
@@ -157,7 +174,7 @@ export default function SingleResOverview() {
                         </div>
                         </div>
                         <div className="flex items-center flex-wrap ">
-                          {menuArray.map((eachMenuCatergory) => (
+                          {menuArray?.map((eachMenuCatergory) => (
                             <>
                               <div className="border-2 border-gray-400 p-4 rounded-lg mt-4 w-full">
                                 <h1 className="text-4xl font-bold text-black">
@@ -165,7 +182,7 @@ export default function SingleResOverview() {
                                 </h1>
                                 <p>{eachMenuCatergory.catedesc}</p>
                               </div>
-                              {eachMenuCatergory.menuarr.map((eachMenuItem) => (
+                              {eachMenuCatergory?.menuarr?.map((eachMenuItem) => (
                                 <div className="border-2 p-4  mt-4 w-full">
                                   <h1 className="text-2xl">
                                     {eachMenuItem.name}
@@ -184,7 +201,7 @@ export default function SingleResOverview() {
                                     {" "}
                                     <button
                                       onClick={() => {
-                                        setShowModal(true);
+                                        handleClick(eachMenuItem.id, eachMenuItem.price)
                                       }}
                                       type="button"
                                       className="inline-flex items-center rounded-md border border-transparent bg-redColor px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -266,7 +283,7 @@ export default function SingleResOverview() {
               <h1 className="text-2xl font-bold">Basket</h1>
               <div className="checkout flex text-white justify-between font-bold bg-redColor p-4 rounded-2xl">
                 <p>Checkout</p>
-                <p>€120,00</p>
+                <p>€{totalAmount}</p>
               </div>
               <CartInc />
             </div>

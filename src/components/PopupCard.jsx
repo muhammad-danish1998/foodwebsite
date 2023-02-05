@@ -1,8 +1,13 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import CartInc from "./CartInc";
 import { Link } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+import { setPaymentValue } from "../redux/store/actions/menuAction";
+
+let amount;
 
 export default function ModalRating({
   visible,
@@ -12,9 +17,43 @@ export default function ModalRating({
   if (!visible) return null;
   const [open, setOpen] = useState(true);
 
+  const [count, setCount] = useState(1);
+
+  const dispatch = useDispatch();
+
+  const {menuList, totalAmount} = useSelector(state => state?.menu);
+  useEffect(() =>{
+    amount  = totalAmount;
+  },[])
+
+  
+
+  console.log("menulist, totalAmount", menuList, amount);
+
   const cancelButtonRef = useRef(null);
+
+ const decrementValue = () => {
+  if(count > 1){
+    setCount((count) => count - 1);
+  }
+  // amount = totalAmount;
+  amount = (Number(totalAmount) * count).toFixed(2);
+  // dispatch(setPaymentValue(val))
+  
+ } 
+ const incrementValue = () => {
+  setCount((count) => count + 1);
+  // amount = totalAmount
+  amount = (Number(totalAmount) * count).toFixed(2);
+  console.log("amount", amount)
+  // console.log("val", val);
+  // dispatch(setPaymentValue(val))
+ } 
+
   const handleOnClose = () => {
+    dispatch(setPaymentValue(amount));
     onClose();
+    
   };
   return (
     <Transition.Root show={open} as={Fragment} onClick={handleOnClose}>
@@ -74,12 +113,15 @@ export default function ModalRating({
                         <img src={currentRestaurantImg} className="h-36 w-36" />
                       </p>
                       <p>
+                        {menuList?.addons?.map((addVal) => (
+                          
+                      
                         <div>
                           <label
                             htmlFor="location"
                             className="block text-sm font-medium text-gray-700"
                           >
-                            Size
+                            {addVal?.name}
                           </label>
                           <select
                             id="location"
@@ -87,14 +129,20 @@ export default function ModalRating({
                             className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                             defaultValue="Canada"
                           >
-                            <option>United States</option>
-                            <option>Canada</option>
-                            <option>Mexico</option>
+                            {addVal?.addons?.opt?.map((val) => (
+                              console.log("val",val),
+                                <>
+                                <option>{val.title}</option>
+                                {/* <option>Canada</option>
+                                <option>Mexico</option> */}
+                                </>
+                            ))}
                           </select>
                         </div>
+                          ))}
                       </p>
                       <p>
-                        <div>
+                        {/* <div>
                           <label
                             htmlFor="location"
                             className="block text-sm font-medium text-gray-700"
@@ -111,22 +159,22 @@ export default function ModalRating({
                             <option>Canada</option>
                             <option>Mexico</option>
                           </select>
-                        </div>
+                        </div> */}
                       </p>
                     </div>
                   </div>
                 </div>
                 <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-                  <Link
-                  to="/checkout"
+                  <button
+                  // to="/checkout"
                     type="button"
                     className="mt-3 bg-red-500 text-white inline-flex w-full justify-center rounded-md border border-gray-300  px-4 py-2 text-base font-medium  shadow-sm  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 lg:text-lg sm:text-sm"
                     // onClick={() => setOpen(false)}
-                    onClick={onClose}
+                    onClick={() => handleOnClose()}
                     ref={cancelButtonRef}
                   >
-                    Add to cart €12,90
-                  </Link>
+                    Add to cart €{amount}
+                  </button>
                   <div className="card-list-uper">
                     <p className="flex justify-center items-center">
                       <svg
@@ -135,6 +183,7 @@ export default function ModalRating({
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
+                        onClick={() => decrementValue()}
                         className="w-8 h-8 p-1 border-2 cursor-pointer rounded-full border-red-600 text-red-600 "
                       >
                         <path
@@ -143,13 +192,14 @@ export default function ModalRating({
                           d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
                         />
                       </svg>
-                      <span className="m-2">1</span>
+                      <span className="m-2">{count}</span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
+                        onClick={() => incrementValue()}
                         className="w-8 h-8 p-1 cursor-pointer  border-2 border-black rounded-full"
                       >
                         <path
