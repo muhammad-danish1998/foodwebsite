@@ -12,7 +12,7 @@ export const register = (state) => {
       .post(endpoint, formData, contentType)
       .then((res) => {
         debugger;
-        setSession(res.data.token);
+        // setSession(res.data.token);
         console.log("res ===>", res)
         resolve(res.data);
       })
@@ -25,12 +25,12 @@ export const register = (state) => {
 
 export const login = (state) => {
   return new Promise((resolve, reject) => {
-    const endpoint = axiosUrl("/login");
+    const endpoint = axiosUrl("/_api_ajax_login.php");
 
     axios
       .post(endpoint, state, contentType)
       .then((res) => {
-        setSession(res.data.token);
+        // setSession(res.data.token);
         resolve(res.data);
       })
       .catch((error) => {

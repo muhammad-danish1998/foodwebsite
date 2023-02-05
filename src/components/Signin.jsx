@@ -1,6 +1,31 @@
 import HeaderToggle from "./Header-Toggle";
+import React, {useState} from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import Utility from "../config/Utility";
 
 export default function Signin() {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (key, value) => {
+    setState((state) => ({ ...state, [key]: value }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    // setLoading(true);
+    
+    Utility.login(state,navigate,dispatch)
+    // dispatch(loginUser(state, navigate, dispatch, openSnackbar));
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -47,7 +72,7 @@ export default function Signin() {
 
         <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6" onSubmit={(e) => onSubmit(e)}>
               <div>
                 <label
                   htmlFor="email"
@@ -61,6 +86,8 @@ export default function Signin() {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    value={state.email}
+                    onChange={(e) => handleChange("email", e.target.value)}
                     required
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   />
@@ -80,6 +107,8 @@ export default function Signin() {
                     name="password"
                     type="password"
                     autoComplete="current-password"
+                    value={state.password}
+                    onChange={(e) => handleChange("password", e.target.value)}
                     required
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   />

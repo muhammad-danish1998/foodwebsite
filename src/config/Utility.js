@@ -88,7 +88,7 @@ const Utility = {
     }
   },
 
-  login: function (params, navigation,dispatch, openSnackbar) {
+  login: function (params, navigation,dispatch) {
     let validation = `${
       !params.email
         ? Strings.validation.validationEmail
@@ -102,7 +102,7 @@ const Utility = {
       // console.log('params', params);
       dispatch(loginUser(params, navigation));
     } else {
-      openSnackbar(validation);
+      toast.error(validation);
     }
   },
 
