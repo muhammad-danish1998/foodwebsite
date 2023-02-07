@@ -5,7 +5,7 @@ import {
   register,
 } from "../../services/authServices/authServices";
 import { getAddonsMenu } from "../../services/menuServices/menuServices";
-import { GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_FAIL, GET_MENU_LIST_ITEM_SUCCESS, SET_PAYMENT, SET_PAYMENT_SUCCESS } from "../types/actionTypes";
+import { GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_FAIL, GET_MENU_LIST_ITEM_SUCCESS, SET_CARTLIST, SET_ITEM_AMOUNT, SET_PAYMENT, SET_PAYMENT_SUCCESS } from "../types/actionTypes";
 
 export const getMenuList =
   (state, navigate) => async dispatch => {
@@ -54,4 +54,35 @@ export const getMenuList =
       // toast.error(e);
     }
   };
+
+  export const setCartList =
+ 
+  (value) => async dispatch => {
+    debugger;
+    try {
+        dispatch({
+          type: SET_CARTLIST,
+          payload: value,
+        });
+
+    } catch (e) {
+      console.log(e);
+      // toast.error(e);
+    }
+  };
+
+export const setItemValue =
+(value) => async dispatch => {
+  debugger;
+  try {
+      dispatch({
+        type: SET_ITEM_AMOUNT,
+        payload: value,
+      });
+
+  } catch (e) {
+    console.log(e);
+    // toast.error(e);
+  }
+};
 

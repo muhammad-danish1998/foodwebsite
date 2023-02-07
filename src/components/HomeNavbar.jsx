@@ -18,11 +18,19 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
+import { useTranslation } from 'react-i18next';
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function HomeNavbar() {
+
+  const { t, i18n } = useTranslation();
+const changeLanguage = lng => {
+  i18n.changeLanguage(lng);
+};
+
   return (
     <Disclosure as="nav" className="bg-transparent">
       {({ open }) => (
@@ -97,6 +105,34 @@ export default function HomeNavbar() {
                             >
                               Register
                             </Link>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              // to="/signup"
+                              onClick={() => changeLanguage('de')}
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              German
+                            </button>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              // to="/signup"
+                              onClick={() => changeLanguage('en')}
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              English
+                            </button>
                           )}
                         </Menu.Item>
                       </Menu.Items>

@@ -9,6 +9,7 @@ import Drawer from "./Drawer";
 import { Menu } from "@headlessui/react";
 import HomeNavbar from "./HomeNavbar";
 import { useGeolocated } from "react-geolocated";
+import { useTranslation } from 'react-i18next';
 import Geocode from "react-geocode";
 const user = {
   name: "Chelsea Hagon",
@@ -134,6 +135,13 @@ console.log(address)
 const postlivelocationresturant = () =>{
   navigate(`/restaurant?&zip=${zipCode}`);
 }
+
+
+const { t, i18n } = useTranslation();
+const changeLanguage = lng => {
+  i18n.changeLanguage(lng);
+};
+
   return (
     <div className="relative overflow-hidden bg-pink-100">
       <div
@@ -188,7 +196,8 @@ const postlivelocationresturant = () =>{
             <div className="sm:text-center md:mx-auto md:max-w-2xl lg:mt-32 lg:col-span-6 lg:text-left">
               <h1>
                 <span className="mainHeadingHeader mt-1 block text-4xl font-bold  sm:text-5xl xl:text-6xl">
-                  <span className="block ">Liefermars Ist Eine</span>
+
+                  <span className="block ">{t('homebannertxt')}</span>
                   <span className="block "> Online Essen Bestellplatform</span>
                 </span>
               </h1>

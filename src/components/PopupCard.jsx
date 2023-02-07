@@ -5,7 +5,7 @@ import CartInc from "./CartInc";
 import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setPaymentValue } from "../redux/store/actions/menuAction";
+import { setCartList, setPaymentValue } from "../redux/store/actions/menuAction";
 
 let amount;
 
@@ -50,8 +50,9 @@ export default function ModalRating({
   // dispatch(setPaymentValue(val))
  } 
 
-  const handleOnClose = () => {
+  const handleOnClose = (val) => {
     dispatch(setPaymentValue(amount));
+    // dispatch(setCartList(amount));
     onClose();
     
   };

@@ -1,19 +1,37 @@
-import React from "react";
+import React, {useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setItemValue } from "../redux/store/actions/menuAction";
 
 const CartInc = () => {
+  const dispatch = useDispatch();
+  const {menuList, totalAmount, cartlist, itemAmount} = useSelector(state => state?.menu);
+  const [val, setVal] = useState();
+  console.log("cartlist ==>", cartlist)
 
-  const {menuList, totalAmount} = useSelector(state => state?.menu);
+  useEffect(()=> {
+    let priceVal = 0;
+    cartlist?.map((es)=> {
+      console.log("----",Number(es.price))
+      priceVal += Number(es.price);
+    })
+    dispatch(setItemValue(priceVal))
+  },[cartlist]);
   return (
     <div>
       <div>
-        <div className="card-list-uper flex justify-between p-6">
-          <ol className="list-decimal">
-            <li>Geberatene Nudeln mit Hühnerfleisch</li>
-          </ol>
+       
+          {cartlist?.map((cart) => (
+              //  setVal(cart?.price),
+             <div className="card-list-uper flex justify-between p-6">
+              <ol className="list-decimal">
+              <li>{cart.description}</li>
+              </ol>
 
-          <p className="font-bold">€{totalAmount}</p>
-        </div>
+              <p className="font-bold">€{cart.price}</p>
+              </div>
+          ))}
+         
+      
         {/* <div className="card-list-uper flex justify-between p-6">
           <p className="ml-4">Note</p>
           <p className="flex justify-center items-center">

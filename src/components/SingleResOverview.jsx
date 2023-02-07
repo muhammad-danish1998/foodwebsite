@@ -27,7 +27,7 @@ import axios from "axios";
 import PopupCard from "./PopupCard";
 import HeaderNavbar from "./HeaderNavbar";
 import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
-import { getMenuList, setPaymentValue } from "../redux/store/actions/menuAction";
+import { getMenuList, setCartList, setPaymentValue } from "../redux/store/actions/menuAction";
 
 
 
@@ -41,7 +41,7 @@ export default function SingleResOverview() {
 
   const [menuArray, setMenuArray] = useState([]);
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
-  const {menuList, totalAmount} = useSelector(state => state?.menu);
+  const {menuList, totalAmount, itemAmount} = useSelector(state => state?.menu);
   console.log("total amount", totalAmount)
   const params = new URLSearchParams(window.location.search);
   useEffect(() => {
@@ -62,10 +62,14 @@ export default function SingleResOverview() {
     setShowModal(false);
   };
 
-  const handleClick = (id, price) => {
+  const handleClick = (id, price, name) => {
     setShowModal(true);
     dispatch(getMenuList(id));
     dispatch(setPaymentValue(price));
+    dispatch(setCartList({
+      description: name,
+      price: price
+    }))
     
   }
   return (
@@ -175,6 +179,7 @@ export default function SingleResOverview() {
                         </div>
                         <div className="flex items-center flex-wrap ">
                           {menuArray?.map((eachMenuCatergory) => (
+                            console.log("eachMenuCatergory ==>", eachMenuCatergory),
                             <>
                               <div className="border-2 border-gray-400 p-4 rounded-lg mt-4 w-full">
                                 <h1 className="text-4xl font-bold text-black">
@@ -201,7 +206,7 @@ export default function SingleResOverview() {
                                     {" "}
                                     <button
                                       onClick={() => {
-                                        handleClick(eachMenuItem.id, eachMenuItem.price)
+                                        handleClick(eachMenuItem.id, eachMenuItem.price, eachMenuItem.name)
                                       }}
                                       type="button"
                                       className="inline-flex items-center rounded-md border border-transparent bg-redColor px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -283,7 +288,7 @@ export default function SingleResOverview() {
               <h1 className="text-2xl font-bold">Basket</h1>
               <div className="checkout flex text-white justify-between font-bold bg-redColor p-4 rounded-2xl">
                 <p>Checkout</p>
-                <p>€{totalAmount}</p>
+                <p>€{itemAmount}</p>
               </div>
               <CartInc />
             </div>

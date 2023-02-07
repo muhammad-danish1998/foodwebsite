@@ -1,10 +1,12 @@
-import { REGISTRATION, REGISTER_SUCCESS, REGISTRATION_FAIL, LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_SUCCESS, GET_MENU_LIST_ITEM_FAIL, SET_PAYMENT, SET_PAYMENT_SUCCESS,  } from "../types/actionTypes";
+import { REGISTRATION, REGISTER_SUCCESS, REGISTRATION_FAIL, LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_SUCCESS, GET_MENU_LIST_ITEM_FAIL, SET_PAYMENT, SET_PAYMENT_SUCCESS, SET_CARTLIST, SET_ITEM_AMOUNT,  } from "../types/actionTypes";
 
 const initialState = {
   totalAmount: null,
+  itemAmount: null,
   menuList:{},
   loading: false,
-  msg: null
+  msg: null,
+  cartlist:[]
 };
 
 const menuReducer = (state = initialState, action) => {
@@ -33,6 +35,23 @@ const menuReducer = (state = initialState, action) => {
         ...state,
         totalAmount: action.payload
       };
+      case SET_CARTLIST:
+        debugger;
+        return {
+          ...state,
+          cartlist: [
+            ...state.cartlist,
+            {
+              description: action.payload.description,
+              price: action.payload.price,
+            },
+          ],
+        };
+      case SET_ITEM_AMOUNT:
+        return {
+          ...state,
+          itemAmount: action.payload
+        };
     default:
       return state;
   }
