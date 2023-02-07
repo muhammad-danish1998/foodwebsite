@@ -102,8 +102,8 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="p-6" aria-labelledby="footer-heading">
-      <div className="mx-auto border-2  border-gray-300 max-w-7xl px-6 pb-4 pt-20 sm:pt-6 lg:px-8 ">
+    <footer className="p-6 border-2 border-gray-300" aria-labelledby="footer-heading">
+      <div className="mx-auto  max-w-7xl px-6 pb-4 pt-20 sm:pt-6 lg:px-8 ">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="grid lg:grid-cols-2 gap-6 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">

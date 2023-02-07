@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
 import { getMenuList, setPaymentValue } from "../redux/store/actions/menuAction";
+import Popuppickup from "./Popuppickup";
 
 
 
@@ -233,6 +234,7 @@ const [showDetail, setShowDetail] = useState(false);
                 onClose={handleClose}
                 visible={showModal}
               />
+              {/* <Popuppickup /> */}
             </section>
           </main>
           <aside className=" xl:col-span-4 xl:block border-2">
