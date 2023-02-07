@@ -191,8 +191,8 @@ const changeLanguage = lng => {
         {/* ----------------- navbar ------------------  */}
         <HomeNavbar />
 
-        <main className="mx-auto  max-w-9xl   px-6 ">
-          <div className="lg:grid lg:grid-cols-12 lg:gap-8">
+        <main className="mx-auto  max-w-9xl   px-4 ">
+          <div className="lg:grid lg:grid-cols-12 lg:gap-8  lg:mt-4">
             <div className="sm:text-center md:mx-auto md:max-w-2xl lg:mt-32 lg:col-span-6 lg:text-left">
               <h1>
                 <span className="mainHeadingHeader mt-1 block text-4xl font-bold  sm:text-5xl xl:text-6xl">
@@ -266,7 +266,7 @@ const changeLanguage = lng => {
                 </form>
               </div>
             </div>
-            <div className="relative mt-12    sm:mx-auto sm:max-w-lg lg:col-span-6 lg:mx-0  lg:mt-0 lg:p-8 lg:flex lg:max-w-none  lg:items-center">
+            <div className="relative mt-12    sm:mx-auto sm:max-w-lg lg:col-span-6 lg:mx-0  lg:mt-0 lg:p-2 lg:flex lg:max-w-none  lg:items-center ">
               <div className="relative   mx-auto w-full rounded-lg  lg:max-w-full  ">
                 <HeaderSlider />
               </div>

@@ -10,7 +10,8 @@ module.exports = {
     extend: {
       colors: {
         'greenToggle': '#05FF00',
-        'redColor' : "#FF0000"
+        'redColor' : "#FF0000",
+        'greencheckout' : "#98FF15"
       },
     },
   },

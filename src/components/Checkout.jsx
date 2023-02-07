@@ -5,21 +5,32 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import HeaderToggle from "./Header-Toggle";
 import Pickup from "./Pickup";
 
+
 import CartInc from "./CartInc";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Delivery from "./Delivery";
 import HeaderNavbar from "./HeaderNavbar";
+import PopupDeliver from "./PopupDeliver";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
+import { getMenuList, setPaymentValue } from "../redux/store/actions/menuAction";
+import Popuppickup from "./Popuppickup";
+
+
+
 const plans = [
   {
     id: "small",
-    name: "Small",
+    name: "Cash On Delivery",
     description: "4 GB RAM / 2 CPUS / 80 GB SSD Storage",
   },
   {
     id: "medium",
-    name: "Medium",
+    name: "Paypal",
     description: "8 GB RAM / 4 CPUS / 160 GB SSD Storage",
   },
 ];
@@ -29,10 +40,18 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function SingleResOverview() {
+  const dispatch = useDispatch();
 const [deliveryOption , setDeliveryOption] = useState("pickup")
 
 const [showDetail, setShowDetail] = useState(false);
   const [menuArray, setMenuArray] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
+
+  
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
   const params = new URLSearchParams(window.location.search);
   useEffect(() => {
@@ -49,6 +68,12 @@ const [showDetail, setShowDetail] = useState(false);
   }, [window.location.search]);
   const showpersonalDetail = () =>{
     setShowDetail(true)                            
+  }
+  const handleClick = (id, price) => {
+    setShowModal(true);
+    // dispatch(getMenuList(id));
+    // dispatch(setPaymentValue(price));
+    
   }
   return (
     <div className="min-h-screen">
@@ -71,17 +96,19 @@ const [showDetail, setShowDetail] = useState(false);
                             </h1>
                           </div>
                           <div>
-                            {
+                            {/* {
                              
                           showDetail  &&  <Delivery />   
-                            }
+                            } */}
 
                             </div>
                           <div className="border-2 border-gray-400 rounded-lg p-8   mt-4 mb-4 bg-white  w-5/6">
                         
                             <div className="cursor-pointer">
                               <label
-                              onClick={showpersonalDetail}
+                              onClick={() => {
+                                handleClick()
+                              }}
                                 htmlFor="comment "
                                 className="block text-xl cursor-pointer font-medium text-gray-700"
                               >
@@ -189,7 +216,7 @@ const [showDetail, setShowDetail] = useState(false);
                                 <Link
                                 to="/invoice"
                                   type="button"
-                                  className="inline-flex items-center rounded-md border border-transparent bg-green-700 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                  className="inline-flex items-center rounded-md border border-transparent bg-greencheckout px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                 >
                                  Order And Pay
                                 </Link>
@@ -202,6 +229,12 @@ const [showDetail, setShowDetail] = useState(false);
                   </div>
                 </div>
               </div>
+              <PopupDeliver
+                currentRestaurantImg={currentRestaurantImg}
+                onClose={handleClose}
+                visible={showModal}
+              />
+              {/* <Popuppickup /> */}
             </section>
           </main>
           <aside className=" xl:col-span-4 xl:block border-2">

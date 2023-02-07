@@ -30,19 +30,24 @@ import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
 import { getMenuList, setCartList, setPaymentValue } from "../redux/store/actions/menuAction";
 
 
+import {
+  getMenuList,
+  setPaymentValue,
+} from "../redux/store/actions/menuAction";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function SingleResOverview() {
-
   const dispatch = useDispatch();
 
   const [menuArray, setMenuArray] = useState([]);
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
   const {menuList, totalAmount, itemAmount} = useSelector(state => state?.menu);
   console.log("total amount", totalAmount)
+  // const { menuList, totalAmount } = useSelector((state) => state?.menu);
+  console.log("total amount", totalAmount);
   const params = new URLSearchParams(window.location.search);
   useEffect(() => {
     const restaurantSlug = params.get("resturent_slug");
@@ -72,6 +77,7 @@ export default function SingleResOverview() {
     }))
     
   }
+  };
   return (
     <div className="">
       {/* ------------- navbar here ---------  */}
@@ -94,88 +100,91 @@ export default function SingleResOverview() {
                       />
                       <div className="pt-4">
                         <div className="flex justify-between border-2">
-                        <div className="">
-                          <h1 className="title-font text-2xl font-medium text-gray-900 mb-3">
-                            Asiawok Heimservice
-                          </h1>
+                          <div className="">
+                            <h1 className="title-font text-2xl font-medium text-gray-900 mb-3">
+                              Asiawok Heimservice
+                            </h1>
 
-                          {/* -------- review ------------  */}
-                          <span className="flex items-center">
-                            <svg
-                              fill="currentColor"
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              className="w-4 h-4 "
-                              viewBox="0 0 24 24"
-                              style={{ color: "#FF8A00" }}
-                            >
-                              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <svg
-                              fill="currentColor"
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              className="w-4 h-4  lg:ml-2"
-                              viewBox="0 0 24 24"
-                              style={{ color: "#FF8A00" }}
-                            >
-                              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <svg
-                              fill="currentColor"
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              className="w-4 h-4  lg:ml-2"
-                              viewBox="0 0 24 24"
-                              style={{ color: "#FF8A00" }}
-                            >
-                              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <svg
-                              fill="currentColor"
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              className="w-4 h-4  lg:ml-2"
-                              viewBox="0 0 24 24"
-                              style={{ color: "#FF8A00" }}
-                            >
-                              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <svg
-                              fill="currentColor"
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              className="w-4 h-4  lg:ml-2"
-                              viewBox="0 0 24 24"
-                              style={{ color: "#FF8A00" }}
-                            >
-                              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                          </span>
-                          <p className="leading-relaxed mb-3">
-                            <HeaderToggle value1={"Delivery"} value2="Pickup" />
-                          </p>
-                        </div>
-                        <div>
-                          {/* --------------- logo -------------  */}
-                          <div className="mt-2 ">
-                            <img
-                              className="inline-block lg:h-24 lg:w-24 h-14 w-14 rounded-full"
-                              src="./images/Ellipse 20.png"
-                              alt=""
-                            />
+                            {/* -------- review ------------  */}
+                            <span className="flex items-center">
+                              <svg
+                                fill="currentColor"
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                className="w-4 h-4 "
+                                viewBox="0 0 24 24"
+                                style={{ color: "#FF8A00" }}
+                              >
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                              </svg>
+                              <svg
+                                fill="currentColor"
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                className="w-4 h-4  lg:ml-2"
+                                viewBox="0 0 24 24"
+                                style={{ color: "#FF8A00" }}
+                              >
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                              </svg>
+                              <svg
+                                fill="currentColor"
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                className="w-4 h-4  lg:ml-2"
+                                viewBox="0 0 24 24"
+                                style={{ color: "#FF8A00" }}
+                              >
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                              </svg>
+                              <svg
+                                fill="currentColor"
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                className="w-4 h-4  lg:ml-2"
+                                viewBox="0 0 24 24"
+                                style={{ color: "#FF8A00" }}
+                              >
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                              </svg>
+                              <svg
+                                fill="currentColor"
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                className="w-4 h-4  lg:ml-2"
+                                viewBox="0 0 24 24"
+                                style={{ color: "#FF8A00" }}
+                              >
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                              </svg>
+                            </span>
+                            <p className="leading-relaxed mb-3">
+                              <HeaderToggle
+                                value1={"Delivery"}
+                                value2="Pickup"
+                              />
+                            </p>
                           </div>
-                        </div>
+                          <div>
+                            {/* --------------- logo -------------  */}
+                            <div className="mt-2 ">
+                              <img
+                                className="inline-block lg:h-24 lg:w-24 h-14 w-14 rounded-full"
+                                src="./images/Ellipse 20.png"
+                                alt=""
+                              />
+                            </div>
+                          </div>
                         </div>
                         <div className="flex items-center flex-wrap ">
                           {menuArray?.map((eachMenuCatergory) => (
@@ -187,35 +196,40 @@ export default function SingleResOverview() {
                                 </h1>
                                 <p>{eachMenuCatergory.catedesc}</p>
                               </div>
-                              {eachMenuCatergory?.menuarr?.map((eachMenuItem) => (
-                                <div className="border-2 p-4  mt-4 w-full">
-                                  <h1 className="text-2xl">
-                                    {eachMenuItem.name}
-                                  </h1>
-                                  <p className="text-green-500 font-semibold">
-                                    {" "}
-                                    € {eachMenuItem.price}
-                                  </p>
+                              {eachMenuCatergory?.menuarr?.map(
+                                (eachMenuItem) => (
+                                  <div className="border-2 p-4  mt-4 w-full">
+                                    <h1 className="text-2xl">
+                                      {eachMenuItem.name}
+                                    </h1>
+                                    <p className="text-green-500 font-semibold">
+                                      {" "}
+                                      € {eachMenuItem.price}
+                                    </p>
 
-                                  <p
-                                    dangerouslySetInnerHTML={{
-                                      __html: eachMenuItem.description,
-                                    }}
-                                  />
-                                  <p className="mt-2">
-                                    {" "}
-                                    <button
-                                      onClick={() => {
-                                        handleClick(eachMenuItem.id, eachMenuItem.price, eachMenuItem.name)
+                                    <p
+                                      dangerouslySetInnerHTML={{
+                                        __html: eachMenuItem.description,
                                       }}
-                                      type="button"
-                                      className="inline-flex items-center rounded-md border border-transparent bg-redColor px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                    >
-                                      Add to cart
-                                    </button>
-                                  </p>
-                                </div>
-                              ))}
+                                    />
+                                    <p className="mt-2">
+                                      {" "}
+                                      <button
+                                        onClick={() => {
+                                          handleClick(
+                                            eachMenuItem.id,
+                                            eachMenuItem.price
+                                          );
+                                        }}
+                                        type="button"
+                                        className="inline-flex items-center rounded-md border border-transparent bg-redColor px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                      >
+                                        Add to cart
+                                      </button>
+                                    </p>
+                                  </div>
+                                )
+                              )}
                             </>
                           ))}
 
@@ -285,12 +299,22 @@ export default function SingleResOverview() {
           </main>
           <aside className=" xl:col-span-4 xl:block border-2">
             <div className="sticky top-6 space-y-4 lg:p-4">
-              <h1 className="text-2xl font-bold">Basket</h1>
+              <h1 className="text-2xl font-bold">Shopping Cart</h1>
               <div className="checkout flex text-white justify-between font-bold bg-redColor p-4 rounded-2xl">
                 <p>Checkout</p>
                 <p>€{itemAmount}</p>
               </div>
               <CartInc />
+              <p className="mt-2">
+                {" "}
+                <Link
+                 to="/checkout"
+                  type="button"
+                  className="inline-flex items-center rounded-md border border-transparent bg-redColor px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                 Checkout
+                </Link>
+              </p>
             </div>
           </aside>
         </div>

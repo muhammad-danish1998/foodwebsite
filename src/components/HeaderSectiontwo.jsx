@@ -15,7 +15,7 @@ import { Pagination, Navigation } from "swiper";
 const HeaderSectiontwo = () => {
   return (
     <div>
-    <div className=" max-w-7xl mx-auto mt-4 mb-4  text-center">
+    <div className=" max-w-7xl mx-auto mt-4 mb-4  text-center lg:col-span-6">
          <Swiper
 
         slidesPerView={4}
@@ -28,7 +28,7 @@ const HeaderSectiontwo = () => {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className={`mySwiper`}
+        className={`mySwiper   `}
       >
         <SwiperSlide className="flex flex-col items-center justify-center ">
             <img src="./images/sli1.jpg" className="h-48 w-48" />
