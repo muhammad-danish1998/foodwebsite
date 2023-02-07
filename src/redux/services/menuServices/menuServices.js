@@ -6,7 +6,7 @@ export const getAddonsMenu = (menu_id) => {
   const token = localStorage.getItem("jwt_token");
 
   return new Promise((ressolve, reject) => {
-    const endpoint = axiosUrl(`/ajax/_api_ajax_load_addons.php?menu=50&option=${menu_id}`);
+    const endpoint = axiosUrl(`/ajax/_api_ajax_load_addons.php?menu=69&option=${menu_id}`);
 
     axios
       .get(endpoint, {
