@@ -44,6 +44,7 @@ const menuReducer = (state = initialState, action) => {
             {
               description: action.payload.description,
               price: action.payload.price,
+              count: action.payload.count
             },
           ],
         };

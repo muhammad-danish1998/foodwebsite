@@ -30,10 +30,10 @@ import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
 import { getMenuList, setCartList, setPaymentValue } from "../redux/store/actions/menuAction";
 
 
-import {
-  getMenuList,
-  setPaymentValue,
-} from "../redux/store/actions/menuAction";
+// import {
+//   getMenuList,
+//   setPaymentValue,
+// } from "../redux/store/actions/menuAction";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -44,7 +44,7 @@ export default function SingleResOverview() {
 
   const [menuArray, setMenuArray] = useState([]);
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
-  const {menuList, totalAmount, itemAmount} = useSelector(state => state?.menu);
+  const {menuList, totalAmount, itemAmount, cartlist} = useSelector(state => state?.menu);
   console.log("total amount", totalAmount)
   // const { menuList, totalAmount } = useSelector((state) => state?.menu);
   console.log("total amount", totalAmount);
@@ -71,13 +71,21 @@ export default function SingleResOverview() {
     setShowModal(true);
     dispatch(getMenuList(id));
     dispatch(setPaymentValue(price));
-    dispatch(setCartList({
-      description: name,
-      price: price
-    }))
+    let val = cartlist?.filter((e) => {
+       return e.description ==  name;
+    })
+    console.log("value ", val);
+    debugger;
+    if(val.length == 0){
+      dispatch(setCartList({
+        description: name,
+        price: price,
+        count:1
+      }))
+  }
     
   }
-  };
+  // };
   return (
     <div className="">
       {/* ------------- navbar here ---------  */}
@@ -218,7 +226,8 @@ export default function SingleResOverview() {
                                         onClick={() => {
                                           handleClick(
                                             eachMenuItem.id,
-                                            eachMenuItem.price
+                                            eachMenuItem.price,
+                                            eachMenuItem?.name
                                           );
                                         }}
                                         type="button"
@@ -320,5 +329,6 @@ export default function SingleResOverview() {
         </div>
       </div>
     </div>
-  );
+  )
+  
 }
