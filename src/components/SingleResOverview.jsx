@@ -27,7 +27,7 @@ import axios from "axios";
 import PopupCard from "./PopupCard";
 import HeaderNavbar from "./HeaderNavbar";
 import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
-import { getMenuList, setCartList, setPaymentValue } from "../redux/store/actions/menuAction";
+import {setCartList } from "../redux/store/actions/menuAction";
 
 
 import {
@@ -77,7 +77,6 @@ export default function SingleResOverview() {
     }))
     
   }
-  };
   return (
     <div className="">
       {/* ------------- navbar here ---------  */}

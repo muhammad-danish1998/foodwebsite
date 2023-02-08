@@ -44,8 +44,10 @@ export default function HeaderTextSlider() {
         <SwiperSlide className="p-3   text-sm lg:text-lg  lg:font-semibold text-gray-700 cursor-pointer">
           Curry
         </SwiperSlide>
-       
-       
+        <SwiperSlide className="p-3   text-sm lg:text-lg  lg:font-semibold text-gray-700 cursor-pointer">
+        Amarican Pizza
+        </SwiperSlide>
+      
     
       </Swiper>
     </>

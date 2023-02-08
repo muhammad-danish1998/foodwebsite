@@ -15,7 +15,7 @@ import { Pagination, Navigation } from "swiper";
 const HeaderSectiontwo = () => {
   return (
     <div>
-    <div className=" max-w-7xl mx-auto mt-4 mb-4  text-center lg:col-span-6">
+    <div className=" max-w-8xl mx-auto mt-12   mb-4  text-center lg:col-span-6">
          <Swiper
 
         slidesPerView={4}
