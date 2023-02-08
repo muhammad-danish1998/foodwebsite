@@ -13,12 +13,15 @@ import axios from "axios";
 import Delivery from "./Delivery";
 import HeaderNavbar from "./HeaderNavbar";
 import PopupDeliver from "./PopupDeliver";
+// import Popuppickup from "./Popuppickup";
 
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 
 import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
 import { getMenuList, setPaymentValue } from "../redux/store/actions/menuAction";
 import Popuppickup from "./Popuppickup";
+
+import { useDispatch, useSelector } from "react-redux";
 
 
 
@@ -46,11 +49,16 @@ const [deliveryOption , setDeliveryOption] = useState("pickup")
 const [showDetail, setShowDetail] = useState(false);
   const [menuArray, setMenuArray] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showModal1, setShowModal1] =  useState(false)
   const handleClose = () => {
-    setShowModal(false);
+    if(selectValue == "Delivery"){
+      setShowModal(false);
+    }else{
+       setShowModal1(false);
+    }
   };
 
-
+  const {selectValue} = useSelector(state => state?.menu);
   
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
   const params = new URLSearchParams(window.location.search);
@@ -70,7 +78,12 @@ const [showDetail, setShowDetail] = useState(false);
     setShowDetail(true)                            
   }
   const handleClick = (id, price) => {
-    setShowModal(true);
+    if(selectValue == "Delivery"){
+      setShowModal(true);
+    }else{
+       setShowModal1(true);
+    }
+    
     // dispatch(getMenuList(id));
     // dispatch(setPaymentValue(price));
     
@@ -229,10 +242,16 @@ const [showDetail, setShowDetail] = useState(false);
                   </div>
                 </div>
               </div>
+              
               <PopupDeliver
                 currentRestaurantImg={currentRestaurantImg}
                 onClose={handleClose}
                 visible={showModal}
+              />
+               <Popuppickup
+                currentRestaurantImg={currentRestaurantImg}
+                onClose={handleClose}
+                visible={showModal1}
               />
               {/* <Popuppickup /> */}
             </section>

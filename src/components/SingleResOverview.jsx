@@ -27,7 +27,7 @@ import axios from "axios";
 import PopupCard from "./PopupCard";
 import HeaderNavbar from "./HeaderNavbar";
 import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
-import {setCartList } from "../redux/store/actions/menuAction";
+import {setCartList, getMenuList, setPaymentValue } from "../redux/store/actions/menuAction";
 
 
 // import {
@@ -43,6 +43,7 @@ export default function SingleResOverview() {
   const dispatch = useDispatch();
 
   const [menuArray, setMenuArray] = useState([]);
+  const [name, setName] = useState();
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
   const {menuList, totalAmount, itemAmount, cartlist} = useSelector(state => state?.menu);
   console.log("total amount", totalAmount)
@@ -57,6 +58,8 @@ export default function SingleResOverview() {
         `https://liefermars.de/_api_ajax_menu.php?resturent_slug=${restaurantSlug}&resturent_code=${restuarantCode}`
       )
       .then((response) => {
+        console.log("response", response)
+        setName(response?.data?.restname)
         setMenuArray(response.data.menuarr);
         setCurrentRestaurantImg(response?.data?.restlogo);
       });
@@ -66,6 +69,8 @@ export default function SingleResOverview() {
   const handleClose = () => {
     setShowModal(false);
   };
+
+  console.log("name", name);
 
   const handleClick = (id, price, name) => {
     setShowModal(true);
@@ -83,6 +88,7 @@ export default function SingleResOverview() {
         count:1
       }))
   }
+
     
   }
   // };
@@ -110,7 +116,7 @@ export default function SingleResOverview() {
                         <div className="flex justify-between border-2">
                           <div className="">
                             <h1 className="title-font text-2xl font-medium text-gray-900 mb-3">
-                              Asiawok Heimservice
+                             {name}
                             </h1>
 
                             {/* -------- review ------------  */}
@@ -177,10 +183,10 @@ export default function SingleResOverview() {
                               </svg>
                             </span>
                             <p className="leading-relaxed mb-3">
-                              <HeaderToggle
+                              {/* <HeaderToggle
                                 value1={"Delivery"}
                                 value2="Pickup"
-                              />
+                              /> */}
                             </p>
                           </div>
                           <div>

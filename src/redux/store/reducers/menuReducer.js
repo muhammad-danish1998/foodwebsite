@@ -1,4 +1,4 @@
-import { REGISTRATION, REGISTER_SUCCESS, REGISTRATION_FAIL, LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_SUCCESS, GET_MENU_LIST_ITEM_FAIL, SET_PAYMENT, SET_PAYMENT_SUCCESS, SET_CARTLIST, SET_ITEM_AMOUNT,  } from "../types/actionTypes";
+import { REGISTRATION, REGISTER_SUCCESS, REGISTRATION_FAIL, LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_SUCCESS, GET_MENU_LIST_ITEM_FAIL, SET_PAYMENT, SET_PAYMENT_SUCCESS, SET_CARTLIST, SET_ITEM_AMOUNT, SET_SELECT_VALUE,  } from "../types/actionTypes";
 
 const initialState = {
   totalAmount: null,
@@ -6,7 +6,8 @@ const initialState = {
   menuList:{},
   loading: false,
   msg: null,
-  cartlist:[]
+  cartlist:[],
+  selectValue: "Delivery"
 };
 
 const menuReducer = (state = initialState, action) => {
@@ -53,6 +54,11 @@ const menuReducer = (state = initialState, action) => {
           ...state,
           itemAmount: action.payload
         };
+      case SET_SELECT_VALUE:
+      return {
+        ...state,
+        selectValue: action.payload
+      };
     default:
       return state;
   }
