@@ -50,7 +50,42 @@ export default function PopupDeliver({
   // dispatch(setPaymentValue(val))
  } 
 
+ const [state, setState] = useState({
+  your_street_name: localStorage.getItem('address'),
+  your_house_number:"",
+  your_address:"",
+  your_address_two:"",
+  your_city:"",
+  your_zip:"",
+  floor:"",
+  company:"",
+  your_name: "",
+  your_phone:"",
+  your_email: "",
+  shipping: "",
+  delivery_time: "",
+  PaymentType:""
+});
+
+
+console.log("state ===>", state);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    // setLoading(true);
+    
+    // Utility.register(state,navigate,dispatch)
+    // dispatch(loginUser(state, navigate, dispatch, openSnackbar));
+  };
+
+  const handleChange = (key, value) => {
+    setState((state) => ({ ...state, [key]: value }));
+  };
+
   const handleOnClose = () => {
+
+    console.log("state ===>", state);
+
     dispatch(setPaymentValue(amount));
     onClose(); 
   };
@@ -117,6 +152,8 @@ export default function PopupDeliver({
                       type="text"
                       id="name"
                       name="name"
+                      value={localStorage.getItem('address')}
+                      onChange={(e) => handleChange("your_street_name", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -130,6 +167,8 @@ export default function PopupDeliver({
                       type="text"
                       id="email"
                       name="email"
+                      value={state.your_house_number}
+                      onChange={(e) => handleChange("your_house_number", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -159,6 +198,8 @@ export default function PopupDeliver({
                       type="text"
                       id="name"
                       name="name"
+                      value={state.your_city}
+                      onChange={(e) => handleChange("your_city", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -172,6 +213,8 @@ export default function PopupDeliver({
                       type="text"
                       id="email"
                       name="email"
+                      value={localStorage.getItem('zipcode')}
+                      onChange={(e) => handleChange("your_zip", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -223,6 +266,8 @@ export default function PopupDeliver({
                       type="text"
                       id="name"
                       name="name"
+                      value={state.your_name}
+                      onChange={(e) => handleChange("your_name", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -236,6 +281,8 @@ export default function PopupDeliver({
                       type="number"
                       id="email"
                       name="email"
+                      value={state.your_phone}
+                      onChange={(e) => handleChange("your_phone", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -252,6 +299,8 @@ export default function PopupDeliver({
                       type="email"
                       id="email"
                       name="email"
+                      value={state.your_email}
+                      onChange={(e) => handleChange("your_email", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>

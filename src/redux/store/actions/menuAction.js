@@ -4,8 +4,8 @@ import {
   login,
   register,
 } from "../../services/authServices/authServices";
-import { addToCart, getAddonsMenu, getCartItemList, removeCartMenuList, updateCartMenuList } from "../../services/menuServices/menuServices";
-import { ADD_TO_CART_MENU_ITEM, ADD_TO_CART_MENU_ITEM_FAIL, ADD_TO_CART_MENU_ITEM_SUCCESS, DELETE_ADD_TO_CART_MENU_ITEM, DELETE_ADD_TO_CART_MENU_ITEM_FAIL, DELETE_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_ADD_TO_CART_MENU_ITEM, GET_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_FAIL, GET_MENU_LIST_ITEM_SUCCESS, SET_CARTLIST, SET_ITEM_AMOUNT, SET_MENU_ID, SET_PAYMENT, SET_PAYMENT_SUCCESS, SET_SELECT_VALUE, UPDATE_ADD_TO_CART_MENU_ITEM, UPDATE_ADD_TO_CART_MENU_ITEM_FAIL, UPDATE_ADD_TO_CART_MENU_ITEM_SUCCESS } from "../types/actionTypes";
+import { addToCart, checkoutDelivery, getAddonsMenu, getCartItemList, removeCartMenuList, updateCartMenuList } from "../../services/menuServices/menuServices";
+import { ADD_TO_CART_MENU_ITEM, ADD_TO_CART_MENU_ITEM_FAIL, ADD_TO_CART_MENU_ITEM_SUCCESS, CHECK_OUT_ITEM, CHECK_OUT_ITEM_FAIL, CHECK_OUT_ITEM_SUCCESS, DELETE_ADD_TO_CART_MENU_ITEM, DELETE_ADD_TO_CART_MENU_ITEM_FAIL, DELETE_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_ADD_TO_CART_MENU_ITEM, GET_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_FAIL, GET_MENU_LIST_ITEM_SUCCESS, SET_CARTLIST, SET_ITEM_AMOUNT, SET_MENU_ID, SET_PAYMENT, SET_PAYMENT_SUCCESS, SET_SELECT_VALUE, UPDATE_ADD_TO_CART_MENU_ITEM, UPDATE_ADD_TO_CART_MENU_ITEM_FAIL, UPDATE_ADD_TO_CART_MENU_ITEM_SUCCESS } from "../types/actionTypes";
 
 export const getMenuList =
   (state, navigate) => async dispatch => {
@@ -277,3 +277,38 @@ export const UpdateAddToCartMenu =
       toast.error(e);
     }
   };
+
+
+  export const CheckoutOrder =
+  (state, navigate) => async dispatch => {
+  
+    dispatch({type: CHECK_OUT_ITEM});
+    try {
+    
+      const response = await checkoutDelivery(state);
+      console.log("response", response);
+
+      if (response.type == "success") {
+        dispatch({
+          type: CHECK_OUT_ITEM_SUCCESS,
+          payload: response,
+        });
+        toast.success(response?.msg);
+        // navigate('/signin')
+
+      }
+      else{
+        dispatch({
+          type: CHECK_OUT_ITEM_FAIL,
+          payload: 'Failed to fetch data',
+        });
+        console.log("hh", response)
+        toast.error(response?.errorarr);
+      }
+    } catch (e) {
+      console.log(e);
+      toast.error(e);
+    }
+  };
+
+  

@@ -18,6 +18,9 @@ export default function ModalRating({
   const [open, setOpen] = useState(true);
 
   const [count, setCount] = useState(1);
+  // const [addons01, setAddons01] = useState([]); /
+  let addons01 = [];
+  let multi01 = [];
 
   const dispatch = useDispatch();
 
@@ -27,6 +30,13 @@ export default function ModalRating({
   },[])
 
 
+  const handleAddons = (id) => {
+    addons01.push(id);
+  }
+
+  const handleMultiaddon = (id) => {
+    multi01.push(id);
+  }
 
   
 
@@ -68,8 +78,8 @@ export default function ModalRating({
       menu: menu_id,
       quantity : count,
       sessid: "hello00",
-      addons : "",
-      multiaddons:""
+      addons : addons01,
+      multiaddons: multi01
     })).then(res => {
       if (res === 200) {
         dispatch(getCartMenuListItem(selectValue, "hello00"));
@@ -150,12 +160,13 @@ export default function ModalRating({
                             name="location"
                             className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                             defaultValue="Canada"
+                            onChange={(e)=> handleAddons(e.target.value)}
                           >
                             
                             {addVal?.type == "single" && addVal?.opt?.map((val) => (
                               // console.log("val",val),
                                 <>
-                                <option >{val.title}</option>
+                                <option value={val.addon_id}>{val.title}</option>
                                 {/* <option>Canada</option>
                                 <option>Mexico</option> */}
                                 </>
@@ -168,7 +179,7 @@ export default function ModalRating({
                             addVal?.type == "multi" && addVal?.opt?.map((val0)=>(
                               <p>
                               <label class="relative inline-flex items-center cursor-pointer mt-3">
-                              <input type="checkbox" value="" class="sr-only peer"/>
+                              <input type="checkbox" value={val0?.id} class="sr-only peer" onChange={(e) => handleMultiaddon(e.target.value)}/>
                               <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                               <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{val0.title}</span>
                             </label>

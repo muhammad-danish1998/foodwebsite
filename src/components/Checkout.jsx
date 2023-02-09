@@ -267,7 +267,7 @@ const [showDetail, setShowDetail] = useState(false);
               <h1 className="text-2xl font-bold">Basket</h1>
               <div className="checkout flex text-white justify-between bg-red-500 p-4 rounded-2xl">
                 <p>Checkout</p>
-                <p>€120,00</p>
+                <p>€{cartlistItem?.carttotalamount}</p>
               </div>
               <CartInc />
               <div className="flex justify-between font-semibold">

@@ -39,6 +39,7 @@ const CartInc = () => {
 console.log("cartlistItemm ===>", cartlistItemm)
 
   const decrementValue = (quan , code) => {
+    console.log("quan ", quan, code);
     if(Number(quan) > 1){
       // setCount((count) => count - 1);
       let val = Number(quan) - 1
@@ -54,19 +55,19 @@ console.log("cartlistItemm ===>", cartlistItemm)
         }
       });
     }
-    // if(quan == "1"){
-    //   debugger;
-    //   dispatch(deleteAddToCartMenu({
-    //     sessid: "hello00",
-    //     code: code
-    //   })).then(res => {
+    if(quan == "1" && code == code){
+      debugger;
+      dispatch(deleteAddToCartMenu({
+        sessid: "hello00",
+        code: code
+      })).then(res => {
         
-    //     if (res === 200) {
-    //       dispatch(getCartMenuListItem(selectValue, "hello00"));
-    //     }
-    //     console.log("delete item", res)
-    //   });
-    // }
+        if (res === 200) {
+          dispatch(getCartMenuListItem(selectValue, "hello00"));
+        }
+        console.log("delete item", res)
+      });
+    }
     // amount = totalAmount;
     amount = (Number(itemAmount) * count).toFixed(2);
     // dispatch(setPaymentValue(val))
@@ -109,7 +110,7 @@ console.log("cartlistItemm ===>", cartlistItemm)
               <li>{cart.name}</li>
               </ol>
 
-              <p className="font-bold">€{cart.itemprice}</p>
+              <p className="font-bold">€{Number(cart.itemprice).toFixed(2)}</p>
 
               
               </div>

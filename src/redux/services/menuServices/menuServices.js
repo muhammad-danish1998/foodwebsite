@@ -100,4 +100,27 @@ export const updateCartMenuList = (state) => {
 };
 
 
+export const checkoutDelivery = (state) => {
+  return new Promise((resolve, reject) => {
+    const formData = new FormData();
+    for (var key in state) {
+      formData.append(key, state[key]);
+    }
+    const endpoint = axiosUrl("/_api_ajax_checkout.php");
+    axios
+      .post(endpoint, formData, contentType)
+      .then((res) => {
+        debugger;
+        // setSession(res.data.token);
+        console.log("res ===>", res)
+        resolve(res.data);
+      })
+      .catch((error) => {
+        reject(error.response);
+      });
+  });
+};
+
+
+
 
