@@ -111,7 +111,7 @@ export default function PopupDeliver({
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="name" className="leading-7 text-sm text-gray-600">
-                      First Name
+                    Street
                     </label>
                     <input
                       type="text"
@@ -124,7 +124,7 @@ export default function PopupDeliver({
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="email" className="leading-7 text-sm text-gray-600">
-                      Last Name
+                    House Number
                     </label>
                     <input
                       type="text"
@@ -140,7 +140,7 @@ export default function PopupDeliver({
                       for="message"
                       className="leading-7 text-sm text-gray-600"
                     >
-                      Email
+                      Apartment(Optional)
                     </label>
                     <input
                       type="email"
@@ -153,7 +153,7 @@ export default function PopupDeliver({
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="name" className="leading-7 text-sm text-gray-600">
-                      First Name
+                    City
                     </label>
                     <input
                       type="text"
@@ -166,7 +166,7 @@ export default function PopupDeliver({
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="email" className="leading-7 text-sm text-gray-600">
-                      Last Name
+                    Zip
                     </label>
                     <input
                       type="text"
@@ -179,7 +179,7 @@ export default function PopupDeliver({
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="name" className="leading-7 text-sm text-gray-600">
-                      First Name
+                    Floor (Optional)
                     </label>
                     <input
                       type="text"
@@ -192,7 +192,7 @@ export default function PopupDeliver({
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="email" className="leading-7 text-sm text-gray-600">
-                      Last Name
+                    Company (Optional)
                     </label>
                     <input
                       type="text"
@@ -217,7 +217,7 @@ export default function PopupDeliver({
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="name" className="leading-7 text-sm text-gray-600">
-                      First Name
+                    Name
                     </label>
                     <input
                       type="text"
@@ -230,10 +230,10 @@ export default function PopupDeliver({
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="email" className="leading-7 text-sm text-gray-600">
-                      Last Name
+                    Phone
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       id="email"
                       name="email"
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -246,7 +246,7 @@ export default function PopupDeliver({
                       for="message"
                       className="leading-7 text-sm text-gray-600"
                     >
-                      Email
+                     Email
                     </label>
                     <input
                       type="email"

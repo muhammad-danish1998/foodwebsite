@@ -24,7 +24,7 @@ export default function HeaderTextSlider() {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiperresturant bg-gray-200 text-center "
+        className="mySwiperresturant bg-gray-200 hidden lg:block  text-center "
       >
         <SwiperSlide className="p-3     lg:text-lg text-sm lg:font-semibold text-gray-700 cursor-pointer">
           ALL
@@ -45,7 +45,44 @@ export default function HeaderTextSlider() {
           Curry
         </SwiperSlide>
         <SwiperSlide className="p-3   text-sm lg:text-lg  lg:font-semibold text-gray-700 cursor-pointer">
-        Amarican Pizza
+        Beef Burger
+        </SwiperSlide>
+      
+    
+      </Swiper>
+      <Swiper
+        slidesPerView={3}
+        spaceBetween={5}
+        slidesPerGroup={1}
+        loop={true}
+        loopFillGroupWithBlank={true}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        className="mySwiperresturant bg-gray-200 lg:hidden  text-center "
+      >
+        <SwiperSlide className="p-3     lg:text-lg text-sm lg:font-semibold text-gray-700 cursor-pointer">
+          ALL
+        </SwiperSlide>
+        <SwiperSlide className="p-3   text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+          Pizza
+        </SwiperSlide>
+        <SwiperSlide className="p-3   text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+          Indian
+        </SwiperSlide>
+        <SwiperSlide className="p-3   text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+          Schnitzel
+        </SwiperSlide>
+        <SwiperSlide className="p-3   text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+          Burger
+        </SwiperSlide>
+        <SwiperSlide className="p-3   text-sm lg:text-lg  lg:font-semibold text-gray-700 cursor-pointer">
+          Curry
+        </SwiperSlide>
+        <SwiperSlide className="p-3   text-sm lg:text-lg  lg:font-semibold text-gray-700 cursor-pointer">
+        Beef Burger
         </SwiperSlide>
       
     
