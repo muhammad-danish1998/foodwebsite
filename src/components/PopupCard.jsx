@@ -5,7 +5,7 @@ import CartInc from "./CartInc";
 import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setCartList, setPaymentValue } from "../redux/store/actions/menuAction";
+import { addToCartMenu, getCartMenuListItem, setCartList, setPaymentValue } from "../redux/store/actions/menuAction";
 
 let amount;
 
@@ -21,14 +21,16 @@ export default function ModalRating({
 
   const dispatch = useDispatch();
 
-  const {menuList, totalAmount, cartlist} = useSelector(state => state?.menu);
+  const {menuList, totalAmount, cartlist, selectValue, menu_id} = useSelector(state => state?.menu);
   useEffect(() =>{
     amount  = totalAmount;
   },[])
 
+
+
   
 
-  console.log("menulist, totalAmount", menuList, amount);
+  console.log("menulist, totalAmount", menuList, amount, cartlist);
 
   const cancelButtonRef = useRef(null);
 
@@ -51,11 +53,30 @@ export default function ModalRating({
  } 
 
   const handleOnClose = (val) => {
-    dispatch(setPaymentValue(amount));
+    
     // dispatch(setCartList(amount));
     onClose();
     
+
   };
+
+  const handleSubmit = () => {
+    dispatch(setPaymentValue(amount));
+    debugger;
+    dispatch(addToCartMenu({
+      hidden_price: totalAmount,
+      menu: menu_id,
+      quantity : count,
+      sessid: "hello00",
+      addons : "",
+      multiaddons:""
+    })).then(res => {
+      if (res === 200) {
+        dispatch(getCartMenuListItem(selectValue, "hello00"));
+        onClose();
+      }
+    });
+  }
   return (
     <Transition.Root show={open} as={Fragment} onClick={handleOnClose}>
       <Dialog
@@ -113,35 +134,50 @@ export default function ModalRating({
                       <p className="text-sm  text-gray-500 justify-center items-center flex">
                         <img src={currentRestaurantImg} className="h-36 w-36" />
                       </p>
-                      <p>
+                      {/* <p> */}
                         {menuList?.addons?.map((addVal) => (
-                          console.log("add val", addVal),
+                          // console.log("add val", addVal),
                         <div>
                           <label
                             htmlFor="location"
                             className="block text-sm font-medium text-gray-700"
                           >
-                            {addVal?.name}
+                            {addVal.name}
                           </label>
+                          { addVal?.type == "single" &&
                           <select
                             id="location"
                             name="location"
                             className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                             defaultValue="Canada"
                           >
-                            {addVal?.opt?.map((val) => (
-                              console.log("val",val),
+                            
+                            {addVal?.type == "single" && addVal?.opt?.map((val) => (
+                              // console.log("val",val),
                                 <>
-                                <option>{val.title}</option>
+                                <option >{val.title}</option>
                                 {/* <option>Canada</option>
                                 <option>Mexico</option> */}
                                 </>
                             ))}
                           </select>
-                        </div>
-                          ))}
+                        }
+                      {/* </p> */}
+                        <p>
+                          {
+                            addVal?.type == "multi" && addVal?.opt?.map((val0)=>(
+                              <p>
+                              <label class="relative inline-flex items-center cursor-pointer mt-3">
+                              <input type="checkbox" value="" class="sr-only peer"/>
+                              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                              <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{val0.title}</span>
+                            </label>
+                            </p>
+                            ))
+                          }
                       </p>
-                      <p>
+                    </div>
+                ))}
                         {/* <div>
                           <label
                             htmlFor="location"
@@ -160,7 +196,7 @@ export default function ModalRating({
                             <option>Mexico</option>
                           </select>
                         </div> */}
-                      </p>
+                     
                     </div>
                   </div>
                 </div>
@@ -170,7 +206,7 @@ export default function ModalRating({
                     type="button"
                     className="mt-3 bg-red-500 text-white inline-flex w-full justify-center rounded-md border border-gray-300  px-4 py-2 text-base font-medium  shadow-sm  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 lg:text-lg sm:text-sm"
                     // onClick={() => setOpen(false)}
-                    onClick={() => handleOnClose()}
+                    onClick={() => handleSubmit()}
                     ref={cancelButtonRef}
                   >
                     Add to cart €{amount}

@@ -27,7 +27,7 @@ import axios from "axios";
 import PopupCard from "./PopupCard";
 import HeaderNavbar from "./HeaderNavbar";
 import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
-import {setCartList, getMenuList, setPaymentValue } from "../redux/store/actions/menuAction";
+import {setCartList, getMenuList, setPaymentValue, setMenuId } from "../redux/store/actions/menuAction";
 
 
 // import {
@@ -45,7 +45,7 @@ export default function SingleResOverview() {
   const [menuArray, setMenuArray] = useState([]);
   const [name, setName] = useState();
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
-  const {menuList, totalAmount, itemAmount, cartlist} = useSelector(state => state?.menu);
+  const {menuList, totalAmount, itemAmount, cartlist, cartlistItem} = useSelector(state => state?.menu);
   console.log("total amount", totalAmount)
   // const { menuList, totalAmount } = useSelector((state) => state?.menu);
   console.log("total amount", totalAmount);
@@ -76,6 +76,7 @@ export default function SingleResOverview() {
     setShowModal(true);
     dispatch(getMenuList(id));
     dispatch(setPaymentValue(price));
+    dispatch(setMenuId(id));
     let val = cartlist?.filter((e) => {
        return e.description ==  name;
     })
@@ -85,6 +86,7 @@ export default function SingleResOverview() {
       dispatch(setCartList({
         description: name,
         price: price,
+        menuId: id,
         count:1
       }))
   }
@@ -317,7 +319,7 @@ export default function SingleResOverview() {
               <h1 className="text-2xl font-bold">Shopping Cart</h1>
               <div className="checkout flex text-white justify-between font-bold bg-redColor p-4 rounded-2xl">
                 <p>Checkout</p>
-                <p>€{itemAmount}</p>
+                <p>€{Number(cartlistItem?.carttotalamount).toFixed(2)}</p>
               </div>
               <CartInc />
               <p className="mt-2">

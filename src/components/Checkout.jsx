@@ -6,6 +6,8 @@ import HeaderToggle from "./Header-Toggle";
 import Pickup from "./Pickup";
 
 
+
+
 import CartInc from "./CartInc";
 
 import { Link } from "react-router-dom";
@@ -20,6 +22,8 @@ import PopupDeliver from "./PopupDeliver";
 import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
 import { getMenuList, setPaymentValue } from "../redux/store/actions/menuAction";
 import Popuppickup from "./Popuppickup";
+
+
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -45,6 +49,8 @@ function classNames(...classes) {
 export default function SingleResOverview() {
   const dispatch = useDispatch();
 const [deliveryOption , setDeliveryOption] = useState("pickup")
+
+const {menuList, totalAmount, cartlist, itemAmount, cartlistItem} = useSelector(state => state?.menu);
 
 const [showDetail, setShowDetail] = useState(false);
   const [menuArray, setMenuArray] = useState([]);
@@ -266,17 +272,17 @@ const [showDetail, setShowDetail] = useState(false);
               <CartInc />
               <div className="flex justify-between font-semibold">
                 <p>Subtutel</p>
-                <p>€ 125,99</p>
+                <p>€ {cartlistItem?.totalpurchase}</p>
 
               </div>
               <div className="flex justify-between font-semibold">
                 <p>Delivery  Costs</p>
-                <p>€ 2,009</p>
+                <p>€ {cartlistItem?.delivery_fee}</p>
 
               </div>
               <div className="flex justify-between font-semibold">
                 <p>Totel</p>
-                <p>€ 125,99</p>
+                <p>€ {cartlistItem?.carttotalamount}</p>
 
               </div>
             </div>
