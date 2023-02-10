@@ -7,7 +7,7 @@ import HeaderTextSlider from "./HeaderTextSlider";
 import OpenResturant from "./OpenResturant";
 import RatiingHeader from "./RatiingHeader";
 import Modalminimumorder from "./Modalminimumorder";
-
+import { useTranslation } from 'react-i18next';
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import ModalRating from "./ModalRating";
@@ -67,7 +67,10 @@ export default function Restaurants() {
     setMinimumOrderValue(eValue)
     setCheckMinimumOrderValue(true)
   }
-
+  const { t, i18n } = useTranslation();
+  const changeLanguage = lng => {
+    i18n.changeLanguage(lng);
+  };
   return (
     <>
       {/*
@@ -81,7 +84,7 @@ export default function Restaurants() {
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-white shadow-sm">
           {({ open }) => (
-            <>
+            <div className="">
             <HeaderNavbar />
 
               <Disclosure.Panel className="sm:hidden">
@@ -143,23 +146,23 @@ export default function Restaurants() {
                   </div>
                 </div>
               </Disclosure.Panel>
-            </>
+            </div>
           )}
         </Disclosure>
         {/* --------------- text crousel ---------------  */}
-        <div className="bg-gray-100  ">
+        <div className="bg-gray-100 header sticky-thc ">
           <HeaderTextSlider />
         </div>
 
         {/* --------------- header grid check switch ------------ */}
-        <div className=" max-w-7xl  lg:mt-2 m-auto lg:flex items-center  p-1 ">
+        <div className=" max-w-8xl lg:ml-12  lg:mt-2 m-auto lg:flex items-center  p-1 ">
           <div className="flex justify-between">
           <p className=" bg-gray-100 rounded-full  p-2 flex items-center border-2">
             <span className="mr-2">Open Resturant</span>
             <OpenResturant openResturant={openResturant} handleChange={handleChangeOpenResturant} />
           </p>
           <p className=" bg-gray-100 lg:ml-4 mt-1  rounded-full p-2 flex items-center">
-            <span className="mr-4">Free Delivery</span>
+            <span className="mr-4">{t('freedelivery')}</span>
             <OpenResturant handleChange={handleChangeDelivery} />
           </p>
           </div>
@@ -171,7 +174,8 @@ export default function Restaurants() {
           {/* -------------- minimum order ---------------  */}
           <p className="lg:ml-4  mt-1">
             <button onClick={() => { setShowModalMinimum(true) }} className="border-2 p-2 rounded-full bg-gray-100">
-              Minimum Order
+            {t('freedelivery')}
+              
 
             </button>
           </p>

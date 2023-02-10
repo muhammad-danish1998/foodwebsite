@@ -5,7 +5,12 @@ import CartInc from "./CartInc";
 import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addToCartMenu, getCartMenuListItem, setCartList, setPaymentValue } from "../redux/store/actions/menuAction";
+import {
+  addToCartMenu,
+  getCartMenuListItem,
+  setCartList,
+  setPaymentValue,
+} from "../redux/store/actions/menuAction";
 
 let amount;
 
@@ -24,69 +29,66 @@ export default function ModalRating({
 
   const dispatch = useDispatch();
 
-  const {menuList, totalAmount, cartlist, selectValue, menu_id} = useSelector(state => state?.menu);
-  useEffect(() =>{
-    amount  = totalAmount;
-  },[])
-
+  const { menuList, totalAmount, cartlist, selectValue, menu_id } = useSelector(
+    (state) => state?.menu
+  );
+  useEffect(() => {
+    amount = totalAmount;
+  }, []);
 
   const handleAddons = (id) => {
     addons01.push(id);
-  }
+  };
 
   const handleMultiaddon = (id) => {
     multi01.push(id);
-  }
-
-  
+  };
 
   console.log("menulist, totalAmount", menuList, amount, cartlist);
 
   const cancelButtonRef = useRef(null);
 
- const decrementValue = () => {
-  if(count > 1){
-    setCount((count) => count - 1);
-  }
-  // amount = totalAmount;
-  amount = (Number(totalAmount) * count).toFixed(2);
-  // dispatch(setPaymentValue(val))
-  
- } 
- const incrementValue = () => {
-  setCount((count) => count + 1);
-  // amount = totalAmount
-  amount = (Number(totalAmount) * count).toFixed(2);
-  console.log("amount", amount)
-  // console.log("val", val);
-  // dispatch(setPaymentValue(val))
- } 
+  const decrementValue = () => {
+    if (count > 1) {
+      setCount((count) => count - 1);
+    }
+    // amount = totalAmount;
+    amount = (Number(totalAmount) * count).toFixed(2);
+    // dispatch(setPaymentValue(val))
+  };
+  const incrementValue = () => {
+    setCount((count) => count + 1);
+    // amount = totalAmount
+    amount = (Number(totalAmount) * count).toFixed(2);
+    console.log("amount", amount);
+    // console.log("val", val);
+    // dispatch(setPaymentValue(val))
+  };
 
   const handleOnClose = (val) => {
-    
     // dispatch(setCartList(amount));
     onClose();
-    
-
   };
 
   const handleSubmit = () => {
     dispatch(setPaymentValue(amount));
     debugger;
-    dispatch(addToCartMenu({
-      hidden_price: totalAmount,
-      menu: menu_id,
-      quantity : count,
-      sessid: "hello00",
-      addons : addons01,
-      multiaddons: multi01
-    })).then(res => {
+    dispatch(
+      addToCartMenu({
+        hidden_price: totalAmount,
+        menu: menu_id,
+        quantity: count,
+        sessid: "hello00",
+        addons: addons01,
+        multiaddons: multi01,
+      })
+    ).then((res) => {
       if (res === 200) {
         dispatch(getCartMenuListItem(selectValue, "hello00"));
         onClose();
       }
     });
-  }
+  };
   return (
     <Transition.Root show={open} as={Fragment} onClick={handleOnClose}>
       <Dialog
@@ -145,8 +147,8 @@ export default function ModalRating({
                         <img src={currentRestaurantImg} className="h-36 w-36" />
                       </p>
                       {/* <p> */}
-                        {menuList?.addons?.map((addVal) => (
-                          // console.log("add val", addVal),
+                      {menuList?.addons?.map((addVal) => (
+                        // console.log("add val", addVal),
                         <div>
                           <label
                             htmlFor="location"
@@ -154,42 +156,52 @@ export default function ModalRating({
                           >
                             {addVal.name}
                           </label>
-                          { addVal?.type == "single" &&
-                          <select
-                            id="location"
-                            name="location"
-                            className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                            defaultValue="Canada"
-                            onChange={(e)=> handleAddons(e.target.value)}
-                          >
-                            
-                            {addVal?.type == "single" && addVal?.opt?.map((val) => (
-                              // console.log("val",val),
-                                <>
-                                <option value={val.addon_id}>{val.title}</option>
-                                {/* <option>Canada</option>
+                          {addVal?.type == "single" && (
+                            <select
+                              id="location"
+                              name="location"
+                              className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                              defaultValue="Canada"
+                              onChange={(e) => handleAddons(e.target.value)}
+                            >
+                              {addVal?.type == "single" &&
+                                addVal?.opt?.map((val) => (
+                                  // console.log("val",val),
+                                  <>
+                                    <option value={val.addon_id}>
+                                      {val.title}
+                                    </option>
+                                    {/* <option>Canada</option>
                                 <option>Mexico</option> */}
-                                </>
-                            ))}
-                          </select>
-                        }
-                      {/* </p> */}
-                        <p>
-                          {
-                            addVal?.type == "multi" && addVal?.opt?.map((val0)=>(
-                              <p>
-                              <label class="relative inline-flex items-center cursor-pointer mt-3">
-                              <input type="checkbox" value={val0?.id} class="sr-only peer" onChange={(e) => handleMultiaddon(e.target.value)}/>
-                              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                              <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{val0.title}</span>
-                            </label>
-                            </p>
-                            ))
-                          }
-                      </p>
-                    </div>
-                ))}
-                        {/* <div>
+                                  </>
+                                ))}
+                            </select>
+                          )}
+                          {/* </p> */}
+                          <p>
+                            {addVal?.type == "multi" &&
+                              addVal?.opt?.map((val0) => (
+                                <p>
+                                  <label class="relative inline-flex items-center cursor-pointer mt-3">
+                                    <input
+                                      type="checkbox"
+                                      value={val0?.id}
+                                      class="sr-only peer"
+                                      onChange={(e) =>
+                                        handleMultiaddon(e.target.value)
+                                      }
+                                    />
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                    <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                      {val0.title}
+                                    </span>
+                                  </label>
+                                </p>
+                              ))}
+                          </p>
+                        </div>
+                      ))}
+                      {/* <div>
                           <label
                             htmlFor="location"
                             className="block text-sm font-medium text-gray-700"
@@ -207,24 +219,12 @@ export default function ModalRating({
                             <option>Mexico</option>
                           </select>
                         </div> */}
-                     
                     </div>
                   </div>
                 </div>
-                <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-                  <button
-                  // to="/checkout"
-                    type="button"
-                    className="mt-3 bg-red-500 text-white inline-flex w-full justify-center rounded-md border border-gray-300  px-4 py-2 text-base font-medium  shadow-sm  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 lg:text-lg sm:text-sm"
-                    // onClick={() => setOpen(false)}
-                    onClick={() => handleSubmit()}
-                    ref={cancelButtonRef}
-                  >
-                    Add to cart €{amount}
-                  </button>
+                <div className="mt-5  border-black sm:mt-6 sm:flex lg:justify-between sm:gap-3">
                   <div className="card-list-uper">
                     <p className="flex justify-center items-center">
-                    
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -258,6 +258,16 @@ export default function ModalRating({
                       </svg>
                     </p>
                   </div>
+                  <button
+                    // to="/checkout"
+                    type="button"
+                    className="mt-3 bg-red-500 text-white inline-flex lg:w-2/3 w-full justify-center rounded-md border border-gray-300  px-4 py-2 text-base font-medium  shadow-sm  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 lg:text-lg sm:text-sm"
+                    // onClick={() => setOpen(false)}
+                    onClick={() => handleSubmit()}
+                    ref={cancelButtonRef}
+                  >
+                    Add to cart €{amount}
+                  </button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>

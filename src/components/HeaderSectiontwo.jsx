@@ -6,13 +6,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
+import { useTranslation } from 'react-i18next';
 
 
 // import required modules
 import { Pagination, Navigation } from "swiper";
 
 const HeaderSectiontwo = () => {
+  const { t, i18n } = useTranslation();
+const changeLanguage = lng => {
+  i18n.changeLanguage(lng);
+};
   return (
     <div>
     <div className=" max-w-8xl mx-auto mt-12 lg:hidden   mb-4  text-center lg:col-span-6">
@@ -72,23 +76,23 @@ const HeaderSectiontwo = () => {
       >
         <SwiperSlide className="flex flex-col items-center justify-center ">
             <img src="./images/sli1.jpg" className="h-48 w-48" />
-            <p className="mt-4 text-orange-600 text-lg font-semibold">Amerikanisch</p>
+            <p className="mt-4 text-orange-600 text-lg font-semibold">{t('american')}</p>
         </SwiperSlide>
         <SwiperSlide className=" flex flex-col items-center justify-center ">
             <img className="h-48 w-48" src="./images/turkish.jpg" />
-            <p className="mt-4 text-orange-600 text-lg font-semibold">Turkisch</p>
+            <p className="mt-4 text-orange-600 text-lg font-semibold">{t('turkish')}</p>
         </SwiperSlide>
         <SwiperSlide className="flex flex-col items-center justify-center  ">
             <img className="h-48 w-48" src="./images/indian.jpg" />
-            <p className="mt-4 text-orange-600 text-lg font-semibold">Griechisch</p>
+            <p className="mt-4 text-orange-600 text-lg font-semibold">{t('grecian')}</p>
         </SwiperSlide>
         <SwiperSlide className="flex flex-col items-center justify-center  ">
             <img className="h-48 w-48" src="./images/greek.jpg" />
-            <p className="mt-4 text-orange-600 text-lg font-semibold">Lebanesisch</p>
+            <p className="mt-4 text-orange-600 text-lg font-semibold">{t('lebanese')}</p>
         </SwiperSlide>
         <SwiperSlide className="flex flex-col items-center justify-center  ">
             <img className="h-48 w-48" src="./images/chinees.jpg" />
-            <p className="mt-4 text-orange-600 text-lg font-semibold">Indisch</p>
+            <p className="mt-4 text-orange-600 text-lg font-semibold">{t('indian')}</p>
         </SwiperSlide>
        
         

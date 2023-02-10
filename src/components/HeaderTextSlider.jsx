@@ -24,7 +24,7 @@ export default function HeaderTextSlider() {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiperresturant bg-gray-200 hidden lg:block  text-center "
+        className="mySwiperresturant bg-gray-200 hidden lg:block  text-center   "
       >
         <SwiperSlide className="p-3     lg:text-lg text-sm lg:font-semibold text-gray-700 cursor-pointer">
           ALL
