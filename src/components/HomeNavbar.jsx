@@ -12,7 +12,7 @@
   }
   ```
 */
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -90,7 +90,7 @@ const changeLanguage = lng => {
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                            Login 
+                           {t('login')}
                             </Link>
                           )}
                         </Menu.Item>
@@ -103,7 +103,7 @@ const changeLanguage = lng => {
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                              Register
+                              {t('register')}
                             </Link>
                           )}
                         </Menu.Item>
@@ -152,14 +152,14 @@ const changeLanguage = lng => {
                 href="#"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
               >
-                Login
+                {t('login')}
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
                 href="#"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
               >
-               Register
+              {t('register')}
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"

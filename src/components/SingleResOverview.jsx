@@ -98,7 +98,9 @@ export default function SingleResOverview() {
     <div className="">
       {/* ------------- navbar here ---------  */}
       <HeaderNavbar />
+      <div className="sticky-thc ">
       <HeaderTextSlider />
+      </div>
       <div className="py-0">
         <div className="mx-auto max-w-8xl sm:px-6 lg:grid lg:max-w-9xl lg:grid-cols-12 lg:gap-0 lg:px-8">
           <main className="lg:col-span-9 xl:col-span-8 ">
@@ -317,21 +319,14 @@ export default function SingleResOverview() {
           <aside className=" xl:col-span-4 xl:block border-2">
             <div className="sticky top-6 space-y-4 lg:p-4">
               <h1 className="text-2xl font-bold">Shopping Cart</h1>
-              <div className="checkout flex text-white justify-between font-bold bg-redColor p-4 rounded-2xl">
+              <Link className="checkout flex text-white justify-between font-bold bg-redColor p-4 rounded-2xl"
+              to="/checkout"
+              >
                 <p>Checkout</p>
                 <p>€{Number(cartlistItem?.carttotalamount).toFixed(2)}</p>
-              </div>
+              </Link>
               <CartInc />
-              <p className="mt-2">
-                {" "}
-                <Link
-                 to="/checkout"
-                  type="button"
-                  className="inline-flex items-center rounded-md border border-transparent bg-redColor px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                 Checkout
-                </Link>
-              </p>
+             
             </div>
           </aside>
         </div>
