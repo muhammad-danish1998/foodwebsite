@@ -102,7 +102,7 @@ const api_key = `AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0`
       .then(data => {
         if (data.status === 'OK') {
           setAddress(data.results[0].formatted_address);
-          localStorage.setItem("address", data.results[0].formatted_address);
+          localStorage.setItem("your_street_name", data.results[0].formatted_address);
         }
 
       });
@@ -125,7 +125,7 @@ const api_key = `AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0`
 
       const postalCode = response.data.address.postcode;
       setZipCode(postalCode);
-      localStorage.setItem("zipcode", postalCode);
+      localStorage.setItem("your_zip", postalCode);
     });
   }, []);
 console.log(zipCode)

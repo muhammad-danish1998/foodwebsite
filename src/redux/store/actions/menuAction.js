@@ -284,11 +284,9 @@ export const UpdateAddToCartMenu =
   
     dispatch({type: CHECK_OUT_ITEM});
     try {
-    
       const response = await checkoutDelivery(state);
-      console.log("response", response);
-
-      if (response.type == "success") {
+      console.log("response ===", response);
+      if (response?.type == "success") {
         dispatch({
           type: CHECK_OUT_ITEM_SUCCESS,
           payload: response,
@@ -296,18 +294,17 @@ export const UpdateAddToCartMenu =
         toast.success(response?.msg);
         // navigate('/signin')
 
-      }
-      else{
+      } else{
         dispatch({
           type: CHECK_OUT_ITEM_FAIL,
           payload: 'Failed to fetch data',
         });
         console.log("hh", response)
-        toast.error(response?.errorarr);
+        toast.error(response?.msg);
       }
     } catch (e) {
-      console.log(e);
-      toast.error(e);
+      console.log("e", e);
+      toast.error(e.data?.msg);
     }
   };
 

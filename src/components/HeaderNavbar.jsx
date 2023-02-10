@@ -72,7 +72,7 @@ export default function HeaderNavbar() {
                     <input
                       id="search"
                       name="search"
-                      value={localStorage.getItem('address')}
+                      value={localStorage.getItem('your_street_name')}
                       className="block w-full ml-2 outline-none  border border-transparent bg-transparent py-2 pl-10 pr-3 leading-5 text-gray-300 placeholder-gray-400   focus:text-gray-900 focus:outline-none  sm:text-sm"
                       placeholder="67065 Ludwigshafen, Germany"
                       type="search"

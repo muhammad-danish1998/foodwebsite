@@ -5,7 +5,7 @@ import CartInc from "./CartInc";
 import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setPaymentValue } from "../redux/store/actions/menuAction";
+import { CheckoutOrder, setPaymentValue } from "../redux/store/actions/menuAction";
 
 let amount;
 
@@ -51,20 +51,36 @@ export default function PopupDeliver({
  } 
 
  const [state, setState] = useState({
-  your_street_name: localStorage.getItem('address'),
-  your_house_number:"",
-  your_address:"",
-  your_address_two:"",
-  your_city:"",
-  your_zip:"",
-  floor:"",
-  company:"",
-  your_name: "",
-  your_phone:"",
-  your_email: "",
-  shipping: "",
-  delivery_time: "",
-  PaymentType:""
+  // your_street_name: "",
+  // your_house_number: "",
+  // // your_address: localStorage.getItem('address'),
+  // // your_address_two: localStorage.getItem('address'),
+  // your_city: "",
+  // your_zip: "",
+  // floor:"",
+  // company: "",
+  // your_name: "",
+  // your_phone: "",
+  // your_email: "",
+  // shipping: "delivery",
+  // delivery_time: "ASAP",
+  // PaymentType:"code",
+  // sessid: "hello00"
+  your_street_name: localStorage.getItem('your_street_name'),
+  your_house_number: localStorage.getItem('your_house_number'),
+  // your_address: localStorage.getItem('address'),
+  // your_address_two: localStorage.getItem('address'),
+  your_city: localStorage.getItem('your_city'),
+  your_zip: localStorage.getItem('your_zip'),
+  floor:localStorage.getItem('floor'),
+  company: localStorage.getItem('company'),
+  your_name: localStorage.getItem('your_name'),
+  your_phone: localStorage.getItem('your_phone'),
+  your_email: localStorage.getItem('your_email'),
+  shipping: "delivery",
+  delivery_time: "ASAP",
+  PaymentType:"code",
+  sessid: "hello00"
 });
 
 
@@ -80,12 +96,13 @@ console.log("state ===>", state);
 
   const handleChange = (key, value) => {
     setState((state) => ({ ...state, [key]: value }));
+    localStorage.setItem(key, value);
   };
 
   const handleOnClose = () => {
 
     console.log("state ===>", state);
-
+  //  dispatch(CheckoutOrder(state));
     dispatch(setPaymentValue(amount));
     onClose(); 
   };
@@ -152,7 +169,7 @@ console.log("state ===>", state);
                       type="text"
                       id="name"
                       name="name"
-                      value={localStorage.getItem('address')}
+                      value={state.your_street_name}
                       onChange={(e) => handleChange("your_street_name", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
@@ -213,7 +230,7 @@ console.log("state ===>", state);
                       type="text"
                       id="email"
                       name="email"
-                      value={localStorage.getItem('zipcode')}
+                      value={state.your_zip}
                       onChange={(e) => handleChange("your_zip", e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />

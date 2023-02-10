@@ -1,6 +1,15 @@
 import axios from "axios";
 import { contentType, axiosUrl } from "../../../apiUrl";
 
+import uuid from 'react-uuid';
+
+
+if(localStorage.getItem('uuid')){
+  console.log("create uuid");
+}else{
+  localStorage.setItem("uuid", uuid());
+}
+
 
 export const getAddonsMenu = (menu_id) => {
   const token = localStorage.getItem("jwt_token");
@@ -106,7 +115,7 @@ export const checkoutDelivery = (state) => {
     for (var key in state) {
       formData.append(key, state[key]);
     }
-    const endpoint = axiosUrl("/_api_ajax_checkout.php");
+    const endpoint = axiosUrl("/ajax/_api_ajax_checkout.php");
     axios
       .post(endpoint, formData, contentType)
       .then((res) => {

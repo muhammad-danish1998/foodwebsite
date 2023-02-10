@@ -20,7 +20,7 @@ import PopupDeliver from "./PopupDeliver";
 // import { useDispatch, useSelector } from "react-redux";
 
 import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
-import { getMenuList, setPaymentValue } from "../redux/store/actions/menuAction";
+import { CheckoutOrder, getMenuList, setPaymentValue } from "../redux/store/actions/menuAction";
 import Popuppickup from "./Popuppickup";
 
 
@@ -94,6 +94,29 @@ const [showDetail, setShowDetail] = useState(false);
     // dispatch(setPaymentValue(price));
     
   }
+
+
+  let handleSubmit = () => {
+    let data = {
+      your_street_name: localStorage.getItem('address'),
+      your_house_number: localStorage.getItem('your_house_number'),
+      // your_address: localStorage.getItem('address'),
+      // your_address_two: localStorage.getItem('address'),
+      your_city: localStorage.getItem('your_city'),
+      your_zip: localStorage.getItem('zipcode'),
+      floor:localStorage.getItem('floor'),
+      company: localStorage.getItem('company'),
+      your_name: localStorage.getItem('your_name'),
+      your_phone: localStorage.getItem('your_phone'),
+      your_email: localStorage.getItem('your_email'),
+      shipping: "delivery",
+      delivery_time: "ASAP",
+      PaymentType:"code",
+      sessid: "hello00"
+    }
+    dispatch(CheckoutOrder(data));
+  }
+
   return (
     <div className="min-h-screen">
      <HeaderNavbar />
@@ -232,13 +255,15 @@ const [showDetail, setShowDetail] = useState(false);
                           <div className=" border-gray-400  p-1   mt-4 mb-4 bg-transparent  w-5/6">
                             <div className="">
                               <div className="mt-1">
-                                <Link
-                                to="/invoice"
-                                  type="button"
+                                {/* <Link
+                                to="/invoice" */}
+
+                                <button
+                                  onClick={() => handleSubmit()}
                                   className="inline-flex items-center rounded-md border border-transparent bg-greencheckout px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                 >
                                  Order And Pay
-                                </Link>
+                                </button>
                               </div>
                             </div>
                           </div>
