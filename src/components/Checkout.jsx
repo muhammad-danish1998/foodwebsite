@@ -112,7 +112,7 @@ const [showDetail, setShowDetail] = useState(false);
       shipping: "delivery",
       delivery_time: "ASAP",
       PaymentType:"code",
-      sessid: "hello00"
+      sessid: localStorage.getItem('uuid')
     }
     dispatch(CheckoutOrder(data));
   }

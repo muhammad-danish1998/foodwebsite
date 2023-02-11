@@ -28,7 +28,9 @@ export default function HomeNavbar() {
 
   const { t, i18n } = useTranslation();
 const changeLanguage = lng => {
+  localStorage.setItem("language", lng);
   i18n.changeLanguage(lng);
+  // window.location.reload();
 };
 
   return (
@@ -51,10 +53,18 @@ const changeLanguage = lng => {
               </div>
               <div className="hidden lg:ml-4 lg:block">
                 <div className="flex items-center">
+                  {localStorage?.getItem('language') == "en" ?
                   <img
-                    className="h-10 w-10 rounded-full border-2 border-white "
-                    src="./images/uk-circle.png "
-                  />
+                  className="h-10 w-10 rounded-full border-2 border-white "
+                  src="./images/uk-circle.png "
+                  onClick={() => changeLanguage('de') }
+                /> : <img
+                className="h-10 w-10 rounded-full border-2 border-white "
+                src="./images/germany.jpeg"
+                onClick={() => changeLanguage('en') }
+              /> 
+                 } 
+                  
 
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-4 flex-shrink-0">
@@ -126,6 +136,7 @@ const changeLanguage = lng => {
                             <button
                               // to="/signup"
                               onClick={() => changeLanguage('en')}
+
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"

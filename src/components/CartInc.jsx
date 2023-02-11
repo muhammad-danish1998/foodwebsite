@@ -40,7 +40,7 @@ const CartInc = () => {
 
   useEffect(() => {
     setCartListItemm(null);
-    dispatch(getCartMenuListItem(selectValue, "hello00"));
+    dispatch(getCartMenuListItem(selectValue, localStorage.getItem('uuid')));
   }, []);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const CartInc = () => {
       let val = Number(quan) - 1;
       dispatch(
         UpdateAddToCartMenu({
-          sessid: "hello00",
+          sessid: localStorage.getItem('uuid'),
           cartTempID: code,
           quantity: val,
         })
@@ -64,7 +64,7 @@ const CartInc = () => {
         console.log("delete item", res);
         if (res === 200) {
           console.log("delete item", res);
-          dispatch(getCartMenuListItem(selectValue, "hello00"));
+          dispatch(getCartMenuListItem(selectValue, localStorage.getItem('uuid')));
         }
       });
     }
@@ -72,12 +72,12 @@ const CartInc = () => {
       debugger;
       dispatch(
         deleteAddToCartMenu({
-          sessid: "hello00",
+          sessid: localStorage.getItem('uuid'),
           code: code,
         })
       ).then((res) => {
         if (res === 200) {
-          dispatch(getCartMenuListItem(selectValue, "hello00"));
+          dispatch(getCartMenuListItem(selectValue, localStorage.getItem('uuid')));
         }
         console.log("delete item", res);
       });
@@ -93,7 +93,7 @@ const CartInc = () => {
     let val = Number(quan) + 1;
     dispatch(
       UpdateAddToCartMenu({
-        sessid: "hello00",
+        sessid: localStorage.getItem('uuid'),
         cartTempID: code,
         quantity: val,
       })
@@ -101,7 +101,7 @@ const CartInc = () => {
       console.log("delete item", res);
       if (res === 200) {
         console.log("delete item", res);
-        dispatch(getCartMenuListItem(selectValue, "hello00"));
+        dispatch(getCartMenuListItem(selectValue, localStorage.getItem('uuid')));
       }
     });
     // amount = totalAmount

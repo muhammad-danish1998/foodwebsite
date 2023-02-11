@@ -44,9 +44,15 @@ export default function ModalRating({
     multi01.push(id);
   };
 
+  const handleSeeMore = () => {
+    setShowCount(70);
+  }
+
   console.log("menulist, totalAmount", menuList, amount, cartlist);
 
   const cancelButtonRef = useRef(null);
+
+  const [showCount, setShowCount] = useState(2);
 
   const decrementValue = () => {
     if (count > 1) {
@@ -78,13 +84,13 @@ export default function ModalRating({
         hidden_price: totalAmount,
         menu: menu_id,
         quantity: count,
-        sessid: "hello00",
+        sessid: localStorage.getItem('uuid'),
         addons: addons01,
         multiaddons: multi01,
       })
     ).then((res) => {
       if (res === 200) {
-        dispatch(getCartMenuListItem(selectValue, "hello00"));
+        dispatch(getCartMenuListItem(selectValue, localStorage.getItem('uuid')));
         onClose();
       }
     });
@@ -180,8 +186,10 @@ export default function ModalRating({
                           {/* </p> */}
                           <p>
                             {addVal?.type == "multi" &&
-                              addVal?.opt?.map((val0) => (
+                              addVal?.opt?.map((val0, i) => (
+                              <>
                                 <p>
+                                    {i  <= showCount && 
                                   <label class="relative inline-flex items-center cursor-pointer mt-3">
                                     <input
                                       type="checkbox"
@@ -196,10 +204,16 @@ export default function ModalRating({
                                       {val0.title}
                                     </span>
                                   </label>
+                                   }
                                 </p>
+
+                                
+                                </>  
                               ))}
                           </p>
+                       { showCount == 2 && <button class="t-blue" onClick={() => handleSeeMore()}>See more</button> }
                         </div>
+
                       ))}
                       {/* <div>
                           <label

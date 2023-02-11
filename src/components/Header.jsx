@@ -50,7 +50,7 @@ export default function Header() {
     if(data){
       navigate(`/restaurant?city=${data.city}&zip=${data.zipCode}`);
     }else{
-      navigate(`/restaurant?city=${localStorage.getItem('address')}&zip=${localStorage.getItem('zipcode')}`);
+      navigate(`/restaurant?city=${localStorage.getItem('your_street_name')}&zip=${localStorage.getItem('your_zip')}`);
     }
    
   };
@@ -87,9 +87,20 @@ const api_key = `AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0`
         });
       }
     );
+
+
+  
     
     
   }, []);
+
+  useEffect(() => {
+    if(localStorage.getItem('language')){
+         console.log("test")
+    }else{
+     localStorage.setItem("language", 'en')
+    }
+ },[]);
   useEffect(() => {
     if (!location.latitude || !location.longitude) {
       return;
