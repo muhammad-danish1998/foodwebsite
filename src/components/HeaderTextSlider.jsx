@@ -19,7 +19,7 @@ export default function HeaderTextSlider({catArray}) {
         slidesPerView={7}
         spaceBetween={5}
         slidesPerGroup={1}
-        loop={true}
+        loop={false}
         loopFillGroupWithBlank={true}
         pagination={{
           clickable: true,
