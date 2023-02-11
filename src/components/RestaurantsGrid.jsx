@@ -135,12 +135,12 @@ export default function RestaurantsGrid({
                   />
                 </div> */}
             </div>
-            <p className="    pointer-events-none block  text-gray-500 ">
+            <p className="  p-1  pointer-events-none block  text-gray-500 ">
               {/* ------------------------- card bottom  ----------------  */}
 
-              <div className="flex items-center  justify-around">
-                <i className="fa-sharp fa-solid fa-motorcycle ">
-                  <span className="ml-2  text-sm">€ {file.delivery_fee}</span>{" "}
+              <div className="flex items-center   justify-between">
+                <i className="fa-sharp  fa-solid fa-motorcycle ">
+                  <span className="ml-1 font-sans font-semibold  ">€ {file.delivery_fee}</span>{" "}
                 </i>
 
                 {/* -------------- watch ----------------------- */}
@@ -160,7 +160,7 @@ export default function RestaurantsGrid({
                   
                 </svg> */}
                 <i class="fa-solid fa-clock">
-                  <span className="ml-2  text-sm">{file.deliveryTime}</span>
+                  <span className="ml-1 font-sans font-semibold ">{file.deliveryTime}</span>
                 </i>
                 {/* ----------------------------- Shoping -----------------  */}
                 {/* <svg
@@ -185,7 +185,7 @@ export default function RestaurantsGrid({
             
                 <i class="fa-solid fa-cart-plus">
 
-                <span className="ml-2 text-sm">
+                <span className="ml-1 font-sans font-semibold">
                     <span>  min € {file.minorder}</span>
                   </span>
                 </i>

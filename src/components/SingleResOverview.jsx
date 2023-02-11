@@ -117,14 +117,14 @@ export default function SingleResOverview() {
                         alt="blog"
                       />
                       <div className="pt-4">
-                        <div className="flex justify-between border-2">
-                          <div className="">
-                            <h1 className="title-font text-2xl font-medium text-gray-900 mb-3">
+                        <div className="flex lg:items-center  justify-between border-2">
+                          <div className=" justify-center lg:ml-2 items-center">
+                            <h1 className="title-font text-2xl  font-medium text-gray-900 mb-3">
                              {name}
                             </h1>
 
                             {/* -------- review ------------  */}
-                            <span className="flex items-center">
+                            <span className="flex items-center ">
                               <svg
                                 fill="currentColor"
                                 stroke="currentColor"
@@ -217,9 +217,12 @@ export default function SingleResOverview() {
                               {eachMenuCatergory?.menuarr?.map(
                                 (eachMenuItem) => (
                                   <div className="border-2 p-4  mt-4 w-full">
+                                    <div>
                                     <h1 className="text-2xl">
                                       {eachMenuItem.name}
                                     </h1>
+                                    
+                                    </div>
                                     <p className="text-green-500 font-semibold">
                                       {" "}
                                       € {eachMenuItem.price}
@@ -230,9 +233,26 @@ export default function SingleResOverview() {
                                         __html: eachMenuItem.description,
                                       }}
                                     />
-                                    <p className="mt-2">
-                                      {" "}
-                                      <button
+                                    <p className="mt-2 flex justify-between">
+                                      <div className="font-bold">
+                                      <Link>Product info</Link>
+                                      </div>
+                                     <div className="">
+                                     <i class="fa-solid fa-plus cursor-pointer
+                                     shadow-sm hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
+                                     "
+                                      onClick={() => {
+                                        handleClick(
+                                          eachMenuItem.id,
+                                          eachMenuItem.price,
+                                          eachMenuItem?.name
+                                        );
+                                      }}
+                                     
+                                     style={{fontSize:"30px"}}></i>
+                                     </div>
+                                     
+                                      {/* <button
                                         onClick={() => {
                                           handleClick(
                                             eachMenuItem.id,
@@ -241,10 +261,10 @@ export default function SingleResOverview() {
                                           );
                                         }}
                                         type="button"
-                                        className="inline-flex items-center rounded-md border border-transparent bg-redColor px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                        className="inline-flex items-center rounded-md border border-transparent  px-4 py-2 text-2xl font-bold text-black shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                       >
-                                        Add to cart
-                                      </button>
+                                       +
+                                      </button> */}
                                     </p>
                                   </div>
                                 )

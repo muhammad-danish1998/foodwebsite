@@ -17,7 +17,7 @@ export default function HeaderTextSlider() {
         slidesPerView={7}
         spaceBetween={5}
         slidesPerGroup={1}
-        loop={true}
+        loop={false}
         loopFillGroupWithBlank={true}
         pagination={{
           clickable: true,
@@ -46,6 +46,9 @@ export default function HeaderTextSlider() {
         </SwiperSlide>
         <SwiperSlide className="p-3   text-sm lg:text-lg  lg:font-semibold text-gray-700 cursor-pointer">
         Beef Burger
+        </SwiperSlide>
+        <SwiperSlide className="p-3   text-sm lg:text-lg  lg:font-semibold text-gray-700 cursor-pointer">
+        Curry
         </SwiperSlide>
       
     
