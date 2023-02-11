@@ -150,9 +150,9 @@ export default function Restaurants() {
           )}
         </Disclosure>
         {/* --------------- text crousel ---------------  */}
-        <div className="bg-gray-100 header sticky-thc ">
+        {/* <div className="bg-gray-100 header sticky-thc ">
           <HeaderTextSlider />
-        </div>
+        </div> */}
 
         {/* --------------- header grid check switch ------------ */}
         <div className=" max-w-8xl lg:ml-12  lg:mt-2 m-auto lg:flex items-center  p-1 ">

@@ -19,6 +19,17 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import HeaderToggle from "./Header-Toggle";
 import HeaderTextSlider from "./HeaderTextSlider";
 import { useDispatch, useSelector } from "react-redux";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper";
+
+// import {Link} from 'react-scroll'
+
+// import {Link} from 'react-router-dom'
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 import CartInc from "./CartInc";
 
@@ -43,6 +54,7 @@ export default function SingleResOverview() {
   const dispatch = useDispatch();
 
   const [menuArray, setMenuArray] = useState([]);
+  const [catArray, setCatArray] = useState([]);
   const [name, setName] = useState();
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
   const {menuList, totalAmount, itemAmount, cartlist, cartlistItem} = useSelector(state => state?.menu);
@@ -61,6 +73,7 @@ export default function SingleResOverview() {
         console.log("response", response)
         setName(response?.data?.restname)
         setMenuArray(response.data.menuarr);
+        setCatArray(response?.data?.catarr)
         setCurrentRestaurantImg(response?.data?.restlogo);
       });
   }, [window.location.search]);
@@ -99,7 +112,34 @@ export default function SingleResOverview() {
       {/* ------------- navbar here ---------  */}
       <HeaderNavbar />
       <div className="sticky-thc ">
-      <HeaderTextSlider />
+      <HeaderTextSlider catArray={catArray}/>
+      {/* <Swiper
+        slidesPerView={7}
+        spaceBetween={5}
+        slidesPerGroup={1}
+        loop={true}
+        loopFillGroupWithBlank={true}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        className="mySwiperresturant bg-gray-200 hidden lg:block  text-center   "
+      > */}
+        {/* <SwiperSlide className="p-3     lg:text-lg text-sm lg:font-semibold text-gray-700 cursor-pointer">
+          ALL
+        </SwiperSlide>
+        <SwiperSlide className="p-3   text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+          Pizza
+        </SwiperSlide> */}
+        {/* {
+          catArray?.map((arr) => (
+            <SwiperSlide className="p-3 text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+               <Link to={arr.title} spy={true} smooth={true}>{arr.title}</Link>  
+            </SwiperSlide>
+          ))
+       }
+      </Swiper> */}
       </div>
       <div className="py-0">
         <div className="mx-auto max-w-8xl sm:px-6 lg:grid lg:max-w-9xl lg:grid-cols-12 lg:gap-0 lg:px-8">
@@ -204,11 +244,11 @@ export default function SingleResOverview() {
                             </div>
                           </div>
                         </div>
-                        <div className="flex items-center flex-wrap ">
+                        <div className="flex items-center flex-wrap " >
                           {menuArray?.map((eachMenuCatergory) => (
                             console.log("eachMenuCatergory ==>", eachMenuCatergory),
                             <>
-                              <div className="border-2 border-gray-400 p-4 rounded-lg mt-4 w-full">
+                              <div className="border-2 border-gray-400 p-4 rounded-lg mt-4 w-full" id={eachMenuCatergory?.catname}>
                                 <h1 className="text-4xl font-bold text-black">
                                   {eachMenuCatergory.catname}
                                 </h1>
