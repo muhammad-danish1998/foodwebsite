@@ -385,6 +385,7 @@ export default function SingleResOverview() {
                 <p>Checkout</p>
                 <p>€{Number(cartlistItem?.carttotalamount).toFixed(2)}</p>
               </Link>
+              
               <CartInc />
              
             </div>

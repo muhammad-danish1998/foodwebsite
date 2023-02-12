@@ -169,9 +169,40 @@ const [showDetail, setShowDetail] = useState(false);
                               >
                                 Payment method
                               </label>
-                              {/* <div className="mt-1">
-                                <input className="p-4  w-full" type={"text "} />
-                              </div> */}
+                              <div>
+                             
+                              <div className="mt-1 ">
+                                <fieldset className="mt-4">
+                                  <div className="space-y-5">
+                                    {plans.map((plan) => (
+                                      <div
+                                        key={plan.id}
+                                        className="relative flex items-start"
+                                      >
+                                        <div className="flex h-5 items-center">
+                                          <input
+                                            id={plan.id}
+                                            aria-describedby={`${plan.id}-description`}
+                                            name="plan"
+                                            type="radio"
+                                            defaultChecked={plan.id === "small"}
+                                            className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                          />
+                                        </div>
+                                        <div className="ml-3 text-sm">
+                                          <label
+                                            htmlFor={plan.id}
+                                            className="font-medium text-gray-700"
+                                          >
+                                            {plan.name}
+                                          </label>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </fieldset>
+                              </div>
+                            </div>
                             </div>
                           </div>
                           <div className="border-2 border-x-0 border-gray-400  p-1   mt-4 mb-4 bg-white  w-5/6">
@@ -209,47 +240,7 @@ const [showDetail, setShowDetail] = useState(false);
                             </div>
                           </div>
 
-                          <div className="border-2 border-gray-400 border-x-0  p-8   mt-4 mb-4 bg-white  w-5/6">
-                            <div>
-                              <label
-                                htmlFor="comment "
-                                className="block text-xl  font-medium text-gray-700"
-                              >
-                                Payment
-                              </label>
-                              <div className="mt-1 ">
-                                <fieldset className="mt-4">
-                                  <div className="space-y-5">
-                                    {plans.map((plan) => (
-                                      <div
-                                        key={plan.id}
-                                        className="relative flex items-start"
-                                      >
-                                        <div className="flex h-5 items-center">
-                                          <input
-                                            id={plan.id}
-                                            aria-describedby={`${plan.id}-description`}
-                                            name="plan"
-                                            type="radio"
-                                            defaultChecked={plan.id === "small"}
-                                            className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                          />
-                                        </div>
-                                        <div className="ml-3 text-sm">
-                                          <label
-                                            htmlFor={plan.id}
-                                            className="font-medium text-gray-700"
-                                          >
-                                            {plan.name}
-                                          </label>
-                                        </div>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </fieldset>
-                              </div>
-                            </div>
-                          </div>
+                       
 
                           {/* ------------------------ button ---------------------  */}
                           <div className=" border-gray-400  p-1   mt-4 mb-4 bg-transparent  w-5/6">
@@ -287,7 +278,7 @@ const [showDetail, setShowDetail] = useState(false);
               {/* <Popuppickup /> */}
             </section>
           </main>
-          <aside className=" xl:col-span-4 xl:block border-2">
+          <aside className=" xl:col-span-4 xl:block border-2 p-4 lg:p-0">
             <div className="sticky top-6 space-y-4 lg:p-4">
               <h1 className="text-2xl font-bold">Basket</h1>
               <div className="checkout flex text-white justify-between bg-red-500 p-4 rounded-2xl">

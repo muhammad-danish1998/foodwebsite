@@ -125,7 +125,10 @@ const CartInc = () => {
 
               <p className="font-bold">€{Number(cart.itemprice).toFixed(2)}</p>
             </div>
-
+            <div className="flex justify-between  p-6 font-medium">
+                <p>Mit Geberatene Nudeln</p>
+                <p>€21.90</p>
+              </div>
             <div className="card-list-uper flex justify-end p-6">
               {/* <p className="ml-4">Note</p> */}
               <p className="flex justify-center items-center">
