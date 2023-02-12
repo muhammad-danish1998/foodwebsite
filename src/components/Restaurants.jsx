@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import ModalRating from "./ModalRating";
+import { useDispatch, useSelector } from "react-redux";
 import HeaderNavbar from "./HeaderNavbar";
 
 const user = {
@@ -41,22 +42,30 @@ export default function Restaurants() {
   const [filterRating, setFilterRating] = useState({});
   const [freeDelivery, setFreeDelivery] = useState(false);
   const [openResturant, setOpenResturant] = useState(false);
+  const [catArray, setCatArray] = useState([]);
   const handleChangeDelivery = () => {
     setFreeDelivery(prev => !prev)
   }
   const handleChangeOpenResturant = () => {
     setOpenResturant(prev => !prev)
   }
+
+  const {selectValue,catId} = useSelector(state => state?.menu);
+
   useEffect(() => {
     const city = params.get("city")
     const zip = params.get("zip")
-    axios.get(`https://liefermars.de/ajax/resturents_api_ajax.php?city=${city}&zip=${zip}&page=1`).then((res) => {
-      console.log("🚀 ~ file: Restaurants.jsx:37 ~ Restaurants ~ res", res)
+    axios.get(`https://liefermars.de/ajax/resturents_api_ajax.php?city=${city}&zip=${zip}&page=1&sessid=${localStorage.getItem('uuid')}&type=${selectValue}&category=${catId}`).then((res) => {
+      console.log("🚀 ~ file: Restaurants.jsx:37 ~ Restaurants ~ res", res.data.cat)
       if (res?.data?.data) {
         setRestaurantItems(res.data.data)
+        setCatArray(res.data.cat);
+        
       }
     })
-  }, [window.location.search])
+  }, [window.location.search,selectValue, catId])
+
+  console.log("catArray ===>", catArray)
 
   const [showModal, setShowModal] = useState(false)
   const [showModalMinimum, setShowModalMinimum] = useState(false)
@@ -150,9 +159,9 @@ export default function Restaurants() {
           )}
         </Disclosure>
         {/* --------------- text crousel ---------------  */}
-        {/* <div className="bg-gray-100 header sticky-thc ">
-          <HeaderTextSlider />
-        </div> */}
+        <div className="bg-gray-100 header sticky-thc ">
+          <HeaderTextSlider  catArray={catArray} res={true}/>
+        </div>
 
         {/* --------------- header grid check switch ------------ */}
         <div className=" max-w-8xl lg:ml-12  lg:mt-2 m-auto lg:flex items-center  p-1 ">

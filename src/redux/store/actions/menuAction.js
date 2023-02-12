@@ -5,7 +5,7 @@ import {
   register,
 } from "../../services/authServices/authServices";
 import { addToCart, checkoutDelivery, getAddonsMenu, getCartItemList, removeCartMenuList, updateCartMenuList } from "../../services/menuServices/menuServices";
-import { ADD_TO_CART_MENU_ITEM, ADD_TO_CART_MENU_ITEM_FAIL, ADD_TO_CART_MENU_ITEM_SUCCESS, CHECK_OUT_ITEM, CHECK_OUT_ITEM_FAIL, CHECK_OUT_ITEM_SUCCESS, DELETE_ADD_TO_CART_MENU_ITEM, DELETE_ADD_TO_CART_MENU_ITEM_FAIL, DELETE_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_ADD_TO_CART_MENU_ITEM, GET_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_FAIL, GET_MENU_LIST_ITEM_SUCCESS, SET_CARTLIST, SET_ITEM_AMOUNT, SET_MENU_ID, SET_PAYMENT, SET_PAYMENT_SUCCESS, SET_SELECT_VALUE, UPDATE_ADD_TO_CART_MENU_ITEM, UPDATE_ADD_TO_CART_MENU_ITEM_FAIL, UPDATE_ADD_TO_CART_MENU_ITEM_SUCCESS } from "../types/actionTypes";
+import { ADD_TO_CART_MENU_ITEM, ADD_TO_CART_MENU_ITEM_FAIL, ADD_TO_CART_MENU_ITEM_SUCCESS, CHECK_OUT_ITEM, CHECK_OUT_ITEM_FAIL, CHECK_OUT_ITEM_SUCCESS, DELETE_ADD_TO_CART_MENU_ITEM, DELETE_ADD_TO_CART_MENU_ITEM_FAIL, DELETE_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_ADD_TO_CART_MENU_ITEM, GET_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_FAIL, GET_MENU_LIST_ITEM_SUCCESS, SET_CARTLIST, SET_CAT_VALUE, SET_ITEM_AMOUNT, SET_MENU_ID, SET_PAYMENT, SET_PAYMENT_SUCCESS, SET_SELECT_VALUE, UPDATE_ADD_TO_CART_MENU_ITEM, UPDATE_ADD_TO_CART_MENU_ITEM_FAIL, UPDATE_ADD_TO_CART_MENU_ITEM_SUCCESS } from "../types/actionTypes";
 
 export const getMenuList =
   (state, navigate) => async dispatch => {
@@ -107,6 +107,22 @@ export const setSelectValue =
   try {
       dispatch({
         type: SET_SELECT_VALUE,
+        payload: value,
+      });
+
+  } catch (e) {
+    console.log(e);
+    // toast.error(e);
+  }
+};
+
+
+export const setCatValue =
+(value) => async dispatch => {
+  debugger;
+  try {
+      dispatch({
+        type: SET_CAT_VALUE,
         payload: value,
       });
 
@@ -291,7 +307,8 @@ export const UpdateAddToCartMenu =
           type: CHECK_OUT_ITEM_SUCCESS,
           payload: response,
         });
-        toast.success(response?.msg);
+        toast.success(response?.order_number);
+        navigate('/invoice')
         // navigate('/signin')
 
       } else{

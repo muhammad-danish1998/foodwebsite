@@ -42,3 +42,5 @@ export const SET_MENU_ID = "SET_MENU_ID";
 export const CHECK_OUT_ITEM = 'CHECK_OUT_ITEM';
 export const CHECK_OUT_ITEM_SUCCESS = 'CHECK_OUT_ITEM_SUCCESS';
 export const CHECK_OUT_ITEM_FAIL = 'CHECK_OUT_ITEM_FAIL';
+
+export const SET_CAT_VALUE = "SET_CAT_VALUE";

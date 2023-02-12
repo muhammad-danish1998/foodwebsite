@@ -67,7 +67,7 @@ export default function SingleResOverview() {
     const restuarantCode = params.get("resturent_code");
     axios
       .get(
-        `https://liefermars.de/_api_ajax_menu.php?resturent_slug=${restaurantSlug}&resturent_code=${restuarantCode}`
+        `https://liefermars.de/_api_ajax_menu.php?resturent_slug=${restaurantSlug}&resturent_code=${restuarantCode}&sessid=${localStorage.getItem('uuid')}`
       )
       .then((response) => {
         console.log("response", response)
