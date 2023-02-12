@@ -38,7 +38,7 @@ export default function HeaderNavbar() {
                     {/* <a href="#" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">
                       Dashboard
                     </a> */}
-                    <HeaderToggle value1="Delivery" value2="Pickup" />
+                    <HeaderToggle value1="delivery" value2="pickup" />
                   </div>
                 </div>
               </div>

@@ -47,10 +47,26 @@ export default function Popuppickup({
     // dispatch(setPaymentValue(val))
   };
 
+
+  const [state, setState] = useState({
+    your_name: localStorage.getItem('your_name'),
+    your_email: localStorage.getItem('your_email'),
+    shipping: "delivery",
+    delivery_time: "ASAP",
+    PaymentType:"code",
+    sessid: localStorage.getItem('uuid')
+  });
+  
   const handleOnClose = () => {
     dispatch(setPaymentValue(amount));
     onClose();
   };
+
+  const handleChange = (key, value) => {
+    setState((state) => ({ ...state, [key]: value }));
+    localStorage.setItem(key, value);
+  };
+
   return (
     <Transition.Root show={open} as={Fragment} onClick={handleOnClose}>
       <Dialog
@@ -117,6 +133,8 @@ export default function Popuppickup({
                               type="text"
                               id="name"
                               name="name"
+                              value={state.your_name}
+                              onChange={(e) => handleChange("your_name", e.target.value)}
                               className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                             />
                           </div>
@@ -133,6 +151,8 @@ export default function Popuppickup({
                               type="text"
                               id="email"
                               name="email"
+                              value={state.your_name}
+                              onChange={(e) => handleChange("your_name", e.target.value)}
                               className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                             />
                           </div>
@@ -149,6 +169,8 @@ export default function Popuppickup({
                               type="email"
                               id="email"
                               name="email"
+                              value={state.your_email}
+                              onChange={(e) => handleChange("your_email", e.target.value)}
                               className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                             />
                           </div>

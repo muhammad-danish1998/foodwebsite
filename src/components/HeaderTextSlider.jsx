@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import { useDispatch, useSelector } from "react-redux";
+
 import {Link} from 'react-scroll'
 
 // Import Swiper styles
@@ -11,8 +13,10 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation } from "swiper";
+import { setCatValue } from "../redux/store/actions/menuAction";
 
-export default function HeaderTextSlider({catArray}) {
+export default function HeaderTextSlider({catArray, res}) {
+  const dispatch = useDispatch();
   return (
     <>
       <Swiper
@@ -51,6 +55,13 @@ export default function HeaderTextSlider({catArray}) {
         </SwiperSlide> */}
 
     {
+      res ? 
+      catArray?.map((arr) => (
+        <SwiperSlide className="p-3 text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+           <button onClick={() => dispatch(setCatValue(arr.id))}>{arr.title}</button>
+        </SwiperSlide>
+      ))
+      : 
           catArray?.map((arr) => (
             <SwiperSlide className="p-3 text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
                <Link to={arr.title} spy={true} smooth={true}>{arr.title}</Link>  

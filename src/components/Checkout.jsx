@@ -4,13 +4,14 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import HeaderToggle from "./Header-Toggle";
 import Pickup from "./Pickup";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
 
 import CartInc from "./CartInc";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import axios from "axios";
 import Delivery from "./Delivery";
 import HeaderNavbar from "./HeaderNavbar";
@@ -48,6 +49,7 @@ function classNames(...classes) {
 }
 export default function SingleResOverview() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 const [deliveryOption , setDeliveryOption] = useState("pickup")
 
 const {menuList, totalAmount, cartlist, itemAmount, cartlistItem} = useSelector(state => state?.menu);
@@ -57,7 +59,7 @@ const [showDetail, setShowDetail] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showModal1, setShowModal1] =  useState(false)
   const handleClose = () => {
-    if(selectValue == "Delivery"){
+    if(selectValue == "delivery"){
       setShowModal(false);
     }else{
        setShowModal1(false);
@@ -84,7 +86,7 @@ const [showDetail, setShowDetail] = useState(false);
     setShowDetail(true)                            
   }
   const handleClick = (id, price) => {
-    if(selectValue == "Delivery"){
+    if(selectValue == "delivery"){
       setShowModal(true);
     }else{
        setShowModal1(true);
@@ -103,18 +105,18 @@ const [showDetail, setShowDetail] = useState(false);
       // your_address: localStorage.getItem('address'),
       // your_address_two: localStorage.getItem('address'),
       your_city: localStorage.getItem('your_city'),
-      your_zip: localStorage.getItem('zipcode'),
+      your_zip: localStorage.getItem('your_zip'),
       floor:localStorage.getItem('floor'),
       company: localStorage.getItem('company'),
       your_name: localStorage.getItem('your_name'),
       your_phone: localStorage.getItem('your_phone'),
       your_email: localStorage.getItem('your_email'),
-      shipping: "delivery",
+      shipping: 'delivery',
       delivery_time: "ASAP",
-      PaymentType:"code",
+      PaymentType:"cod",
       sessid: localStorage.getItem('uuid')
     }
-    dispatch(CheckoutOrder(data));
+    dispatch(CheckoutOrder(data, navigate));
   }
 
   return (

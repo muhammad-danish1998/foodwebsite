@@ -111,13 +111,13 @@ export const updateCartMenuList = (state) => {
 
 export const checkoutDelivery = (state) => {
   return new Promise((resolve, reject) => {
-    const formData = new FormData();
-    for (var key in state) {
-      formData.append(key, state[key]);
-    }
+    // const formData = new FormData();
+    // for (var key in state) {
+    //   formData.append(key, state[key]);
+    // }
     const endpoint = axiosUrl("/ajax/_api_ajax_checkout.php");
     axios
-      .post(endpoint, formData, contentType)
+      .post(endpoint, state, contentType)
       .then((res) => {
         debugger;
         // setSession(res.data.token);
