@@ -58,7 +58,7 @@ export default function Restaurants() {
     axios.get(`https://liefermars.de/ajax/resturents_api_ajax.php?city=${city}&zip=${zip}&page=1&sessid=${localStorage.getItem('uuid')}&type=${selectValue}&category=${catId}`).then((res) => {
       console.log("🚀 ~ file: Restaurants.jsx:37 ~ Restaurants ~ res", res.data.cat)
       if (res?.data?.data) {
-        setRestaurantItems(res.data.data)
+        setRestaurantItems(res.data.data);
         setCatArray(res.data.cat);
         
       }
