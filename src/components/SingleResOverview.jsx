@@ -64,7 +64,9 @@ export default function SingleResOverview() {
   const [catArray, setCatArray] = useState([]);
   const [name, setName] = useState();
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
-  const {menuList, totalAmount, itemAmount, cartlist, cartlistItem} = useSelector(state => state?.menu);
+  const {menuList, totalAmount, itemAmount, cartlist, cartlistItem, max_rest_val} = useSelector(state => state?.menu);
+
+  console.log("max_rest_val",cartlistItem?.carttotalamount >= max_rest_val )
   // console.log("total amount", totalAmount)
   // const { menuList, totalAmount } = useSelector((state) => state?.menu);
   // console.log("total amount", totalAmount);
@@ -402,13 +404,15 @@ export default function SingleResOverview() {
           <aside className=" xl:col-span-4 xl:block border-2">
             <div className="sticky top-6 space-y-4 lg:p-4">
               <h1 className="text-2xl font-bold">Shopping Cart</h1>
+              { cartlistItem?.carttotalamount >= max_rest_val  &&
               <Link className="checkout flex text-white justify-between font-bold bg-redColor p-4 rounded-2xl"
               to="/checkout"
               >
+               
                 <p>Checkout</p>
                 <p>€{Number(cartlistItem?.carttotalamount).toFixed(2)}</p>
               </Link>
-              
+              }
               <CartInc />
              
             </div>

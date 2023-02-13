@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 
+import { useDispatch, useSelector } from "react-redux";
+import { setMaxRestVal } from "../redux/store/actions/menuAction";
+
 const files = [
   {
     title: "Thong Thai",
@@ -48,6 +51,8 @@ export default function RestaurantsGrid({
   minimumOrderValue,
   checkMinimumOrderValue,
 }) {
+
+  const dispatch = useDispatch();
   const FilterItems = (item) => {
     if (filterRating?.value) {
       if (item.overall_rating !== filterRating.value) {
@@ -91,7 +96,7 @@ export default function RestaurantsGrid({
             <ForwardLink
               to={`/singlerestaurant?resturent_slug=${restaurantUrl}&resturent_code=${file.code}`}
             >
-              <div className="group  block  w-full overflow-hidden rounded-xl bg-gray-100">
+              <div className="group  block  w-full overflow-hidden rounded-xl bg-gray-100" onClick={() => dispatch(setMaxRestVal(file.minorder))}>
                 <img
                   src={file.banner}
                   alt=""
