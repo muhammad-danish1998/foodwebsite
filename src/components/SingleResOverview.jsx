@@ -54,13 +54,20 @@ export default function SingleResOverview() {
   const dispatch = useDispatch();
 
   const [menuArray, setMenuArray] = useState([]);
+  const [menures, setMenuRes] = useState([]);
+  const [menuresdes, setMenuResDes] = useState('');
+  const [menuresimg, setMenuResImg] = useState('');
+
+
+  const [menuresName, setMenuResName] = useState('');
+
   const [catArray, setCatArray] = useState([]);
   const [name, setName] = useState();
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
   const {menuList, totalAmount, itemAmount, cartlist, cartlistItem} = useSelector(state => state?.menu);
-  console.log("total amount", totalAmount)
+  // console.log("total amount", totalAmount)
   // const { menuList, totalAmount } = useSelector((state) => state?.menu);
-  console.log("total amount", totalAmount);
+  // console.log("total amount", totalAmount);
   const params = new URLSearchParams(window.location.search);
   useEffect(() => {
     const restaurantSlug = params.get("resturent_slug");
@@ -75,6 +82,8 @@ export default function SingleResOverview() {
         setMenuArray(response.data.menuarr);
         setCatArray(response?.data?.catarr)
         setCurrentRestaurantImg(response?.data?.restlogo);
+        console.log("r-----------",response.data.menuarr)
+        setMenuRes(response.data.menuarr)
       });
   }, [window.location.search]);
   const [showModal, setShowModal] = useState(false);
@@ -85,16 +94,22 @@ export default function SingleResOverview() {
 
   console.log("name", name);
 
-  const handleClick = (id, price, name) => {
+  const handleClick = (id, price, name,description,image) => {
     setShowModal(true);
     dispatch(getMenuList(id));
     dispatch(setPaymentValue(price));
     dispatch(setMenuId(id));
     let val = cartlist?.filter((e) => {
        return e.description ==  name;
+
     })
+    // console.log("omggggggggg",image)
+    setMenuResImg(image)
+    
+    setMenuResDes(description)
+    setMenuResName(name)
     console.log("value ", val);
-    debugger;
+    
     if(val.length == 0){
       dispatch(setCartList({
         description: name,
@@ -285,7 +300,10 @@ export default function SingleResOverview() {
                                         handleClick(
                                           eachMenuItem.id,
                                           eachMenuItem.price,
-                                          eachMenuItem?.name
+                                          eachMenuItem?.name,
+                                          eachMenuItem?.description,
+                                          eachMenuItem?.image
+
                                         );
                                       }}
                                      
@@ -373,6 +391,11 @@ export default function SingleResOverview() {
                 currentRestaurantImg={currentRestaurantImg}
                 onClose={handleClose}
                 visible={showModal}
+                response = {menures}
+                menuresName = {menuresName}
+                menuresdes = {menuresdes}
+                menuresimg = {menuresimg}
+              
               />
             </section>
           </main>

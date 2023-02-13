@@ -18,6 +18,10 @@ export default function ModalRating({
   visible,
   onClose,
   currentRestaurantImg,
+  response,
+  menuresName,
+  menuresdes,
+  menuresimg
 }) {
   if (!visible) return null;
   const [open, setOpen] = useState(true);
@@ -34,6 +38,8 @@ export default function ModalRating({
   );
   useEffect(() => {
     amount = totalAmount;
+    console.log(response)
+    
   }, []);
 
   const handleAddons = (id) => {
@@ -139,18 +145,20 @@ export default function ModalRating({
                       as="h3"
                       className="text-2xl font-medium leading-6 text-gray-900"
                     >
-                      Knusprige Ente mit Gemuse
+                     
+                     {menuresName}
                     </Dialog.Title>
                     <Dialog.Title
                       as="h3"
                       className="text-sm font-normal leading-6 text-gray-900"
                     >
-                      Mit Gemuse,Ente,Verschiedene Nudeln Dazu
-                      Minifruhlingsrollen oder Peking Suppe
+                    {menuresdes}
                     </Dialog.Title>
                     <div className="mt-2   flex flex-col">
                       <p className="text-sm  text-gray-500 justify-center items-center flex">
-                        <img src={currentRestaurantImg} className="h-36 w-36" />
+                       {
+                        menuresimg ? <img src={menuresimg} className="h-36 w-36" /> : ""
+                       } 
                       </p>
                       {/* <p> */}
                       {menuList?.addons?.map((addVal) => (

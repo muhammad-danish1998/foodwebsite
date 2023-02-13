@@ -72,7 +72,7 @@ export default function HeaderNavbar() {
                     <input
                       id="search"
                       name="search"
-                      value={localStorage.getItem('your_street_name')}
+                      value={`${localStorage.getItem('your_street_name')}, ${localStorage.getItem('zipCode')}`}
                       className="block w-full ml-2 outline-none  border border-transparent bg-transparent py-2 pl-10 pr-3 leading-5 text-gray-300 placeholder-gray-400   focus:text-gray-900 focus:outline-none  sm:text-sm"
                       placeholder="67065 Ludwigshafen, Germany"
                       type="search"
@@ -115,14 +115,14 @@ export default function HeaderNavbar() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
+                      <Menu.Items className="absolute right-0  mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ">
+                      <Menu.Item className = "">
                           {({ active }) => (
                             <Link
                               to="/"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                                "block px-4 py-2 text-sm text-gray-700 z-10"
                               )}
                             >
                             Home

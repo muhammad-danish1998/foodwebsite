@@ -42,7 +42,7 @@ export const getMenuList =
 
   export const setPaymentValue =
   (value) => async dispatch => {
-    debugger;
+    
     try {
         dispatch({
           type: SET_PAYMENT,
@@ -57,7 +57,7 @@ export const getMenuList =
 
   export const setMenuId =
   (value) => async dispatch => {
-    debugger;
+    
     try {
         dispatch({
           type: SET_MENU_ID,
@@ -73,7 +73,7 @@ export const getMenuList =
   export const setCartList =
  
   (value) => async dispatch => {
-    debugger;
+    
     try {
         dispatch({
           type: SET_CARTLIST,
@@ -88,7 +88,7 @@ export const getMenuList =
 
 export const setItemValue =
 (value) => async dispatch => {
-  debugger;
+  
   try {
       dispatch({
         type: SET_ITEM_AMOUNT,
@@ -103,7 +103,7 @@ export const setItemValue =
 
 export const setSelectValue =
 (value) => async dispatch => {
-  debugger;
+  
   try {
       dispatch({
         type: SET_SELECT_VALUE,
@@ -119,7 +119,7 @@ export const setSelectValue =
 
 export const setCatValue =
 (value) => async dispatch => {
-  debugger;
+  
   try {
       dispatch({
         type: SET_CAT_VALUE,
@@ -307,7 +307,7 @@ export const UpdateAddToCartMenu =
           type: CHECK_OUT_ITEM_SUCCESS,
           payload: response,
         });
-        toast.success(response?.order_number);
+        toast.success("Order Submitted");
         navigate('/invoice')
         // navigate('/signin')
 

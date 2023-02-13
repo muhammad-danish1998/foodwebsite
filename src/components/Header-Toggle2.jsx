@@ -5,7 +5,7 @@ import PopupDeliver from "./PopupDeliver";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectValue } from "../redux/store/actions/menuAction";
 
-const HeaderToggle = (props) => {
+const HeaderToggle2 = (props) => {
   //  const [toggleValue , setToggleValue] =  useState(0);
 
   const { selectValue } = useSelector((state) => state?.menu);
@@ -21,7 +21,11 @@ const HeaderToggle = (props) => {
   const dispatch = useDispatch();
 
   const handleToggleChange = () => {
-  
+    if (selectValue == "Sign in") {
+      navigate("/signup");
+    } else {
+      navigate("/signin");
+    }
     if (selectedValue === props.value1) {
       setSelectedValue(props.value2);
       dispatch(setSelectValue(props.value2));
@@ -64,4 +68,4 @@ const HeaderToggle = (props) => {
   );
 };
 
-export default HeaderToggle;
+export default HeaderToggle2;

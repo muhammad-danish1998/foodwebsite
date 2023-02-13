@@ -117,7 +117,7 @@ const changeLanguage = lng => {
                             </Link>
                           )}
                         </Menu.Item>
-                        <Menu.Item>
+                        {/* <Menu.Item>
                           {({ active }) => (
                             <button
                               // to="/signup"
@@ -145,7 +145,7 @@ const changeLanguage = lng => {
                               English
                             </button>
                           )}
-                        </Menu.Item>
+                        </Menu.Item> */}
                       </Menu.Items>
                     </Transition>
                   </Menu>

@@ -32,6 +32,10 @@ export default function Header() {
   const navigate = useNavigate();
   const handlePlaceSelect = (data) => {
     console.log("🚀 ~ file: Header.jsx:20 ~ handlePlaceSelect ~ data", data);
+    localStorage.setItem('your_zip',data.zipCode)
+    localStorage.setItem('zipCode',data.zipCode)
+    localStorage.setItem('your_street_name',data.city)
+
     // const formData = new URLSearchParams();
     // formData.append("lat", 49.4537628);
     // formData.append("long", 8.4183208);

@@ -111,7 +111,7 @@ const [showDetail, setShowDetail] = useState(false);
       your_name: localStorage.getItem('your_name'),
       your_phone: localStorage.getItem('your_phone'),
       your_email: localStorage.getItem('your_email'),
-      shipping: 'delivery',
+      shipping: selectValue,
       delivery_time: "ASAP",
       PaymentType:"cod",
       sessid: localStorage.getItem('uuid')
@@ -285,22 +285,22 @@ const [showDetail, setShowDetail] = useState(false);
               <h1 className="text-2xl font-bold">Basket</h1>
               <div className="checkout flex text-white justify-between bg-red-500 p-4 rounded-2xl">
                 <p>Checkout</p>
-                <p>€{cartlistItem?.carttotalamount}</p>
+                <p>€{Number(cartlistItem?.carttotalamount).toFixed(2)}</p>
               </div>
               <CartInc />
               <div className="flex justify-between font-semibold">
-                <p>Subtutel</p>
-                <p>€ {cartlistItem?.totalpurchase}</p>
+                <p>Subtotal</p>
+                <p>€ {Number(cartlistItem?.totalpurchase).toFixed(2)}</p>
 
               </div>
               <div className="flex justify-between font-semibold">
                 <p>Delivery  Costs</p>
-                <p>€ {cartlistItem?.delivery_fee}</p>
+                <p>€ {Number(cartlistItem?.delivery_fee).toFixed(2)}</p>
 
               </div>
               <div className="flex justify-between font-semibold">
-                <p>Totel</p>
-                <p>€ {cartlistItem?.carttotalamount}</p>
+                <p>Total</p>
+                <p>€ {Number(cartlistItem?.carttotalamount).toFixed(2)}</p>
 
               </div>
             </div>

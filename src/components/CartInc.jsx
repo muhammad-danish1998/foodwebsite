@@ -40,7 +40,7 @@ const CartInc = () => {
 
   useEffect(() => {
     setCartListItemm(null);
-    dispatch(getCartMenuListItem(selectValue, localStorage.getItem('uuid')));
+    dispatch(getCartMenuListItem(selectValue, localStorage.getItem("uuid")));
   }, []);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const CartInc = () => {
       let val = Number(quan) - 1;
       dispatch(
         UpdateAddToCartMenu({
-          sessid: localStorage.getItem('uuid'),
+          sessid: localStorage.getItem("uuid"),
           cartTempID: code,
           quantity: val,
         })
@@ -64,7 +64,9 @@ const CartInc = () => {
         console.log("delete item", res);
         if (res === 200) {
           console.log("delete item", res);
-          dispatch(getCartMenuListItem(selectValue, localStorage.getItem('uuid')));
+          dispatch(
+            getCartMenuListItem(selectValue, localStorage.getItem("uuid"))
+          );
         }
       });
     }
@@ -72,12 +74,14 @@ const CartInc = () => {
       debugger;
       dispatch(
         deleteAddToCartMenu({
-          sessid: localStorage.getItem('uuid'),
+          sessid: localStorage.getItem("uuid"),
           code: code,
         })
       ).then((res) => {
         if (res === 200) {
-          dispatch(getCartMenuListItem(selectValue, localStorage.getItem('uuid')));
+          dispatch(
+            getCartMenuListItem(selectValue, localStorage.getItem("uuid"))
+          );
         }
         console.log("delete item", res);
       });
@@ -93,7 +97,7 @@ const CartInc = () => {
     let val = Number(quan) + 1;
     dispatch(
       UpdateAddToCartMenu({
-        sessid: localStorage.getItem('uuid'),
+        sessid: localStorage.getItem("uuid"),
         cartTempID: code,
         quantity: val,
       })
@@ -101,7 +105,9 @@ const CartInc = () => {
       console.log("delete item", res);
       if (res === 200) {
         console.log("delete item", res);
-        dispatch(getCartMenuListItem(selectValue, localStorage.getItem('uuid')));
+        dispatch(
+          getCartMenuListItem(selectValue, localStorage.getItem("uuid"))
+        );
       }
     });
     // amount = totalAmount
@@ -125,13 +131,27 @@ const CartInc = () => {
 
               <p className="font-bold">€{Number(cart.itemprice).toFixed(2)}</p>
             </div>
-            <div className="flex justify-between  p-6 font-medium">
+            {/* <div className="flex justify-between  p-4 font-ligh font-thin">
                 <p>Mit Geberatene Nudeln</p>
                 <p>€21.90</p>
+              </div> */}
+            <div className="card-list-uper lg:flex justify-between p-2">
+              
+                <div className="lg:flex lg:w-3/5 w-full ">
+                  <label
+                    for="small-input"
+                    class=" lg:p-2 block  lg:text-md  font-bold text-gray-500 "
+                  >
+                    Note
+                  </label>
+                  <input
+                    type="text"
+                    id="small-input"
+                    class="block w-full  text-gray-900 border border-gray-300 rounded-lg bg-gray-300 sm:text-xs   "
+                  />
+               
               </div>
-            <div className="card-list-uper flex justify-end p-6">
-              {/* <p className="ml-4">Note</p> */}
-              <p className="flex justify-center items-center">
+              <p className="flex lg:justify-center lg:mt-0 mt-2 items-center">
                 {cart.quantity > 1 ? (
                   <i
                     class="fa-solid fa-minus cursor-pointer border-2 p-2 rounded-full border-black"

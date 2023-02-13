@@ -1,4 +1,4 @@
-import HeaderToggle from "./Header-Toggle";
+import HeaderToggle2 from "./Header-Toggle2";
 import React, {useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -51,7 +51,7 @@ export default function Signup() {
           Sign In or Sign Up
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            <HeaderToggle value1={"Sign in"} value2="Sign Up" />
+            <HeaderToggle2 value1={"Sign in"} value2="Sign Up" />
           </p>
         </div>
        
@@ -117,7 +117,7 @@ export default function Signup() {
                      Password
                     </label>
                     <input
-                      type="passwrd"
+                      type="password"
                       id="password"
                       name="password"
                       value={state.password}

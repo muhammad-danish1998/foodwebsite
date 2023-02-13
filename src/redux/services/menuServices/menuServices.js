@@ -24,7 +24,7 @@ export const getAddonsMenu = (menu_id) => {
         // },
       })
       .then((res) => {
-        debugger;
+       
         ressolve(res.data);
       })
       .catch((error) => {
@@ -65,7 +65,7 @@ export const getCartItemList = (mode, sessionid) => {
         // },
       })
       .then((res) => {
-        debugger;
+       
         ressolve(res.data);
       })
       .catch((error) => {
@@ -119,7 +119,7 @@ export const checkoutDelivery = (state) => {
     axios
       .post(endpoint, state, contentType)
       .then((res) => {
-        debugger;
+       
         // setSession(res.data.token);
         console.log("res ===>", res)
         resolve(res.data);
