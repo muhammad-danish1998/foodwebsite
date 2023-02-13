@@ -81,6 +81,8 @@ export default function SingleResOverview() {
         setName(response?.data?.restname)
         setMenuArray(response.data.menuarr);
         setCatArray(response?.data?.catarr)
+        
+
         setCurrentRestaurantImg(response?.data?.restlogo);
         console.log("r-----------",response.data.menuarr)
         setMenuRes(response.data.menuarr)
@@ -253,7 +255,7 @@ export default function SingleResOverview() {
                             <div className="mt-2 ">
                               <img
                                 className="inline-block lg:h-24 lg:w-24 h-14 w-14 rounded-full"
-                                src="./images/Ellipse 20.png"
+                                src={currentRestaurantImg}
                                 alt=""
                               />
                             </div>
