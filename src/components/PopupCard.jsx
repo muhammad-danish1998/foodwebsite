@@ -91,7 +91,7 @@ export default function ModalRating({
         menu: menu_id,
         quantity: count,
         sessid: localStorage.getItem('uuid'),
-        addons: addons01,
+        addon: addons01,
         multiaddons: multi01,
       })
     ).then((res) => {

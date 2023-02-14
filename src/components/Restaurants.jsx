@@ -159,14 +159,14 @@ export default function Restaurants() {
           )}
         </Disclosure>
         {/* --------------- text crousel ---------------  */}
-        <div className="bg-gray-100 header sticky-thc ">
+        <div className="bg-gray-100 header sticky-thc lg:z-0 z-10">
           <HeaderTextSlider  catArray={catArray} res={true}/>
         </div>
 
         {/* --------------- header grid check switch ------------ */}
         <div className=" max-w-8xl lg:ml-12  lg:mt-2 m-auto lg:flex items-center  p-1 ">
-          <div className="flex justify-between">
-          <p className=" bg-gray-100 rounded-full  p-2 flex items-center border-2">
+          <div className="lg:flex justify-between">
+          <p className=" bg-gray-100 rounded-full   p-2 flex items-center border-2">
             <span className="mr-2">Open Resturant</span>
             <OpenResturant openResturant={openResturant} handleChange={handleChangeOpenResturant} />
           </p>

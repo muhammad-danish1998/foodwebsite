@@ -115,20 +115,23 @@ export default function HeaderNavbar() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0  mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ">
-                      <Menu.Item className = "">
+                      <Menu.Items className="absolute right-0  border-2  mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
+                       
+                      <Menu.Item>
                           {({ active }) => (
                             <Link
                               to="/"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700 z-10"
+                                "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                            Home
+                              Home
                             </Link>
                           )}
                         </Menu.Item>
+
+
                         <Menu.Item>
                           {({ active }) => (
                             <Link
@@ -158,17 +161,18 @@ export default function HeaderNavbar() {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="#"
+                            <Link
+                              to="/about"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                              Sign out
-                            </a>
+                              about
+                            </Link>
                           )}
                         </Menu.Item>
+                        
                       </Menu.Items>
                     </Transition>
                   </Menu>
