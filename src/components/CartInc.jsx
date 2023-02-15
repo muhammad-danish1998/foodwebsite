@@ -28,6 +28,7 @@ const CartInc = () => {
 
   const [count, setCount] = useState(0);
   const [cartlistItemm, setCartListItemm] = useState();
+  const [noteVal, setNoteVal] = useState();
 
   useEffect(() => {
     let priceVal = 0;
@@ -38,10 +39,11 @@ const CartInc = () => {
     dispatch(setItemValue(priceVal.toFixed(2)));
   }, [cartlist]);
 
-  useEffect(() => {
-    setCartListItemm(null);
+  useEffect(() => {   
     dispatch(getCartMenuListItem(selectValue, localStorage.getItem("uuid")));
   }, []);
+
+
 
   useEffect(() => {
     setCartListItemm(cartlistItem);
@@ -118,10 +120,31 @@ const CartInc = () => {
     // dispatch(setPaymentValue(val))
   };
 
+  const handleUpdateNote = (code, quan) => {
+    console.log("note", code);
+    dispatch(
+      UpdateAddToCartMenu({
+        sessid: localStorage.getItem("uuid"),
+        cartTempID: code,
+        note: noteVal,
+        quantity: quan
+      })
+    ).then((res) => {
+      console.log("delete item", res);
+      if (res === 200) {
+        console.log("delete item", res);
+        dispatch(
+          getCartMenuListItem(selectValue, localStorage.getItem("uuid"))
+        );
+      }
+    });
+  }
+
   return (
     <div>
       <div>
         {cartlistItemm?.items?.map((cart) => (
+          
           //  setVal(cart?.price),
           <>
             <div className="card-list-uper flex justify-between p-6">
@@ -147,8 +170,11 @@ const CartInc = () => {
                   <input
                     type="text"
                     id="small-input"
+                    value={cart?.note}
+                    onChange={(e) => setNoteVal(e.target.value)}
                     class="block w-full  text-gray-900 border border-gray-300 rounded-lg bg-gray-300 sm:text-xs   "
                   />
+                  <button className="ml-2" onClick={() => handleUpdateNote(cart?.temp, cart?.quantity)}>Update</button>
                
               </div>
               <p className="flex lg:justify-center lg:mt-0 mt-2 items-center">

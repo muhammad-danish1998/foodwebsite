@@ -8,7 +8,7 @@ import { setSelectValue } from "../redux/store/actions/menuAction";
 const HeaderToggle = (props) => {
   //  const [toggleValue , setToggleValue] =  useState(0);
 
-  const { selectValue } = useSelector((state) => state?.menu);
+  const { selectValue, deliveryVal, pickupVal } = useSelector((state) => state?.menu);
   const initalValue =
     window.location.pathname === "/signup" ? props.value2 : props.value1;
   const [selectedValue, setSelectedValue] = useState(selectValue);
@@ -21,17 +21,20 @@ const HeaderToggle = (props) => {
   const dispatch = useDispatch();
 
   const handleToggleChange = () => {
-  
-    if (selectedValue === props.value1) {
-      setSelectedValue(props.value2);
-      dispatch(setSelectValue(props.value2));
-      
-      // navigate("/delivery");
-    } else {
-      // navigate("/pickup");
-      setSelectedValue(props.value1);
-      dispatch(setSelectValue(props.value1));
+    console.log("deliveryVal, pickupVal ===>", deliveryVal, pickupVal)
+    if(pickupVal == 1){
+      if (selectedValue === props.value1) {
+        setSelectedValue(props.value2);
+        dispatch(setSelectValue(props.value2));
+        
+        // navigate("/delivery");
+      } else {
+        // navigate("/pickup");
+        setSelectedValue(props.value1);
+        dispatch(setSelectValue(props.value1));
+      }
     }
+  
   };
 
   console.log("selectValue", selectValue);

@@ -132,4 +132,27 @@ export const checkoutDelivery = (state) => {
 
 
 
+export const getDeleiveryTime = (sessionid) => {
+  const token = localStorage.getItem("jwt_token");
+
+  return new Promise((ressolve, reject) => {
+    const endpoint = axiosUrl(`/ajax/__other_apis.php?action=getasaplist&sessid=${sessionid}`);
+
+    axios
+      .get(endpoint, {
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
+      })
+      .then((res) => {
+       
+        ressolve(res.data);
+      })
+      .catch((error) => {
+        reject(error.response);
+      });
+  });
+};
+
+
 

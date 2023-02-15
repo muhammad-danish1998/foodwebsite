@@ -170,6 +170,7 @@ export default function ModalRating({
                           >
                             {addVal.name}
                           </label>
+                        
                           {addVal?.type == "single" && (
                             <select
                               id="location"

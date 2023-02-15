@@ -38,7 +38,7 @@ import axios from "axios";
 import PopupCard from "./PopupCard";
 import HeaderNavbar from "./HeaderNavbar";
 import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
-import {setCartList, getMenuList, setPaymentValue, setMenuId } from "../redux/store/actions/menuAction";
+import {setCartList, getMenuList, setPaymentValue, setMenuId, getCartMenuListItem } from "../redux/store/actions/menuAction";
 
 
 // import {
@@ -64,7 +64,7 @@ export default function SingleResOverview() {
   const [catArray, setCatArray] = useState([]);
   const [name, setName] = useState();
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
-  const {menuList, totalAmount, itemAmount, cartlist, cartlistItem, max_rest_val} = useSelector(state => state?.menu);
+  const {menuList, totalAmount, itemAmount, selectValue, cartlist, cartlistItem, max_rest_val} = useSelector(state => state?.menu);
 
   console.log("max_rest_val",cartlistItem?.carttotalamount >= max_rest_val )
   // console.log("total amount", totalAmount)
@@ -91,6 +91,11 @@ export default function SingleResOverview() {
       });
   }, [window.location.search]);
   const [showModal, setShowModal] = useState(false);
+
+
+  useEffect(() =>{
+    dispatch(getCartMenuListItem(selectValue, localStorage.getItem("uuid")));
+  },[])
 
   const handleClose = () => {
     setShowModal(false);

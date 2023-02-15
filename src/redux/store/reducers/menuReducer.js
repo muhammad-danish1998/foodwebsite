@@ -1,4 +1,4 @@
-import { REGISTRATION, REGISTER_SUCCESS, REGISTRATION_FAIL, LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_SUCCESS, GET_MENU_LIST_ITEM_FAIL, SET_PAYMENT, SET_PAYMENT_SUCCESS, SET_CARTLIST, SET_ITEM_AMOUNT, SET_SELECT_VALUE, ADD_TO_CART_MENU_ITEM, ADD_TO_CART_MENU_ITEM_SUCCESS, ADD_TO_CART_MENU_ITEM_FAIL, GET_ADD_TO_CART_MENU_ITEM, GET_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_ADD_TO_CART_MENU_ITEM_FAIL, DELETE_ADD_TO_CART_MENU_ITEM, DELETE_ADD_TO_CART_MENU_ITEM_SUCCESS, DELETE_ADD_TO_CART_MENU_ITEM_FAIL, UPDATE_ADD_TO_CART_MENU_ITEM, UPDATE_ADD_TO_CART_MENU_ITEM_SUCCESS, UPDATE_ADD_TO_CART_MENU_ITEM_FAIL, SET_MENU_ID, CHECK_OUT_ITEM_SUCCESS, CHECK_OUT_ITEM_FAIL, CHECK_OUT_ITEM, SET_CAT_VALUE, SET_MAX_REST_VALUE } from "../types/actionTypes";
+import { REGISTRATION, REGISTER_SUCCESS, REGISTRATION_FAIL, LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_SUCCESS, GET_MENU_LIST_ITEM_FAIL, SET_PAYMENT, SET_PAYMENT_SUCCESS, SET_CARTLIST, SET_ITEM_AMOUNT, SET_SELECT_VALUE, ADD_TO_CART_MENU_ITEM, ADD_TO_CART_MENU_ITEM_SUCCESS, ADD_TO_CART_MENU_ITEM_FAIL, GET_ADD_TO_CART_MENU_ITEM, GET_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_ADD_TO_CART_MENU_ITEM_FAIL, DELETE_ADD_TO_CART_MENU_ITEM, DELETE_ADD_TO_CART_MENU_ITEM_SUCCESS, DELETE_ADD_TO_CART_MENU_ITEM_FAIL, UPDATE_ADD_TO_CART_MENU_ITEM, UPDATE_ADD_TO_CART_MENU_ITEM_SUCCESS, UPDATE_ADD_TO_CART_MENU_ITEM_FAIL, SET_MENU_ID, CHECK_OUT_ITEM_SUCCESS, CHECK_OUT_ITEM_FAIL, CHECK_OUT_ITEM, SET_CAT_VALUE, SET_MAX_REST_VALUE, SET_REST_DEVLIVERY_VALUE, SET_REST_PICKUP_VALUE, GET_DELIVERY_TIME, GET_DELIVERY_TIME_SUCCESS, GET_DELIVERY_TIME_FAIL } from "../types/actionTypes";
 
 const initialState = {
   totalAmount: null,
@@ -11,7 +11,10 @@ const initialState = {
   selectValue: "delivery",
   catId: 1,
   max_rest_val: null,
-  menu_id: null
+  menu_id: null,
+  deliveryVal: null,
+  pickupVal: null,
+  deliverList: null
 };
 
 const menuReducer = (state = initialState, action) => {
@@ -160,6 +163,33 @@ const menuReducer = (state = initialState, action) => {
         loading: false,
       };
     case CHECK_OUT_ITEM_FAIL:
+      return {
+        ...state,
+        msg: action.payload,
+        loading: false,
+      };
+    case SET_REST_DEVLIVERY_VALUE:
+      return {
+        ...state,
+        deliveryVal: action.payload
+    };
+    case SET_REST_PICKUP_VALUE:
+      return {
+        ...state,
+        pickupVal: action.payload
+    };
+    case GET_DELIVERY_TIME:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_DELIVERY_TIME_SUCCESS:
+      return {
+        ...state,
+        deliverList: action.payload,
+        loading: false,
+      };
+    case GET_DELIVERY_TIME_FAIL:
       return {
         ...state,
         msg: action.payload,

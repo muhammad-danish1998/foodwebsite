@@ -21,7 +21,7 @@ import PopupDeliver from "./PopupDeliver";
 // import { useDispatch, useSelector } from "react-redux";
 
 import { getAddonsMenu } from "../redux/services/menuServices/menuServices";
-import { CheckoutOrder, getMenuList, setPaymentValue } from "../redux/store/actions/menuAction";
+import { CheckoutOrder, getDeliveryTimeList, getMenuList, setPaymentValue } from "../redux/store/actions/menuAction";
 import Popuppickup from "./Popuppickup";
 
 
@@ -54,10 +54,13 @@ const [deliveryOption , setDeliveryOption] = useState("pickup")
 
 const {menuList, totalAmount, cartlist, itemAmount, cartlistItem} = useSelector(state => state?.menu);
 
+
+console.log("cartlistItem =====>", cartlistItem)
 const [showDetail, setShowDetail] = useState(false);
   const [menuArray, setMenuArray] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showModal1, setShowModal1] =  useState(false)
+  const [deliveryTimeList, setDeliveryTimeList]  = useState([]);
   const handleClose = () => {
     if(selectValue == "delivery"){
       setShowModal(false);
@@ -66,7 +69,25 @@ const [showDetail, setShowDetail] = useState(false);
     }
   };
 
-  const {selectValue} = useSelector(state => state?.menu);
+
+  const [timeValue, setTimeValue] = useState(null);
+
+ const handleChangeSelectValue = (e) => {
+  setTimeValue(e);
+ }
+
+  const {selectValue,deliverList} = useSelector(state => state?.menu);
+
+
+  useEffect(()=> {
+    setDeliveryTimeList(deliverList);
+  },[deliverList])
+
+  console.log("setDeliveryTimeList === >", deliveryTimeList)
+
+  useEffect(() => {
+     dispatch(getDeliveryTimeList(localStorage.getItem('uuid')));
+  },[])
   
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
   const params = new URLSearchParams(window.location.search);
@@ -112,7 +133,7 @@ const [showDetail, setShowDetail] = useState(false);
       your_phone: localStorage.getItem('your_phone'),
       your_email: localStorage.getItem('your_email'),
       shipping: selectValue,
-      delivery_time: "ASAP",
+      delivery_time: timeValue,
       PaymentType:"cod",
       sessid: localStorage.getItem('uuid')
     }
@@ -215,13 +236,38 @@ const [showDetail, setShowDetail] = useState(false);
                               >
                                 Delivery Time
                               </label>
-                              <div className="mt-1">
+                            <select
+                              id="location"
+                              name="location"
+                              className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                              defaultValue="ASAP"
+                              onChange={(e) => handleChangeSelectValue(e.target.value)}
+                            >
+                              {/* {addVal?.type == "single" &&
+                                addVal?.opt?.map((val) => (
+                                  // console.log("val",val), */}
+                                     <option value="ASAP">
+                                        ASAP
+                                      </option>
+                                  {deliveryTimeList?.map((e) => (
+                                      <option value={e.time}>
+                                     {e.time}
+                                      </option>
+                                  ))}
+                                  <>
+                                   
+                                    {/* <option>Canada</option>
+                                <option>Mexico</option> */}
+                                  </>
+                                {/* ))} */}
+                            </select>
+                              {/* <div className="mt-1">
                                 <input
                                   placeholder="ASAP"
                                   className="p-2  w-full bg-gray-200"
                                   type={"text "}
                                 />
-                              </div>
+                              </div> */}
                             </div>
                           </div>
                           <div className="border-2 border-x-0 border-gray-400  p-1   mt-4 mb-4 bg-white  w-5/6">

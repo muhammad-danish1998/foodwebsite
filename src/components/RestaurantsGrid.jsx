@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setMaxRestVal } from "../redux/store/actions/menuAction";
+import { setMaxRestVal, setRestDeliveryVal, setRestPickupVal } from "../redux/store/actions/menuAction";
 
 const files = [
   {
@@ -77,6 +77,12 @@ export default function RestaurantsGrid({
     return true;
   };
 
+  const handleOnClick = (minVal, delivery, pickup) => {
+    dispatch(setMaxRestVal(minVal));
+    dispatch(setRestDeliveryVal(delivery));
+    dispatch(setRestPickupVal(pickup));
+  } 
+
   const getSlugFromUrl = (url) => {
     return url.split("/")[4];
   };
@@ -96,7 +102,7 @@ export default function RestaurantsGrid({
             <ForwardLink
               to={`/singlerestaurant?resturent_slug=${restaurantUrl}&resturent_code=${file.code}`}
             >
-              <div className="group  block  w-full overflow-hidden rounded-xl bg-gray-100" onClick={() => dispatch(setMaxRestVal(file.minorder))}>
+              <div className="group  block  w-full overflow-hidden rounded-xl bg-gray-100" onClick={() => handleOnClick(file.minorder, file.delivery, file.pickup)}>
                 <img
                   src={file.banner}
                   alt=""
