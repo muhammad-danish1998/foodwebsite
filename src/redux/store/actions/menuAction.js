@@ -4,8 +4,8 @@ import {
   login,
   register,
 } from "../../services/authServices/authServices";
-import { addToCart, checkoutDelivery, getAddonsMenu, getCartItemList, getDeleiveryTime, removeCartMenuList, updateCartMenuList } from "../../services/menuServices/menuServices";
-import { ADD_TO_CART_MENU_ITEM, ADD_TO_CART_MENU_ITEM_FAIL, ADD_TO_CART_MENU_ITEM_SUCCESS, CHECK_OUT_ITEM, CHECK_OUT_ITEM_FAIL, CHECK_OUT_ITEM_SUCCESS, DELETE_ADD_TO_CART_MENU_ITEM, DELETE_ADD_TO_CART_MENU_ITEM_FAIL, DELETE_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_ADD_TO_CART_MENU_ITEM, GET_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_DELIVERY_TIME, GET_DELIVERY_TIME_SUCCESS, GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_FAIL, GET_MENU_LIST_ITEM_SUCCESS, SET_CARTLIST, SET_CAT_VALUE, SET_ITEM_AMOUNT, SET_MAX_REST_VALUE, SET_MENU_ID, SET_PAYMENT, SET_PAYMENT_SUCCESS, SET_REST_DEVLIVERY_VALUE, SET_REST_PICKUP_VALUE, SET_SELECT_VALUE, UPDATE_ADD_TO_CART_MENU_ITEM, UPDATE_ADD_TO_CART_MENU_ITEM_FAIL, UPDATE_ADD_TO_CART_MENU_ITEM_SUCCESS } from "../types/actionTypes";
+import { addToCart, checkoutDelivery, getAddonsMenu, getCartItemList, getDeleiveryTime, getLoadMoreMenu, removeCartMenuList, updateCartMenuList } from "../../services/menuServices/menuServices";
+import { ADD_TO_CART_MENU_ITEM, ADD_TO_CART_MENU_ITEM_FAIL, ADD_TO_CART_MENU_ITEM_SUCCESS, CHECK_OUT_ITEM, CHECK_OUT_ITEM_FAIL, CHECK_OUT_ITEM_SUCCESS, DELETE_ADD_TO_CART_MENU_ITEM, DELETE_ADD_TO_CART_MENU_ITEM_FAIL, DELETE_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_ADD_TO_CART_MENU_ITEM, GET_ADD_TO_CART_MENU_ITEM_SUCCESS, GET_DELIVERY_TIME, GET_DELIVERY_TIME_SUCCESS, GET_LOAD_MENU_LIST_ITEM, GET_LOAD_MENU_LIST_ITEM_SUCCESS, GET_MENU_LIST_ITEM, GET_MENU_LIST_ITEM_FAIL, GET_MENU_LIST_ITEM_SUCCESS, SET_CARTLIST, SET_CAT_VALUE, SET_ITEM_AMOUNT, SET_MAX_REST_VALUE, SET_MENU_ID, SET_PAYMENT, SET_PAYMENT_SUCCESS, SET_REST_DEVLIVERY_VALUE, SET_REST_PICKUP_VALUE, SET_SELECT_VALUE, UPDATE_ADD_TO_CART_MENU_ITEM, UPDATE_ADD_TO_CART_MENU_ITEM_FAIL, UPDATE_ADD_TO_CART_MENU_ITEM_SUCCESS, UPDATE_SEARCH_VALUE } from "../types/actionTypes";
 
 export const getMenuList =
   (state, navigate) => async dispatch => {
@@ -39,6 +39,39 @@ export const getMenuList =
     }
   };
 
+
+export const getLoadMoreMenuList =
+  (state, id) => async dispatch => {
+  
+    dispatch({type: GET_LOAD_MENU_LIST_ITEM});
+    try {
+    
+      const response = await getLoadMoreMenu(state, id);
+      console.log("response", response);
+
+      // if (response.type == "success") {
+        dispatch({
+          type: GET_LOAD_MENU_LIST_ITEM_SUCCESS,
+          payload: response,
+        });
+        // toast.success(response?.msg);
+        // navigate('/signin')
+
+      // }
+      // else{
+      //   dispatch({
+      //     type: GET_MENU_LIST_ITEM_FAIL,
+      //     payload: 'Failed to fetch data',
+      //   });
+      //   console.log("hh", response)
+      //   toast.error(response?.errorarr);
+      // }
+    } catch (e) {
+      console.log(e);
+      toast.error(e);
+    }
+};
+  
 
   export const setPaymentValue =
   (value) => async dispatch => {
@@ -168,6 +201,21 @@ export const setRestPickupVal =
   try {
       dispatch({
         type: SET_REST_PICKUP_VALUE,
+        payload: value,
+      });
+
+  } catch (e) {
+    console.log(e);
+    // toast.error(e);
+  }
+};
+
+export const updateSearchValue =
+(value) => async dispatch => {
+  
+  try {
+      dispatch({
+        type: UPDATE_SEARCH_VALUE,
         payload: value,
       });
 

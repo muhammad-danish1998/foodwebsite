@@ -1,16 +1,64 @@
 
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import HeaderToggle from "./Header-Toggle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import PlacesAutoComplete from "./PlacesAutoComplete";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSearchValue } from "../redux/store/actions/menuAction";
+// import { , useNavigate } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function HeaderNavbar() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handlePlaceSelect = (data) => {
+    // console.log("🚀 ~ file: Header.jsx:20 ~ handlePlaceSelect ~ data", data);
+    localStorage.setItem('your_zip',data.zipCode)
+    localStorage.setItem('zipCode',data.zipCode)
+    localStorage.setItem('your_street_name',data.city)
+
+    // const formData = new URLSearchParams();
+    // formData.append("lat", 49.4537628);
+    // formData.append("long", 8.4183208);
+    // formData.append("expedition", "all");
+    // formData.append("city", "Ludwigshafen");
+    // formData.append("postal_code", 67065);
+    // formData.append("address", "67065 Ludwigshafen, Germany");
+
+    // axios.post("https://liefermars.de/ajax/searchfood.php", formData,{
+    //   headers: {
+
+    //   }
+    // }).then((response) => {
+    //   console.log({ response })
+    // })
+   
+    if(data){
+      navigate(`/restaurant?city=${data.city}&zip=${data.zipCode}`);
+      debugger;
+    }else{
+      navigate(`/restaurant?city=${localStorage.getItem('your_street_name')}&zip=${localStorage.getItem('your_zip')}`);
+    
+    }
+    dispatch(updateSearchValue(data.city))
+   
+  };
+
+  const [address, setAddress] = useState(null);
+  const [zipCode, setZipCode] = useState('');
+
+  useEffect(() => {
+      setAddress(localStorage.getItem('your_street_name'));
+      // setZipCode(localStorage.getItem("your_zip"));
+  },[])
+
   return (
     <Disclosure as="nav" className="bg-">
       {({ open }) => (
@@ -49,7 +97,7 @@ export default function HeaderNavbar() {
                   </label>
                   <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ">
-                    <svg
+                    {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -67,16 +115,17 @@ export default function HeaderNavbar() {
                         strokeLinejoin="round"
                         d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
                       />
-                    </svg>
+                    </svg> */}
                     </div>
-                    <input
+                    {/* <input
                       id="search"
                       name="search"
                       value={`${localStorage.getItem('your_street_name')}, ${localStorage.getItem('zipCode')}`}
                       className="block w-full ml-2 outline-none  border border-transparent bg-transparent py-2 pl-10 pr-3 leading-5 text-gray-300 placeholder-gray-400   focus:text-gray-900 focus:outline-none  sm:text-sm"
                       placeholder="67065 Ludwigshafen, Germany"
                       type="search"
-                    />
+                    /> */}
+                  <PlacesAutoComplete address = {address} zipCode = {zipCode} onPlaceSelect={handlePlaceSelect} />
                   </div>
                 </div>
               </div>

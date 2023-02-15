@@ -15,7 +15,7 @@ export const getAddonsMenu = (menu_id) => {
   const token = localStorage.getItem("jwt_token");
 
   return new Promise((ressolve, reject) => {
-    const endpoint = axiosUrl(`/ajax/_api_ajax_load_addons.php?menu=${menu_id}`);
+    const endpoint = axiosUrl(`/ajax/_api_ajax_get_menu.php?menu_id=${menu_id}`);
 
     axios
       .get(endpoint, {
@@ -32,6 +32,29 @@ export const getAddonsMenu = (menu_id) => {
       });
   });
 };
+
+export const getLoadMoreMenu = (menu_id,option) => {
+  const token = localStorage.getItem("jwt_token");
+
+  return new Promise((ressolve, reject) => {
+    const endpoint = axiosUrl(`/ajax/_api_ajax_load_addons.php?menu=${menu_id}&options=${option}`);
+
+    axios
+      .get(endpoint, {
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
+      })
+      .then((res) => {
+       
+        ressolve(res.data);
+      })
+      .catch((error) => {
+        reject(error.response);
+      });
+  });
+};
+
 
 
 export const addToCart = (state) => {

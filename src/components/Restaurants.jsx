@@ -50,9 +50,10 @@ export default function Restaurants() {
     setOpenResturant(prev => !prev)
   }
 
-  const {selectValue,catId} = useSelector(state => state?.menu);
+  const {selectValue,catId, updateSearchVal} = useSelector(state => state?.menu);
 
   useEffect(() => {
+    console.log("hit useEffect");
     const city = params.get("city")
     const zip = params.get("zip")
     axios.get(`https://liefermars.de/ajax/resturents_api_ajax.php?city=${city}&zip=${zip}&page=1&sessid=${localStorage.getItem('uuid')}&type=${selectValue}&category=${catId}`).then((res) => {
@@ -63,9 +64,23 @@ export default function Restaurants() {
         
       }
     })
-  }, [window.location.search,selectValue, catId])
+  }, [window.location.search,selectValue, catId, updateSearchVal])
 
-  console.log("catArray ===>", catArray)
+  // useEffect(() => {
+  //   console.log("hit useEffect");
+  //   const city = params.get("city")
+  //   const zip = params.get("zip")
+  //   axios.get(`https://liefermars.de/ajax/resturents_api_ajax.php?city=${city}&zip=${zip}&page=1&sessid=${localStorage.getItem('uuid')}&type=${selectValue}&category=${catId}`).then((res) => {
+  //     console.log("🚀 ~ file: Restaurants.jsx:37 ~ Restaurants ~ res", res.data.cat)
+  //     if (res?.data?.data) {
+  //       setRestaurantItems(res.data.data);
+  //       setCatArray(res.data.cat);
+        
+  //     }
+  //   })
+  // }, [updateSearchVal])
+
+  console.log("catArray ===>", updateSearchVal)
 
   const [showModal, setShowModal] = useState(false)
   const [showModalMinimum, setShowModalMinimum] = useState(false)
