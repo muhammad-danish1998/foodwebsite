@@ -171,27 +171,7 @@ const changeLanguage = lng => {
           fill="none"
           viewBox="0 0 640 784"
         >
-          {/* <defs className="">
-            <pattern
-            
-              id="9ebea6f4-a1f5-4d96-8c4e-4c2abf658047"
-              x={118}
-              y={0}
-              width={20}
-              height={20}
-              patternUnits="userSpaceOnUse"
-              className=""
-            >
-              <rect
-                x={0}
-                y={0}
-                width={4}
-                height={4}
-                className="text-white"
-                fill="currentColor"
-              />
-            </pattern>
-          </defs> */}
+          
           <rect y={72} width={640} height={640} className="text-gray-50 " />
           <rect
             x={118}

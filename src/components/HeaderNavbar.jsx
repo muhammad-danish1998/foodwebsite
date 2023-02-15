@@ -5,6 +5,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import HeaderToggle from "./Header-Toggle";
 import { Link } from "react-router-dom";
+import PlacesAutoComplete from "./PlacesAutoComplete";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -69,6 +70,8 @@ export default function HeaderNavbar() {
                       />
                     </svg>
                     </div>
+                   
+                
                     <input
                       id="search"
                       name="search"
