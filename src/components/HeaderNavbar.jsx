@@ -194,7 +194,7 @@ export default function HeaderNavbar() {
                             </Link>
                           )}
                         </Menu.Item>
-
+{/* add navbar  */}
                         <Menu.Item>
                           {({ active }) => (
                             <Link
