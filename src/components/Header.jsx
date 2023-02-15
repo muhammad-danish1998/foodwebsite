@@ -36,21 +36,7 @@ export default function Header() {
     localStorage.setItem('zipCode',data.zipCode)
     localStorage.setItem('your_street_name',data.city)
 
-    // const formData = new URLSearchParams();
-    // formData.append("lat", 49.4537628);
-    // formData.append("long", 8.4183208);
-    // formData.append("expedition", "all");
-    // formData.append("city", "Ludwigshafen");
-    // formData.append("postal_code", 67065);
-    // formData.append("address", "67065 Ludwigshafen, Germany");
-
-    // axios.post("https://liefermars.de/ajax/searchfood.php", formData,{
-    //   headers: {
-
-    //   }
-    // }).then((response) => {
-    //   console.log({ response })
-    // })
+   
     if(data){
       navigate(`/restaurant?city=${data.city}&zip=${data.zipCode}`);
     }else{
@@ -171,27 +157,7 @@ const changeLanguage = lng => {
           fill="none"
           viewBox="0 0 640 784"
         >
-          {/* <defs className="">
-            <pattern
-            
-              id="9ebea6f4-a1f5-4d96-8c4e-4c2abf658047"
-              x={118}
-              y={0}
-              width={20}
-              height={20}
-              patternUnits="userSpaceOnUse"
-              className=""
-            >
-              <rect
-                x={0}
-                y={0}
-                width={4}
-                height={4}
-                className="text-white"
-                fill="currentColor"
-              />
-            </pattern>
-          </defs> */}
+          
           <rect y={72} width={640} height={640} className="text-gray-50 " />
           <rect
             x={118}

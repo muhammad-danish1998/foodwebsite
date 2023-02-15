@@ -216,7 +216,7 @@ export default function Restaurants() {
           <main>
             <div className="mx-auto lg:max-w-12xl sm:px-6 lg:px-8">
               {/* Replace with your content */}
-              <div className="px-4 py-1 sm:px-0">
+              <div className="px-4 py-1 sm:px-0 -z-10">
 
                 <RestaurantsGrid
                   items={restaurantItems}

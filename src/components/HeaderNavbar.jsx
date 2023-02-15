@@ -273,13 +273,17 @@ export default function HeaderNavbar() {
           <Disclosure.Panel className="lg:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
+              <Link to="/">
               <Disclosure.Button
                 as="a"
-                href="/"
+                // href="/"
                 className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
               >
+                
                 Home
               </Disclosure.Button>
+              </Link>
+              <Link to="/signin">
               <Disclosure.Button
                 as="a"
                 href="#"
@@ -287,6 +291,8 @@ export default function HeaderNavbar() {
               >
               Sign in
               </Disclosure.Button>
+              </Link>
+              <Link to="/signup">
               <Disclosure.Button
                 as="a"
                 href="#"
@@ -294,13 +300,16 @@ export default function HeaderNavbar() {
               >
                 Sign up
               </Disclosure.Button>
+              </Link>
+              <Link to="/about">
               <Disclosure.Button
                 as="a"
                 href="#"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
-                sign out
+               About
               </Disclosure.Button>
+              </Link>
             </div>
           
           </Disclosure.Panel>
