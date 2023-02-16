@@ -114,8 +114,9 @@ export default function ModalRating({
   };
 
   const handleOptions = (e) => {
-    console.log("e ===>",`${e[0]}${e[1]},${e[3]}${e[4]}${e[5]}`)
-       dispatch(getLoadMoreMenuList(`${e[0]}${e[1]}, ${e[3]}${e[4]}${e[5]}`))
+        let data = e.split(',');
+        console.log("e ===>",data[0], data[1]);
+       dispatch(getLoadMoreMenuList(data[0], data[1]));
   }
   return (
     <Transition.Root show={open} as={Fragment} onClick={handleOnClose}>
@@ -197,7 +198,7 @@ export default function ModalRating({
                                 menuList.options?.optionarr?.map((val) => (
                                   // console.log("val",val),
                                   <>
-                                    <option value={`${val.menu_id} ${val.id}`}>
+                                    <option value={`${val.menu_id} , ${val.id}`}>
                                       {val.name +" €"+ val.price}
                                     </option>
                                     {/* <option>Canada</option>

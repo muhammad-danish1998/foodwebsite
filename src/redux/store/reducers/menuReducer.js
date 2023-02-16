@@ -10,7 +10,7 @@ const initialState = {
   cartlist:[],
   cartlistItem: null,
   selectValue: "delivery",
-  catId: 1,
+  catId: 0,
   max_rest_val: null,
   menu_id: null,
   deliveryVal: null,
