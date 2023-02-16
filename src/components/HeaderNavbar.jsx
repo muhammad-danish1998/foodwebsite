@@ -1,11 +1,10 @@
-
 import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import HeaderToggle from "./Header-Toggle";
 import { Link, useNavigate } from "react-router-dom";
-import PlacesAutoComplete from "./PlacesAutoComplete";
+import PlacesAutoComplete2 from "./PlacesAutoComplete2";
 import { useDispatch, useSelector } from "react-redux";
 import { updateSearchValue } from "../redux/store/actions/menuAction";
 // import { , useNavigate } from "react-router-dom";
@@ -20,9 +19,9 @@ export default function HeaderNavbar() {
 
   const handlePlaceSelect = (data) => {
     // console.log("🚀 ~ file: Header.jsx:20 ~ handlePlaceSelect ~ data", data);
-    localStorage.setItem('your_zip',data.zipCode)
-    localStorage.setItem('zipCode',data.zipCode)
-    localStorage.setItem('your_street_name',data.city)
+    localStorage.setItem("your_zip", data.zipCode);
+    localStorage.setItem("zipCode", data.zipCode);
+    localStorage.setItem("your_street_name", data.city);
 
     // const formData = new URLSearchParams();
     // formData.append("lat", 49.4537628);
@@ -39,25 +38,27 @@ export default function HeaderNavbar() {
     // }).then((response) => {
     //   console.log({ response })
     // })
-   
-    if(data){
+
+    if (data) {
       navigate(`/restaurant?city=${data.city}&zip=${data.zipCode}`);
       debugger;
-    }else{
-      navigate(`/restaurant?city=${localStorage.getItem('your_street_name')}&zip=${localStorage.getItem('your_zip')}`);
-    
+    } else {
+      navigate(
+        `/restaurant?city=${localStorage.getItem(
+          "your_street_name"
+        )}&zip=${localStorage.getItem("your_zip")}`
+      );
     }
-    dispatch(updateSearchValue(data.city))
-   
+    dispatch(updateSearchValue(data.city));
   };
 
   const [address, setAddress] = useState(null);
-  const [zipCode, setZipCode] = useState('');
+  const [zipCode, setZipCode] = useState("");
 
   useEffect(() => {
-      setAddress(localStorage.getItem('your_street_name'));
-      // setZipCode(localStorage.getItem("your_zip"));
-  },[])
+    setAddress(localStorage.getItem("your_street_name"));
+    // setZipCode(localStorage.getItem("your_zip"));
+  }, []);
 
   return (
     <Disclosure as="nav" className="bg-">
@@ -73,11 +74,11 @@ export default function HeaderNavbar() {
                     alt="Your Company"
                   />
                   <Link to={"/"}>
-                  <img
-                    className="hidden h-8 w-auto lg:block"
-                    src="./images/logo.png"
-                    alt="Your Company"
-                  />
+                    <img
+                      className="hidden h-8 w-auto lg:block"
+                      src="./images/logo.png"
+                      alt="Your Company"
+                    />
                   </Link>
                 </div>
                 <div className=" lg:ml-6 lg:block">
@@ -91,13 +92,13 @@ export default function HeaderNavbar() {
                 </div>
               </div>
               <div className="flex invisible lg:visible md:visible xl:visible    flex-1 justify-center px-2 lg:ml-6 lg:justify-start">
-                <div className="w-full  max-w-lg  lg:max-w-lg border-2 rounded-full p-1 bg-gray-50">
+                <div className="w-full  max-w-lg  lg:max-w-lg border-2 rounded-full p-1 ">
                   <label htmlFor="search" className="sr-only">
                     Search
                   </label>
                   <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ">
-                    {/* <svg
+                      <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -115,8 +116,14 @@ export default function HeaderNavbar() {
                         strokeLinejoin="round"
                         d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
                       />
-                    </svg> */}
+                    </svg>
                     </div>
+                    <PlacesAutoComplete2
+                      address={address}
+                      zipCode={zipCode}
+                      onPlaceSelect={handlePlaceSelect}
+                      
+                    />
                     {/* <input
                       id="search"
                       name="search"
@@ -125,7 +132,7 @@ export default function HeaderNavbar() {
                       placeholder="67065 Ludwigshafen, Germany"
                       type="search"
                     /> */}
-                  <PlacesAutoComplete address = {address} zipCode = {zipCode} onPlaceSelect={handlePlaceSelect} />
+                   
                   </div>
                 </div>
               </div>
@@ -165,8 +172,7 @@ export default function HeaderNavbar() {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="absolute right-0  border-2  mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
-                       
-                      <Menu.Item>
+                        <Menu.Item>
                           {({ active }) => (
                             <Link
                               to="/"
@@ -179,7 +185,6 @@ export default function HeaderNavbar() {
                             </Link>
                           )}
                         </Menu.Item>
-
 
                         <Menu.Item>
                           {({ active }) => (
@@ -194,17 +199,17 @@ export default function HeaderNavbar() {
                             </Link>
                           )}
                         </Menu.Item>
-
+                        {/* add navbar  */}
                         <Menu.Item>
                           {({ active }) => (
                             <Link
-                            to="/signin"
+                              to="/signin"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                             Sign up
+                              Sign up
                             </Link>
                           )}
                         </Menu.Item>
@@ -221,7 +226,6 @@ export default function HeaderNavbar() {
                             </Link>
                           )}
                         </Menu.Item>
-                        
                       </Menu.Items>
                     </Transition>
                   </Menu>
@@ -237,8 +241,7 @@ export default function HeaderNavbar() {
                   Search
                 </label>
                 <div className="relative">
-
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -258,14 +261,20 @@ export default function HeaderNavbar() {
                         d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
                       />
                     </svg>
-                    </div>
-                  <input
+                  </div>
+                  {/* <input
                     id="search"
                     name="search"
                     className="block ml-2 w-full rounded-md border border-transparent bg-transparent py-2 pl-10 pr-3 leading-5 text-gray-300 placeholder-gray-400 focus:border-white focus:bg-white focus:text-gray-900 focus:outline-none focus:ring-white sm:text-sm"
                     placeholder="Search"
                     type="search"
-                  />
+                  /> */}
+                   <PlacesAutoComplete2
+                      address={address}
+                      zipCode={zipCode}
+                      onPlaceSelect={handlePlaceSelect}
+                      
+                    />
                 </div>
               </div>
             </div>
@@ -274,44 +283,42 @@ export default function HeaderNavbar() {
             <div className="space-y-1 px-2 pt-2 pb-3">
               {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
               <Link to="/">
-              <Disclosure.Button
-                as="a"
-                // href="/"
-                className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-              >
-                
-                Home
-              </Disclosure.Button>
+                <Disclosure.Button
+                  as="a"
+                  // href="/"
+                  className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+                >
+                  Home
+                </Disclosure.Button>
               </Link>
               <Link to="/signin">
-              <Disclosure.Button
-                as="a"
-                href="#"
-                className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-              >
-              Sign in
-              </Disclosure.Button>
+                <Disclosure.Button
+                  as="a"
+                  href="#"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                >
+                  Sign in
+                </Disclosure.Button>
               </Link>
               <Link to="/signup">
-              <Disclosure.Button
-                as="a"
-                href="#"
-                className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-              >
-                Sign up
-              </Disclosure.Button>
+                <Disclosure.Button
+                  as="a"
+                  href="#"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                >
+                  Sign up
+                </Disclosure.Button>
               </Link>
               <Link to="/about">
-              <Disclosure.Button
-                as="a"
-                href="#"
-                className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-              >
-               About
-              </Disclosure.Button>
+                <Disclosure.Button
+                  as="a"
+                  href="#"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                >
+                  About
+                </Disclosure.Button>
               </Link>
             </div>
-          
           </Disclosure.Panel>
         </>
       )}
