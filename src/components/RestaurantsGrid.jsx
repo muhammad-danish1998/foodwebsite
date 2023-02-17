@@ -97,12 +97,12 @@ export default function RestaurantsGrid({
         return (
           <li
             key={file.image}
-            className="relative border-2 lg:w-11/12  rounded-xl focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 "
+            className="relative border-2 lg:w-11/12   rounded-xl focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 "
           >
             <ForwardLink
               to={`/singlerestaurant?resturent_slug=${restaurantUrl}&resturent_code=${file.code}`}
             >
-              <div className="group  block  w-full overflow-hidden rounded-xl bg-gray-100" onClick={() => handleOnClick(file.minorder, file.delivery, file.pickup)}>
+              <div className="group   block  w-full overflow-hidden rounded-xl bg-gray-100" onClick={() => handleOnClick(file.minorder, file.delivery, file.pickup)}>
                 <img
                   src={file.banner}
                   alt=""
