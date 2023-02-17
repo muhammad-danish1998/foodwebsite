@@ -26,12 +26,14 @@ export default function ModalRating({
 }) {
   if (!visible) return null;
   const [open, setOpen] = useState(true);
-  const { menuList0, totalAmount, loadMenuList, cartlist, selectValue, menu_id } = useSelector(
+  const { menuList0, totalAmount, loadMenuList, loading, cartlist, selectValue, menu_id } = useSelector(
     (state) => state?.menu
   );
 
   const [count, setCount] = useState(1);
   const [menuList, setMenuList] = useState(menuList0);
+  const [updatedAmount, setUpdatedAmount] = useState();
+  const [loadUpdatedMenuList, setLoadUpdatedMenuList] = useState({});
   // const [addons01, setAddons01] = useState([]); /
   let addons01 = [];
   let multi01 = [];
@@ -42,13 +44,22 @@ export default function ModalRating({
     setMenuList(menuList0);
   },[menuList0])
 
+  useEffect(() => {
+    setLoadUpdatedMenuList({})
+  },[menuList0])
+
+  useEffect(() => {
+    setLoadUpdatedMenuList(loadMenuList);
+  },[loadMenuList])
+
   // useEffect(() => {
   //   setMenuList(loadMenuList);
   // },[loadMenuList])
  
-  console.log("menulist", loadMenuList)
+  console.log("menulist ===>", Object.values(loadUpdatedMenuList).length, loadUpdatedMenuList)
   useEffect(() => {
     amount = totalAmount;
+    setUpdatedAmount(totalAmount);
     console.log(response)
     
   }, []);
@@ -58,8 +69,16 @@ export default function ModalRating({
   };
 
   const handleMultiaddon = (id) => {
-    multi01.push(id);
+    console.log(id);
+    let data = id.split(',');
+    multi01.push(data[0]);
+    // amount = amount + data[1];
+      setUpdatedAmount(Number(updatedAmount) + Number(data[1]));
+   
+    //  amount +=  ;
+    // console.log("amount", Number(amount) + Number(data[1]));  
   };
+
 
   const handleSeeMore = () => {
     setShowCount(70);
@@ -135,9 +154,10 @@ export default function ModalRating({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
+          
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </Transition.Child>
-
+   { loading ? null :
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
@@ -196,13 +216,12 @@ export default function ModalRating({
                           >
                           {
                                 menuList.options?.optionarr?.map((val) => (
-                                  // console.log("val",val),
+                            
                                   <>
                                     <option value={`${val.menu_id} , ${val.id}`}>
                                       {val.name +" €"+ val.price}
                                     </option>
-                                    {/* <option>Canada</option>
-                                <option>Mexico</option> */}
+                               
                                   </>
                                 ))}
                             
@@ -211,7 +230,7 @@ export default function ModalRating({
                       )
                       }
                       
-                      {Object.values(loadMenuList).length == 0 && menuList?.addons?.map((addVal) => (
+                      {Object.values(loadUpdatedMenuList).length < 1 && menuList?.addons?.map((addVal) => (
                         console.log("add val", addVal.addons),
                         <div>
                           <label
@@ -252,7 +271,7 @@ export default function ModalRating({
                                   <label class="relative inline-flex items-center cursor-pointer mt-3">
                                     <input
                                       type="checkbox"
-                                      value={val0?.id}
+                                      value={`${val0.id} , ${val0.price}`}
                                       class="sr-only peer"
                                       onChange={(e) =>
                                         handleMultiaddon(e.target.value)
@@ -270,11 +289,11 @@ export default function ModalRating({
                                 </>  
                               ))}
                           </p>
-                       { showCount == 2 && <button class="t-blue" onClick={() => handleSeeMore()}>See more</button> }
+                          { showCount == 2 && <button class="t-blue" onClick={() => handleSeeMore()}>See more</button> }
                         </div>
 
                       ))}
-                        {loadMenuList?.addons?.map((addVal) => (
+                      {Object.values(loadUpdatedMenuList).length >= 1 && loadUpdatedMenuList?.addons?.map((addVal) => (
                         console.log("add val -000", addVal.addons),
                         <div>
                           <label
@@ -315,7 +334,8 @@ export default function ModalRating({
                                   <label class="relative inline-flex items-center cursor-pointer mt-3">
                                     <input
                                       type="checkbox"
-                                      value={val0?.id}
+                                      // value={val0?.id}
+                                      value={`${val0.id} , ${val0.price}`}
                                       class="sr-only peer"
                                       onChange={(e) =>
                                         handleMultiaddon(e.target.value)
@@ -337,6 +357,7 @@ export default function ModalRating({
                         </div>
 
                       ))}
+                   
                       {/* <div>
                           <label
                             htmlFor="location"
@@ -409,14 +430,16 @@ export default function ModalRating({
                     onClick={() => handleSubmit()}
                     ref={cancelButtonRef}
                   >
-                    Add to cart €{amount}
+                    Add to cart €{updatedAmount}
                   </button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
         </div>
+}
       </Dialog>
+
     </Transition.Root>
   );
 }

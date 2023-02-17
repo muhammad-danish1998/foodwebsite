@@ -29,6 +29,9 @@ const CartInc = () => {
   const [count, setCount] = useState(0);
   const [cartlistItemm, setCartListItemm] = useState();
   const [noteVal, setNoteVal] = useState();
+  const [state, setState] = useState({
+
+  });
 
   useEffect(() => {
     let priceVal = 0;
@@ -121,12 +124,12 @@ const CartInc = () => {
   };
 
   const handleUpdateNote = (code, quan) => {
-    console.log("note", code);
+    console.log("note", );
     dispatch(
       UpdateAddToCartMenu({
         sessid: localStorage.getItem("uuid"),
         cartTempID: code,
-        note: noteVal,
+        note: state[code],
         quantity: quan
       })
     ).then((res) => {
@@ -139,6 +142,18 @@ const CartInc = () => {
       }
     });
   }
+
+  const handleOnChange = (key, value) => {
+    setState((state) => ({ ...state, [key]: value }));
+  }
+ 
+  useEffect(() => {
+    cartlistItem?.items?.map((car) => {
+       setState((state) => ({ ...state, [car?.temp]: car?.note }));
+    })
+  },[cartlistItem])
+
+  console.log("state ===>", state )
 
   return (
     <div>
@@ -170,8 +185,9 @@ const CartInc = () => {
                   <input
                     type="text"
                     id="small-input"
-                    value={cart?.note}
-                    onChange={(e) => setNoteVal(e.target.value)}
+                    name={cart?.temp}
+                    value={state[cart?.temp]}
+                    onChange={(e) => handleOnChange(cart?.temp , e.target.value)}
                     class="block w-full  text-gray-900 border border-gray-300 rounded-lg bg-gray-300 sm:text-xs   "
                   />
                   <button className="ml-2" onClick={() => handleUpdateNote(cart?.temp, cart?.quantity)}>Update</button>
