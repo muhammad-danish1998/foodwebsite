@@ -1,17 +1,4 @@
-/*
-  This SingleResOverview requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+
 import { Fragment, useEffect, useState } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
@@ -135,35 +122,10 @@ export default function SingleResOverview() {
     <div className="">
       {/* ------------- navbar here ---------  */}
       <HeaderNavbar />
-      <div className="sticky-thc ">
+      <div className="sticky-thc  ">
       <HeaderTextSlider catArray={catArray}/>
-      {/* <Swiper
-        slidesPerView={7}
-        spaceBetween={5}
-        slidesPerGroup={1}
-        loop={true}
-        loopFillGroupWithBlank={true}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        className="mySwiperresturant bg-gray-200 hidden lg:block  text-center   "
-      > */}
-        {/* <SwiperSlide className="p-3     lg:text-lg text-sm lg:font-semibold text-gray-700 cursor-pointer">
-          ALL
-        </SwiperSlide>
-        <SwiperSlide className="p-3   text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
-          Pizza
-        </SwiperSlide> */}
-        {/* {
-          catArray?.map((arr) => (
-            <SwiperSlide className="p-3 text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
-               <Link to={arr.title} spy={true} smooth={true}>{arr.title}</Link>  
-            </SwiperSlide>
-          ))
-       }
-      </Swiper> */}
+      
+        
       </div>
       <div className="py-0">
         <div className="mx-auto max-w-8xl sm:px-6 lg:grid lg:max-w-9xl lg:grid-cols-12 lg:gap-0 lg:px-8">
@@ -409,7 +371,7 @@ export default function SingleResOverview() {
             </section>
           </main>
           <aside className=" xl:col-span-4 xl:block border-2">
-            <div className="sticky top-6 space-y-4 lg:p-4">
+            <div className="sticky top-8 space-y-4 lg:p-4">
               <h1 className="text-2xl font-bold">Shopping Cart</h1>
               { cartlistItem?.carttotalamount >= max_rest_val  &&
               <Link className="checkout flex text-white justify-between font-bold bg-redColor p-4 rounded-2xl"
