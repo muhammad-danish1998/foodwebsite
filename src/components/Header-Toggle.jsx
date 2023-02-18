@@ -56,10 +56,10 @@ const HeaderToggle = (props) => {
           type="checkbox"
           className="hidden peer "
         />
-        <span className="px-4 py-2 flex items-center justify-center  mt-2 rounded-l-md text-lg bg-black h-8 text-white peer-checked:bg-gray-300">
+        <span className=" lg:px-4 px-2 py-2 flex items-center justify-center  mt-2 rounded-l-md lg:text-lg text-sm bg-black lg:h-8 h-6 text-white peer-checked:bg-gray-300">
           {props.value1}
         </span>
-        <span className="px-4 py-2 flex items-center justify-center mt-2 rounded-r-md text-lg bg-gray-300 h-8 peer-checked:text-white peer-checked:bg-black">
+        <span className="lg:px-4 px-2 py-2 flex items-center justify-center mt-2 rounded-r-md lg:text-lg text-sm bg-gray-300 lg:h-8 h-6 peer-checked:text-white peer-checked:bg-black">
           {props.value2}
         </span>
       </label>

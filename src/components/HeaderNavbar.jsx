@@ -83,10 +83,7 @@ export default function HeaderNavbar() {
                 </div>
                 <div className=" lg:ml-6 lg:block">
                   <div className="flex  space-x-4 ">
-                    {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                    {/* <a href="#" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">
-                      Dashboard
-                    </a> */}
+                  
                     <HeaderToggle value1="delivery" value2="pickup" />
                   </div>
                 </div>
