@@ -23,6 +23,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
 import "./i18n";
+import PageNot from "./components/PageNot";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
@@ -43,6 +44,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route exact path="/addtocart" element={<Addtocardpage  />} />
       <Route exact path="/delivery" element={<Delivery  />} />
       <Route exact path="/pickup" element={<Pickup  />} />
+      <Route path="*"  element={<PageNot  />} />
+
 
     </Routes>
   </BrowserRouter>
