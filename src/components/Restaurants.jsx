@@ -174,7 +174,7 @@ export default function Restaurants() {
           )}
         </Disclosure>
         {/* --------------- text crousel ---------------  */}
-        <div className="bg-gray-100 header sticky-thc lg:z-0 z-10">
+        <div className="bg-gray-100 header sticky-thc  ">
           <HeaderTextSlider  catArray={catArray} res={true}/>
         </div>
 
