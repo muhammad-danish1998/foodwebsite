@@ -168,7 +168,7 @@ export default function HeaderNavbar() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0  border-2  mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
+                      <Menu.Items className="absolute right-0 navbarlist   mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ">
                         <Menu.Item>
                           {({ active }) => (
                             <Link
@@ -276,8 +276,8 @@ export default function HeaderNavbar() {
               </div>
             </div>
           </div>
-          <Disclosure.Panel className="lg:hidden drop-nav  ">
-            <div className="space-y-1 px-2 pt-2 pb-3 ">
+          <Disclosure.Panel className="lg:hidden drop-nav   ">
+            <div className="space-y-1 px-2 pt-2 pb-3  ">
               {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
               <Link to="/" >
                 <Disclosure.Button
