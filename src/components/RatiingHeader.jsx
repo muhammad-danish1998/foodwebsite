@@ -17,13 +17,12 @@ function classNames(...classNamees) {
 }
 export default function RatiingHeader({setFilterRating , filterRating , setShowModal }) {
   const [selected, setSelected] = useState(publishingOptions[0])
-  console.log(setShowModal)
-  // console.log({selected})
+ 
   const handleSelect = (e) =>{
     setSelected(e)
     setFilterRating(e)
   }
-  console.log("🚀 ~ file: RatiingHeader.jsx:18 ~ RatiingHeader ~ filterRating", filterRating)
+  
   
   return (
     <Listbox value={selected} onChange={(e)=>handleSelect(e)}>

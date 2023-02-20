@@ -41,7 +41,7 @@ export default function HeaderNavbar() {
 
     if (data) {
       navigate(`/restaurant?city=${data.city}&zip=${data.zipCode}`);
-      debugger;
+      
     } else {
       navigate(
         `/restaurant?city=${localStorage.getItem(

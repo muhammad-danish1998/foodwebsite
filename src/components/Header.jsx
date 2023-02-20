@@ -51,7 +51,7 @@ export default function Header() {
   });
   const [address, setAddress] = useState(null);
   const [zipCode, setZipCode] = useState('');
-console.log("---------",location.latitude , location.longitude)
+  
 
 
 const api_key = `AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0`
@@ -86,7 +86,7 @@ const api_key = `AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0`
 
   useEffect(() => {
     if(localStorage.getItem('language')){
-         console.log("test")
+         
     }else{
      localStorage.setItem("language", 'en')
     }
@@ -129,10 +129,10 @@ const api_key = `AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0`
       localStorage.setItem("your_zip", postalCode);
     });
   }, []);
-console.log(zipCode)
 
 
-console.log(address)
+
+
 const postlivelocationresturant = () =>{
   navigate(`/restaurant?&zip=${zipCode}`);
 }

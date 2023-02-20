@@ -11,7 +11,7 @@ export const register = (state) => {
     axios
       .post(endpoint, formData, contentType)
       .then((res) => {
-        debugger;
+       
         // setSession(res.data.token);
         console.log("res ===>", res)
         resolve(res.data);

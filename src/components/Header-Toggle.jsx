@@ -14,10 +14,7 @@ const HeaderToggle = (props) => {
   const [selectedValue, setSelectedValue] = useState(selectValue);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  console.log(
-    "initial value --------->",
-    initalValue == "Sign in" ? `/signin` : "signup"
-  );
+ 
   const dispatch = useDispatch();
 
   const handleToggleChange = () => {
@@ -37,7 +34,7 @@ const HeaderToggle = (props) => {
   
   };
 
-  console.log("selectValue", selectValue);
+
 
   const handleClose = () => {
     setShowModal(false);
