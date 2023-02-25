@@ -7,9 +7,9 @@ import HeaderTextSlider from "./HeaderTextSlider";
 import OpenResturant from "./OpenResturant";
 import RatiingHeader from "./RatiingHeader";
 import Modalminimumorder from "./Modalminimumorder";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import ModalRating from "./ModalRating";
 import { useDispatch, useSelector } from "react-redux";
 import HeaderNavbar from "./HeaderNavbar";
@@ -44,27 +44,33 @@ export default function Restaurants() {
   const [openResturant, setOpenResturant] = useState(false);
   const [catArray, setCatArray] = useState([]);
   const handleChangeDelivery = () => {
-    setFreeDelivery(prev => !prev)
-  }
+    setFreeDelivery((prev) => !prev);
+  };
   const handleChangeOpenResturant = () => {
-    setOpenResturant(prev => !prev)
-  }
+    setOpenResturant((prev) => !prev);
+  };
 
-  const {selectValue,catId, updateSearchVal} = useSelector(state => state?.menu);
+  const { selectValue, catId, updateSearchVal } = useSelector(
+    (state) => state?.menu
+  );
 
   useEffect(() => {
     console.log("hit useEffect");
-    const city = params.get("city")
-    const zip = params.get("zip")
-    axios.get(`https://liefermars.de/ajax/resturents_api_ajax.php?city=${city}&zip=${zip}&page=1&sessid=${localStorage.getItem('uuid')}&type=${selectValue}&category=${catId}`).then((res) => {
-      console.log("🚀 ~ file: Restaurants.jsx:37 ~ Restaurants ~ res", res.data.cat)
-      if (res?.data?.data) {
-        setRestaurantItems(res.data.data);
-        setCatArray(res.data.cat);
-        
-      }
-    })
-  }, [window.location.search,selectValue, catId, updateSearchVal])
+    const city = params.get("city");
+    const zip = params.get("zip");
+    axios
+      .get(
+        `https://liefermars.de/ajax/resturents_api_ajax.php?city=${city}&zip=${zip}&page=1&sessid=${localStorage.getItem(
+          "uuid"
+        )}&type=${selectValue}&category=${catId}`
+      )
+      .then((res) => {
+        if (res?.data?.data) {
+          setRestaurantItems(res.data.data);
+          setCatArray(res.data.cat);
+        }
+      });
+  }, [window.location.search, selectValue, catId, updateSearchVal]);
 
   // useEffect(() => {
   //   console.log("hit useEffect");
@@ -75,24 +81,22 @@ export default function Restaurants() {
   //     if (res?.data?.data) {
   //       setRestaurantItems(res.data.data);
   //       setCatArray(res.data.cat);
-        
+
   //     }
   //   })
   // }, [updateSearchVal])
 
-  console.log("catArray ===>", updateSearchVal)
-
-  const [showModal, setShowModal] = useState(false)
-  const [showModalMinimum, setShowModalMinimum] = useState(false)
+  const [showModal, setShowModal] = useState(false);
+  const [showModalMinimum, setShowModalMinimum] = useState(false);
   const [minimumOrderValue, setMinimumOrderValue] = useState(0);
   const [checkMinimumOrderValue, setCheckMinimumOrderValue] = useState(false);
   const handleMinimumOrderChange = (eValue) => {
-    setShowModalMinimum(false)
-    setMinimumOrderValue(eValue)
-    setCheckMinimumOrderValue(true)
-  }
+    setShowModalMinimum(false);
+    setMinimumOrderValue(eValue);
+    setCheckMinimumOrderValue(true);
+  };
   const { t, i18n } = useTranslation();
-  const changeLanguage = lng => {
+  const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
   return (
@@ -109,7 +113,7 @@ export default function Restaurants() {
         <Disclosure as="nav" className="bg-white shadow-sm">
           {({ open }) => (
             <div className="">
-            <HeaderNavbar />
+              <HeaderNavbar />
 
               <Disclosure.Panel className="sm:hidden">
                 <div className="space-y-1 pt-2 pb-3">
@@ -174,35 +178,44 @@ export default function Restaurants() {
           )}
         </Disclosure>
         {/* --------------- text crousel ---------------  */}
-        <div className="bg-gray-100 header sticky-thc lg:z-0 z-10">
-          <HeaderTextSlider  catArray={catArray} res={true}/>
+        <div className="bg-gray-100 header sticky-thc  ">
+          <HeaderTextSlider catArray={catArray} res={true} />
         </div>
 
         {/* --------------- header grid check switch ------------ */}
-        <div className=" max-w-8xl lg:ml-12  lg:mt-2 m-auto lg:flex items-center  p-1 ">
-          <div className="lg:flex justify-between ">
-          <p className=" bg-gray-100 rounded-full   p-2 flex items-center border-2">
-            <span className="mr-2">Open Resturant</span>
-            <OpenResturant openResturant={openResturant} handleChange={handleChangeOpenResturant} />
-          </p>
-          <p className=" bg-gray-100 lg:ml-4 mt-1  rounded-full p-2 flex items-center">
-            <span className="mr-4">{t('freedelivery')}</span>
-            <OpenResturant handleChange={handleChangeDelivery} />
-          </p>
+        <div className=" max-w-8xl  lg:ml-12  lg:mt-2 m-auto lg:flex items-center  p-1 ">
+          <div className="lg:flex  justify-between  ">
+            <p className=" bg-gray-100 rounded-full   p-2 flex items-center border-2  ">
+              <span className="mr-2">Open Resturant</span>
+              <OpenResturant
+                openResturant={openResturant}
+                handleChange={handleChangeOpenResturant}
+              />
+            </p>
+            <p className=" bg-gray-100 lg:ml-4 mt-1  rounded-full p-2 flex items-center">
+              <span className="mr-4">{t("freedelivery")}</span>
+              <OpenResturant handleChange={handleChangeDelivery} />
+            </p>
           </div>
           {/* ---------------- rating ------------  */}
           <div className="flex justify-around mt-2 ">
-          <p className="lg:ml-4  mt-1">
-            <RatiingHeader setShowModal={setShowModal} setFilterRating={setFilterRating} />
-          </p>
-          {/* -------------- minimum order ---------------  */}
-          <p className="lg:ml-4  mt-1">
-            <button onClick={() => { setShowModalMinimum(true) }} className="border-2 p-2 rounded-full bg-gray-100">
-            {t('freedelivery')}
-              
-
-            </button>
-          </p>
+            <p className="lg:ml-4  mt-1">
+              <RatiingHeader
+                setShowModal={setShowModal}
+                setFilterRating={setFilterRating}
+              />
+            </p>
+            {/* -------------- minimum order ---------------  */}
+            <p className="lg:ml-4  mt-1">
+              <button
+                onClick={() => {
+                  setShowModalMinimum(true);
+                }}
+                className="border-2 p-2 rounded-full bg-gray-100"
+              >
+                {t("freedelivery")}
+              </button>
+            </p>
           </div>
         </div>
 
@@ -217,7 +230,6 @@ export default function Restaurants() {
             <div className="mx-auto lg:max-w-12xl sm:px-6 lg:px-8">
               {/* Replace with your content */}
               <div className="px-4 py-1 sm:px-0 -z-10">
-
                 <RestaurantsGrid
                   items={restaurantItems}
                   filterRating={filterRating}

@@ -41,7 +41,7 @@ export default function HeaderNavbar() {
 
     if (data) {
       navigate(`/restaurant?city=${data.city}&zip=${data.zipCode}`);
-      debugger;
+      
     } else {
       navigate(
         `/restaurant?city=${localStorage.getItem(
@@ -83,10 +83,7 @@ export default function HeaderNavbar() {
                 </div>
                 <div className=" lg:ml-6 lg:block">
                   <div className="flex  space-x-4 ">
-                    {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                    {/* <a href="#" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">
-                      Dashboard
-                    </a> */}
+                  
                     <HeaderToggle value1="delivery" value2="pickup" />
                   </div>
                 </div>
@@ -171,7 +168,7 @@ export default function HeaderNavbar() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0  border-2  mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
+                      <Menu.Items className="absolute right-0 navbarlist   mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ">
                         <Menu.Item>
                           {({ active }) => (
                             <Link
@@ -279,14 +276,14 @@ export default function HeaderNavbar() {
               </div>
             </div>
           </div>
-          <Disclosure.Panel className="lg:hidden">
-            <div className="space-y-1 px-2 pt-2 pb-3">
+          <Disclosure.Panel className="lg:hidden drop-nav   ">
+            <div className="space-y-1 px-2 pt-2 pb-3  ">
               {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-              <Link to="/">
+              <Link to="/" >
                 <Disclosure.Button
                   as="a"
                   // href="/"
-                  className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+                  className=" block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
                 >
                   Home
                 </Disclosure.Button>

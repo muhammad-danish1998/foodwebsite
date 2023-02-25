@@ -114,7 +114,7 @@ export default function ModalRating({
 
   const handleSubmit = () => {
     dispatch(setPaymentValue(amount));
-    debugger;
+    
     dispatch(
       addToCartMenu({
         hidden_price: totalAmount,

@@ -68,7 +68,7 @@ const menuReducer = (state = initialState, action) => {
           menu_id: action.payload
         };
       case SET_CARTLIST:
-        debugger;
+        
         return {
           ...state,
           cartlist: [

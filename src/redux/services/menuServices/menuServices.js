@@ -5,7 +5,7 @@ import uuid from 'react-uuid';
 
 
 if(localStorage.getItem('uuid')){
-  console.log("create uuid");
+
 }else{
   localStorage.setItem("uuid", uuid());
 }
