@@ -24,6 +24,18 @@ import { store } from "./redux/store";
 
 import "./i18n";
 import PageNot from "./components/PageNot";
+import EditmyAddress from "./components/EditmyAddress";
+import SubmitReview from "./components/SubmitReview";
+import Myreview from "./components/Myreview";
+import ForgetPassword from "./components/ForgetPassword";
+import ChangePassword from "./components/ChangePassword";
+import OrderDetail from "./components/OrderDetail";
+import Order from "./components/Order";
+import Profile from "./components/Profile";
+import ExamModal from "./components/ExamModal";
+import ResturantReview from "./components/ResturantReview";
+import Inbox from "./components/Inbox";
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
@@ -44,6 +56,27 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route exact path="/addtocart" element={<Addtocardpage  />} />
       <Route exact path="/delivery" element={<Delivery  />} />
       <Route exact path="/pickup" element={<Pickup  />} />
+      <Route exact path="/editmyaddress" element={<EditmyAddress  />} />
+      <Route exact path="/submitreview" element={<SubmitReview  />} />
+      <Route exact path="/myreview" element={<Myreview  />} />
+      <Route exact path="/forgotpassword" element={<ForgetPassword  />} />
+      <Route exact path="/changepassword" element={<ChangePassword  />} />
+      <Route exact path="/orderdetail" element={<OrderDetail  />} />
+      <Route exact path="/order" element={<Order  />} />
+      <Route exact path="/profile" element={<Profile  />} />
+      <Route exact path="/resturantReview" element={<ResturantReview  />} />
+      <Route exact path="/inbox" element={<Inbox  />} />
+
+
+      <Route exact path="/modal" element={<ExamModal  />} />
+
+
+
+
+        
+
+
+
       <Route path="*"  element={<PageNot  />} />
 
 

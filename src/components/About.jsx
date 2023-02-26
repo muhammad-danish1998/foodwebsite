@@ -1,8 +1,13 @@
-import React from "react";
+import React , { useState } from "react";
 import Footer from "./Footer";
 import HeaderNavbar from "./HeaderNavbar";
 
 const About = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <>
     <HeaderNavbar />
@@ -25,6 +30,7 @@ const About = () => {
       </p>
       
     </div>
+
     <Footer  />
     
     </>
