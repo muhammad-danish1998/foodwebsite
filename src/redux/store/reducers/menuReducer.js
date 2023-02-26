@@ -13,8 +13,8 @@ const initialState = {
   catId: 0,
   max_rest_val: null,
   menu_id: null,
-  deliveryVal: null,
-  pickupVal: null,
+  deliveryVal: 1,
+  pickupVal: 1,
   deliverList: null,
   updateSearchVal: null
 };
