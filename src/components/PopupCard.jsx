@@ -37,6 +37,10 @@ export default function ModalRating({
   // const [addons01, setAddons01] = useState([]); /
   let addons01 = [];
   let multi01 = [];
+  let addons_id = [];
+  // let addons = [];
+
+  let addons = {}
 
   const dispatch = useDispatch();
 
@@ -64,8 +68,15 @@ export default function ModalRating({
     
   }, []);
 
-  const handleAddons = (id) => {
-    addons01.push(id);
+  const handleAddons = (e) => {
+    let data = e.split(',');
+    addons01.push(data[0]);
+    addons_id.push(data[1]);
+    console.log("addons", addons_id);
+    addons = {
+      ...addons,
+      [data[0]] : data[1] 
+    }
   };
 
   const handleMultiaddon = (id) => {
@@ -114,14 +125,23 @@ export default function ModalRating({
 
   const handleSubmit = () => {
     dispatch(setPaymentValue(amount));
-    
+    debugger;
+    // console.log(addons01,addons_id)
+    // console.log("addons",addons)
+    // let data =  addons[10];
+    // let addons = {
+    //   [addons_id]: addons01,
+    //   // "id": addons01[0]
+    // }
+    // console.log("addons", addons);
     dispatch(
       addToCartMenu({
         hidden_price: totalAmount,
         menu: menu_id,
         quantity: count,
         sessid: localStorage.getItem('uuid'),
-        addon: addons01,
+        // addons_id: [`${addons_id}_${addons01}`],
+        addons,
         multiaddons: multi01,
       })
     ).then((res) => {
@@ -252,7 +272,7 @@ export default function ModalRating({
                                 addVal.addons?.opt?.map((val) => (
                                   // console.log("val",val),
                                   <>
-                                    <option value={val.addon_id}>
+                                    <option value={`${val.addon_id} , ${val.id}`}>
                                       {val.title + " €"+ val.price}
                                     </option>
                                     {/* <option>Canada</option>
@@ -315,7 +335,7 @@ export default function ModalRating({
                                 addVal?.opt?.map((val) => (
                                   // console.log("val",val),
                                   <>
-                                    <option value={val.addon_id}>
+                                    <option value={`${val.addon_id} , ${val.id}`}>
                                       {val.title + " €"+ val.price}
                                     </option>
                                     {/* <option>Canada</option>

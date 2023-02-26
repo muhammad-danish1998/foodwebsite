@@ -58,6 +58,7 @@ export const getLoadMoreMenu = (menu_id,option) => {
 
 
 export const addToCart = (state) => {
+  
   return new Promise((resolve, reject) => {
     const endpoint = axiosUrl("/ajax/add_to_cart.php");
 

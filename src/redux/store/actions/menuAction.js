@@ -228,6 +228,10 @@ export const updateSearchValue =
 
 export const addToCartMenu =
   (state, navigate) => async dispatch => {
+
+    console.log("statte", state);
+
+   
   
     dispatch({type: ADD_TO_CART_MENU_ITEM});
     try {
