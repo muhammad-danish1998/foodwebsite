@@ -13,7 +13,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function HeaderNavbar() {
+export default function HeaderNavbarMenu() {
   const { t, i18n } = useTranslation();
   const changeLanguage = (lng) => {
     localStorage.setItem("language", lng);
@@ -92,49 +92,7 @@ export default function HeaderNavbar() {
                   </div>
                 </div>
               </div>
-              <div className="flex invisible lg:visible md:visible xl:visible    flex-1 justify-center px-2 lg:ml-6 lg:justify-start">
-                <div className="w-full  max-w-lg  lg:max-w-lg border-2 rounded-full p-1 ">
-                  <label htmlFor="search" className="sr-only">
-                    Search
-                  </label>
-                  <div className="relative">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-8 h-8 font-bold lg:mr-2 text-gray-600 outline-none"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                        />
-                      </svg>
-                    </div>
-                    <PlacesAutoComplete2
-                      address={address}
-                      zipCode={zipCode}
-                      onPlaceSelect={handlePlaceSelect}
-                    />
-                    {/* <input
-                      id="search"
-                      name="search"
-                      value={`${localStorage.getItem('your_street_name')}, ${localStorage.getItem('zipCode')}`}
-                      className="block w-full ml-2 outline-none  border border-transparent bg-transparent py-2 pl-10 pr-3 leading-5 text-gray-300 placeholder-gray-400   focus:text-gray-900 focus:outline-none  sm:text-sm"
-                      placeholder="67065 Ludwigshafen, Germany"
-                      type="search"
-                    /> */}
-                  </div>
-                </div>
-              </div>
+             
 
               <div className="flex lg:hidden">
                 {/* Mobile menu button */}

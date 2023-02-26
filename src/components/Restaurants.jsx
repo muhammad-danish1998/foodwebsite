@@ -213,7 +213,7 @@ export default function Restaurants() {
                 }}
                 className="border-2 p-2 rounded-full bg-gray-100"
               >
-                {t("freedelivery")}
+                {t("minimumorder")}
               </button>
             </p>
           </div>
