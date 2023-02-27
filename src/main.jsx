@@ -38,12 +38,15 @@ import Inbox from "./components/Inbox";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+  
   <Provider store={store}>
     <ToastContainer position="top-center" />
   <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<App />} />
+   
       <Route exact path="/restaurant" element={<Restaurants />} />
+     
       <Route exact path="/singlerestaurant" element={<SingleResOverview />} />
       <Route exact path="/signin" element={<Signin  />} />
       <Route exact path="/signup" element={<Signup  />} />
@@ -83,4 +86,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </Routes>
   </BrowserRouter>
   </Provider>
+  
 );
