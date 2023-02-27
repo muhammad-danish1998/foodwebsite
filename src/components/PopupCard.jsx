@@ -14,6 +14,8 @@ import {
 } from "../redux/store/actions/menuAction";
 
 let amount;
+// let data01 = [];
+// let data02 = [];
 
 export default function ModalRating({
   visible,
@@ -34,11 +36,14 @@ export default function ModalRating({
   const [menuList, setMenuList] = useState(menuList0);
   const [updatedAmount, setUpdatedAmount] = useState();
   const [loadUpdatedMenuList, setLoadUpdatedMenuList] = useState({});
+  const [data01, setData01] = useState();
+  const [data02, setData02] = useState();
   // const [addons01, setAddons01] = useState([]); /
   let addons01 = [];
   let multi01 = [];
   let addons_id = [];
   // let addons = [];
+ 
 
   let addons = {}
 
@@ -83,8 +88,16 @@ export default function ModalRating({
     console.log(id);
     let data = id.split(',');
     multi01.push(data[0]);
-    // amount = amount + data[1];
+   let valData =  multi01.filter((e) => {
+      return e.id == id
+    })
+    if(valData){
+      setUpdatedAmount(Number(updatedAmount) - Number(data[1]));
+    }else{
       setUpdatedAmount(Number(updatedAmount) + Number(data[1]));
+    }
+    // amount = amount + data[1];
+     
    
     //  amount +=  ;
     // console.log("amount", Number(amount) + Number(data[1]));  
@@ -155,8 +168,21 @@ export default function ModalRating({
   const handleOptions = (e) => {
         let data = e.split(',');
         console.log("e ===>",data[0], data[1]);
-       dispatch(getLoadMoreMenuList(data[0], data[1]));
+        updateStateData(data[0], data[1])
+      // data02.push(data[1]);     
+      
   }
+
+  const updateStateData = (data1, data2) => {
+      setData01(data1)
+      setData02(data2)
+  }
+
+  useEffect(() => {
+    dispatch(getLoadMoreMenuList(data01, data02));
+  },[data01, data02])
+
+
   return (
     <Transition.Root show={open} as={Fragment} onClick={handleOnClose}>
       <Dialog
@@ -219,7 +245,7 @@ export default function ModalRating({
                       </p>
                       {/* <p> */}
                       {menuList?.options && (
-                        <>
+                        <div>
                           <label
                           htmlFor="location"
                           className="block text-sm font-medium text-gray-700"
@@ -232,7 +258,7 @@ export default function ModalRating({
                             name="location"
                             className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                             defaultValue="Canada"
-                            onChange={(val) => handleOptions(val.target.value)}
+                            onChange={(e) => handleOptions(e.target.value)}
                           >
                           {
                                 menuList.options?.optionarr?.map((val) => (
@@ -246,7 +272,7 @@ export default function ModalRating({
                                 ))}
                             
                         </select>
-                        </>
+                        </div>
                       )
                       }
                       
