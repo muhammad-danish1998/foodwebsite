@@ -16,6 +16,7 @@ import {
 let amount;
 // let data01 = [];
 // let data02 = [];
+  // let multi01 = [];
 
 export default function ModalRating({
   visible,
@@ -38,9 +39,10 @@ export default function ModalRating({
   const [loadUpdatedMenuList, setLoadUpdatedMenuList] = useState({});
   const [data01, setData01] = useState();
   const [data02, setData02] = useState();
+  const [multi01, setMulti01]= useState([]);
   // const [addons01, setAddons01] = useState([]); /
   let addons01 = [];
-  let multi01 = [];
+
   let addons_id = [];
   // let addons = [];
  
@@ -85,17 +87,57 @@ export default function ModalRating({
   };
 
   const handleMultiaddon = (id) => {
-    console.log(id);
+    // console.log(id);
     let data = id.split(',');
-    multi01.push(data[0]);
-   let valData =  multi01.filter((e) => {
-      return e.id == id
+    // multi01.push(data[0]);
+    
+
+    
+  //   console.log("multi ===>", multi01);
+   let valData =  multi01?.filter((e) => {
+    console.log("e", e, data[0]);
+      return e == data[0]
     })
-    if(valData){
-      setUpdatedAmount(Number(updatedAmount) - Number(data[1]));
-    }else{
+
+    let valData01 =  multi01?.filter((e) => {
+      console.log("e", e, data[0]);
+      return e != data[0]
+    })
+
+    console.log("valData =============>", valData);
+
+    if(valData.length < 1){
       setUpdatedAmount(Number(updatedAmount) + Number(data[1]));
+      setMulti01([...multi01, data[0]]);
+     
+    }else{
+      setUpdatedAmount(Number(updatedAmount) - Number(data[1]));
+      setMulti01([]);
+      setMulti01(valData01)
     }
+    console.log("mutli01 ====>", multi01);
+    
+  //   let valData01 =  multi01?.filter((e) => {
+  //     console.log("e", e, data[0]);
+  //       return e != data[0]
+  //     })
+  //   console.log("valdata", valData01, valData);
+
+    // if(valData.length > 1){
+    //   setUpdatedAmount(Number(updatedAmount) - Number(data[1]));
+    //   setMulti01([]);
+    //   setMulti01(valData01)
+    // }
+    
+
+  //   if(valData.length > 1){
+  //     setUpdatedAmount(Number(updatedAmount) - Number(data[1]));
+  //     setMulti01([]);
+  //     setMulti01(valData01)
+  //   }else{
+  //     setMulti01([...multi01, data[0]])
+  //     setUpdatedAmount(Number(updatedAmount) + Number(data[1]));
+  //   }
     // amount = amount + data[1];
      
    
@@ -476,7 +518,7 @@ export default function ModalRating({
                     onClick={() => handleSubmit()}
                     ref={cancelButtonRef}
                   >
-                    Add to cart €{updatedAmount}
+                    Add to cart €{(Number(updatedAmount).toFixed(2) * Number(count).toFixed(2)).toFixed(2)} 
                   </button>
                 </div>
               </Dialog.Panel>
