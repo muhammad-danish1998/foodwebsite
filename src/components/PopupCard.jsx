@@ -14,6 +14,8 @@ import {
 } from "../redux/store/actions/menuAction";
 
 let amount;
+let  valTotalAmount;
+
 // let data01 = [];
 // let data02 = [];
   // let multi01 = [];
@@ -46,13 +48,14 @@ export default function ModalRating({
   let addons_id = [];
   // let addons = [];
  
-
+  
   let addons = {}
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     // if(data02 != "test"){
+      
       setMenuList(menuList0);
       console.log("menuList data inside useEffect", menuList0)
     // }
@@ -77,7 +80,7 @@ export default function ModalRating({
     amount = totalAmount;
     setUpdatedAmount(totalAmount);
     console.log(response)
-    
+    valTotalAmount = 0;
   }, []);
 
   const handleAddons = (e) => {
@@ -155,7 +158,7 @@ export default function ModalRating({
     setShowCount(70);
   }
 
-  console.log("menulist, totalAmount", menuList, amount, cartlist);
+  console.log("menulist, totalAmount",  totalAmount == Number(localStorage.getItem('amount')).toFixed(2) ? 0 : Number(localStorage.getItem('amount')).toFixed(2));
 
   const cancelButtonRef = useRef(null);
 
@@ -216,6 +219,7 @@ export default function ModalRating({
        localStorage.setItem("amount", 0)
   },[])
 
+
   const handleOptions = (e) => {
       let data = e.split(',');
       localStorage.setItem("data01", data[0]);
@@ -223,7 +227,10 @@ export default function ModalRating({
       localStorage.setItem("amount", data[2])
       console.log(data[2]);
       // setData02("test");
-      setData01(data[1])      
+      setData01(data[1])    
+      setUpdatedAmount(Number(data[2]));
+      
+     valTotalAmount =  totalAmount == Number(localStorage.getItem('amount')).toFixed(2) ? 0 : Number(localStorage.getItem('amount')).toFixed(2)
   }
 
 
@@ -528,7 +535,7 @@ export default function ModalRating({
                     onClick={() => handleSubmit()}
                     ref={cancelButtonRef}
                   >
-                    Add to cart €{((Number(updatedAmount) * Number(count).toFixed(2)) + Number(localStorage.getItem('amount'))).toFixed(2)} 
+                    Add to cart €{((Number(updatedAmount) * Number(count)) )} 
                   </button>
                 </div>
               </Dialog.Panel>

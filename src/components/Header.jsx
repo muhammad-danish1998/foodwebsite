@@ -44,6 +44,14 @@ export default function Header() {
     }
    
   };
+
+  useEffect(()=> {
+    if(!localStorage.getItem("your_street_name")){
+        localStorage.setItem("your_zip", 'Please select address');
+        localStorage.setItem("your_street_name",'')
+    }
+ 
+},[])
   const [location, setLocation] = useState({
     latitude: null,
     longitude: null,
@@ -111,6 +119,16 @@ const api_key = `AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0`
 
   }, [location]);
 
+  const load = function() {      
+    var geoSuccess = function(position) {           
+       $.cookie("position_latitude", position.coords.latitude);
+       $.cookie("position_longitude", position.coords.longitude);
+       document.location.reload(true);
+    };
+    if ($.cookie("position_longitude", undefined))
+        navigator.geolocation.getCurrentPosition(geoSuccess);
+  };
+
   useEffect(() => {
     if (!navigator.geolocation) {
       console.error('Geolocation is not supported by your browser');
@@ -118,6 +136,7 @@ const api_key = `AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0`
     }
 
     navigator.geolocation.getCurrentPosition(async (position) => {
+      load();
       const { latitude, longitude } = position.coords;
 
       const response = await axios.get(
