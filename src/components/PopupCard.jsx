@@ -38,7 +38,7 @@ export default function ModalRating({
   const [updatedAmount, setUpdatedAmount] = useState();
   const [loadUpdatedMenuList, setLoadUpdatedMenuList] = useState({});
   const [data01, setData01] = useState();
-  const [data02, setData02] = useState();
+  const [data02, setData02] = useState("");
   const [multi01, setMulti01]= useState([]);
   // const [addons01, setAddons01] = useState([]); /
   let addons01 = [];
@@ -52,7 +52,12 @@ export default function ModalRating({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setMenuList(menuList0);
+    // if(data02 != "test"){
+      setMenuList(menuList0);
+      console.log("menuList data inside useEffect", menuList0)
+    // }
+  
+  
   },[menuList0])
 
   useEffect(() => {
@@ -207,33 +212,38 @@ export default function ModalRating({
     });
   };
 
-  const handleOptions = (e) => {
-        let data = e.split(',');
-        console.log("e ===>",data[0], data[1]);
-        updateStateData(data[0], data[1])
-      // data02.push(data[1]);     
-      
-  }
-
-  const updateStateData = (data1, data2) => {
-      setData01(data1)
-      setData02(data2)
-  }
-
   useEffect(() => {
-    dispatch(getLoadMoreMenuList(data01, data02));
-  },[data01, data02])
+       localStorage.setItem("amount", 0)
+  },[])
+
+  const handleOptions = (e) => {
+      let data = e.split(',');
+      localStorage.setItem("data01", data[0]);
+      localStorage.setItem("data02", data[1]);
+      localStorage.setItem("amount", data[2])
+      console.log(data[2]);
+      // setData02("test");
+      setData01(data[1])      
+  }
+
+
+
+
+  // useEffect(() => {
+  //   dispatch(getLoadMoreMenuList(localStorage.getItem("data01"), localStorage.getItem("data02")));
+  // },[data01, data02])
 
 
   return (
-    <Transition.Root show={open} as={Fragment} onClick={handleOnClose}>
+    // <Transition.Root show={open} as={Fragment} onClick={handleOnClose}>
       <Dialog
-        as="div"
+        // as="div"
         className="relative z-10"
-        initialFocus={cancelButtonRef}
-        onClose={setOpen}
+        // initialFocus={cancelButtonRef}
+        onClose={handleOnClose}
+        open={open}
       >
-        <Transition.Child
+        {/* <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
           enterFrom="opacity-0"
@@ -241,14 +251,14 @@ export default function ModalRating({
           leave="ease-in duration-200"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
-        >
+        > */}
           
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-        </Transition.Child>
+        {/* </Transition.Child> */}
    { loading ? null :
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <Transition.Child
+            {/* <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
               enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
@@ -256,7 +266,7 @@ export default function ModalRating({
               leave="ease-in duration-200"
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            >
+            > */}
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div>
                   {/* <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
@@ -299,15 +309,15 @@ export default function ModalRating({
                             id="location"
                             name="location"
                             className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                            defaultValue="Canada"
+                         
                             onChange={(e) => handleOptions(e.target.value)}
                           >
                           {
                                 menuList.options?.optionarr?.map((val) => (
                             
                                   <>
-                                    <option value={`${val.menu_id} , ${val.id}`}>
-                                      {val.name +" €"+ val.price}
+                                    <option value={`${val.menu_id} , ${val.id}, ${val.price}`}>
+                                       {val.name +" €"+ val.price}
                                     </option>
                                
                                   </>
@@ -518,16 +528,16 @@ export default function ModalRating({
                     onClick={() => handleSubmit()}
                     ref={cancelButtonRef}
                   >
-                    Add to cart €{(Number(updatedAmount).toFixed(2) * Number(count).toFixed(2)).toFixed(2)} 
+                    Add to cart €{((Number(updatedAmount) * Number(count).toFixed(2)) + Number(localStorage.getItem('amount'))).toFixed(2)} 
                   </button>
                 </div>
               </Dialog.Panel>
-            </Transition.Child>
+            {/* </Transition.Child> */}
           </div>
         </div>
 }
       </Dialog>
 
-    </Transition.Root>
+    // </Transition.Root>
   );
 }
