@@ -205,6 +205,7 @@ export default function ModalRating({
         sessid: localStorage.getItem('uuid'),
         // addons_id: [`${addons_id}_${addons01}`],
         addons,
+        option: data01,
         multiaddons: multi01,
       })
     ).then((res) => {
@@ -226,7 +227,7 @@ export default function ModalRating({
       localStorage.setItem("data02", data[1]);
       localStorage.setItem("amount", data[2])
       console.log(data[2]);
-      // setData02("test");
+      setData02(e);
       setData01(data[1])    
       setUpdatedAmount(Number(data[2]));
       
@@ -236,9 +237,9 @@ export default function ModalRating({
 
 
 
-  // useEffect(() => {
-  //   dispatch(getLoadMoreMenuList(localStorage.getItem("data01"), localStorage.getItem("data02")));
-  // },[data01, data02])
+  useEffect(() => {
+    dispatch(getLoadMoreMenuList(localStorage.getItem("data01"), localStorage.getItem("data02")));
+  },[data01, data02])
 
 
   return (
@@ -316,14 +317,14 @@ export default function ModalRating({
                             id="location"
                             name="location"
                             className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                         
+                            value={data02}
                             onChange={(e) => handleOptions(e.target.value)}
                           >
                           {
                                 menuList.options?.optionarr?.map((val) => (
                             
                                   <>
-                                    <option value={`${val.menu_id} , ${val.id}, ${val.price}`}>
+                                    <option  value={`${val.menu_id} , ${val.id}, ${val.price}`}>
                                        {val.name +" €"+ val.price}
                                     </option>
                                
