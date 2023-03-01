@@ -228,8 +228,10 @@ export default function ModalRating({
       localStorage.setItem("amount", data[2])
       console.log(data[2]);
       setData02(e);
-      setData01(data[1])    
+      setData01(data[1]);
+      setMulti01([]); 
       setUpdatedAmount(Number(data[2]));
+      
       
      valTotalAmount =  totalAmount == Number(localStorage.getItem('amount')).toFixed(2) ? 0 : Number(localStorage.getItem('amount')).toFixed(2)
   }
@@ -536,7 +538,7 @@ export default function ModalRating({
                     onClick={() => handleSubmit()}
                     ref={cancelButtonRef}
                   >
-                    Add to cart €{((Number(updatedAmount) * Number(count)) )} 
+                    Add to cart €{((Number(updatedAmount) * Number(count)).toFixed(2) )} 
                   </button>
                 </div>
               </Dialog.Panel>
