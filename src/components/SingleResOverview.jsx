@@ -137,7 +137,7 @@ export default function SingleResOverview() {
       <div className="sticky-thc  ">
         <HeaderTextSlider catArray={catArray} />
       </div>
-      <div className="py-0">
+      <div className="lg:py-0 py-1 ">
         <div className="mx-auto max-w-8xl sm:px-6 lg:grid lg:max-w-9xl lg:grid-cols-12 lg:gap-0 lg:px-8">
           <main className="lg:col-span-9 xl:col-span-8 ">
             {/* -------------- card ----------------  */}

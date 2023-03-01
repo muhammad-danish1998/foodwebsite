@@ -29,21 +29,7 @@ export default function HeaderNavbar() {
     localStorage.setItem("zipCode", data.zipCode);
     localStorage.setItem("your_street_name", data.city);
 
-    // const formData = new URLSearchParams();
-    // formData.append("lat", 49.4537628);
-    // formData.append("long", 8.4183208);
-    // formData.append("expedition", "all");
-    // formData.append("city", "Ludwigshafen");
-    // formData.append("postal_code", 67065);
-    // formData.append("address", "67065 Ludwigshafen, Germany");
-
-    // axios.post("https://liefermars.de/ajax/searchfood.php", formData,{
-    //   headers: {
-
-    //   }
-    // }).then((response) => {
-    //   console.log({ response })
-    // })
+    
 
     if (data) {
       navigate(`/restaurant?city=${data.city}&zip=${data.zipCode}`);
@@ -256,8 +242,8 @@ export default function HeaderNavbar() {
           </div>
           {/* -------------------- second search bar ----------------  */}
           <div className="max-w-7xl lg:hidden  md:hidden m-2">
-            <div className="flex border-2 flex-1 justify-center px-2 lg:ml-6 lg:justify-start">
-              <div className="w-full max-w-lg lg:max-w-xs">
+            <div className="flex border-2 flex-1  px-2 lg:ml-6 lg:justify-start">
+              <div className="lg:w-full max-w-lg lg:max-w-xs">
                 <label htmlFor="search" className="sr-only">
                   Search
                 </label>
@@ -283,13 +269,7 @@ export default function HeaderNavbar() {
                       />
                     </svg>
                   </div>
-                  {/* <input
-                    id="search"
-                    name="search"
-                    className="block ml-2 w-full rounded-md border border-transparent bg-transparent py-2 pl-10 pr-3 leading-5 text-gray-300 placeholder-gray-400 focus:border-white focus:bg-white focus:text-gray-900 focus:outline-none focus:ring-white sm:text-sm"
-                    placeholder="Search"
-                    type="search"
-                  /> */}
+                
                   <PlacesAutoComplete2
                     address={address}
                     zipCode={zipCode}

@@ -89,7 +89,7 @@ export default function RestaurantsGrid({
   return (
     <ul
       role="list"
-      className="grid grid-cols-1   gap-x-4 gap-y-6  sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-0"
+      className="grid grid-cols-1    gap-x-4 gap-y-6  sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-3 md:grid-cols-2 xl:gap-x-0"
     >
       {(items || []).filter(FilterItems).map((file) => {
         const restaurantUrl = getSlugFromUrl(file.url);
@@ -149,54 +149,22 @@ export default function RestaurantsGrid({
             <p className="  p-1  pointer-events-none block  text-gray-500 ">
               {/* ------------------------- card bottom  ----------------  */}
 
-              <div className="flex items-center   justify-between">
+              <div className="flex items-center  justify-between">
                 <i className="fa-sharp  fa-solid fa-motorcycle ">
-                  <span className="ml-1 font-sans font-semibold  ">€ {file.delivery_fee}</span>{" "}
+                  <span className="lg:ml-1 font-sans lg:font-semibold font-thin ">€{file.delivery_fee}</span>{" "}
                 </i>
 
                 {/* -------------- watch ----------------------- */}
-                {/* <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-7 h-7   text-lg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                  
-                </svg> */}
-                <i class="fa-solid fa-clock">
-                  <span className="ml-1 font-sans font-semibold ">{file.deliveryTime}</span>
+               
+                <i class="fa-solid ml-1 fa-clock">
+                  <span className="lg:ml-1 font-sans lg:font-semibold font-thin ">{file.deliveryTime}</span>
                 </i>
                 {/* ----------------------------- Shoping -----------------  */}
-                {/* <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6  h-6 "
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-                  />
-                </svg> */}
-                {/* <i className="fa-sharp fa-regular fa-cart-shopping">
-                <span className="ml-2  text-sm">
-                  min € <span>{file.minorder}</span>
-                </span>
-                </i> */}
+               
             
                 <i class="fa-solid fa-cart-plus">
 
-                <span className="ml-1 font-sans font-semibold">
+                <span className="lg:ml-1 font-sans lg:font-semibold font-thin">
                     <span>  min € {file.minorder}</span>
                   </span>
                 </i>
@@ -206,20 +174,20 @@ export default function RestaurantsGrid({
                   Min € <span>${file.minorder}</span>
                 </p> */}
                 {/* -------------- Review ----------------------- */}
-                <span className="flex items-center border-2 rounded-lg p-1 m-1 text-end">
+                <span className="flex items-center border-2 lg:font-semibold font-thin rounded-lg lg:p-1 lg:m-1 text-end">
                   <svg
                     fill="currentColor"
                     stroke="currentColor"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    className="w-5 h-6 text-yellow-400"
+                    className="lg:w-5 lg:h-6 w-4 h-4 text-yellow-400"
                     viewBox="0 0 24 24"
                   >
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                   </svg>
 
-                  <span className="text-gray-600 ml-1 text-lg">
+                  <span className="text-gray-600 ml-1 lg:text-lg">
                     {file.overall_rating}
                   </span>
                 </span>
