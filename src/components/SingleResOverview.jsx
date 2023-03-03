@@ -132,8 +132,8 @@ export default function SingleResOverview() {
   return (
     <div className="">
       {/* ------------- navbar here ---------  */}
-      {/* <HeaderNavbar /> */}
-      <HeaderNavbarMenu />
+      <HeaderNavbar />
+      {/* <HeaderNavbarMenu /> */}
       <div className="sticky-thc  ">
         <HeaderTextSlider catArray={catArray} />
       </div>
@@ -331,57 +331,7 @@ export default function SingleResOverview() {
                             )
                           )}
 
-                          {/* <div className="border-2 rounded-lg p-4  mt-16 mb-4  w-5/6">
-                            <h1 className="text-4xl font-bold text-black mb-2">
-                              Asia - Sparmenüs
-                            </h1>
-                            <p>
-                              all dishes with boiled rice as a side dish. On
-                              request, there are also advised noodles instead of
-                              rice - surcharge 2.00 €
-                            </p>
-                          </div>
-                          <div className="border-2 p-4  mt-4 w-5/6">
-                            <h1 className="text-2xl">Fried chicken meat</h1>
-                            <p className="text-green-500 font-semibold">
-                              {" "}
-                              € 10,90
-                            </p>
-                            <ul>
-                              <li>• mit rotem Curry und Kokosmilch</li>
-                              <li>• Gaeng Kiew Wan Gai mit Hühnerfleisch</li>
-                              <li>• mit rotem Curry und Kokosmilch</li>
-                              <li>• mit rotem Curry und Kokosmilch</li>
-                              <li>• mit rotem Curry und Kokosmilch</li>
-                            </ul>
-                          </div>
-                          <div className="border-2 p-4  mt-4 w-5/6">
-                            <h1 className="text-2xl">Fried chicken meat</h1>
-                            <p className="text-green-500 font-semibold">
-                              {" "}
-                              € 10,90
-                            </p>
-                            <p>
-                              all dishes with boiled rice as a side dish. On
-                              request, there are also advised noodles instead of
-                              rice - surcharge 2.00 €
-                            </p>
-                          </div>
-                          <div className="border-2 p-4  mt-4 w-5/6">
-                            <h1 className="text-2xl">Fried chicken meat</h1>
-                            <p className="text-green-500 font-semibold">
-                              {" "}
-                              € 10,90
-                            </p>
-                            <p>
-                              all dishes with boiled rice as a side dish. On
-                              request, there are also advised noodles instead of
-                              rice - surcharge 2.00 €
-                              <Link to={"/modalcard"}>
-                                shop
-                              </Link>
-                            </p>
-                          </div> */}
+                         
                         </div>
                       </div>
                     </div>
