@@ -152,15 +152,15 @@ export default function SingleResOverview() {
                         src="https://www.trgplc.com/wp-content/uploads/2022/03/Pubs_our_brand.jpg"
                         alt="blog"
                       />
-                      <div className="pt-0">
+                      <div className="p-1 lg:p-0">
                         <div className="flex lg:items-center  justify-between border-2">
                           <div className=" justify-center lg:ml-2 items-center">
-                            <h1 className="title-font text-2xl  font-medium text-gray-900 mb-3">
+                            <h1 className="title-font text-2xl p-1 lg:p-0 font-medium text-gray-900 mb-3">
                               {name}
                             </h1>
 
                             {/* -------- review ------------  */}
-                            <span className="flex items-center ">
+                            <span className="flex items-center p-1 lg:p-0 ">
                               <svg
                                 fill="currentColor"
                                 stroke="currentColor"
