@@ -157,7 +157,7 @@ const [showDetail, setShowDetail] = useState(false);
                     <div class="h-full  border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                       <div class="p-6">
                         <div class="flex items-center flex-wrap ">
-                          <div className=" rounded-lg px-1  mt-16 mb-4  w-5/6">
+                          <div className=" rounded-lg px-1  lg:mt-16 mb-4  w-5/6">
                             <h1 className="text-4xl font-bold text-black mb-2">
                               Checkout
                             </h1>
@@ -169,7 +169,7 @@ const [showDetail, setShowDetail] = useState(false);
                             } */}
 
                             </div>
-                          <div className="border-2 border-gray-400 rounded-lg p-8   mt-4 mb-4 bg-white  w-5/6">
+                          <div className="border-2 border-gray-400 rounded-lg p-8   mt-4 mb-4 bg-white  lg:w-5/6 w-full">
                         
                             <div className="cursor-pointer">
                               <label
@@ -186,7 +186,7 @@ const [showDetail, setShowDetail] = useState(false);
                               </div> */}
                             </div>
                           </div>
-                          <div className="border-2 border-gray-400 rounded-lg p-8   mt-4 mb-4 bg-white  w-5/6">
+                          <div className="border-2 border-gray-400 rounded-lg p-8   mt-4 mb-4 bg-white  lg:w-5/6 w-full">
                             <div>
                               <label
                                 htmlFor="comment "
@@ -230,7 +230,7 @@ const [showDetail, setShowDetail] = useState(false);
                             </div>
                             </div>
                           </div>
-                          <div className="border-2 border-x-0 border-gray-400  p-1   mt-4 mb-4 bg-white  w-5/6">
+                          <div className="border-2 border-x-0 border-gray-400  p-1   mt-4 mb-4 bg-white  lg:w-5/6 w-full">
                             <div className="p-4">
                               <label
                                 htmlFor="comment "
@@ -272,7 +272,7 @@ const [showDetail, setShowDetail] = useState(false);
                               </div> */}
                             </div>
                           </div>
-                          <div className="border-2 border-x-0 border-gray-400  p-1   mt-4 mb-4 bg-white  w-5/6">
+                          <div className="border-2 border-x-0 border-gray-400  p-1   mt-4 mb-4 bg-white lg:w-5/6 w-full">
                             <div className="p-4">
                               <label
                                 htmlFor="comment "
