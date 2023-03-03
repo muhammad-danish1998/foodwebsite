@@ -106,7 +106,7 @@ export default function RestaurantsGrid({
                 <img
                   src={file.banner}
                   alt=""
-                  className="pointer-events-none group-hover:opacity-75 h-44 md:h-36 w-full object-cover object-center"
+                  className="pointer-events-none group-hover:opacity-75 h-24 md:h-36 w-full object-cover object-center"
                 />
                 <button
                   type="button"
@@ -157,7 +157,7 @@ export default function RestaurantsGrid({
                 {/* -------------- watch ----------------------- */}
                
                 <i class="fa-solid ml-1 fa-clock">
-                  <span className="lg:ml-1 font-sans lg:font-semibold font-thin ">{file.deliveryTime}</span>
+                  <span className="lg:ml-1 font-sans lg:font-semibold font-thin "> {file.deliveryTime}</span>
                 </i>
                 {/* ----------------------------- Shoping -----------------  */}
                

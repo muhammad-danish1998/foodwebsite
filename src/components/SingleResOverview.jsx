@@ -349,7 +349,7 @@ export default function SingleResOverview() {
               />
             </section>
           </main>
-          <aside className=" xl:col-span-4 xl:block p-4  lg:mt-0 mt-8">
+          <aside className=" xl:col-span-4 xl:block p-4  lg:mt-0 mt-8 ">
             <div className="sticky top-8 space-y-4 lg:p-4">
               <h1 className="text-2xl font-bold">Shopping Cart</h1>
               {cartlistItem?.carttotalamount >= max_rest_val && (
