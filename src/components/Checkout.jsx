@@ -91,18 +91,20 @@ const [showDetail, setShowDetail] = useState(false);
   
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
   const params = new URLSearchParams(window.location.search);
-  useEffect(() => {
-    const restaurantSlug = params.get("resturent_slug");
-    const restuarantCode = params.get("resturent_code");
-    axios
-      .get(
-        `https://liefermars.de/_api_ajax_menu.php?resturent_slug=${restaurantSlug}&resturent_code=${restuarantCode}`
-      )
-      .then((response) => {
-        setMenuArray(response.data.menuarr);
-        setCurrentRestaurantImg(response?.data?.restlogo);
-      });
-  }, [window.location.search]);
+
+  // ============== i commit this for card emty ============= 
+  // useEffect(() => {
+  //   const restaurantSlug = params.get("resturent_slug");
+  //   const restuarantCode = params.get("resturent_code");
+  //   axios
+  //     .get(
+  //       `https://liefermars.de/_api_ajax_menu.php?resturent_slug=${restaurantSlug}&resturent_code=${restuarantCode}`
+  //     )
+  //     .then((response) => {
+  //       setMenuArray(response.data.menuarr);
+  //       setCurrentRestaurantImg(response?.data?.restlogo);
+  //     });
+  // }, [window.location.search]);
   const showpersonalDetail = () =>{
     setShowDetail(true)                            
   }

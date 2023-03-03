@@ -288,7 +288,7 @@ export default function HeaderNavbar() {
                   // href="/"
                   className=" block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
                 >
-                  Home
+                  Home1
                 </Disclosure.Button>
               </Link>
               <Link to="/signin">

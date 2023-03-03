@@ -162,7 +162,7 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="mt-10 xl:mt-0">
+          <div className="mt-10 xl:mt-0  ">
             <img src="./images/yeldoz 1.png" />
             {/* <h3 className="text-lg font-semibold leading-6 text-gray-900">Subscribe to our newsletter</h3>
               <p className="mt-2 text-sm leading-6 text-gray-600">
