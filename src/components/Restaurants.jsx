@@ -184,7 +184,7 @@ export default function Restaurants() {
         </div>
 
         {/* --------------- header grid check switch ------------ */}
-        <div className=" max-w-8xl  lg:ml-12   lg:mt-2 m-auto lg:flex md:flex md:flex-row items-center  p-1 ">
+        <div className=" lg:visible hidden max-w-8xl  lg:ml-12   lg:mt-2 m-auto lg:flex md:flex md:flex-row items-center  p-1 ">
           <div className="lg:flex md:flex  lg:justify-between   ">
            {/* ================= open resturant ================  */}
             <p className=" bg-gray-100 rounded-full p-2 flex items-center border-2  ">

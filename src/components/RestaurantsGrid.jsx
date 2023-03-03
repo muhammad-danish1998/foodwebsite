@@ -102,11 +102,11 @@ export default function RestaurantsGrid({
             <ForwardLink
               to={`/singlerestaurant?resturent_slug=${restaurantUrl}&resturent_code=${file.code}`}
             >
-              <div className="group border-2   block  w-full  overflow-hidden rounded-xl bg-gray-100" onClick={() => handleOnClick(file.minorder, file.delivery, file.pickup)}>
+              <div className="group border-2  block  w-full  overflow-hidden rounded-xl bg-gray-100" onClick={() => handleOnClick(file.minorder, file.delivery, file.pickup)}>
                 <img
                   src={file.banner}
                   alt=""
-                  className="pointer-events-none group-hover:opacity-75 lg:h-44 md:h-36 w-full object-cover object-center"
+                  className="pointer-events-none group-hover:opacity-75 h-44 md:h-36 w-full object-cover object-center"
                 />
                 <button
                   type="button"
