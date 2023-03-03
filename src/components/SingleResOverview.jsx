@@ -152,7 +152,7 @@ export default function SingleResOverview() {
                         src="https://www.trgplc.com/wp-content/uploads/2022/03/Pubs_our_brand.jpg"
                         alt="blog"
                       />
-                      <div className="pt-4">
+                      <div className="pt-0">
                         <div className="flex lg:items-center  justify-between border-2">
                           <div className=" justify-center lg:ml-2 items-center">
                             <h1 className="title-font text-2xl  font-medium text-gray-900 mb-3">
@@ -399,7 +399,7 @@ export default function SingleResOverview() {
               />
             </section>
           </main>
-          <aside className=" xl:col-span-4 xl:block   lg:mt-0 mt-8">
+          <aside className=" xl:col-span-4 xl:block p-4  lg:mt-0 mt-8">
             <div className="sticky top-8 space-y-4 lg:p-4">
               <h1 className="text-2xl font-bold">Shopping Cart</h1>
               {cartlistItem?.carttotalamount >= max_rest_val && (
