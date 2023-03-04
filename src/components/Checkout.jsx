@@ -230,7 +230,7 @@ const [showDetail, setShowDetail] = useState(false);
                             </div>
                             </div>
                           </div>
-                          <div className="border-2 border-x-0 border-gray-400  p-1   mt-4 mb-4 bg-white  lg:w-5/6 w-full">
+                          <div className=" border-gray-400  p-1   mt-4 mb-4 bg-white  lg:w-5/6 w-full">
                             <div className="p-4">
                               <label
                                 htmlFor="comment "
@@ -272,7 +272,7 @@ const [showDetail, setShowDetail] = useState(false);
                               </div> */}
                             </div>
                           </div>
-                          <div className="border-2 border-x-0 border-gray-400  p-1   mt-4 mb-4 bg-white lg:w-5/6 w-full">
+                          <div className=" border-gray-400  p-1   mt-4 mb-4 bg-white lg:w-5/6 w-full">
                             <div className="p-4">
                               <label
                                 htmlFor="comment "
@@ -301,7 +301,7 @@ const [showDetail, setShowDetail] = useState(false);
 
                                 <button
                                   onClick={() => handleSubmit()}
-                                  className="inline-flex items-center rounded-md border border-transparent bg-greencheckout px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                  className=" inline-flex w-full items-center justify-center rounded-md border border-transparent bg-red-500 px-4 py-4 lg:text-lg text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                 >
                                  Order And Pay
                                 </button>

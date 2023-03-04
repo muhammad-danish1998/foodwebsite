@@ -35,7 +35,7 @@ function PlacesAutoComplete({ onPlaceSelect , zipCode, address }) {
             // placeholder={`${address && zipCode}  ${zipCode,address} : "Add Location" `}
             // value = {address ? `${zipCode},${address}}` : ""}
            placeholder={`please select your address`}
-        //    defaultValue={`${localStorage.getItem('your_zip')} ${localStorage.getItem('your_street_name')}`}
+           defaultValue={`${localStorage.getItem('your_zip')} ${localStorage.getItem('your_street_name')}`}
            inputAutocompleteValue={`${zipCode}, ${address}`}
             className="block   w-full border-0 outline-none   py-3 text-base   sm:flex-1"
             apiKey='AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0'

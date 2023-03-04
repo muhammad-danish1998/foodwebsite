@@ -144,18 +144,18 @@ export default function SingleResOverview() {
             <section className="text-gray-600  mt-4">
               <div className="container px-5  mx-auto">
                 <div className="flex flex-wrap -m-4">
-                  <div className=" md:w-full">
+                  <div className=" w-full">
                     <div className="h-full   border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                       <img
-                        className="lg:h-48 md:h-36 object-cover w-full  "
+                        className="lg:h-48 md:h-36 h-24 object-cover w-full  "
                         // src={currentRestaurantImg}
                         src="https://www.trgplc.com/wp-content/uploads/2022/03/Pubs_our_brand.jpg"
                         alt="blog"
                       />
-                      <div className="p-1 lg:p-0">
+                      <div className="p-0  lg:p-0">
                         <div className="flex lg:items-center  justify-between border-2">
                           <div className=" justify-center lg:ml-2 items-center">
-                            <h1 className="title-font text-2xl p-1 lg:p-0 font-medium text-gray-900 mb-3">
+                            <h1 className="title-font lg:text-2xl text-xl p-1 lg:p-0 font-medium text-gray-900 mb-3">
                               {name}
                             </h1>
 
@@ -233,7 +233,7 @@ export default function SingleResOverview() {
                             {/* --------------- logo -------------  */}
                             <div className="mt-0 p-2 ">
                               <img
-                                className="inline-block lg:h-24 lg:w-24 h-14 w-14 rounded-full"
+                                className="inline-block lg:h-24 lg:w-24 h-12 w-12 rounded-full"
                                 src={currentRestaurantImg}
                                 alt=""
                               />
@@ -253,9 +253,9 @@ export default function SingleResOverview() {
                                     className="border-2 border-gray-400 p-4 rounded-lg mt-4 w-full"
                                     id={eachMenuCatergory?.catname}
                                   >
-                                    <h1 className="text-4xl font-bold text-black">
-                                      {eachMenuCatergory.catname}
-                                    </h1>
+                                      <h1 className="lg:text-4xl text-xl font-bold text-black">
+                                        {eachMenuCatergory.catname}
+                                      </h1>
                                     <p>{eachMenuCatergory.catedesc}</p>
                                   </div>
                                   {eachMenuCatergory?.menuarr?.map(
@@ -273,7 +273,7 @@ export default function SingleResOverview() {
                                         }}
                                       >
                                         <div>
-                                          <h1 className="text-2xl">
+                                          <h1 className="lg:text-2xl text-xl">
                                             {eachMenuItem.name}
                                           </h1>
                                         </div>
@@ -349,12 +349,12 @@ export default function SingleResOverview() {
               />
             </section>
           </main>
-          <aside className=" xl:col-span-4 xl:block p-4  lg:mt-0 mt-8 ">
-            <div className="sticky top-8 space-y-4 lg:p-4">
-              <h1 className="text-2xl font-bold">Shopping Cart</h1>
+          <aside className=" xl:col-span-4 xl:block tablet-xl  p-4  lg:mt-0 mt-8 ">
+            <div className="sticky top-8 space-y-4  lg:p-4">
+              <h1 className=" lg:text-2xl text-xl    font-bold">Shopping Cart</h1>
               {cartlistItem?.carttotalamount >= max_rest_val && (
                 <Link
-                  className="checkout flex text-white justify-between font-bold bg-redColor p-4 rounded-2xl"
+                  className="checkout flex text-white  justify-between font-bold bg-redColor p-4 rounded-2xl"
                   to="/checkout"
                 >
                   <p>Checkout</p>
