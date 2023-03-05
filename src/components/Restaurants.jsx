@@ -223,7 +223,7 @@ export default function Restaurants() {
         </div>
 
         {/* ----------------------------------- Grid card -----------------------  */}
-        <div className="py-1">
+        <div className="py-0">
           <header>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"></div>
           </header>

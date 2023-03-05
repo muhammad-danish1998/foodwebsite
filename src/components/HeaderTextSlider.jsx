@@ -66,14 +66,14 @@ export default function HeaderTextSlider({ catArray, res }) {
       >
         {res
           ? catArray?.map((arr) => (
-              <SwiperSlide className="p-3     lg:text-lg text-sm lg:font-semibold text-gray-700 cursor-pointer">
+              <SwiperSlide className="p-3 lg:text-lg text-lg lg:font-semibold text-gray-700 cursor-pointer">
                 <button onClick={() => dispatch(setCatValue(arr.id))}>
                   {arr.title}
                 </button>
               </SwiperSlide>
             ))
           : catArray?.map((arr) => (
-              <SwiperSlide className="p-1 text-sm   text-gray-700 cursor-pointer">
+              <SwiperSlide className="p-2 text-sm   text-gray-700 cursor-pointer">
                 <Link to={arr.title} spy={true} smooth={true}>
                   {arr.title}
                 </Link>
