@@ -51,6 +51,7 @@ export default function Popuppickup({
   const [state, setState] = useState({
     your_name: localStorage.getItem('your_name'),
     your_email: localStorage.getItem('your_email'),
+    your_last_name: localStorage.getItem('your_last_name'),
     shipping: "delivery",
     delivery_time: "ASAP",
     PaymentType:"code",
@@ -151,8 +152,8 @@ export default function Popuppickup({
                               type="text"
                               id="email"
                               name="email"
-                              value={state.your_name}
-                              onChange={(e) => handleChange("your_name", e.target.value)}
+                              value={state.your_last_name}
+                              onChange={(e) => handleChange("your_last_name", e.target.value)}
                               className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                             />
                           </div>
