@@ -195,7 +195,7 @@ const changeLanguage = lng => {
           <div className="lg:grid lg:grid-cols-12 lg:gap-8  lg:mt-4">
             <div className="sm:text-center md:mx-auto md:max-w-2xl lg:mt-32 lg:col-span-6 lg:text-left">
               <h1>
-                <span className="mainHeadingHeader mt-1 block lg:text-4xl font-bold  xl:text-6xl">
+                <span className="mainHeadingHeader mt-1 block lg:text-4xl text-2xl font-bold  xl:text-6xl">
 
                   <span className="block ">{t('homebannertxt')}</span>
                   {/* <span className="block "> Online Essen Bestellplatform</span> */}

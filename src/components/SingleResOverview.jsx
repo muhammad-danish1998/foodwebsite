@@ -138,8 +138,8 @@ export default function SingleResOverview() {
         <HeaderTextSlider catArray={catArray} />
       </div>
       <div className="lg:py-0 py-1 ">
-        <div className="mx-auto max-w-8xl sm:px-6 lg:grid lg:max-w-9xl lg:grid-cols-12 lg:gap-0 lg:px-8">
-          <main className="lg:col-span-9 xl:col-span-8 ">
+        <div className="mx-auto max-w-9xl  sm:px-6 lg:grid  lg:grid-cols-12 lg:gap-0 lg:px-8">
+          <main className="lg:col-span-9 xl:col-span-8 tablet-xl:col-span-8  ">
             {/* -------------- card ----------------  */}
             <section className="text-gray-600  mt-4">
               <div className="container px-5  mx-auto">
@@ -349,9 +349,9 @@ export default function SingleResOverview() {
               />
             </section>
           </main>
-          <aside className=" xl:col-span-4 xl:block tablet-xl  p-4  lg:mt-0 mt-8 ">
-            <div className="sticky top-8 space-y-4  lg:p-4">
-              <h1 className=" lg:text-2xl text-xl    font-bold">Shopping Cart</h1>
+          <aside className=" xl:col-span-4 xl:block  tablet-xl:col-span-4   p-4  lg:mt-0 mt-8  ">
+            <div className="sticky top-8 space-y-4  lg:p-4 border-2">
+              <h1 className=" lg:text-2xl text-xl  tablet-xl:mt-8  font-bold">Shopping Cart</h1>
               {cartlistItem?.carttotalamount >= max_rest_val && (
                 <Link
                   className="checkout flex text-white  justify-between font-bold bg-redColor p-4 rounded-2xl"
