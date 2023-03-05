@@ -30,18 +30,18 @@ export default function HeaderTextSlider({ catArray, res }) {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiperresturant bg-gray-200 hidden lg:block  text-center   "
+        className="mySwiperresturant bg-gray-200 hidden lg:block  text-center    "
       >
         {res
           ? catArray?.map((arr) => (
-              <SwiperSlide className="p-3 text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+              <SwiperSlide className="p-3 text-sm lg:text-lg  text-gray-700 cursor-pointer">
                 <button onClick={() => dispatch(setCatValue(arr.id))}>
                   {arr.title}
                 </button>
               </SwiperSlide>
             ))
           : catArray?.map((arr) => (
-              <SwiperSlide className="p-3 text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+              <SwiperSlide className="p-4 text-sm lg:text-md  text-gray-700 cursor-pointer  ">
                 <Link to={arr.title} spy={true} smooth={true}>
                   {arr.title}
                 </Link>
@@ -52,7 +52,7 @@ export default function HeaderTextSlider({ catArray, res }) {
       {/* ----------- text slider for mobile ---------------------  */}
 
       <Swiper
-        slidesPerView={3}
+        slidesPerView={2}
         spaceBetween={5}
         slidesPerGroup={1}
         loop={false}
@@ -66,20 +66,22 @@ export default function HeaderTextSlider({ catArray, res }) {
       >
         {res
           ? catArray?.map((arr) => (
-              <SwiperSlide className="p-3     lg:text-lg text-sm lg:font-semibold text-gray-700 cursor-pointer">
+              <SwiperSlide className="p-3 lg:text-lg text-lg lg:font-semibold text-gray-700 cursor-pointer">
                 <button onClick={() => dispatch(setCatValue(arr.id))}>
                   {arr.title}
                 </button>
               </SwiperSlide>
             ))
           : catArray?.map((arr) => (
-              <SwiperSlide className="p-3 text-sm lg:text-lg lg:font-semibold text-gray-700 cursor-pointer">
+              <SwiperSlide className="p-2 text-sm   text-gray-700 cursor-pointer">
                 <Link to={arr.title} spy={true} smooth={true}>
                   {arr.title}
                 </Link>
               </SwiperSlide>
             ))}
       </Swiper>
+
+
 
       {/* <Swiper
         slidesPerView={3}

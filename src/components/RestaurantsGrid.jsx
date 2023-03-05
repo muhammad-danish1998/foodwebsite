@@ -97,16 +97,16 @@ export default function RestaurantsGrid({
         return (
           <li
             key={file.image}
-            className="relative border-2 lg:w-11/12   rounded-xl focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 "
+            className="relative border-2 lg:w-11/12    rounded-xl focus-within:ring-4 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 "
           >
             <ForwardLink
               to={`/singlerestaurant?resturent_slug=${restaurantUrl}&resturent_code=${file.code}`}
             >
-              <div className="group   block  w-full overflow-hidden rounded-xl bg-gray-100" onClick={() => handleOnClick(file.minorder, file.delivery, file.pickup)}>
+              <div className="group border-2  block  w-full  overflow-hidden rounded-xl bg-gray-100" onClick={() => handleOnClick(file.minorder, file.delivery, file.pickup)}>
                 <img
                   src={file.banner}
                   alt=""
-                  className="pointer-events-none group-hover:opacity-75 lg:h-44 md:h-36 w-full object-cover object-center"
+                  className="pointer-events-none group-hover:opacity-75 h-24 md:h-36 w-full object-cover object-center"
                 />
                 <button
                   type="button"
@@ -157,7 +157,7 @@ export default function RestaurantsGrid({
                 {/* -------------- watch ----------------------- */}
                
                 <i class="fa-solid ml-1 fa-clock">
-                  <span className="lg:ml-1 font-sans lg:font-semibold font-thin ">{file.deliveryTime}</span>
+                  <span className="lg:ml-1 font-sans lg:font-semibold font-thin "> {file.deliveryTime}</span>
                 </i>
                 {/* ----------------------------- Shoping -----------------  */}
                

@@ -19,7 +19,7 @@ const changeLanguage = lng => {
 };
   return (
     <div>
-    <div className=" max-w-8xl mx-auto mt-12 lg:hidden   mb-4  text-center lg:col-span-6">
+    <div className=" max-w-8xl mx-auto mt-12 lg:hidden    mb-4  text-center lg:col-span-6">
          <Swiper
 
         slidesPerView={1}
@@ -35,7 +35,7 @@ const changeLanguage = lng => {
         className={`mySwiper   `}
       >
         <SwiperSlide className="flex flex-col items-center justify-center ">
-            <img src="./images/sli1.jpg" className="h-60 w-60" />
+            <img src="./images/sli1.jpg" className="h-60 w-60 md:h-96 md:w-96" />
             <p className="mt-4 text-orange-600 text-lg font-semibold">Amerikanisch</p>
         </SwiperSlide>
         <SwiperSlide className=" flex flex-col items-center justify-center ">

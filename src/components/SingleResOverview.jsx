@@ -132,35 +132,35 @@ export default function SingleResOverview() {
   return (
     <div className="">
       {/* ------------- navbar here ---------  */}
-      {/* <HeaderNavbar /> */}
-      <HeaderNavbarMenu />
+      <HeaderNavbar />
+      {/* <HeaderNavbarMenu /> */}
       <div className="sticky-thc  ">
         <HeaderTextSlider catArray={catArray} />
       </div>
       <div className="lg:py-0 py-1 ">
-        <div className="mx-auto max-w-8xl sm:px-6 lg:grid lg:max-w-9xl lg:grid-cols-12 lg:gap-0 lg:px-8">
-          <main className="lg:col-span-9 xl:col-span-8 ">
+        <div className="mx-auto max-w-9xl  sm:px-6 lg:grid  lg:grid-cols-12 lg:gap-0 lg:px-8">
+          <main className="lg:col-span-9 xl:col-span-8 tablet-xl:col-span-8  ">
             {/* -------------- card ----------------  */}
             <section className="text-gray-600  mt-4">
               <div className="container px-5  mx-auto">
                 <div className="flex flex-wrap -m-4">
-                  <div className=" md:w-full">
+                  <div className=" w-full">
                     <div className="h-full   border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                       <img
-                        className="lg:h-48 md:h-36 object-cover w-full  "
+                        className="lg:h-48 md:h-36 h-24 object-cover w-full  "
                         // src={currentRestaurantImg}
                         src="https://www.trgplc.com/wp-content/uploads/2022/03/Pubs_our_brand.jpg"
                         alt="blog"
                       />
-                      <div className="pt-4">
+                      <div className="p-0  lg:p-0">
                         <div className="flex lg:items-center  justify-between border-2">
                           <div className=" justify-center lg:ml-2 items-center">
-                            <h1 className="title-font text-2xl  font-medium text-gray-900 mb-3">
+                            <h1 className="title-font lg:text-2xl text-xl p-1 lg:p-0 font-medium text-gray-900 mb-3">
                               {name}
                             </h1>
 
                             {/* -------- review ------------  */}
-                            <span className="flex items-center ">
+                            <span className="flex items-center p-1 lg:p-0 ">
                               <svg
                                 fill="currentColor"
                                 stroke="currentColor"
@@ -233,7 +233,7 @@ export default function SingleResOverview() {
                             {/* --------------- logo -------------  */}
                             <div className="mt-0 p-2 ">
                               <img
-                                className="inline-block lg:h-24 lg:w-24 h-14 w-14 rounded-full"
+                                className="inline-block lg:h-24 lg:w-24 h-12 w-12 rounded-full"
                                 src={currentRestaurantImg}
                                 alt=""
                               />
@@ -253,9 +253,9 @@ export default function SingleResOverview() {
                                     className="border-2 border-gray-400 p-4 rounded-lg mt-4 w-full"
                                     id={eachMenuCatergory?.catname}
                                   >
-                                    <h1 className="text-4xl font-bold text-black">
-                                      {eachMenuCatergory.catname}
-                                    </h1>
+                                      <h1 className="lg:text-4xl text-xl font-bold text-black">
+                                        {eachMenuCatergory.catname}
+                                      </h1>
                                     <p>{eachMenuCatergory.catedesc}</p>
                                   </div>
                                   {eachMenuCatergory?.menuarr?.map(
@@ -273,7 +273,7 @@ export default function SingleResOverview() {
                                         }}
                                       >
                                         <div>
-                                          <h1 className="text-2xl">
+                                          <h1 className="lg:text-2xl text-xl">
                                             {eachMenuItem.name}
                                           </h1>
                                         </div>
@@ -331,57 +331,7 @@ export default function SingleResOverview() {
                             )
                           )}
 
-                          {/* <div className="border-2 rounded-lg p-4  mt-16 mb-4  w-5/6">
-                            <h1 className="text-4xl font-bold text-black mb-2">
-                              Asia - Sparmenüs
-                            </h1>
-                            <p>
-                              all dishes with boiled rice as a side dish. On
-                              request, there are also advised noodles instead of
-                              rice - surcharge 2.00 €
-                            </p>
-                          </div>
-                          <div className="border-2 p-4  mt-4 w-5/6">
-                            <h1 className="text-2xl">Fried chicken meat</h1>
-                            <p className="text-green-500 font-semibold">
-                              {" "}
-                              € 10,90
-                            </p>
-                            <ul>
-                              <li>• mit rotem Curry und Kokosmilch</li>
-                              <li>• Gaeng Kiew Wan Gai mit Hühnerfleisch</li>
-                              <li>• mit rotem Curry und Kokosmilch</li>
-                              <li>• mit rotem Curry und Kokosmilch</li>
-                              <li>• mit rotem Curry und Kokosmilch</li>
-                            </ul>
-                          </div>
-                          <div className="border-2 p-4  mt-4 w-5/6">
-                            <h1 className="text-2xl">Fried chicken meat</h1>
-                            <p className="text-green-500 font-semibold">
-                              {" "}
-                              € 10,90
-                            </p>
-                            <p>
-                              all dishes with boiled rice as a side dish. On
-                              request, there are also advised noodles instead of
-                              rice - surcharge 2.00 €
-                            </p>
-                          </div>
-                          <div className="border-2 p-4  mt-4 w-5/6">
-                            <h1 className="text-2xl">Fried chicken meat</h1>
-                            <p className="text-green-500 font-semibold">
-                              {" "}
-                              € 10,90
-                            </p>
-                            <p>
-                              all dishes with boiled rice as a side dish. On
-                              request, there are also advised noodles instead of
-                              rice - surcharge 2.00 €
-                              <Link to={"/modalcard"}>
-                                shop
-                              </Link>
-                            </p>
-                          </div> */}
+                         
                         </div>
                       </div>
                     </div>
@@ -399,12 +349,12 @@ export default function SingleResOverview() {
               />
             </section>
           </main>
-          <aside className=" xl:col-span-4 xl:block   lg:mt-0 mt-8">
-            <div className="sticky top-8 space-y-4 lg:p-4">
-              <h1 className="text-2xl font-bold">Shopping Cart</h1>
+          <aside className=" xl:col-span-4 xl:block  tablet-xl:col-span-4   p-4  lg:mt-0 mt-8  ">
+            <div className="sticky top-8 space-y-4  lg:p-4 border-2">
+              <h1 className=" lg:text-2xl text-xl  tablet-xl:mt-8  font-bold">Shopping Cart</h1>
               {cartlistItem?.carttotalamount >= max_rest_val && (
                 <Link
-                  className="checkout flex text-white justify-between font-bold bg-redColor p-4 rounded-2xl"
+                  className="checkout flex text-white  justify-between font-bold bg-redColor p-4 rounded-2xl"
                   to="/checkout"
                 >
                   <p>Checkout</p>

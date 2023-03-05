@@ -59,11 +59,13 @@ export default function HeaderNavbar() {
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex items-center px-2 lg:px-0">
                 <div className="flex-shrink-0">
+                <Link to={"/"}>
                   <img
                     className="block h-5 lg:h-8 w-auto lg:hidden"
                     src="./images/logo.png"
                     alt="Your Company"
                   />
+                  </Link>
                   <Link to={"/"}>
                     <img
                       className="hidden h-8 w-auto lg:block"
@@ -288,7 +290,7 @@ export default function HeaderNavbar() {
                   // href="/"
                   className=" block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
                 >
-                  Home
+                  Home1
                 </Disclosure.Button>
               </Link>
               <Link to="/signin">

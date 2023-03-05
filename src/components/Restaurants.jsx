@@ -43,6 +43,7 @@ export default function Restaurants() {
   const [freeDelivery, setFreeDelivery] = useState(false);
   const [openResturant, setOpenResturant] = useState(false);
   const [catArray, setCatArray] = useState([]);
+  
   const handleChangeDelivery = () => {
     setFreeDelivery((prev) => !prev);
   };
@@ -183,8 +184,9 @@ export default function Restaurants() {
         </div>
 
         {/* --------------- header grid check switch ------------ */}
-        <div className=" max-w-8xl  lg:ml-12   lg:mt-2 m-auto lg:flex md:flex md:flex-row items-center  p-1 ">
+        <div className=" lg:visible hidden max-w-8xl  lg:ml-12   lg:mt-2 m-auto lg:flex md:flex md:flex-row items-center  p-1 ">
           <div className="lg:flex md:flex  lg:justify-between   ">
+           {/* ================= open resturant ================  */}
             <p className=" bg-gray-100 rounded-full p-2 flex items-center border-2  ">
               <span className="mr-2">Open Resturant</span>
               <OpenResturant
@@ -192,6 +194,7 @@ export default function Restaurants() {
                 handleChange={handleChangeOpenResturant}
               />
             </p>
+            {/* ===================== free delivery =================  */}
             <p className=" bg-gray-100 lg:ml-4 md:ml-1 mt-1  rounded-full p-2 flex items-center">
               <span className="mr-4">{t("freedelivery")}</span>
               <OpenResturant handleChange={handleChangeDelivery} />
@@ -220,7 +223,7 @@ export default function Restaurants() {
         </div>
 
         {/* ----------------------------------- Grid card -----------------------  */}
-        <div className="py-1">
+        <div className="py-0">
           <header>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"></div>
           </header>

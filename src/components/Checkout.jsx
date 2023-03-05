@@ -91,18 +91,20 @@ const [showDetail, setShowDetail] = useState(false);
   
   const [currentRestaurantImg, setCurrentRestaurantImg] = useState();
   const params = new URLSearchParams(window.location.search);
-  useEffect(() => {
-    const restaurantSlug = params.get("resturent_slug");
-    const restuarantCode = params.get("resturent_code");
-    axios
-      .get(
-        `https://liefermars.de/_api_ajax_menu.php?resturent_slug=${restaurantSlug}&resturent_code=${restuarantCode}`
-      )
-      .then((response) => {
-        setMenuArray(response.data.menuarr);
-        setCurrentRestaurantImg(response?.data?.restlogo);
-      });
-  }, [window.location.search]);
+
+  // ============== i commit this for card emty ============= 
+  // useEffect(() => {
+  //   const restaurantSlug = params.get("resturent_slug");
+  //   const restuarantCode = params.get("resturent_code");
+  //   axios
+  //     .get(
+  //       `https://liefermars.de/_api_ajax_menu.php?resturent_slug=${restaurantSlug}&resturent_code=${restuarantCode}`
+  //     )
+  //     .then((response) => {
+  //       setMenuArray(response.data.menuarr);
+  //       setCurrentRestaurantImg(response?.data?.restlogo);
+  //     });
+  // }, [window.location.search]);
   const showpersonalDetail = () =>{
     setShowDetail(true)                            
   }
@@ -155,7 +157,7 @@ const [showDetail, setShowDetail] = useState(false);
                     <div class="h-full  border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                       <div class="p-6">
                         <div class="flex items-center flex-wrap ">
-                          <div className=" rounded-lg px-1  mt-16 mb-4  w-5/6">
+                          <div className=" rounded-lg px-1  lg:mt-16 mb-4  w-5/6">
                             <h1 className="text-4xl font-bold text-black mb-2">
                               Checkout
                             </h1>
@@ -167,7 +169,7 @@ const [showDetail, setShowDetail] = useState(false);
                             } */}
 
                             </div>
-                          <div className="border-2 border-gray-400 rounded-lg p-8   mt-4 mb-4 bg-white  w-5/6">
+                          <div className="border-2 border-gray-400 rounded-lg p-8   mt-4 mb-4 bg-white  lg:w-5/6 w-full">
                         
                             <div className="cursor-pointer">
                               <label
@@ -184,7 +186,7 @@ const [showDetail, setShowDetail] = useState(false);
                               </div> */}
                             </div>
                           </div>
-                          <div className="border-2 border-gray-400 rounded-lg p-8   mt-4 mb-4 bg-white  w-5/6">
+                          <div className="border-2 border-gray-400 rounded-lg p-8   mt-4 mb-4 bg-white  lg:w-5/6 w-full">
                             <div>
                               <label
                                 htmlFor="comment "
@@ -228,7 +230,7 @@ const [showDetail, setShowDetail] = useState(false);
                             </div>
                             </div>
                           </div>
-                          <div className="border-2 border-x-0 border-gray-400  p-1   mt-4 mb-4 bg-white  w-5/6">
+                          <div className=" border-gray-400  p-1   mt-4 mb-4 bg-white  lg:w-5/6 w-full">
                             <div className="p-4">
                               <label
                                 htmlFor="comment "
@@ -270,7 +272,7 @@ const [showDetail, setShowDetail] = useState(false);
                               </div> */}
                             </div>
                           </div>
-                          <div className="border-2 border-x-0 border-gray-400  p-1   mt-4 mb-4 bg-white  w-5/6">
+                          <div className=" border-gray-400  p-1   mt-4 mb-4 bg-white lg:w-5/6 w-full">
                             <div className="p-4">
                               <label
                                 htmlFor="comment "
@@ -299,7 +301,7 @@ const [showDetail, setShowDetail] = useState(false);
 
                                 <button
                                   onClick={() => handleSubmit()}
-                                  className="inline-flex items-center rounded-md border border-transparent bg-greencheckout px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                  className=" inline-flex w-full items-center justify-center rounded-md border border-transparent bg-red-500 px-4 py-4 lg:text-lg text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                 >
                                  Order And Pay
                                 </button>

@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+       
+        'tablet-xl' : {'min': '1024px', 'max': '1280px'}
+      },
       colors: {
         'greenToggle': '#05FF00',
         'redColor' : "#FF0000",
