@@ -45,13 +45,14 @@ export default function Header() {
    
   };
 
-  useEffect(()=> {
-    if(!localStorage.getItem("your_street_name")){
-        localStorage.setItem("your_zip", '');
-        localStorage.setItem("your_street_name",'')
-    }
+//   useEffect(()=> {
+//     if(localStorage.getItem("your_street_name") == null){
+//       console.log("your xio");
+//         localStorage.setItem("your_zip", '');
+//         localStorage.setItem("your_street_name", '')
+//     }
  
-},[])
+// },[])
   const [location, setLocation] = useState({
     latitude: null,
     longitude: null,
