@@ -245,35 +245,35 @@ export default function ModalRating({
         : Number(localStorage.getItem("amount")).toFixed(2);
   };
 
-  useEffect(() => {
-    console.log("menuList.options", menuList0?.options?.optionarr[0])
-    dispatch(
-      getLoadMoreMenuList(
-        menuList0?.options?.optionarr[0]?.menu_id,
-        menuList0?.options?.optionarr[0]?.id
-      )
-    );
+  // useEffect(() => {
+  //   console.log("menuList.options", menuList0?.options?.optionarr[0])
+  //   dispatch(
+  //     getLoadMoreMenuList(
+  //       menuList0?.options?.optionarr[0]?.menu_id,
+  //       menuList0?.options?.optionarr[0]?.id
+  //     )
+  //   );
     
-  },[])
+  // },[])
 
   useEffect(() => {
-    if(localStorage.getItem("data01") == null){
-      dispatch(
-        getLoadMoreMenuList(
-          menuList0?.options?.optionarr[0]?.menu_id,
-          menuList0?.options?.optionarr[0]?.id
-        )
-      );
-    }else{
+    // if(localStorage.getItem("data01") == null){
+    //   dispatch(
+    //     getLoadMoreMenuList(
+    //       menuList0?.options?.optionarr[0]?.menu_id,
+    //       menuList0?.options?.optionarr[0]?.id
+    //     )
+    //   );
+    // }else{
       dispatch(
         getLoadMoreMenuList(
           localStorage.getItem("data01"),
           localStorage.getItem("data02")
         )
       );
-    }
+    // }
     
-  }, [data01, data02, menuList]);
+  }, [data01, data02]);
 
   return (
     // <Transition.Root show={open} as={Fragment} onClick={handleOnClose}>
