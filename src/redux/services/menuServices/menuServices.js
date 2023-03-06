@@ -9,7 +9,7 @@ if(localStorage.getItem('uuid')){
 }else{
   localStorage.setItem("uuid", uuid());
   localStorage.setItem("your_zip", '');
-  localStorage.setItem("your_street_name", '')
+  localStorage.setItem("your_street_name", 'Please select your location')
 }
 
 
