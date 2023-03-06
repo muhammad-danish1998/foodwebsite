@@ -246,13 +246,34 @@ export default function ModalRating({
   };
 
   useEffect(() => {
+    console.log("menuList.options", menuList0?.options?.optionarr[0])
     dispatch(
       getLoadMoreMenuList(
-        localStorage.getItem("data01"),
-        localStorage.getItem("data02")
+        menuList0?.options?.optionarr[0]?.menu_id,
+        menuList0?.options?.optionarr[0]?.id
       )
     );
-  }, [data01, data02]);
+    
+  },[])
+
+  useEffect(() => {
+    if(localStorage.getItem("data01") == null){
+      dispatch(
+        getLoadMoreMenuList(
+          menuList0?.options?.optionarr[0]?.menu_id,
+          menuList0?.options?.optionarr[0]?.id
+        )
+      );
+    }else{
+      dispatch(
+        getLoadMoreMenuList(
+          localStorage.getItem("data01"),
+          localStorage.getItem("data02")
+        )
+      );
+    }
+    
+  }, [data01, data02, menuList]);
 
   return (
     // <Transition.Root show={open} as={Fragment} onClick={handleOnClose}>
