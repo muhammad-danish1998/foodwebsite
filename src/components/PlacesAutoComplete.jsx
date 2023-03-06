@@ -5,7 +5,13 @@ import AutoComplete from 'react-google-autocomplete';
 
 function PlacesAutoComplete({ onPlaceSelect , zipCode, address }) {
 
-   
+    useEffect(()=> {
+        if(!localStorage.getItem("your_street_name")){
+            localStorage.setItem("your_zip", '');
+            localStorage.setItem("your_street_name",'')
+        }
+     
+    },[])
 
     
     const handlePlaceSelected = (data) => {

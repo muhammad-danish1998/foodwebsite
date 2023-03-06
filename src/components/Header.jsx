@@ -47,7 +47,7 @@ export default function Header() {
 
   useEffect(()=> {
     if(!localStorage.getItem("your_street_name")){
-        localStorage.setItem("your_zip", 'Please select address');
+        localStorage.setItem("your_zip", '');
         localStorage.setItem("your_street_name",'')
     }
  
