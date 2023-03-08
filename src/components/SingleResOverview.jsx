@@ -132,8 +132,8 @@ export default function SingleResOverview() {
   return (
     <div className="">
       {/* ------------- navbar here ---------  */}
-      <HeaderNavbar />
-      {/* <HeaderNavbarMenu /> */}
+      {/* <HeaderNavbar /> */}
+      <HeaderNavbarMenu />
       <div className="sticky-thc  ">
         <HeaderTextSlider catArray={catArray} />
       </div>
@@ -350,7 +350,7 @@ export default function SingleResOverview() {
             </section>
           </main>
           <aside className=" xl:col-span-4 xl:block  tablet-xl:col-span-4   p-4  lg:mt-0 mt-8  ">
-            <div className="sticky top-8 space-y-4  lg:p-4 border-2">
+            <div className="sticky top-8 space-y-4  lg:p-4 ">
               <h1 className=" lg:text-2xl text-xl  tablet-xl:mt-8  font-bold">Shopping Cart</h1>
               {cartlistItem?.carttotalamount >= max_rest_val && (
                 <Link

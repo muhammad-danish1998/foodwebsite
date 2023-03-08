@@ -27,6 +27,7 @@ import Popuppickup from "./Popuppickup";
 
 
 import { useDispatch, useSelector } from "react-redux";
+import HeaderNavbarMenu from "./HeaderNavbarMenu";
 
 
 
@@ -144,7 +145,9 @@ const [showDetail, setShowDetail] = useState(false);
 
   return (
     <div className="min-h-screen">
-     <HeaderNavbar />
+     {/* <HeaderNavbar /> */}
+     
+     <HeaderNavbarMenu />
 
       <div className="py-6">
         <div className="mx-auto max-w-8xl sm:px-6 lg:grid lg:max-w-9xl lg:grid-cols-12 lg:gap-8 lg:px-8">
