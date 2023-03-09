@@ -125,3 +125,8 @@ input:checked ~ span:last-child {
   border-top: 3px solid #e0e0e0;
   text-align: center;
 }
+.scroll{
+  overflow-x: hidden;
+  overflow-y: visible;
+  max-height: 350px;
+}

@@ -173,9 +173,9 @@ const CartInc = () => {
                 <p>Mit Geberatene Nudeln</p>
                 <p>€21.90</p>
               </div> */}
-            <div className="card-list-uper lg:flex justify-between p-2">
+            <div className="card-list-uper flex  justify-between p-2">
               
-                <div className="lg:flex lg:w-3/5 w-full ">
+                <div className=" ipadAir:pr-4 galxyFold:pr-4 ">
                   <label
                     for="small-input"
                     class=" lg:p-2 block  lg:text-md  font-bold text-gray-500 "

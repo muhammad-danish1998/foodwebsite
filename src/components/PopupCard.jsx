@@ -28,6 +28,7 @@ export default function ModalRating({
   menuresName,
   menuresdes,
   menuresimg,
+  setShowModal,
 }) {
   if (!visible) return null;
   const [open, setOpen] = useState(true);
@@ -238,7 +239,7 @@ export default function ModalRating({
     // setData01(data[1]);
     setMulti01([]);
     setUpdatedAmount(Number(data[2]));
-    hanldeChangeValue(data[0], data[1])
+    hanldeChangeValue(data[0], data[1]);
 
     valTotalAmount =
       totalAmount == Number(localStorage.getItem("amount")).toFixed(2)
@@ -247,53 +248,18 @@ export default function ModalRating({
   };
 
   const hanldeChangeValue = (value1, value2) => {
-    dispatch(
-      getLoadMoreMenuList(
-        value1,
-        value2
-      )
-    );
-  }
-
-  // useEffect(() => {
-  //   console.log("menuList.options", menuList0?.options?.optionarr[0])
-  //   dispatch(
-  //     getLoadMoreMenuList(
-  //       menuList0?.options?.optionarr[0]?.menu_id,
-  //       menuList0?.options?.optionarr[0]?.id
-  //     )
-  //   );
-    
-  // },[])
-
-  // useEffect(() => {
-  //   // if(localStorage.getItem("data01") == null){
-  //   //   dispatch(
-  //   //     getLoadMoreMenuList(
-  //   //       menuList0?.options?.optionarr[0]?.menu_id,
-  //   //       menuList0?.options?.optionarr[0]?.id
-  //   //     )
-  //   //   );
-  //   // }else{
-     
-  //   if(menuList0?.options != null){
-  //     console.log("menuList0?.options ===>", menuList0?.options);
-     
-  //    }
-    
-    
-  // }, [menuList0]);
-
+    dispatch(getLoadMoreMenuList(value1, value2));
+  };
 
   useEffect(() => {
-     return (
-          console.log("clear component"),
-          localStorage.setItem("data01",""),
-          localStorage.setItem("data02",""),
-          setLoadUpdatedMenuList({}),
-          setMenuList({})
-     );
-  }, [])
+    return (
+      console.log("clear component"),
+      localStorage.setItem("data01", ""),
+      localStorage.setItem("data02", ""),
+      setLoadUpdatedMenuList({}),
+      setMenuList({})
+    );
+  }, []);
 
   return (
     // <Transition.Root show={open} as={Fragment} onClick={handleOnClose}>
@@ -304,41 +270,58 @@ export default function ModalRating({
       onClose={handleOnClose}
       open={open}
     >
-   
-
       <div className="fixed border-2  inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
       {/* </Transition.Child> */}
       {loading ? null : (
         <div className="fixed  inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center  p-4 text-center sm:items-center sm:p-0">
-        
             <Dialog.Panel className="relative border-2 w-full  transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
               <div>
-               
-                <div className="mt-3  sm:mt-5">
-                  <Dialog.Title
-                    as="h3"
-                    className="lg:text-2xl text-xl font-medium leading-6 text-gray-900"
+                <span className="flex justify-end ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    className="w-8 h-8 hover:text-red-600 cursor-pointer "
+                    onClick={() => setShowModal(false)}
                   >
-                    {menuresName}
-                  </Dialog.Title>
-                  <Dialog.Title
-                    as="h3"
-                    className="text-sm  font-normal leading-6 text-gray-900"
-                  >
-                    {menuresdes}
-                  </Dialog.Title>
-                  <div className="mt-2   flex flex-col">
-                    <p className="text-sm  text-gray-500 justify-center items-center flex">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <div className="mt-3  sm:mt-2">
+                  <div className="  flex flex-col">
+                    <p className="w-full mb-4 ">
                       {menuresimg ? (
-                        <img src={menuresimg} className="h-36 w-36" />
+                        <img
+                          src={menuresimg}
+                          className="object-cover h-36 w-full rounded-xl"
+                        />
                       ) : (
                         ""
                       )}
                     </p>
-                    {/* <p> */}
+
+                    <Dialog.Title
+                      as="h3"
+                      className="lg:text-2xl  text-xl font-medium leading-6 text-gray-900"
+                    >
+                      {menuresName}
+                    </Dialog.Title>
+                    <Dialog.Title
+                      as="h3"
+                      className="text-sm  font-normal leading-6 text-gray-900"
+                    >
+                      {menuresdes}
+                    </Dialog.Title>
+<div className="scroll ">
                     {menuList?.options && (
-                      <div>
+                      <div className="">
                         <label
                           htmlFor="location"
                           className="block text-sm font-medium text-gray-700"
@@ -515,8 +498,7 @@ export default function ModalRating({
                           )
                         )
                       )}
-
-                   
+                      </div>
                   </div>
                 </div>
               </div>
@@ -528,7 +510,6 @@ export default function ModalRating({
                       onClick={() => decrementValue()}
                     ></i>
 
-                    
                     <span className="m-2">{count}</span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

@@ -10,7 +10,11 @@ module.exports = {
     extend: {
       screens: {
        
-        'tablet-xl' : {'min': '1024px', 'max': '1280px'}
+        'tablet-xl' : {'min': '1024px', 'max': '1280px'},
+        'iphonerotate' : {'min': '643px', 'max': '1090px'},
+        'ipadAir' : {'min': '1024px', 'max': '1150px'},
+        'galxyFold' : {'min': '280px', 'max': '360px'}
+
       },
       colors: {
         'greenToggle': '#05FF00',

@@ -133,12 +133,12 @@ export default function SingleResOverview() {
       <div className="sticky-thc  ">
         <HeaderTextSlider catArray={catArray} />
       </div>
-      <div className="lg:py-0 py-1 ">
-        <div className="mx-auto max-w-9xl  sm:px-6 lg:grid  lg:grid-cols-12 lg:gap-0 lg:px-8">
-          <main className="lg:col-span-9 xl:col-span-8 tablet-xl:col-span-8  ">
+      <div className="lg:py-0 py-1  ">
+        <div className="mx-auto max-w-9xl   sm:px-6 lg:grid  lg:grid-cols-12 lg:gap-0 lg:px-8">
+          <main className="lg:col-span-9  xl:col-span-8 tablet-xl:col-span-8   ">
             {/* -------------- card ----------------  */}
-            <section className="text-gray-600  mt-4">
-              <div className="container px-5  mx-auto">
+            <section className="text-gray-600  mt-6">
+              <div className="w-5/6 lg:container lg:px-5  mx-auto">
                 <div className="flex flex-wrap -m-4">
                   <div className=" w-full">
                     <div className="h-full   border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
@@ -340,11 +340,12 @@ export default function SingleResOverview() {
                 menuresName={menuresName}
                 menuresdes={menuresdes}
                 menuresimg={menuresimg}
+                setShowModal = {setShowModal}
               />
             </section>
           </main>
           {/* mobile it will hidden  */}
-          <aside className=" xl:col-span-4 xl:block  tablet-xl:col-span-4 hidden   p-4  lg:mt-0 mt-8  ">
+          <aside className=" xl:col-span-4 xl:block  tablet-xl:col-span-4   p-4  lg:mt-0 mt-8  ">
             <div className="sticky top-8 space-y-4  lg:p-4 ">
               <h1 className=" lg:text-2xl text-xl  tablet-xl:mt-8  font-bold">
                 Shopping Cart
@@ -362,9 +363,14 @@ export default function SingleResOverview() {
             </div>
           </aside>
           {/* ----------  fix bottom for mobile ----------- */}
+          {cartlistItem?.carttotalamount >= max_rest_val && (
+             <Link
+             className="checkout  text-white  justify-between font-bold bg-redColor p-4 rounded-2xl"
+             to="/checkout"
+           >
           <div
             className="mobile-fixed-nav-top lg:hidden block "
-            onClick={() => alert("dskjd")}
+           
           >
             <ul className="mobile-fixed-nav">
               <li>
@@ -378,6 +384,8 @@ export default function SingleResOverview() {
               </li>
             </ul>
           </div>
+          </Link>
+           )}
         </div>
       </div>
     </div>
