@@ -45,8 +45,8 @@ export default function ModalRating({
   const [menuList, setMenuList] = useState(menuList0);
   const [updatedAmount, setUpdatedAmount] = useState();
   const [loadUpdatedMenuList, setLoadUpdatedMenuList] = useState({});
-  const [data01, setData01] = useState();
-  const [data02, setData02] = useState("");
+  const [data01, setData01] = useState(null);
+  const [data02, setData02] = useState(null);
   const [multi01, setMulti01] = useState([]);
   // const [addons01, setAddons01] = useState([]); /
   let addons01 = [];
@@ -62,7 +62,7 @@ export default function ModalRating({
     // if(data02 != "test"){
 
     setMenuList(menuList0);
-    console.log("menuList data inside useEffect", menuList0);
+    console.log("menuList data inside useEffect");
     // }
   }, [menuList0]);
 
@@ -235,15 +235,25 @@ export default function ModalRating({
     localStorage.setItem("amount", data[2]);
     console.log(data[2]);
     setData02(e);
-    setData01(data[1]);
+    // setData01(data[1]);
     setMulti01([]);
     setUpdatedAmount(Number(data[2]));
+    hanldeChangeValue(data[0], data[1])
 
     valTotalAmount =
       totalAmount == Number(localStorage.getItem("amount")).toFixed(2)
         ? 0
         : Number(localStorage.getItem("amount")).toFixed(2);
   };
+
+  const hanldeChangeValue = (value1, value2) => {
+    dispatch(
+      getLoadMoreMenuList(
+        value1,
+        value2
+      )
+    );
+  }
 
   // useEffect(() => {
   //   console.log("menuList.options", menuList0?.options?.optionarr[0])
@@ -256,24 +266,34 @@ export default function ModalRating({
     
   // },[])
 
-  useEffect(() => {
-    // if(localStorage.getItem("data01") == null){
-    //   dispatch(
-    //     getLoadMoreMenuList(
-    //       menuList0?.options?.optionarr[0]?.menu_id,
-    //       menuList0?.options?.optionarr[0]?.id
-    //     )
-    //   );
-    // }else{
-      dispatch(
-        getLoadMoreMenuList(
-          localStorage.getItem("data01"),
-          localStorage.getItem("data02")
-        )
-      );
-    // }
+  // useEffect(() => {
+  //   // if(localStorage.getItem("data01") == null){
+  //   //   dispatch(
+  //   //     getLoadMoreMenuList(
+  //   //       menuList0?.options?.optionarr[0]?.menu_id,
+  //   //       menuList0?.options?.optionarr[0]?.id
+  //   //     )
+  //   //   );
+  //   // }else{
+     
+  //   if(menuList0?.options != null){
+  //     console.log("menuList0?.options ===>", menuList0?.options);
+     
+  //    }
     
-  }, [data01, data02]);
+    
+  // }, [menuList0]);
+
+
+  useEffect(() => {
+     return (
+          console.log("clear component"),
+          localStorage.setItem("data01",""),
+          localStorage.setItem("data02",""),
+          setLoadUpdatedMenuList({}),
+          setMenuList({})
+     );
+  }, [])
 
   return (
     // <Transition.Root show={open} as={Fragment} onClick={handleOnClose}>
