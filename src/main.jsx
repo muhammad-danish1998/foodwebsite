@@ -69,9 +69,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route exact path="/profile" element={<Profile  />} />
       <Route exact path="/resturantReview" element={<ResturantReview  />} />
       <Route exact path="/inbox" element={<Inbox  />} />
+      
 
+      
 
-      <Route exact path="/modal" element={<ExamModal  />} />
+  
 
 
 

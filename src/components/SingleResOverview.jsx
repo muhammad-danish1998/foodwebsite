@@ -8,11 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 
-// import {Link} from 'react-scroll'
 
-// import {Link} from 'react-router-dom'
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -253,9 +249,9 @@ export default function SingleResOverview() {
                                     className="border-2 border-gray-400 p-4 rounded-lg mt-4 w-full"
                                     id={eachMenuCatergory?.catname}
                                   >
-                                      <h1 className="lg:text-4xl text-xl font-bold text-black">
-                                        {eachMenuCatergory.catname}
-                                      </h1>
+                                    <h1 className="lg:text-4xl text-xl font-bold text-black">
+                                      {eachMenuCatergory.catname}
+                                    </h1>
                                     <p>{eachMenuCatergory.catedesc}</p>
                                   </div>
                                   {eachMenuCatergory?.menuarr?.map(
@@ -330,8 +326,6 @@ export default function SingleResOverview() {
                               )
                             )
                           )}
-
-                         
                         </div>
                       </div>
                     </div>
@@ -349,9 +343,12 @@ export default function SingleResOverview() {
               />
             </section>
           </main>
-          <aside className=" xl:col-span-4 xl:block  tablet-xl:col-span-4   p-4  lg:mt-0 mt-8  ">
+          {/* mobile it will hidden  */}
+          <aside className=" xl:col-span-4 xl:block  tablet-xl:col-span-4 hidden   p-4  lg:mt-0 mt-8  ">
             <div className="sticky top-8 space-y-4  lg:p-4 ">
-              <h1 className=" lg:text-2xl text-xl  tablet-xl:mt-8  font-bold">Shopping Cart</h1>
+              <h1 className=" lg:text-2xl text-xl  tablet-xl:mt-8  font-bold">
+                Shopping Cart
+              </h1>
               {cartlistItem?.carttotalamount >= max_rest_val && (
                 <Link
                   className="checkout flex text-white  justify-between font-bold bg-redColor p-4 rounded-2xl"
@@ -364,6 +361,23 @@ export default function SingleResOverview() {
               <CartInc />
             </div>
           </aside>
+          {/* ----------  fix bottom for mobile ----------- */}
+          <div
+            className="mobile-fixed-nav-top lg:hidden block "
+            onClick={() => alert("dskjd")}
+          >
+            <ul className="mobile-fixed-nav">
+              <li>
+                <p
+                  className="checkout flex text-white  justify-between font-bold bg-redColor p-4 "
+                  to="#"
+                >
+                  <p>Checkout</p>
+                  <p>€{Number(cartlistItem?.carttotalamount).toFixed(2)}</p>
+                </p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
