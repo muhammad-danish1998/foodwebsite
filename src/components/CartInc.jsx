@@ -24,7 +24,7 @@ const CartInc = () => {
     cartlistItem,
   } = useSelector((state) => state?.menu);
   const [val, setVal] = useState();
-  console.log("cartlist ==>", cartlist);
+  
 
   const [count, setCount] = useState(0);
   const [cartlistItemm, setCartListItemm] = useState();
@@ -36,7 +36,7 @@ const CartInc = () => {
   useEffect(() => {
     let priceVal = 0;
     cartlist?.map((es) => {
-      console.log("----", Number(es.price));
+  
       priceVal += Number(es.price);
     });
     dispatch(setItemValue(priceVal.toFixed(2)));
@@ -52,10 +52,10 @@ const CartInc = () => {
     setCartListItemm(cartlistItem);
   }, [cartlistItem]);
 
-  console.log("cartlistItemm ===>", cartlistItemm);
+  
 
   const decrementValue = (quan, code) => {
-    console.log("quan ", quan, code);
+
     if (Number(quan) > 1) {
       // setCount((count) => count - 1);
       let val = Number(quan) - 1;
@@ -66,9 +66,9 @@ const CartInc = () => {
           quantity: val,
         })
       ).then((res) => {
-        console.log("delete item", res);
+      
         if (res === 200) {
-          console.log("delete item", res);
+      
           dispatch(
             getCartMenuListItem(selectValue, localStorage.getItem("uuid"))
           );
@@ -88,7 +88,7 @@ const CartInc = () => {
             getCartMenuListItem(selectValue, localStorage.getItem("uuid"))
           );
         }
-        console.log("delete item", res);
+     
       });
     }
     // amount = totalAmount;
@@ -117,10 +117,7 @@ const CartInc = () => {
     });
     // amount = totalAmount
     amount = (Number(itemAmount) * count).toFixed(2);
-    // console.log("amount", amount)
-    // console.log("val", val);
-    // dispatch(setItemValue(amount))
-    // dispatch(setPaymentValue(val))
+ 
   };
 
   const handleUpdateNote = (code, quan) => {
@@ -133,7 +130,7 @@ const CartInc = () => {
         quantity: quan
       })
     ).then((res) => {
-      console.log("delete item", res);
+   
       if (res === 200) {
       
         dispatch(
