@@ -331,7 +331,7 @@ const [showDetail, setShowDetail] = useState(false);
               {/* <Popuppickup /> */}
             </section>
           </main>
-          <aside className=" xl:col-span-4 xl:block border-2 p-4 lg:p-0">
+          <aside className=" xl:col-span-4 hidden  xl:block border-2 p-4 lg:p-0">
             <div className="sticky top-6 space-y-4 lg:p-4">
               <h1 className="text-2xl font-bold">Basket</h1>
               <div className="checkout flex text-white justify-between bg-red-500 p-4 rounded-2xl">
