@@ -172,7 +172,7 @@ const CartInc = () => {
               </div> */}
             <div className="card-list-uper flex  justify-between p-2">
               
-                <div className=" ipadAir:pr-4 galxyFold:pr-4 ">
+                <div className=" ipadAir:pr-4 galxyFold:pr-4 p-2">
                   <label
                     for="small-input"
                     class=" lg:p-2 block  lg:text-md  font-bold text-gray-500 "
@@ -187,7 +187,7 @@ const CartInc = () => {
                     onChange={(e) => handleOnChange(cart?.temp , e.target.value)}
                     class="block w-full  text-gray-900 border border-gray-300 rounded-lg bg-gray-300 sm:text-xs   "
                   />
-                  <button className="ml-2" onClick={() => handleUpdateNote(cart?.temp, cart?.quantity)}>Update</button>
+                  <button className="lg:p-2 block  lg:text-md  font-bold text-gray-500" onClick={() => handleUpdateNote(cart?.temp, cart?.quantity)}>Update</button>
                
               </div>
               <p className="flex lg:justify-center lg:mt-0 mt-2 items-center">

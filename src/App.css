@@ -116,7 +116,7 @@ input:checked ~ span:last-child {
   background-color: white;
   position: fixed;
   bottom: 0px;
-  z-index: 999;
+  /* z-index: 999; */
   
 }
 .mobile-fixed-nav {

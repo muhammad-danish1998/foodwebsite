@@ -348,7 +348,7 @@ export default function SingleResOverview() {
             </section>
           </main>
           {/* mobile it will hidden  */}
-          <aside className=" xl:col-span-4 xl:block hidden tablet-xl:col-span-4   p-4  lg:mt-0 mt-8  ">
+          <aside className=" xl:col-span-4 sm:block hidden  tablet-xl:col-span-4   p-4  lg:mt-0 mt-8  ">
             <div className="sticky top-8 space-y-4  lg:p-4 ">
               <h1 className=" lg:text-2xl text-xl  tablet-xl:mt-8  font-bold">
                 Shopping Cart
@@ -381,13 +381,32 @@ export default function SingleResOverview() {
                     }}
                     
                   >
-                    <p>Checkout</p>
+                    <p>Go to Basket</p>
                     <p>€{Number(cartlistItem?.carttotalamount).toFixed(2)}</p>
                   </p>
                 </li>
               </ul>
             </div>
           </div>
+          
+        )}
+        {cartlistItem?.carttotalamount < max_rest_val && (
+          <div className="checkout  text-white  justify-between font-bold  p-0 rounded-2xl">
+            <div className="mobile-fixed-nav-top lg:hidden block ">
+              <ul className="mobile-fixed-nav">
+                <li>
+                  <p
+                    className="checkout flex text-white  justify-between font-bold bg-red-400 p-4 "
+                   
+                  >
+                    <p>Go to Basket</p>
+                    <p>€{Number(cartlistItem?.carttotalamount).toFixed(2)}</p>
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
         )}
         <Checkoutpopup
         visible={checkOutModal}
