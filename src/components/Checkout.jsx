@@ -326,11 +326,14 @@ const [showDetail, setShowDetail] = useState(false);
                 currentRestaurantImg={currentRestaurantImg}
                 onClose={handleClose}
                 visible={showModal}
+                setShowModal = {setShowModal}
               />
                <Popuppickup
                 currentRestaurantImg={currentRestaurantImg}
                 onClose={handleClose}
                 visible={showModal1}
+                setShowModal1 = {setShowModal1}
+                
               />
               {/* <Popuppickup /> */}
             </section>
