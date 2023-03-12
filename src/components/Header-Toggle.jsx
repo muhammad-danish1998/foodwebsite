@@ -4,7 +4,7 @@ import PopupDeliver from "./PopupDeliver";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectValue } from "../redux/store/actions/menuAction";
-
+import { useTranslation } from "react-i18next";
 const HeaderToggle = (props) => {
   //  const [toggleValue , setToggleValue] =  useState(0);
 
@@ -39,7 +39,10 @@ const HeaderToggle = (props) => {
   const handleClose = () => {
     setShowModal(false);
   };
-
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
   return (
     <div>
       <label

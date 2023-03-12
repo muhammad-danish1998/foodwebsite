@@ -5,7 +5,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import HeaderToggle from "./Header-Toggle";
 import Pickup from "./Pickup";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 
 
 
@@ -106,6 +106,10 @@ const [showDetail, setShowDetail] = useState(false);
   //       setCurrentRestaurantImg(response?.data?.restlogo);
   //     });
   // }, [window.location.search]);
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
   const showpersonalDetail = () =>{
     setShowDetail(true)                            
   }
@@ -162,7 +166,7 @@ const [showDetail, setShowDetail] = useState(false);
                         <div class="flex items-center flex-wrap ">
                           <div className=" rounded-lg px-1  lg:mt-16 mb-2  w-5/6">
                             <h1 className="lg:text-4xl text-2xl font-bold text-black mb-2">
-                              Checkout
+                              {t("checkout")}
                             </h1>
                           </div>
                           <div>
@@ -182,7 +186,7 @@ const [showDetail, setShowDetail] = useState(false);
                                 htmlFor="comment "
                                 className="block text-xl cursor-pointer font-medium text-gray-700"
                               >
-                                Personal detail and adress
+                               {t("personalinformation")} 
                               </label>
                               {/* <div className="mt-1">
                                 <input className="p-4  w-full" type={"text "} />
@@ -195,7 +199,7 @@ const [showDetail, setShowDetail] = useState(false);
                                 htmlFor="comment "
                                 className="block text-xl cursor-pointer  font-medium text-gray-700"
                               >
-                                Payment method
+                                {t("payment")} method 
                               </label>
                               <div>
                              
@@ -239,7 +243,7 @@ const [showDetail, setShowDetail] = useState(false);
                                 htmlFor="comment "
                                 className="block text-xl  font-medium text-gray-700"
                               >
-                                Delivery Time
+                                {t("estmdeliverytimesort")} 
                               </label>
                             <select
                               id="location"
@@ -281,7 +285,7 @@ const [showDetail, setShowDetail] = useState(false);
                                 htmlFor="comment "
                                 className="block text-xl  font-medium text-gray-700"
                               >
-                                AddNote (Optional)
+                                {t("addnoteoptional")} 
                               </label>
                               <div className="mt-1">
                                 <input
@@ -306,7 +310,7 @@ const [showDetail, setShowDetail] = useState(false);
                                   onClick={() => handleSubmit()}
                                   className=" inline-flex w-full items-center justify-center rounded-md border border-transparent bg-red-500 px-4 py-4 lg:text-lg text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                 >
-                                 Order And Pay
+                                {t("orderandpay")} 
                                 </button>
                               </div>
                             </div>
@@ -335,22 +339,22 @@ const [showDetail, setShowDetail] = useState(false);
             <div className="sticky top-6 space-y-4 lg:p-4">
               <h1 className="text-2xl font-bold">Basket</h1>
               <div className="checkout flex text-white justify-between bg-red-500 p-4 rounded-2xl">
-                <p>Checkout</p>
+                <p>{t("checkout")} </p>
                 <p>€{Number(cartlistItem?.carttotalamount).toFixed(2)}</p>
               </div>
               <CartInc />
               <div className="flex justify-between font-semibold">
-                <p>Subtotal</p>
+                <p> {t("subtotal")}</p>
                 <p>€ {Number(cartlistItem?.totalpurchase).toFixed(2)}</p>
 
               </div>
               <div className="flex justify-between font-semibold">
-                <p>Delivery  Costs</p>
+                <p>{t("deliverycosts")}</p>
                 <p>€ {Number(cartlistItem?.delivery_fee).toFixed(2)}</p>
 
               </div>
               <div className="flex justify-between font-semibold">
-                <p>Total</p>
+                <p>{t("total")}</p>
                 <p>€ {Number(cartlistItem?.carttotalamount).toFixed(2)}</p>
 
               </div>

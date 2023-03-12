@@ -3,7 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import CartInc from "./CartInc";
 import { Link } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCartMenu,
@@ -221,7 +221,10 @@ export default function ModalRating({
       setMenuList({})
     );
   }, []);
-
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
   return (
    
     <Dialog
@@ -505,7 +508,7 @@ export default function ModalRating({
                   onClick={() => handleSubmit()}
                   ref={cancelButtonRef}
                 >
-                  Add to cart €
+                   {t("addtocart")} €
                   {(Number(updatedAmount) * Number(count)).toFixed(2)}
                 </button>
               </div>

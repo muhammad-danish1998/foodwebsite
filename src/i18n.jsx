@@ -905,6 +905,7 @@ const resources = {
    "yourshoppingcartisempty":
       "Dein einkaufswagen ist leer."
    ,
+   
    "readmore":
       "Weiterlesen"
    ,

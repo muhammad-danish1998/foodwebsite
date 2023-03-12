@@ -7,7 +7,7 @@ import HeaderTextSlider from "./HeaderTextSlider";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
-
+import { useTranslation } from "react-i18next";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -131,6 +131,10 @@ export default function SingleResOverview() {
     setCheckOutModal(true)
   }
   // };
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
   return (
     <div className="">
       {/* ------------- navbar here ---------  */}
@@ -358,7 +362,7 @@ export default function SingleResOverview() {
                   className="checkout flex text-white  justify-between font-bold bg-redColor p-4 rounded-2xl"
                   to="/checkout"
                 >
-                  <p>Checkout</p>
+                  <p>{t("checkout")}</p>
                   <p>€{Number(cartlistItem?.carttotalamount).toFixed(2)}</p>
                 </Link>
               )}

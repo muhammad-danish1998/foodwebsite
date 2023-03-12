@@ -76,7 +76,7 @@ export default function HeaderNavbar() {
                 </div>
                 <div className=" lg:ml-6 lg:block">
                   <div className="flex  space-x-4 ">
-                    <HeaderToggle value1="delivery" value2="pickup" />
+                    <HeaderToggle value1= {t("delivery")} value2= {t("pickup")} />
                   </div>
                 </div>
               </div>
@@ -281,16 +281,16 @@ export default function HeaderNavbar() {
               </div>
             </div>
           </div>
-          <Disclosure.Panel className="lg:hidden drop-nav   ">
+          <Disclosure.Panel className="lg:hidden drop-nav bg-gray-400 border-2 mb-2  ">
             <div className="space-y-1 px-2 pt-2 pb-3  ">
               {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
               <Link to="/">
-                <Disclosure.Button
+                <Disclosure.Button 
                   as="a"
                   // href="/"
                   className=" block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
                 >
-                  Home1
+                  Home
                 </Disclosure.Button>
               </Link>
               <Link to="/signin">
