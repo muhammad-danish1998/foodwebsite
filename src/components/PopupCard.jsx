@@ -239,7 +239,7 @@ export default function ModalRating({
       {loading ? null : (
         <div className="fixed  inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center  p-4 text-center sm:items-center sm:p-0">
-            <Dialog.Panel className="relative border-2 w-full  transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+            <Dialog.Panel className="relative border-2 w-full   transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
               <div>
                 <span className="flex justify-end ">
                   <svg
@@ -258,13 +258,13 @@ export default function ModalRating({
                     />
                   </svg>
                 </span>
-                <div className="mt-3  sm:mt-2">
-                  <div className="  flex flex-col">
-                    <p className="w-full mb-4 ">
+                <div className="mt-3  sm:mt-2 scroll   ">
+                  <div className="  flex flex-col  ">
+                    <p className="w-full  mb-4 ">
                       {menuresimg ? (
                         <img
                           src={menuresimg}
-                          className="object-cover h-36 w-full rounded-xl"
+                          className="object-contain h-48   w-full rounded-xl"
                         />
                       ) : (
                         ""
@@ -273,7 +273,7 @@ export default function ModalRating({
 
                     <Dialog.Title
                       as="h3"
-                      className="lg:text-2xl  text-xl font-medium leading-6 text-gray-900"
+                      className="lg:text-2xl   text-xl font-medium leading-6 text-gray-900"
                     >
                       {menuresName}
                     </Dialog.Title>
@@ -283,7 +283,7 @@ export default function ModalRating({
                     >
                       {menuresdes}
                     </Dialog.Title>
-                    <div className="scroll ">
+                    <div className=" ">
                       {menuList?.options && (
                         <div className="">
                           <label
@@ -296,7 +296,7 @@ export default function ModalRating({
                           <select
                             id="location"
                             name="location"
-                            className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                            className="mt-1  block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                             value={data02}
                             onChange={(e) => handleOptions(e.target.value)}
                           >
@@ -321,7 +321,7 @@ export default function ModalRating({
                               <div>
                                 <label
                                   htmlFor="location"
-                                  className="block text-sm font-medium text-gray-700"
+                                  className="block text-sm  font-medium text-gray-700"
                                 >
                                   {addVal.addons.name}
                                 </label>

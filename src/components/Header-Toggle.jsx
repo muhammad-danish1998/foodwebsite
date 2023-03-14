@@ -20,7 +20,7 @@ const HeaderToggle = (props) => {
   const handleToggleChange = () => {
     console.log("deliveryVal, pickupVal ===>", deliveryVal, pickupVal)
     if(pickupVal == 1){
-      if (selectedValue === props.value1) {
+      if (selectedValue === props.value1 ) {
         setSelectedValue(props.value2);
         dispatch(setSelectValue(props.value2));
         
@@ -28,6 +28,8 @@ const HeaderToggle = (props) => {
       } else {
         // navigate("/pickup");
         setSelectedValue(props.value1);
+      
+
         dispatch(setSelectValue(props.value1));
       }
     }

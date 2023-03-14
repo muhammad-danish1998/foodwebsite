@@ -55,7 +55,10 @@ export default function RestaurantsGrid({
   const dispatch = useDispatch();
   const FilterItems = (item) => {
     if (filterRating?.value) {
-      if (item.overall_rating !== filterRating.value) {
+    console.log("item.overall_rating",item.overall_rating);
+    console.log("filterRating.value",filterRating.value);
+
+      if (item.overall_rating <= filterRating.value && item.overall_rating !== filterRating.value) {
         return false;
       }
     }

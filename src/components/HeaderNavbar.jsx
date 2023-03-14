@@ -76,7 +76,9 @@ export default function HeaderNavbar() {
                 </div>
                 <div className=" lg:ml-6 lg:block">
                   <div className="flex  space-x-4 ">
-                    <HeaderToggle value1= {t("delivery")} value2= {t("pickup")} />
+                    {/* <HeaderToggle value1= {t("delivery")} value2= {t("pickup")} /> */}
+                    <HeaderToggle value1= "delivery" value2= "pickup" />
+                    
                   </div>
                 </div>
               </div>

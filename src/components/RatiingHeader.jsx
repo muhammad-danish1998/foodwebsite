@@ -25,6 +25,7 @@ export default function RatiingHeader({
   const handleSelect = (e) => {
     setSelected(e);
     setFilterRating(e);
+    console.log("ratiiiing",e)
   };
   const { t, i18n } = useTranslation();
   const changeLanguage = (lng) => {

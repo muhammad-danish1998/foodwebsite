@@ -14,7 +14,7 @@ const HeaderSlider = () => {
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper w-full ">
         <SwiperSlide className="">
           {/* <img className="w-5/6 h-4/5 lg:mt-4 border-2 mx-auto " src="./images/img1.png" /> */}
-          <img className="lg:w-5/6 mx-auto h-full " src="./images/img1.png" />
+          <img className="lg:w-5/6 mx-auto h-full  " src="./images/img1.png" />
 
         </SwiperSlide>
 

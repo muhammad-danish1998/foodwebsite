@@ -76,7 +76,9 @@ export default function HeaderNavbarMenu() {
                 </div>
                 <div className=" lg:ml-6 lg:block">
                   <div className="flex  space-x-4 ">
-                    <HeaderToggle value1= {t("pickup")} value2={t("delivery")} />
+                    <HeaderToggle value1= "pickup" value2="delivery"
+                    
+                    />
                   </div>
                 </div>
               </div>
@@ -248,7 +250,7 @@ export default function HeaderNavbarMenu() {
                   // href="/"
                   className=" block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
                 >
-                  Home1
+                  Home
                 </Disclosure.Button>
               </Link>
               <Link to="/signin">
