@@ -203,11 +203,7 @@ const changeLanguage = lng => {
                 </span>
               </h1>
               
-              {/* <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-                lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-                fugiat aliqua ad ad non deserunt sunt.
-              </p> */}
+          
               <div className="mt-8 sm:mx-auto sm:max-w-lg sm:text-center lg:mx-0 lg:text-left">
                 <form
                   onSubmit={(e) => e.preventDefault()}
