@@ -37,6 +37,8 @@ import ResturantReview from "./components/ResturantReview";
 import Inbox from "./components/Inbox";
 import Impressum from "./components/Impressum";
 import CarditCard from "./components/CarditCard";
+import ResInfo from "./components/ResInfo";
+import RatingTwo from "./components/RatingTwo";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -72,6 +74,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route exact path="/resturantReview" element={<ResturantReview  />} />
       <Route exact path="/Impressum" element={<Impressum  />} />
       <Route exact path="/CarditCard" element={<CarditCard  />} />
+      <Route exact path="/examModal" element={<ExamModal  />} />
+      <Route exact path="/resinfo" element={<ResInfo  />} />
+      <Route exact path="/ratingtwo" element={<RatingTwo  />} />
+
+
+
 
 
       
