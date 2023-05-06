@@ -45,7 +45,7 @@ function PlacesAutoComplete({ onPlaceSelect , zipCode, address }) {
            defaultValue={`${localStorage.getItem('your_zip')} ${localStorage.getItem('your_street_name')}`}
            inputAutocompleteValue={`${zipCode}, ${address}`}
             className="block   w-full border-0 outline-none   py-3 text-base   sm:flex-1"
-            apiKey='AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0'
+            apiKey='AIzaSyBwhHw0I3SUNIIMq0HaWkIx8BSbmHjooeA'
             options={{
                 types: [],
             }}
