@@ -63,7 +63,7 @@ export default function Header() {
   
 
 
-const api_key = `AIzaSyCZ44yB_6Zqh9VSYqB6zhfPyxtK5hOwsL0`
+const api_key = `AIzaSyBwhHw0I3SUNIIMq0HaWkIx8BSbmHjooeA`
 
 
 
